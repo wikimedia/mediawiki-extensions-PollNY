@@ -85,6 +85,8 @@ class AdminPoll extends SpecialPage {
 
 		$output .= '</div>';
 
+		// Give grep a chance to find the usages:
+		// poll-admin-title-all, poll-admin-title-closed, poll-admin-title-flagged, poll-admin-title-open
 		$wgOut->setPageTitle( wfMsg( 'poll-admin-title-' . $current_status ) );
 
 		$params['ORDER BY'] = 'poll_date DESC';
