@@ -1,6 +1,8 @@
 <?php
 /**
- * New version of that fucking AJAX upload form, 1.16-compatible.
+ * New version of that fucking AJAX upload form.
+ * Originally written as 1.16-compatible; this one's built against and tested
+ * with MW 1.21.1.
  *
  * wpThumbWidth is the width of the thumbnail that will be returned
  * Also, to prevent overwriting uploads of files with popular names i.e.
@@ -10,7 +12,7 @@
  * @ingroup SpecialPage
  * @ingroup Upload
  * @author Jack Phoenix <jack@countervandalism.net>
- * @date 26 June 2011
+ * @date 21 July 2013
  * @note Based on 1.16 core SpecialUpload.php (GPL-licensed) by Bryan et al.
  * @see http://bugzilla.shoutwiki.com/show_bug.cgi?id=22
  */
@@ -21,12 +23,8 @@ class SpecialPollAjaxUpload extends SpecialUpload {
 	 *
 	 * @param $request WebRequest: Data posted.
 	 */
-	public function __construct( $request = null ) {
-		global $wgRequest;
-
+	public function __construct() {
 		SpecialPage::__construct( 'PollAjaxUpload', 'upload', false );
-
-		$this->loadRequest( is_null( $request ) ? $wgRequest : $request );
 	}
 
 	/**
@@ -42,10 +40,8 @@ class SpecialPollAjaxUpload extends SpecialUpload {
 	 *
 	 * @param $request WebRequest: The request to extract variables from
 	 */
-	protected function loadRequest( $request ) {
-		global $wgUser;
-
-		$this->mRequest = $request;
+	protected function loadRequest() {
+		$this->mRequest = $request = $this->getRequest();
 		$this->mSourceType        = $request->getVal( 'wpSourceType', 'file' );
 		$this->mUpload            = PollUpload::createFromRequest( $request );
 		$this->mUploadClicked     = $request->wasPosted()
@@ -62,7 +58,7 @@ class SpecialPollAjaxUpload extends SpecialUpload {
 
 		$this->mDestWarningAck    = $request->getText( 'wpDestFileWarningAck' );
 		$this->mIgnoreWarning     = true;//$request->getCheck( 'wpIgnoreWarning' ) || $request->getCheck( 'wpUploadIgnoreWarning' );
-		$this->mWatchthis         = $request->getBool( 'wpWatchthis' ) && $wgUser->isLoggedIn();
+		$this->mWatchthis         = $request->getBool( 'wpWatchthis' ) && $this->getUser()->isLoggedIn();
 		$this->mCopyrightStatus   = $request->getText( 'wpUploadCopyStatus' );
 		$this->mCopyrightSource   = $request->getText( 'wpUploadSource' );
 
@@ -78,7 +74,7 @@ class SpecialPollAjaxUpload extends SpecialUpload {
 			// with their submissions, as that's new in 1.16.
 			$this->mTokenOk = true;
 		} else {
-			$this->mTokenOk = $wgUser->matchEditToken( $token );
+			$this->mTokenOk = $this->getUser()->matchEditToken( $token );
 		}
 	}
 
@@ -89,41 +85,34 @@ class SpecialPollAjaxUpload extends SpecialUpload {
 	 * and some bits of code were entirely removed.
 	 */
 	public function execute( $par ) {
-		global $wgUser, $wgOut, $wgRequest;
-
 		// Disable the skin etc.
-		$wgOut->setArticleBodyOnly( true );
+		$this->getOutput()->setArticleBodyOnly( true );
+
+		// Allow framing so that after uploading an image, we can actually show
+		// it to the user :)
+		$this->getOutput()->allowClickjacking();
 
 		# Check that uploading is enabled
 		if( !UploadBase::isEnabled() ) {
-			$wgOut->showErrorPage( 'uploaddisabled', 'uploaddisabledtext' );
-			return;
+			throw new ErrorPageError( 'uploaddisabled', 'uploaddisabledtext' );
 		}
 
 		# Check permissions
-		global $wgGroupPermissions;
-		if( !$wgUser->isAllowed( 'upload' ) ) {
-			if( !$wgUser->isLoggedIn() && ( $wgGroupPermissions['user']['upload']
-				|| $wgGroupPermissions['autoconfirmed']['upload'] ) ) {
-				// Custom message if logged-in users without any special rights can upload
-				$wgOut->showErrorPage( 'uploadnologin', 'uploadnologintext' );
-			} else {
-				$wgOut->permissionRequired( 'upload' );
-			}
-			return;
+		$user = $this->getUser();
+		$permissionRequired = UploadBase::isAllowed( $user );
+		if( $permissionRequired !== true ) {
+			throw new PermissionsError( $permissionRequired );
 		}
 
 		# Check blocks
-		if( $wgUser->isBlocked() ) {
-			$wgOut->blockedPage();
-			return;
+		if( $user->isBlocked() ) {
+			throw new UserBlockedError( $user->getBlock() );
 		}
 
 		# Check whether we actually want to allow changing stuff
-		if( wfReadOnly() ) {
-			$wgOut->readOnlyPage();
-			return;
-		}
+		$this->checkReadOnly();
+
+		$this->loadRequest();
 
 		# Unsave the temporary file in case this was a cancelled upload
 		if ( $this->mCancelUpload ) {
@@ -168,7 +157,7 @@ class SpecialPollAjaxUpload extends SpecialUpload {
 		# Check the token, but only if necessary
 		if( !$this->mTokenOk && !$this->mCancelUpload
 				&& ( $this->mUpload && $this->mUploadClicked ) ) {
-			$form->addPreText( wfMsgExt( 'session_fail_preview', 'parseinline' ) );
+			$form->addPreText( $this->msg( 'session_fail_preview' )->parse() );
 		}
 
 		# Add upload error message
@@ -190,11 +179,11 @@ class SpecialPollAjaxUpload extends SpecialUpload {
 	 */
 	protected function showRecoverableUploadError( $message ) {
 		$sessionKey = $this->mUpload->stashSession();
-		$message = '<h2>' . wfMsgHtml( 'uploadwarning' ) . "</h2>\n" .
+		$message = '<h2>' . $this->msg( 'uploaderror' )->escaped() . "</h2>\n" .
 			'<div class="error">' . $message . "</div>\n";
 
 		$form = $this->getUploadForm( $message, $sessionKey );
-		$form->setSubmitText( wfMsg( 'upload-tryagain' ) );
+		$form->setSubmitText( $this->msg( 'upload-tryagain' )->escaped() );
 		$this->showUploadForm( $form );
 	}
 
@@ -205,6 +194,7 @@ class SpecialPollAjaxUpload extends SpecialUpload {
 	 */
 	protected function showUploadError( $message ) {
 		$message = addslashes( $message );
+		$message = str_replace( array( "\r\n", "\r", "\n" ), ' ', $message );
 		$output = "<script language=\"javascript\">
 			/*<![CDATA[*/
 				window.parent.PollNY.uploadError( '{$message}' );
@@ -216,26 +206,15 @@ class SpecialPollAjaxUpload extends SpecialUpload {
 	 * Do the upload.
 	 * Checks are made in SpecialPollAjaxUpload::execute()
 	 *
-	 * What was changed here: $wgRequest was added as a global, one hook and
-	 * the post-upload redirect were removed in favor of the code below
-	 * the $this->mUploadSuccessful = true; line
+	 * What was changed here: one hook and the post-upload redirect were
+	 * removed in favor of the code below the $this->mUploadSuccessful = true;
+	 * line
 	 */
 	protected function processUpload() {
-		global $wgUser, $wgOut, $wgRequest;
-
-		// Verify permissions
-		$permErrors = $this->mUpload->verifyPermissions( $wgUser );
-		if( $permErrors !== true ) {
-			$wgOut->showPermissionsErrorPage( $permErrors );
-			return;
-		}
-
 		// Fetch the file if required
 		$status = $this->mUpload->fetchFile();
 		if( !$status->isOK() ) {
-			$this->showUploadForm(
-				$this->getUploadForm( $wgOut->parse( $status->getWikiText() ) )
-			);
+			$this->showUploadError( $this->getOutput()->parse( $status->getWikiText() ) );
 			return;
 		}
 
@@ -246,7 +225,23 @@ class SpecialPollAjaxUpload extends SpecialUpload {
 			return;
 		}
 
+		// Verify permissions for this title
+		$permErrors = $this->mUpload->verifyTitlePermissions( $this->getUser() );
+		if( $permErrors !== true ) {
+			$code = array_shift( $permErrors[0] );
+			$this->showRecoverableUploadError( $this->msg( $code, $permErrors[0] )->parse() );
+			return;
+		}
+
 		$this->mLocalFile = $this->mUpload->getLocalFile();
+
+		// Check warnings if necessary
+		if( !$this->mIgnoreWarning ) {
+			$warnings = $this->mUpload->checkWarnings();
+			if( $this->showUploadWarning( $warnings ) ) {
+				return;
+			}
+		}
 
 		// Get the page text if this is not a reupload
 		if( !$this->mForReUpload ) {
@@ -258,21 +253,21 @@ class SpecialPollAjaxUpload extends SpecialUpload {
 		}
 
 		$status = $this->mUpload->performUpload(
-			$this->mComment, $pageText, $this->mWatchthis, $wgUser
+			$this->mComment, $pageText, $this->mWatchthis, $this->getUser()
 		);
 
 		if ( !$status->isGood() ) {
-			$this->showUploadError( $wgOut->parse( $status->getWikiText() ) );
+			$this->showUploadError( $this->getOutput()->parse( $status->getWikiText() ) );
 			return;
 		}
 
 		// Success, redirect to description page
 		$this->mUploadSuccessful = true;
 
-		$wgOut->setArticleBodyOnly( true );
-		$wgOut->clearHTML();
+		$this->getOutput()->setArticleBodyOnly( true );
+		$this->getOutput()->clearHTML();
 
-		$thumbWidth = $wgRequest->getInt( 'wpThumbWidth', 75 );
+		$thumbWidth = $this->getRequest()->getInt( 'wpThumbWidth', 75 );
 
 		// The old version below, which initially used $this->mDesiredDestName
 		// instead of that getTitle() caused plenty o' fatals...the new version
@@ -299,7 +294,7 @@ class SpecialPollAjaxUpload extends SpecialUpload {
 		// uploadComplete JS function (see Poll.js), and that function sets
 		// the value of the hidden <input> with the ID and name
 		// "poll_image_name" to the image's name.
-		// Somewhere something uses WebRequest ($wgRequest) to get the value of
+		// Somewhere something uses WebRequest to get the value of
 		// poll_image_name and inserts that into the database.
 		// If we don't pass the correct (timestamped) image name here, we
 		// <s>will end</s> used to end up with fatals that are pretty damn
@@ -342,7 +337,7 @@ class PollAjaxUploadForm extends UploadForm {
 		HTMLForm::__construct( $descriptor, 'upload' );
 
 		# Set some form properties
-		$this->setSubmitText( wfMsg( 'uploadbtn' ) );
+		$this->setSubmitText( $this->msg( 'uploadbtn' )->text() );
 		$this->setSubmitName( 'wpUpload' );
 		$this->setSubmitTooltip( 'upload' );
 		$this->setId( 'mw-upload-form' );
@@ -357,10 +352,9 @@ class PollAjaxUploadForm extends UploadForm {
 	}
 
 	function displayForm( $submitResult ) {
-		global $wgOut;
 		parent::displayForm( $submitResult );
-		if ( method_exists( $wgOut, 'allowClickjacking' ) ) {
-			$wgOut->allowClickjacking();
+		if ( method_exists( $this->getOutput(), 'allowClickjacking' ) ) {
+			$this->getOutput()->allowClickjacking();
 		}
 	}
 
@@ -404,8 +398,8 @@ class PollAjaxUploadForm extends UploadForm {
 			return true;
 		} else {
 			// textError method is gone and I can't find it anywhere...
-			alert( '" . str_replace( "\n", ' ', wfMsg( 'emptyfile' ) ) . "' );
-			//window.parent.PollNY.textError( '" . str_replace( "\n", ' ', wfMsg( 'emptyfile' ) ) . "' );
+			alert( '" . str_replace( array( "\r\n", "\r", "\n" ), ' ', wfMessage( 'emptyfile' )->plain() ) . "' );
+			//window.parent.PollNY.textError( '" . str_replace( "\n", ' ', wfMessage( 'emptyfile' )->plain() ) . "' );
 			return false;
 		}
 	}
@@ -419,8 +413,6 @@ class PollAjaxUploadForm extends UploadForm {
 	 * @return array Descriptor array
 	 */
 	protected function getSourceSection() {
-		global $wgUser, $wgRequest;
-
 		if ( $this->mSessionKey ) {
 			return array(
 				'wpSessionKey' => array(
@@ -434,9 +426,9 @@ class PollAjaxUploadForm extends UploadForm {
 			);
 		}
 
-		$canUploadByUrl = UploadFromUrl::isEnabled() && $wgUser->isAllowed( 'upload_by_url' );
+		$canUploadByUrl = UploadFromUrl::isEnabled() && $this->getUser()->isAllowed( 'upload_by_url' );
 		$radio = $canUploadByUrl;
-		$selectedSourceType = strtolower( $wgRequest->getText( 'wpSourceType', 'File' ) );
+		$selectedSourceType = strtolower( $this->getRequest()->getText( 'wpSourceType', 'File' ) );
 
 		$descriptor = array();
 		$descriptor['UploadFile'] = array(
@@ -561,15 +553,14 @@ class PollUpload extends UploadFromFile {
 	}
 
 	function initializeFromRequest( &$request ) {
+		$upload = $request->getUpload( 'wpUploadFile' );
+
 		$desiredDestName = $request->getText( 'wpDestFile' );
-		if( !$desiredDestName ) {
-			$desiredDestName = $request->getFileName( 'wpUploadFile' );
+		if ( !$desiredDestName ) {
+			$desiredDestName = $upload->getName();
 		}
 		$desiredDestName = time() . '-' . $desiredDestName;
-		return $this->initializePathInfo(
-			$desiredDestName,
-			$request->getFileTempName( 'wpUploadFile' ),
-			$request->getFileSize( 'wpUploadFile' )
-		);
+
+		$this->initialize( $desiredDestName, $upload );
 	}
 }

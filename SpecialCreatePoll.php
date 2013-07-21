@@ -19,19 +19,23 @@ class CreatePoll extends SpecialPage {
 	 * @param $par Mixed: parameter passed to the page or null
 	 */
 	public function execute( $par ) {
-		global $wgUser, $wgOut, $wgRequest, $wgMemc, $wgContLang, $wgHooks, $wgSupressPageTitle, $wgPollScripts;
+		global $wgMemc, $wgContLang, $wgSupressPageTitle;
+
+		$out = $this->getOutput();
+		$request = $this->getRequest();
+		$user = $this->getUser();
 
 		$wgSupressPageTitle = true;
 
 		// Blocked users cannot create polls
-		if( $wgUser->isBlocked() ) {
-			$wgOut->blockedPage( false );
+		if( $user->isBlocked() ) {
+			$out->blockedPage( false );
 			return false;
 		}
 
 		// Check that the DB isn't locked
 		if( wfReadOnly() ) {
-			$wgOut->readOnlyPage();
+			$out->readOnlyPage();
 			return;
 		}
 
@@ -39,10 +43,10 @@ class CreatePoll extends SpecialPage {
 		 * Redirect anonymous users to login page
 		 * It will automatically return them to the CreatePoll page
 		 */
-		if( $wgUser->getID() == 0 ) {
-			$wgOut->setPageTitle( wfMsgHtml( 'poll-woops' ) );
+		if( $user->getID() == 0 ) {
+			$out->setPageTitle( $this->msg( 'poll-woops' )->plain() );
 			$login = SpecialPage::getTitleFor( 'Userlogin' );
-			$wgOut->redirect( $login->getLocalURL( 'returnto=Special:CreatePoll' ) );
+			$out->redirect( $login->getLocalURL( 'returnto=Special:CreatePoll' ) );
 			return false;
 		}
 
@@ -53,7 +57,7 @@ class CreatePoll extends SpecialPage {
 		if( is_array( $wgCreatePollThresholds ) && count( $wgCreatePollThresholds ) > 0 ) {
 			$canCreate = true;
 
-			$stats = new UserStats( $wgUser->getID(), $wgUser->getName() );
+			$stats = new UserStats( $user->getID(), $user->getName() );
 			$stats_data = $stats->getUserStats();
 
 			$threshold_reason = '';
@@ -66,37 +70,33 @@ class CreatePoll extends SpecialPage {
 
 			if( $canCreate == false ) {
 				$wgSupressPageTitle = false;
-				$wgOut->setPageTitle( wfMsg( 'poll-create-threshold-title' ) );
-				$wgOut->addHTML( wfMsg( 'poll-create-threshold-reason', $threshold_reason ) );
+				$out->setPageTitle( $this->msg( 'poll-create-threshold-title' )->plain() );
+				$out->addWikiMsg( 'poll-create-threshold-reason', $threshold_reason );
 				return '';
 			}
 		}
 
-		// i18n for JS
-		$wgHooks['MakeGlobalVariablesScript'][] = 'CreatePoll::addJSGlobals';
-
 		// Add CSS & JS
-		$wgOut->addScriptFile( $wgPollScripts . '/Poll.js' );
-		$wgOut->addExtensionStyle( $wgPollScripts . '/Poll.css' );
+		$out->addModules( 'ext.pollNY' );
 
 		// If the request was POSTed, try creating the poll
-		if( $wgRequest->wasPosted() && $_SESSION['alreadysubmitted'] == false ) {
+		if( $request->wasPosted() && $_SESSION['alreadysubmitted'] == false ) {
 			$_SESSION['alreadysubmitted'] = true;
 
 			// Add poll
-			$poll_title = Title::makeTitleSafe( NS_POLL, $wgRequest->getVal( 'poll_question' ) );
+			$poll_title = Title::makeTitleSafe( NS_POLL, $request->getVal( 'poll_question' ) );
 			if( is_null( $poll_title ) && !$poll_title instanceof Title ) {
 				$wgSupressPageTitle = false;
-				$wgOut->setPageTitle( wfMsg( 'poll-create-threshold-title' ) );
-				$wgOut->addHTML( wfMsg( 'poll-create-threshold-reason', $threshold_reason ) );
+				$out->setPageTitle( $this->msg( 'poll-create-threshold-title' )->plain() );
+				$out->addWikiMsg( 'poll-create-threshold-reason', $threshold_reason );
 				return '';
 			}
 
 			// Put choices in wikitext (so we can track changes)
 			$choices = '';
 			for( $x = 1; $x <= 10; $x++ ) {
-				if( $wgRequest->getVal( "answer_{$x}" ) ) {
-					$choices .= $wgRequest->getVal( "answer_{$x}" ) . "\n";
+				if( $request->getVal( "answer_{$x}" ) ) {
+					$choices .= $request->getVal( "answer_{$x}" ) . "\n";
 				}
 			}
 
@@ -106,63 +106,48 @@ class CreatePoll extends SpecialPage {
 			$article->doEdit(
 				"<userpoll>\n$choices</userpoll>\n\n[[" .
 					$localizedCategoryNS . ':' .
-					wfMsgForContent( 'poll-category' ) . "]]\n" .
+					$this->msg( 'poll-category' )->inContentLanguage()->plain() . "]]\n" .
 				'[[' . $localizedCategoryNS . ':' .
-					wfMsgForContent( 'poll-category-user', $wgUser->getName() ) . "]]\n" .
+					$this->msg( 'poll-category-user', $user->getName() )->inContentLanguage()->text()  . "]]\n" .
 				'[[' . $localizedCategoryNS . ":{{subst:CURRENTMONTHNAME}} {{subst:CURRENTDAY}}, {{subst:CURRENTYEAR}}]]\n\n__NOEDITSECTION__",
-				wfMsgForContent( 'poll-edit-desc' )
+				$this->msg( 'poll-edit-desc' )->inContentLanguage()->plain() 
 			);
 
 			$newPageId = $article->getID();
 
 			$p = new Poll();
 			$poll_id = $p->addPollQuestion(
-				$wgRequest->getVal( 'poll_question' ),
-				$wgRequest->getVal( 'poll_image_name' ),
+				$request->getVal( 'poll_question' ),
+				$request->getVal( 'poll_image_name' ),
 				$newPageId
 			);
 
 			// Add choices
 			for( $x = 1; $x <= 10; $x++ ) {
-				if( $wgRequest->getVal( "answer_{$x}" ) ) {
+				if( $request->getVal( "answer_{$x}" ) ) {
 					$p->addPollChoice(
 						$poll_id,
-						$wgRequest->getVal( "answer_{$x}" ),
+						$request->getVal( "answer_{$x}" ),
 						$x
 					);
 				}
 			}
 
 			// Clear poll cache
-			$key = wfMemcKey( 'user', 'profile', 'polls', $wgUser->getID() );
+			$key = wfMemcKey( 'user', 'profile', 'polls', $user->getID() );
 			$wgMemc->delete( $key );
 
 			// Redirect to new poll page
-			$wgOut->redirect( $poll_title->getFullURL() );
+			$out->redirect( $poll_title->getFullURL() );
 		} else {
 			$_SESSION['alreadysubmitted'] = false;
+			// Load the GUI template class
 			include( 'create-poll.tmpl.php' );
 			$template = new CreatePollTemplate;
-			$wgOut->addTemplate( $template );
+			// Expose _this_ class to the GUI template
+			$template->setRef( 'parentClass', $this );
+			// And output the template!
+			$out->addTemplate( $template );
 		}
-	}
-
-	/**
-	 * Add some new JS globals for i18n. This will be going away once we
-	 * require ResourceLoader.
-	 *
-	 * @param $vars Array: array of pre-existing JS globals
-	 * @return Boolean: true
-	 */
-	public static function addJSGlobals( $vars ) {
-		$vars['_POLL_CREATEPOLL_ERROR'] = wfMsg( 'poll-createpoll-error-nomore' );
-		$vars['_POLL_UPLOAD_NEW'] = wfMsg( 'poll-upload-new-image' );
-		$vars['_POLL_AT_LEAST'] = wfMsg( 'poll-atleast' );
-		$vars['_POLL_ENTER_QUESTION'] = wfMsg( 'poll-enterquestion' );
-		$vars['_POLL_HASH'] = wfMsg( 'poll-hash' );
-		$vars['_POLL_PLEASE_CHOOSE'] = wfMsg( 'poll-pleasechoose' );
-		$iframeTitle = SpecialPage::getTitleFor( 'PollAjaxUpload' );
-		$vars['_POLL_IFRAME_URL'] = $iframeTitle->escapeFullURL( 'wpThumbWidth=75' );
-		return true;
 	}
 }

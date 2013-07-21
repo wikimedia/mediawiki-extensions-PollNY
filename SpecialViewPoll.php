@@ -19,14 +19,15 @@ class ViewPoll extends SpecialPage {
 	 * @param $par Mixed: parameter passed to the page or null
 	 */
 	public function execute( $par ) {
-		global $wgRequest, $wgOut, $wgScriptPath, $wgPollScripts;
+		$out = $this->getOutput();
+		$request = $this->getRequest();
+		$thisTitle = $this->getTitle();
 
 		// Add CSS & JS
-		$wgOut->addExtensionStyle( $wgPollScripts . '/Poll.css' );
-		$wgOut->addScriptFile( $wgPollScripts . '/Poll.js' );
+		$out->addModules( 'ext.pollNY' );
 
 		// Page either most or newest for everyone
-		$type = $wgRequest->getVal( 'type' );
+		$type = $request->getVal( 'type' );
 		if( !$type ) {
 			$type = 'most';
 		}
@@ -43,7 +44,7 @@ class ViewPoll extends SpecialPage {
 
 		// Pagination
 		$per_page = 20;
-		$page = $wgRequest->getInt( 'page', 1 );
+		$page = $request->getInt( 'page', 1 );
 
 		$limit = $per_page;
 
@@ -58,39 +59,47 @@ class ViewPoll extends SpecialPage {
 		$output = '
 		<div class="view-poll-top-links">
 			<a href="' . $random_poll_link->escapeFullURL() . '">' .
-				wfMsg( 'poll-take-button' ) .
+				$this->msg( 'poll-take-button' )->text() .
 			'</a>
 		</div>
 
 		<div class="view-poll-navigation">
-			<h2>' . wfMsg( 'poll-view-order' ) . '</h2>';
+			<h2>' . $this->msg( 'poll-view-order' )->text() . '</h2>';
 
 		$dbr = wfGetDB( DB_SLAVE );
 		$where = array();
 
-		$user = $wgRequest->getVal( 'user' );
+		$user = $request->getVal( 'user' );
+		$userLink = array();
 		if ( $user ) {
 			$where['poll_user_name'] = $dbr->strencode( $user );
-			$user_link = '&user=' . urlencode( $user );
+			$userLink['user'] = $user;
 		}
 
 		if ( $type == 'newest' ) {
-			$output .= '<p><a href="' . $wgScriptPath . "/index.php?title=Special:ViewPoll&type=most{$user_link}\">" .
-				wfMsg( 'poll-view-popular' ) . '</a></p><p><b>' .
-				wfMsg( 'poll-view-newest' ) . '</b></p>';
+			$output .= '<p>' . Linker::link(
+				$thisTitle,
+				$this->msg( 'poll-view-popular' )->text(),
+				array(),
+				array( 'type' => 'most' ) + $userLink
+			) . '</p><p><b>' .
+				$this->msg( 'poll-view-newest' )->text() . '</b></p>';
 		} else {
-			$output .= '<p><b>' . wfMsg( 'poll-view-popular' ) .
-				'</b></p><p><a href="' . $wgScriptPath .
-				"/index.php?title=Special:ViewPoll&type=newest{$user_link}\">" .
-				wfMsg( 'poll-view-newest' ) . '</a></p>';
+			$output .= '<p><b>' . $this->msg( 'poll-view-popular' )->text() .
+				'</b></p><p>' . Linker::link(
+					$thisTitle,
+					$this->msg( 'poll-view-newest' )->text(),
+					array(),
+					array( 'type' => 'newest' ) + $userLink
+				) . '</p>';
 		}
 
 		$output .= '</div>';
 
 		if ( isset( $user ) ) {
-			$wgOut->setPageTitle( wfMsgExt( 'poll-view-title', 'parsemag', $user ) );
+			$out->setPageTitle( $this->msg( 'poll-view-title', $user )->parse() );
 		} else {
-			$wgOut->setPageTitle( wfMsgHtml( 'viewpoll' ) );
+			$out->setPageTitle( $this->msg( 'viewpoll' )->text() );
 		}
 
 		$res = $dbr->select(
@@ -119,6 +128,15 @@ class ViewPoll extends SpecialPage {
 		$row_total = $dbr->fetchObject( $res_total );
 		$total = $row_total->total_polls;
 
+		// If there are absolutely no polls on the database, don't bother going
+		// further; no point in rendering the "Back to polls" (Special:RandomPoll)
+		// link or the "Order" sidebar here either, hence why we're not outputting
+		// $output here
+		if ( $total == 0 ) {
+			$out->addWikiMsg( 'poll-admin-no-polls' );
+			return;
+		}
+
 		$output .= '<div class="view-poll">';
 
 		$x = ( ( $page - 1 ) * $per_page ) + 1;
@@ -134,9 +152,9 @@ class ViewPoll extends SpecialPage {
 			$title = Title::makeTitle( NS_POLL, $poll_title );
 
 			if( ( $x < $dbr->numRows( $res ) ) && ( $x % $per_page != 0 ) ) {
-				$output .= "<div class=\"view-poll-row\" id=\"{$row_id}\" onmouseover=\"PollNY.doHover('{$row_id}')\" onmouseout=\"PollNY.endHover('{$row_id}')\" onclick=\"window.location='{$title->escapeFullURL()}'\">";
+				$output .= "<div class=\"view-poll-row\" id=\"{$row_id}\" onclick=\"window.location='{$title->escapeFullURL()}'\">";
 			} else {
-				$output .= "<div class=\"view-poll-row-bottom\" id=\"{$row_id}\" onmouseover=\"PollNY.doHover('{$row_id}')\" onmouseout=\"PollNY.endHover('{$row_id}')\" onclick=\"window.location='{$title->escapeFullURL()}'\">";
+				$output .= "<div class=\"view-poll-row-bottom\" id=\"{$row_id}\" onclick=\"window.location='{$title->escapeFullURL()}'\">";
 			}
 
 			$output .= "<div class=\"view-poll-number\">{$x}.</div>
@@ -147,16 +165,15 @@ class ViewPoll extends SpecialPage {
 					<div class=\"view-poll-text\">
 						<p><b><u>{$poll_title}</u></b></p>
 						<p class=\"view-poll-num-answers\">" .
-							wfMsgExt(
+							$this->msg(
 								'poll-view-answered-times',
-								'parsemag',
 								$poll_answers
-							) . '</p>
+							)->parse() . '</p>
 						<p class="view-poll-time">(' .
-							wfMsg(
+							$this->msg(
 								'poll-ago',
 								Poll::getTimeAgo( $poll_date )
-							) . ')</p>
+							)->parse() . ')</p>
 					</div>
 					<div class="cleared"></div>
 				</div>';
@@ -172,8 +189,15 @@ class ViewPoll extends SpecialPage {
 		if( $numofpages > 1 ) {
 			$output .= '<div class="view-poll-page-nav">';
 			if( $page > 1 ) {
-				$output .= '<a href="' . $wgScriptPath . '/index.php?title=Special:ViewPoll&type=most' . $user_link . '&page=' . ( $page - 1 ) . '">' .
-					wfMsg( 'poll-prev' ) . '</a> ';
+				$output .= Linker::link(
+					$thisTitle,
+					$this->msg( 'poll-prev' )->text(),
+					array(),
+					array(
+						'type' => 'most',
+						'page' => ( $page - 1 )
+					) + $userLink
+				) . $this->msg( 'word-separator' )->plain();
 			}
 
 			if( ( $total % $per_page ) != 0 ) {
@@ -190,17 +214,32 @@ class ViewPoll extends SpecialPage {
 				if( $i == $page ) {
 					$output .= ( $i . ' ' );
 				} else {
-					$output .= '<a href="' . $wgScriptPath . '/index.php?title=Special:ViewPoll&type=most' . $user_link . '&page=' . $i . '">' . $i . '</a> ';
+					$output .= Linker::link(
+						$thisTitle,
+						$i,
+						array(),
+						array(
+							'type' => 'most',
+							'page' => $i
+						) + $userLink
+					) . $this->msg( 'word-separator' )->plain();
 				}
 			}
 
 			if( ( $total - ( $per_page * $page ) ) > 0 ) {
-				$output .= ' <a href="' . $wgScriptPath . '/index.php?title=Special:ViewPoll&type=most' . $user_link . '&page=' . ( $page + 1 ) . '">' .
-					wfMsg( 'poll-next' ) . '</a>';
+				$output .= $this->msg( 'word-separator' )->plain() . Linker::link(
+					$thisTitle,
+					$i,
+					array(),
+					array(
+						'type' => 'most',
+						'page' => ( $page + 1 )
+					) + $userLink
+				);
 			}
 			$output .= '</div>';
 		}
 
-		$wgOut->addHTML( $output );
+		$out->addHTML( $output );
 	}
 }

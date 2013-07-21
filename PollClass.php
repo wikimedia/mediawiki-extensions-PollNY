@@ -10,7 +10,7 @@ class Poll {
 	 * @param $question String: poll question
 	 * @param $image String: name of the poll image, if any
 	 * @param $pageID Integer: page ID, as returned by Article::getID()
-	 * @return Integer: inserted value of an auto-increment row
+	 * @return Integer: inserted value of an auto-increment row (poll ID)
 	 */
 	public function addPollQuestion( $question, $image, $pageID ) {
 		global $wgUser;
@@ -53,7 +53,7 @@ class Poll {
 	}
 
 	/**
-	 * Adds a record to the poll_user_vote tabel to signify that the user has
+	 * Adds a record to the poll_user_vote table to signify that the user has
 	 * already voted.
 	 *
 	 * @param $pollID Integer: ID number of the poll
@@ -130,7 +130,7 @@ class Poll {
 				'poll_user_id', 'poll_user_name', 'poll_image',
 				'UNIX_TIMESTAMP(poll_date) AS timestamp'
 			),
-			array( "poll_page_id = {$pageID}" ),
+			array( 'poll_page_id' => $pageID ),
 			__METHOD__,
 			array( 'OFFSET' => 0, 'LIMIT' => 1 )
 		);
@@ -159,12 +159,14 @@ class Poll {
 	 * 					amount of votes and percent of total votes)
 	 */
 	public function getPollChoices( $poll_id, $poll_vote_count = 0 ) {
+		global $wgLang;
+
 		$dbr = wfGetDB( DB_SLAVE );
 
 		$res = $dbr->select(
 			'poll_choice',
 			array( 'pc_id', 'pc_text', 'pc_vote_count' ),
-			array( "pc_poll_id = {$poll_id}" ),
+			array( 'pc_poll_id' => $poll_id ),
 			__METHOD__,
 			array( 'ORDER BY' => 'pc_order' )
 		);
@@ -172,7 +174,7 @@ class Poll {
 		$choices = array();
 		foreach( $res as $row ) {
 			if( $poll_vote_count ) {
-				$percent = str_replace( '.0', '', number_format( $row->pc_vote_count / $poll_vote_count * 100, 1 ) );
+				$percent = str_replace( '.0', '', $wgLang->formatNum( $row->pc_vote_count / $poll_vote_count * 100, 1 ) );
 			} else {
 				$percent = 0;
 			}
@@ -391,7 +393,7 @@ class Poll {
 	public static function getTimeOffset( $time, $timeabrv, $timename ) {
 		$timeStr = '';
 		if( $time[$timeabrv] > 0 ) {
-			$timeStr = wfMsgExt( "poll-time-{$timename}", 'parsemag', $time[$timeabrv] );
+			$timeStr = wfMessage( "poll-time-{$timename}", $time[$timeabrv] )->parse();
 		}
 		if( $timeStr ) {
 			$timeStr .= ' ';
@@ -415,7 +417,7 @@ class Poll {
 			}
 		}
 		if( !$timeStr ) {
-			$timeStr = wfMsgExt( 'poll-time-seconds', 'parsemag', 1 );
+			$timeStr = wfMessage( 'poll-time-seconds', 1 )->parse();
 		}
 		return $timeStr;
 	}

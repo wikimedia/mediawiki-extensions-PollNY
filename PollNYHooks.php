@@ -134,9 +134,7 @@ class PollNYHooks {
 			$wgSupressPageCategories = true;
 
 			// Add required JS & CSS
-			$wgOut->addScriptFile( $wgPollScripts . '/Poll.js' );
-			$wgOut->addScriptFile( $wgPollScripts . '/LightBox.js' );
-			$wgOut->addExtensionStyle( $wgPollScripts . '/Poll.css' );
+			$wgOut->addModules( array( 'ext.pollNY', 'ext.pollNY.lightBox' ) );
 
 			$article = new PollPage( $wgTitle );
 		}
@@ -190,12 +188,12 @@ class PollNYHooks {
 	public static function renderEmbedPoll( $input, $args, $parser ) {
 		$poll_name = $args['title'];
 		if( $poll_name ) {
-			global $wgOut, $wgUser, $wgScriptPath;
+			global $wgOut, $wgUser, $wgExtensionAssetsPath;
 
 			// Load CSS for non-Monaco skins - Monaco's ny.css already contains
 			// PollNY's styles (and more)
 			if ( get_class( $wgUser->getSkin() ) !== 'SkinMonaco' ) {
-				$wgOut->addExtensionStyle( $wgScriptPath . '/extensions/PollNY/Poll.css' );
+				$wgOut->addModuleStyles( 'ext.pollNY' );
 			}
 
 			// Disable caching; this is important so that we don't cause subtle
@@ -237,25 +235,24 @@ class PollNYHooks {
 					$poll_info['status'] == 1
 				)
 				{
-					$wgOut->addScriptFile( $wgScriptPath . '/extensions/PollNY/Poll.js' );
-					$wgOut->addScript( "<script type=\"text/javascript\">addOnloadHook( function() { PollNY.showEmbedPoll({$poll_info['id']}); } );</script>\n" );
-					$output .= "<div id=\"loading-poll_{$poll_info['id']}\">" . wfMsg( 'poll-js-loading' ) . '</div>';
+					$wgOut->addModuleScripts( 'ext.pollNY' );
+					$output .= "<div id=\"loading-poll_{$poll_info['id']}\" class=\"poll-loading-msg\">" . wfMessage( 'poll-js-loading' )->text() . '</div>';
 					$output .= "<div id=\"poll-display_{$poll_info['id']}\" style=\"display:none;\">";
 					$output .= "<form name=\"poll_{$poll_info['id']}\"><input type=\"hidden\" id=\"poll_id_{$poll_info['id']}\" name=\"poll_id_{$poll_info['id']}\" value=\"{$poll_info['id']}\"/>";
 
 					foreach( $poll_info['choices'] as $choice ) {
 						$output .= "<div class=\"poll-choice\">
-						<input type=\"radio\" name=\"poll_choice\" onclick=\"PollNY.pollEmbedVote({$poll_info['id']}, {$poll_page_id})\" id=\"poll_choice\" value=\"{$choice['id']}\">{$choice['choice']}
+						<input type=\"radio\" name=\"poll_choice\" data-poll-id=\"{$poll_info['id']}\" data-poll-page-id=\"{$poll_page_id}\" id=\"poll_choice\" value=\"{$choice['id']}\">{$choice['choice']}
 						</div>";
 					}
 
-					$output .= '</div>
-					</form>';
+					$output .= '</form>
+						</div>';
 				} else {
 					// Display message if poll has been closed for voting
 					if( $poll_info['status'] == 0 ) {
 						$output .= '<div class="poll-closed">' .
-							wfMsg( 'poll-closed' ) . '</div>';
+							wfMessage( 'poll-closed' )->text() . '</div>';
 					}
 
 					$x = 1;
@@ -265,7 +262,7 @@ class PollNYHooks {
 						if( $poll_info['votes'] > 0 ) {
 							$bar_width = floor( 480 * ( $choice['votes'] / $poll_info['votes'] ) );
 						}
-						$bar_img = "<img src=\"{$wgScriptPath}/extensions/PollNY/images/vote-bar-{$x}.gif\" border=\"0\" class=\"image-choice-{$x}\" style=\"width:{$choice['percent']}%;height:12px;\" alt=\"\" />";
+						$bar_img = "<img src=\"{$wgExtensionAssetsPath}/PollNY/images/vote-bar-{$x}.gif\" border=\"0\" class=\"image-choice-{$x}\" style=\"width:{$choice['percent']}%;height:12px;\" alt=\"\" />";
 
 						$output .= "<div class=\"poll-choice\">
 						<div class=\"poll-choice-left\">{$choice['choice']} ({$choice['percent']}%)</div>";
@@ -278,22 +275,21 @@ class PollNYHooks {
 						}
 
 						$output .= "<div class=\"poll-choice-right\">{$bar_img} <span class=\"poll-choice-votes\">" .
-							wfMsgExt( 'poll-votes', 'parsemag', $choice['votes'] ) . '</span></div>';
+							wfMessage( 'poll-votes', $choice['votes'] )->parse() . '</span></div>';
 						$output .= '</div>';
 
 						$x++;
 					}
 
 					$output .= '<div class="poll-total-votes">(' .
-						wfMsgExt(
+						wfMessage(
 							'poll-based-on-votes',
-							'parsemag',
 							$poll_info['votes']
-						) . ')</div>';
+						)->parse() . ')</div>';
 					$output .= '<div><a href="' . $poll_title->escapeFullURL() . '">' .
-						wfMsg( 'poll-discuss' ) . '</a></div>';
+						wfMessage( 'poll-discuss' )->text() . '</a></div>';
 					$output .= '<div class="poll-timestamp">' .
-						wfMsg( 'poll-createdago', Poll::getTimeAgo( $poll_info['timestamp'] ) ) .
+						wfMessage( 'poll-createdago', Poll::getTimeAgo( $poll_info['timestamp'] ) )->parse() .
 					'</div>';
 				}
 
@@ -301,7 +297,7 @@ class PollNYHooks {
 			} else {
 				// Poll doesn't exist or is unavailable for some other reason
 				$output = '<div class="poll-embed-title">' .
-					wfMsg( 'poll-unavailable' ) . '</div>';
+					wfMessage( 'poll-unavailable' )->text() . '</div>';
 				return $output;
 			}
 		}
@@ -313,22 +309,17 @@ class PollNYHooks {
 	 * Adds the three new tables to the database when the user runs
 	 * maintenance/update.php.
 	 *
-	 * @param $updater Object: instance of DatabaseUpdater
+	 * @param $updater DatabaseUpdater
 	 * @return Boolean: true
 	 */
-	public static function addTables( $updater = null ) {
+	public static function addTables( $updater ) {
 		$dir = dirname( __FILE__ );
 		$file = "$dir/poll.sql";
-		if ( $updater === null ) {
-			global $wgExtNewTables;
-			$wgExtNewTables[] = array( 'poll_choice', $file );
-			$wgExtNewTables[] = array( 'poll_question', $file );
-			$wgExtNewTables[] = array( 'poll_user_vote', $file );
-		} else {
-			$updater->addExtensionUpdate( array( 'addTable', 'poll_choice', $file, true ) );
-			$updater->addExtensionUpdate( array( 'addTable', 'poll_question', $file, true ) );
-			$updater->addExtensionUpdate( array( 'addTable', 'poll_user_vote', $file, true ) );
-		}
+
+		$updater->addExtensionUpdate( array( 'addTable', 'poll_choice', $file, true ) );
+		$updater->addExtensionUpdate( array( 'addTable', 'poll_question', $file, true ) );
+		$updater->addExtensionUpdate( array( 'addTable', 'poll_user_vote', $file, true ) );
+
 		return true;
 	}
 

@@ -6,12 +6,12 @@
  *
  * @file
  * @ingroup Extensions
- * @version 2.0
+ * @version 3.0
  * @author Aaron Wright <aaron.wright@gmail.com>
  * @author David Pean <david.pean@gmail.com>
  * @author Jack Phoenix <jack@countervandalism.net>
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
- * @link http://www.mediawiki.org/wiki/Extension:PollNY Documentation
+ * @link https://www.mediawiki.org/wiki/Extension:PollNY Documentation
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -21,13 +21,14 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 // Extension credits that will show up on Special:Version
 $wgExtensionCredits['other'][] = array(
 	'name' => 'PollNY',
-	'version' => '2.0',
+	'version' => '3.0',
 	'author' => array( 'Aaron Wright', 'David Pean', 'Jack Phoenix' ),
 	'description' => 'Advanced polling system that uses special pages and allows embedding polls to wiki pages',
 	'url' => 'https://www.mediawiki.org/wiki/Extension:PollNY'
 );
 
 // Global poll namespace reference
+// If you change this, you'll need to edit Poll.js (the onload handlers section)
 define( 'NS_POLL', 300 );
 define( 'NS_POLL_TALK', 301 );
 
@@ -35,13 +36,10 @@ define( 'NS_POLL_TALK', 301 );
 // Display comments on poll pages? Requires the Comments extension.
 $wgPollDisplay['comments'] = false;
 
-// Web-accessible path to this extension's files.
-// If you change this, you also need to edit Poll.js.
-$wgPollScripts = $wgScriptPath . '/extensions/PollNY';
-
 // For example: 'edits' => 5 if you want to require users to have at least 5
 // edits before they can create new polls.
 $wgCreatePollThresholds = array();
+# End configuration values
 
 // New user right for administering polls
 $wgAvailableRights[] = 'polladmin';
@@ -80,8 +78,9 @@ $wgSpecialPageGroups['CreatePoll'] = 'poll';
 $wgSpecialPageGroups['RandomPoll'] = 'poll';
 $wgSpecialPageGroups['ViewPoll'] = 'poll';
 
-// Load required AJAX functions
-require_once( 'Poll_AjaxFunctions.php' );
+// Load the API module
+$wgAutoloadClasses['ApiPollNY'] = $dir . 'ApiPollNY.php';
+$wgAPIModules['pollny'] = 'ApiPollNY';
 
 // Hooked functions
 $wgAutoloadClasses['PollNYHooks'] = $dir . 'PollNYHooks.php';
@@ -111,7 +110,7 @@ $wgResourceModules['ext.pollNY'] = $resourceTemplate + array(
 		'poll-finished',
 		// SpecialAdminPoll.php
 		'poll-open-message', 'poll-close-message', 'poll-flagged-message',
-		'poll-delete-message',
+		'poll-delete-message', 'poll-js-action-complete',
 		// SpecialCreatePoll.php / create-poll.tmpl.php
 		'poll-createpoll-error-nomore', 'poll-upload-new-image',
 		'poll-atleast', 'poll-enterquestion', 'poll-hash',

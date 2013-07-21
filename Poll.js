@@ -2,13 +2,11 @@
  * JavaScript for PollNY extension
  * The PollNY object here contains almost all the JS that the extension needs.
  * Previously these JS bits and pieces were scattered over in different places.
- * When we require ResourceLoader (and thus at least MW 1.17), we can drop the
- * _POLL-something variables that we currently use for i18n in favor of mw.msg.
  *
  * @file
  * @ingroup Extensions
  * @author Jack Phoenix
- * @date 19 June 2011
+ * @date 21 July 2013
  */
 var PollNY = {
 	voted: 0,
@@ -37,7 +35,8 @@ var PollNY = {
 	},
 
 	/**
-	 * Show the "loading..." text in the lightbox.
+	 * Show the "Loading..." text in the lightbox; Firefox on Mac gets only
+	 * that whereas all other User-Agents get the pretty Flash animation.
 	 */
 	loadingLightBox: function() {
 		// pop up the lightbox
@@ -50,13 +49,13 @@ var PollNY = {
 
 		if( !PollNY.detectMacXFF() ) {
 			LightBox.setText(
-				'<embed src="' + wgScriptPath + '/extensions/PollNY/ajax-loading.swf" quality="high" wmode="transparent" bgcolor="#ffffff"' +
+				'<embed src="' + mw.config.get( 'wgExtensionAssetsPath' ) + '/PollNY/ajax-loading.swf" quality="high" wmode="transparent" bgcolor="#ffffff"' +
 				'pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"' +
 				'type="application/x-shockwave-flash" width="100" height="100">' +
 				'</embed>'
 			);
 		} else {
-			LightBox.setText( 'Loading...' );
+			LightBox.setText( mw.msg( 'poll-js-loading' ) );
 		}
 	},
 
@@ -65,14 +64,19 @@ var PollNY = {
 	 */
 	skip: function() {
 		PollNY.loadingLightBox();
-		sajax_request_type = 'POST';
-		sajax_do_call(
-			'wfPollVote',
-			[ document.getElementById( 'poll_id' ).value, -1 ],
-			function( response ) {
-				PollNY.goToNewPoll();
+		jQuery.ajax({
+			type: 'POST',
+			url: mw.util.wikiScript( 'api' ),
+			data: {
+				action: 'pollny',
+				what: 'vote',
+				pollID: document.getElementById( 'poll_id' ).value,
+				choiceID: -1,
+				format: 'json'
 			}
-		);
+		} ).done( function( data ) {
+			PollNY.goToNewPoll();
+		} );
 	},
 
 	/**
@@ -95,14 +99,19 @@ var PollNY = {
 
 		if( choice_id ) {
 			// cast vote
-			sajax_request_type = 'POST';
-			sajax_do_call(
-				'wfPollVote',
-				[ document.getElementById( 'poll_id' ).value, choice_id ],
-				function( response ) {
-					PollNY.goToNewPoll();
+			jQuery.ajax({
+				type: 'POST',
+				url: mw.util.wikiScript( 'api' ),
+				data: {
+					action: 'pollny',
+					what: 'vote',
+					pollID: document.getElementById( 'poll_id' ).value,
+					choiceID: choice_id,
+					format: 'json'
 				}
-			);
+			} ).done( function( data ) {
+				PollNY.goToNewPoll();
+			} );
 		}
 	},
 
@@ -114,26 +123,40 @@ var PollNY = {
 	 */
 	goToNewPoll: function() {
 		// cast vote
-		sajax_do_call( 'wfGetRandomPoll', [], function( req ) {
+
+		jQuery.ajax({
+			type: 'POST',
+			url: mw.util.wikiScript( 'api' ),
+			data: {
+				action: 'pollny',
+				what: 'getRandom',
+				format: 'json'
+			}
+		} ).done( function( data ) {
 			// redirect to next poll they haven't voted for
-			if( req.responseText.indexOf( 'error' ) == -1 ) {
-				window.location = wgServer + wgScriptPath +
-					'/index.php?title=' + req.responseText +
-					'&prev_id=' + wgArticleId;
+			// old code: if( req.responseText.indexOf( 'error' ) == -1 ) {
+			if ( data.pollny.result !== 'error' ) {
+				window.location = mw.config.get( 'wgServer' ) + 
+					mw.config.get( 'wgScriptPath' ) +
+					'/index.php?title=' + data.pollny.result +
+					'&prev_id=' + mw.config.get( 'wgArticleId' );
 			} else {
 				if (
-					typeof( wgCanonicalSpecialPageName ) != 'undefined' &&
-					wgCanonicalSpecialPageName == 'CreatePoll'
+					mw.config.get( 'wgCanonicalSpecialPageName' ) == 'CreatePoll'
 				)
 				{
-					alert( _POLL_CREATEPOLL_ERROR );
+					alert( mw.msg( 'poll-createpoll-error-nomore' ) );
 				} else {
-					// have run out of polls
-					// lightbox prompting to create
-					LightBox.setText( _POLL_FINISHED );
+					// We have run out of polls to show
+					// Show a lightbox prompting the user to create more polls
+					LightBox.setText( mw.msg(
+						'poll-finished',
+						mw.util.wikiGetlink( mw.config.get( 'wgFormattedNamespaces' )[-1] + ':' + 'CreatePoll' ),
+						window.location
+					) );
 				}
 			}
-		});
+		} );
 	},
 
 	/**
@@ -145,25 +168,30 @@ var PollNY = {
 	toggleStatus: function( status ) {
 		var msg;
 		if( status === 0 ) {
-			msg = _POLL_CLOSE_MESSAGE;
+			msg = mw.msg( 'poll-close-message' );
 		}
 		if( status == 1 ) {
-			msg = _POLL_OPEN_MESSAGE;
+			msg = mw.msg( 'poll-open-message' );
 		}
 		if( status == 2 ) {
-			msg = _POLL_FLAGGED_MESSAGE;
+			msg = mw.msg( 'poll-flagged-message' );
 		}
 		var ask = confirm( msg );
 
 		if( ask ) {
-			sajax_request_type = 'POST';
-			sajax_do_call(
-				'wfUpdatePollStatus',
-				[ document.getElementById( 'poll_id' ).value, status ],
-				function( response ) {
-					window.location.reload();
+			jQuery.ajax({
+				type: 'POST',
+				url: mw.util.wikiScript( 'api' ),
+				data: {
+					action: 'pollny',
+					what: 'updateStatus',
+					pollID: document.getElementById( 'poll_id' ).value,
+					status: status,
+					format: 'json'
 				}
-			);
+			} ).done( function( data ) {
+				window.location.reload();
+			} );
 		}
 	},
 
@@ -197,10 +225,19 @@ var PollNY = {
 
 		if( choice_id ) {
 			// Cast vote
-			sajax_request_type = 'POST';
-			sajax_do_call( 'wfPollVote', [ id, choice_id ], function( response ) {
+			jQuery.ajax({
+				type: 'POST',
+				url: mw.util.wikiScript( 'api' ),
+				data: {
+					action: 'pollny',
+					what: 'vote',
+					pollID: id,
+					choiceID: choice_id,
+					format: 'json'
+				}
+			} ).done( function( data ) {
 				PollNY.showResults( id, pageId );
-			});
+			} );
 		}
 	},
 
@@ -211,10 +248,18 @@ var PollNY = {
 	 * @param pageId Integer:
 	 */
 	showResults: function( id, pageId ) {
-		sajax_request_type = 'POST';
-		sajax_do_call( 'wfGetPollResults', [ pageId ], function( response ) {
-			document.getElementById( 'poll-display_' + id ).innerHTML = response.responseText;
-		});
+		jQuery.ajax({
+			type: 'POST',
+			url: mw.util.wikiScript( 'api' ),
+			data: {
+				action: 'pollny',
+				what: 'getPollResults',
+				pageID: pageId,
+				format: 'json'
+			}
+		} ).done( function( data ) {
+			jQuery( '#poll-display_' + id ).html( data.pollny.result );
+		} );
 	},
 
 	// The next two functions are from SpecialViewPoll.php
@@ -246,25 +291,30 @@ var PollNY = {
 	poll_admin_status: function( id, status ) {
 		var msg;
 		if( status == 0 ) {
-			msg = _POLL_CLOSE_MESSAGE;
+			msg = mw.msg( 'poll-close-message' );
 		}
 		if( status == 1 ) {
-			msg = _POLL_OPEN_MESSAGE;
+			msg = mw.msg( 'poll-open-message' );
 		}
 		if( status == 2 ) {
-			msg = _POLL_FLAGGED_MESSAGE;
+			msg = mw.msg( 'poll-flagged-message' );
 		}
 		var ask = confirm( msg );
 
 		if ( ask ) {
-			sajax_request_type = 'POST';
-			sajax_do_call(
-				'wfUpdatePollStatus',
-				[ id, status ],
-				function( response ) {
-					document.getElementById( 'poll-' + id + '-controls' ).innerHTML = 'action complete';
+			jQuery.ajax({
+				type: 'POST',
+				url: mw.util.wikiScript( 'api' ),
+				data: {
+					action: 'pollny',
+					what: 'updateStatus',
+					pollID: id,
+					status: status,
+					format: 'json'
 				}
-			);
+			} ).done( function( data ) {
+				jQuery( '#poll-' + id + '-controls' ).html( mw.msg( 'poll-js-action-complete' ) );
+			} );
 		}
 	},
 
@@ -274,19 +324,28 @@ var PollNY = {
 	 * @param id Integer: ID number of the poll that we're about to delete
 	 */
 	poll_delete: function( id ) {
-		var msg = _POLL_DELETE_MESSAGE;
+		var msg = mw.msg( 'poll-delete-message' );
 		var ask = confirm( msg );
 
 		if ( ask ) {
-			sajax_request_type = 'POST';
-			sajax_do_call( 'wfDeletePoll', [ id ], function( response ) {
-				document.getElementById( 'poll-' + id + '-controls' ).innerHTML = 'action complete';
-			});
+			jQuery.ajax({
+				type: 'POST',
+				url: mw.util.wikiScript( 'api' ),
+				data: {
+					action: 'pollny',
+					what: 'delete',
+					pollID: id,
+					format: 'json'
+				}
+			} ).done( function( data ) {
+				jQuery( '#poll-' + id + '-controls' ).html( mw.msg( 'poll-js-action-complete' ) );
+			} );
 		}
 	},
 
 	// from Special:CreatePoll UI template
 	updateAnswerBoxes: function() {
+		var elem;
 		for( var x = 1; x <= 9; x++ ) {
 			if( document.getElementById( 'answer_' + x ).value ) {
 				elem = document.getElementById( 'poll_answer_' + ( x + 1 ) );
@@ -298,7 +357,7 @@ var PollNY = {
 
 	resetUpload: function() {
 		var uploadElement = document.getElementById( 'imageUpload-frame' );
-		uploadElement.src = _POLL_IFRAME_URL;
+		uploadElement.src = mw.util.wikiGetlink( mw.config.get( 'wgFormattedNamespaces' )[-1] + ':' + 'PollAjaxUpload' ) + '?wpThumbWidth=75';
 		uploadElement.style.display = 'block';
 		uploadElement.style.visibility = 'visible';
 	},
@@ -306,7 +365,7 @@ var PollNY = {
 	completeImageUpload: function() {
 		document.getElementById( 'poll_image' ).innerHTML =
 			'<div style="margin:0px 0px 10px 0px;"><img height="75" width="75" src="' +
-			wgScriptPath + '/extensions/PollNY/images/ajax-loader-white.gif"></div>';
+			mw.config.get( 'wgExtensionAssetsPath' ) + '/PollNY/images/ajax-loader-white.gif"></div>';
 	},
 
 	uploadError: function( error ) {
@@ -314,15 +373,42 @@ var PollNY = {
 		PollNY.resetUpload();
 	},
 
+	/**
+	 * Called after an image has been uploaded via the mini-AJAX upload form on
+	 * Special:CreatePoll.
+	 * This function displays the newly-uploaded image as well as the "Upload
+	 * new image" link and it sets the value of the "poll_image_name" input
+	 * of the form (form1).
+	 * This insane logic is used by other social tools (like QuizGame, etc.)
+	 * and if memory serves me correct, I wrote a lengthier explanation on one
+	 * of those extension's files.
+	 */
 	uploadComplete: function( img_tag, img_name ) {
-		document.getElementById( 'poll_image' ).innerHTML = img_tag +
-			'<p><a href="javascript:PollNY.resetUpload();">' +
-			_POLL_UPLOAD_NEW + '</a></p>';
+		jQuery( '#poll_image' ).html( img_tag );
+		jQuery( '#poll_image' ).append(
+			jQuery( '<a>' )
+				.attr( 'href', '#' )
+				.on( 'click', function() { PollNY.resetUpload(); } )
+				.text( mw.msg( 'poll-upload-new-image' ) )
+				// Words of wisdom:
+				// <Vulpix> oh, yeah, I know what's happening. Since you're appending the element created with $('<a>'), it appends only it, not the wrapped one... You may need to add a .parent() at the end to get the <p> also...
+				// (the <p> tag is a minor cosmetic improvement, nothing else)
+				.wrap( '<p/>' )
+				.parent()
+		);
 		document.form1.poll_image_name.value = img_name;
 		document.getElementById( 'imageUpload-frame' ).style.display = 'none';
 		document.getElementById( 'imageUpload-frame' ).style.visibility = 'hidden';
 	},
 
+	/**
+	 * Create a poll.
+	 *
+	 * First performs some sanity checks, such as making sure that there are
+	 * enough answer options, that there is a question, that the title does not
+	 * contain the hash character and finally, that there isn't already a poll
+	 * with the exact same title.
+	 */
 	create: function() {
 		var answers = 0;
 		for( var x = 1; x <= 9; x++ ) {
@@ -332,18 +418,18 @@ var PollNY = {
 		}
 
 		if( answers < 2 ) {
-			alert( _POLL_AT_LEAST );
+			alert( mw.msg( 'poll-atleast' ) );
 			return '';
 		}
 
 		var val = document.getElementById( 'poll_question' ).value;
 		if( !val ) {
-			alert( _POLL_ENTER_QUESTION );
+			alert( mw.msg( 'poll-enterquestion' ) );
 			return '';
 		}
 
 		if( val.indexOf( '#' ) > -1 ) {
-			alert( _POLL_HASH );
+			alert( mw.msg( 'poll-hash' ) );
 			return '';
 		}
 
@@ -352,13 +438,111 @@ var PollNY = {
 
 		// Check that the title doesn't exist already; if it does, alert the
 		// user about this problem; otherwise submit the form
-		sajax_request_type = 'POST';
-		sajax_do_call( 'wfPollTitleExists', [ escape( val ) ], function( req ) {
-			if( req.responseText.indexOf( 'OK' ) >= 0 ) {
+		jQuery.ajax({
+			type: 'POST',
+			url: mw.util.wikiScript( 'api' ),
+			data: {
+				action: 'pollny',
+				what: 'titleExists',
+				pageName: escape( val ),
+				format: 'json'
+			}
+		} ).done( function( data ) {
+			if ( data.pollny.result == 'OK' ) {
 				document.form1.submit();
 			} else {
-				alert( _POLL_PLEASE_CHOOSE );
+				alert( mw.msg( 'poll-pleasechoose' ) );
+			}
+		} );
+	}
+};
+
+jQuery( document ).ready( function() {
+	// This is assuming that NS_POLL == 300 and no-one ever touches
+	// Poll.namespaces.php in order to change that...
+	if ( jQuery( 'body' ).hasClass( 'ns-300' ) ) {
+		// If LightBox is not yet loaded, well, load it!
+		if ( typeof LightBox == undefined ) {
+			mw.loader.load( 'ext.pollNY.lightBox' );
+		}
+		LightBox.init();
+		PollNY.show();
+
+		jQuery( 'a.poll-status-toggle-link' ).on( 'click', function() {
+			PollNY.toggleStatus( jQuery( this ).data( 'status' ) );
+		} );
+
+		jQuery( 'div.poll-choice input[type="radio"]' ).on( 'click', function() {
+			PollNY.vote();
+		} );
+
+		jQuery( 'a.poll-skip-link' ).on( 'click', function() {
+			PollNY.skip();
+		} );
+
+		jQuery( 'a.poll-next-poll-link' ).on( 'click', function() {
+			PollNY.loadingLightBox();
+			PollNY.goToNewPoll();
+		} );
+	}
+
+	// Polls embedded via the <pollembed> tag
+	if ( jQuery( '.poll-embed-title' ).length > 0 ) {
+		// This is somewhat of a hack, because I'm lazy
+		var id = jQuery( 'div.poll-loading-msg' ).attr( 'id' );
+		var pollID = id.replace( /loading-poll_/, '' );
+		PollNY.showEmbedPoll( pollID );
+
+		// Handle clicks on the options
+		jQuery( 'div.poll-choice input[type="radio"]' ).on( 'click', function() {
+			PollNY.pollEmbedVote(
+				jQuery( this ).data( 'poll-id' ),
+				jQuery( this ).data( 'poll-page-id' )
+			);
+		} );
+	}
+
+	// Unflag/Open/Close/Delete poll links on Special:AdminPoll
+	jQuery( 'a.poll-unflag-link, a.poll-open-link' ).on( 'click', function() {
+		PollNY.poll_admin_status( jQuery( this ).data( 'poll-id' ), 1 );
+	} );
+
+	jQuery( 'a.poll-close-link' ).on( 'click', function() {
+		PollNY.poll_admin_status( jQuery( this ).data( 'poll-id' ), 0 );
+	} );
+
+	jQuery( 'a.poll-delete-link' ).on( 'click', function() {
+		PollNY.poll_delete( jQuery( this ).data( 'poll-id' ) );
+	} );
+
+	// Code specific to Special:CreatePoll
+	if ( mw.config.get( 'wgCanonicalSpecialPageName' ) == 'CreatePoll' ) {
+		jQuery( 'div.create-poll-top input[type="button"]' ).on( 'click', function() {
+			PollNY.goToNewPoll();
+		} );
+
+		// Register PollNY.updateAnswerBoxes() as the handler for elements that
+		// have an ID ranging from answer_2 to answer_9
+		for ( var x = 1; x <= 9; x++ ) {
+			jQuery( 'input#answer_' + x ).on( 'keyup', function() {
+				PollNY.updateAnswerBoxes();
+			} );
+		}
+
+		jQuery( 'input#poll-create-button' ).on( 'click', function() {
+			PollNY.create();
+		} );
+	}
+
+	// Hovers on Special:ViewPoll
+	if ( mw.config.get( 'wgCanonicalSpecialPageName' ) == 'ViewPoll' ) {
+		jQuery( 'div.view-poll-row' ).on({
+			'mouseout': function() {
+				PollNY.endHover( jQuery( this ).attr( 'id' ) );
+			},
+			'mouseover': function() {
+				PollNY.doHover( jQuery( this ).attr( 'id' ) );
 			}
 		});
 	}
-};
+} );

@@ -19,17 +19,17 @@ class RandomPoll extends SpecialPage {
 	 * @param $par Mixed: parameter passed to the page or null
 	 */
 	public function execute( $par ) {
-		global $wgOut, $wgUser;
+		$out = $this->getOutput();
 
 		$p = new Poll();
 
-		$pollPage = $p->getRandomPollURL( $wgUser->getName() );
+		$pollPage = $p->getRandomPollURL( $this->getUser()->getName() );
 		if( $pollPage == 'error' ) {
-			$wgOut->setPageTitle( wfMsg( 'poll-no-more-title' ) );
-			$wgOut->addWikiMsg( 'poll-no-more-message' );
+			$out->setPageTitle( $this->msg( 'poll-no-more-title' )->plain() );
+			$out->addWikiMsg( 'poll-no-more-message' );
 		} else {
 			$pollTitle = Title::newFromText( $pollPage );
-			$wgOut->redirect( $pollTitle->getFullURL() );
+			$out->redirect( $pollTitle->getFullURL() );
 		}
 
 		return $pollPage;

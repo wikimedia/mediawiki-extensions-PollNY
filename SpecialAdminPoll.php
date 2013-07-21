@@ -20,38 +20,38 @@ class AdminPoll extends SpecialPage {
 	 * @param $par Mixed: parameter passed to the page or null
 	 */
 	public function execute( $par ) {
-		global $wgRequest, $wgOut, $wgUser, $wgUploadPath, $wgHooks, $wgPollScripts;
+		global $wgUploadPath;
+
+		$out = $this->getOutput();
+		$request = $this->getRequest();
+		$user = $this->getUser();
 
 		// If the user doesn't have the required permission, display an error
-		if( !$wgUser->isAllowed( 'polladmin' ) ) {
-			$wgOut->permissionRequired( 'polladmin' );
+		if( !$user->isAllowed( 'polladmin' ) ) {
+			$out->permissionRequired( 'polladmin' );
 			return;
 		}
 
 		// Show a message if the database is in read-only mode
 		if ( wfReadOnly() ) {
-			$wgOut->readOnlyPage();
+			$out->readOnlyPage();
 			return;
 		}
 
 		// If user is blocked, s/he doesn't need to access this page
-		if ( $wgUser->isBlocked() ) {
-			$wgOut->blockedPage();
+		if ( $user->isBlocked() ) {
+			$out->blockedPage();
 			return;
 		}
 
 		// Add CSS & JS
-		$wgOut->addExtensionStyle( $wgPollScripts . '/Poll.css' );
-		$wgOut->addScriptFile( $wgPollScripts . '/Poll.js' );
-
-		// Add i18n JS variables via a hook (yes, this works, I've tested this)
-		$wgHooks['MakeGlobalVariablesScript'][] = 'AdminPoll::addJSGlobals';
+		$out->addModules( 'ext.pollNY' );
 
 		// Pagination
 		$per_page = 20;
-		$page = $wgRequest->getInt( 'page', 1 );
+		$page = $request->getInt( 'page', 1 );
 
-		$current_status = $wgRequest->getVal( 'status' );
+		$current_status = $request->getVal( 'status' );
 		if( !$current_status ) {
 			$current_status = 'all';
 		}
@@ -59,18 +59,18 @@ class AdminPoll extends SpecialPage {
 		$limit = $per_page;
 
 		$nav = array(
-			'all' => wfMsg( 'poll-admin-viewall' ),
-			'open' => wfMsg( 'poll-admin-open' ),
-			'closed' => wfMsg( 'poll-admin-closed' ),
-			'flagged' => wfMsg( 'poll-admin-flagged' )
+			'all' => $this->msg( 'poll-admin-viewall' )->text(),
+			'open' => $this->msg( 'poll-admin-open' )->text(),
+			'closed' => $this->msg( 'poll-admin-closed' )->text(),
+			'flagged' => $this->msg( 'poll-admin-flagged' )->text()
 		);
 
 		$output = '<div class="view-poll-top-links">
-			<a href="javascript:history.go(-1);">' . wfMsg( 'poll-take-button' ) . '</a>
+			<a href="javascript:history.go(-1);">' . $this->msg( 'poll-take-button' )->text() . '</a>
 		</div>
 
 		<div class="view-poll-navigation">
-			<h2>' . wfMsg( 'poll-admin-status-nav' ) . '</h2>';
+			<h2>' . $this->msg( 'poll-admin-status-nav' )->text() . '</h2>';
 
 		foreach( $nav as $status => $title ) {
 			$output .= '<p>';
@@ -87,7 +87,7 @@ class AdminPoll extends SpecialPage {
 
 		// Give grep a chance to find the usages:
 		// poll-admin-title-all, poll-admin-title-closed, poll-admin-title-flagged, poll-admin-title-open
-		$wgOut->setPageTitle( wfMsg( 'poll-admin-title-' . $current_status ) );
+		$out->setPageTitle( $this->msg( 'poll-admin-title-' . $current_status )->text() );
 
 		$params['ORDER BY'] = 'poll_date DESC';
 		if( $limit > 0 ) {
@@ -153,7 +153,7 @@ class AdminPoll extends SpecialPage {
 		// For example, there are no flagged polls or closed polls. This msg
 		// gets shown even then.
 		if ( !$dbr->numRows( $res ) ) {
-			$wgOut->addWikiMsg( 'poll-admin-no-polls' );
+			$out->addWikiMsg( 'poll-admin-no-polls' );
 		}
 
 		foreach ( $res as $row ) {
@@ -186,31 +186,30 @@ class AdminPoll extends SpecialPage {
 			}
 			$output .= '</p>
 						<p class="view-poll-num-answers">' .
-							wfMsgExt(
+							$this->msg(
 								'poll-view-answered-times',
-								'parsemag',
 								$poll_answers
-							) . '</p>
+							)->parse() . '</p>
 						<p class="view-poll-time">(' .
-							wfMsg(
+							$this->msg(
 								'poll-ago',
 								Poll::getTimeAgo( $poll_date )
-							) . ")</p>
+							)->parse() . ")</p>
 						<div id=\"poll-{$row->poll_id}-controls\">";
 			if( $row->poll_status == 2 ) {
-				$output .= "<a href=\"javascript:void(0)\" onclick=\"PollNY.poll_admin_status({$row->poll_id},1);\">" .
-					wfMsg( 'poll-unflag-poll' ) . '</a>';
+				$output .= "<a class=\"poll-unflag-link\" href=\"javascript:void(0)\" data-poll-id=\"{$row->poll_id}\">" .
+					$this->msg( 'poll-unflag-poll' )->text() . '</a>';
 			}
 			if( $row->poll_status == 0 ) {
-				$output .= " <a href=\"javascript:void(0)\" onclick=\"PollNY.poll_admin_status({$row->poll_id},1);\">" .
-					wfMsg( 'poll-open-poll' ) . '</a>';
+				$output .= " <a class=\"poll-open-link\" href=\"javascript:void(0)\" data-poll-id=\"{$row->poll_id}\">" .
+					$this->msg( 'poll-open-poll' )->text() . '</a>';
 			}
 			if( $row->poll_status == 1 ) {
-				$output .= " <a href=\"javascript:void(0)\" onclick=\"PollNY.poll_admin_status({$row->poll_id},0);\">" .
-					wfMsg( 'poll-close-poll' ) . '</a>';
+				$output .= " <a class=\"poll-close-link\" href=\"javascript:void(0)\" data-poll-id=\"{$row->poll_id}\">" .
+					$this->msg( 'poll-close-poll' )->text() . '</a>';
 			}
-			$output .= " <a href=\"javascript:void(0)\" onclick=\"PollNY.poll_delete({$row->poll_id});\">" .
-				wfMsg( 'poll-delete-poll' ) . '</a>
+			$output .= " <a class=\"poll-delete-link\" href=\"javascript:void(0)\" data-poll-id=\"{$row->poll_id}\">" .
+				$this->msg( 'poll-delete-poll' )->text() . '</a>
 						</div>
 					</div>
 					<div class="cleared"></div>
@@ -224,7 +223,7 @@ class AdminPoll extends SpecialPage {
 
 		$output .= $this->buildPagination( $total, $per_page, $page );
 
-		$wgOut->addHTML( $output );
+		$out->addHTML( $output );
 	}
 
 	/**
@@ -240,15 +239,20 @@ class AdminPoll extends SpecialPage {
 		$output = '';
 		$numofpages = $total / $perPage;
 		$viewPoll = SpecialPage::getTitleFor( 'ViewPoll' );
+
 		if( $numofpages > 1 ) {
 			$output .= '<div class="view-poll-page-nav">';
+
 			if( $page > 1 ) {
-				$output .= '<a href="' . $viewPoll->getFullURL(
+				$output .= Linker::link(
+					$viewPoll,
+					$this->msg( 'poll-prev' )->text(),
+					array(),
 					array(
 						'type' => 'most',
 						'page' => ( $page - 1 )
 					)
-				) . '">' . wfMsg( 'poll-prev' ) . '</a> ';
+				) . $this->msg( 'word-separator' )->plain();
 			}
 
 			if( ( $total % $per_page ) != 0 ) {
@@ -265,40 +269,34 @@ class AdminPoll extends SpecialPage {
 				if( $i == $page ) {
 					$output .= ( $i . ' ' );
 				} else {
-					$output .= '<a href="' . $viewPoll->getFullURL(
+					$output .= Linker::link(
+						$viewPoll,
+						$i,
+						array(),
 						array(
 							'type' => 'most',
 							'page' => $i
 						)
-					) . "\">$i</a> ";
+					) . $this->msg( 'word-separator' )->plain();
 				}
 			}
 
 			if( ( $total - ( $per_page * $page ) ) > 0 ) {
-				$output .= ' <a href="' . $viewPoll->getFullURL(
-					array(
-						'type' => 'most',
-						'page' => ( $page + 1 )
-					)
-				) . '">' . wfMsg( 'poll-next' ) . '</a>';
+				$output .= $this->msg( 'word-separator' )->plain() .
+					Linker::link(
+						$viewPoll,
+						$this->msg( 'poll-next' )->text(),
+						array(),
+						array(
+							'type' => 'most',
+							'page' => ( $page + 1 )
+						)
+					);
 			}
+
 			$output .= '</div>';
 		}
-		return $output;
-	}
 
-	/**
-	 * Add some new JS globals (i18n messages) so that the poll admin JS can
-	 * display localized output
-	 *
-	 * @param $vars Array: array of pre-existing JS globals
-	 * @return Boolean: true
-	 */
-	public static function addJSGlobals( $vars ) {
-		$vars['_POLL_OPEN_MESSAGE'] = wfMsg( 'poll-open-message' );
-		$vars['_POLL_CLOSE_MESSAGE'] = wfMsg( 'poll-close-message' );
-		$vars['_POLL_FLAGGED_MESSAGE'] = wfMsg( 'poll-flagged-message' );
-		$vars['_POLL_DELETE_MESSAGE'] = wfMsg( 'poll-delete-message' );
-		return true;
+		return $output;
 	}
 }

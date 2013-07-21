@@ -1,0 +1,270 @@
+<?php
+/**
+ * PollNY API module
+ *
+ * @file
+ * @ingroup API
+ * @date 21 July 2013
+ * @see http://www.mediawiki.org/wiki/API:Extensions#ApiSampleApiExtension.php
+ */
+class ApiPollNY extends ApiBase {
+
+	/**
+	 * @var Poll Instance of the Poll class, set in execute() below
+	 */
+	private $poll;
+
+	/**
+	 * Main entry point.
+	 */
+	public function execute() {
+		$user = $this->getUser();
+
+		// Get the request parameters
+		$params = $this->extractRequestParams();
+
+		$action = $params['what'];
+
+		// If the "what" param isn't present, we don't know what to do!
+		if ( !$action || $action === null ) {
+			$this->dieUsageMsg( 'missingparam' );
+		}
+
+		$pollID = $params['pollID'];
+		// Ensure that the pollID parameter is present for actions that require
+		// it and that it really is numeric
+		if (
+			in_array( $action, array( 'delete', 'updateStatus', 'vote' ) ) &&
+			( !$pollID || $pollID === null || !is_numeric( $pollID ) )
+		)
+		{
+			$this->dieUsageMsg( 'missingparam' );
+		}
+
+		// Action-specific parameter validation stuff
+		if ( $action == 'getPollResults' ) {
+			$pageID = $params['pageID'];
+			if ( !$pageID || $pageID === null || !is_numeric( $pageID ) ) {
+				$this->dieUsageMsg( 'missingparam' );
+			}
+		} elseif ( $action == 'updateStatus' ) {
+			$status = $params['status'];
+			if ( !$status || $status === null || !is_numeric( $status ) ) {
+				$this->dieUsageMsg( 'missingparam' );
+			}
+		} elseif ( $action == 'titleExists' ) {
+			if ( !$params['pageName'] || $params['pageName'] === null ) {
+				$this->dieUsageMsg( 'missingparam' );
+			}
+		} elseif ( $action == 'vote' ) {
+			$choiceID = $params['choiceID'];
+			if ( !$choiceID || $choiceID === null || !is_numeric( $choiceID ) ) {
+				$this->dieUsageMsg( 'missingparam' );
+			}
+		}
+
+		// Set the private class member variable
+		$this->poll = new Poll();
+
+		// Decide what function to call
+		switch ( $action ) {
+			case 'delete':
+				$output = $this->delete( $pollID );
+				break;
+			case 'getPollResults':
+				$output = $this->getPollResults( $pageID );
+				break;
+			case 'getRandom':
+				$output = $this->poll->getRandomPollURL( $user->getName() );
+				break;
+			case 'updateStatus':
+				$output = $this->updateStatus( $pollID, $params['status'] );
+				break;
+			case 'titleExists':
+				$output = $this->titleExists( $params['pageName'] );
+				break;
+			case 'vote':
+				$output = $this->vote( $pollID, (int) $params['choiceID'] );
+				break;
+			default:
+				break;
+		}
+
+		// Top level
+		$this->getResult()->addValue( null, $this->getModuleName(),
+			array( 'result' => $output )
+		);
+
+		return true;
+	}
+
+	function delete( $pollID ) {
+		if ( !$this->getUser()->isAllowed( 'polladmin' ) ) {
+			return '';
+		}
+
+		if ( $pollID > 0 ) {
+			$dbw = wfGetDB( DB_MASTER );
+			$s = $dbw->selectRow(
+				'poll_question',
+				array( 'poll_page_id' ),
+				array( 'poll_id' => intval( $pollID ) ),
+				__METHOD__
+			);
+
+			if ( $s !== false ) {
+				$dbw->delete(
+					'poll_user_vote',
+					array( 'pv_poll_id' => intval( $pollID ) ),
+					__METHOD__
+				);
+
+				$dbw->delete(
+					'poll_choice',
+					array( 'pc_poll_id' => intval( $pollID ) ),
+					__METHOD__
+				);
+
+				$dbw->delete(
+					'poll_question',
+					array( 'poll_page_id' => $s->poll_page_id ),
+					__METHOD__
+				);
+
+				$pollTitle = Title::newFromId( $s->poll_page_id );
+				$article = new Article( $pollTitle );
+				$article->doDeleteArticle( 'delete poll' );
+			}
+		}
+
+		return 'OK';
+	}
+
+	function getPollResults( $pageID ) {
+		global $wgExtensionAssetsPath;
+
+		$poll_info = $this->poll->getPoll( $pageID );
+		$x = 1;
+
+		$output = '';
+		foreach ( $poll_info['choices'] as $choice ) {
+			//$percent = round( $choice['votes'] / $poll_info['votes'] * 100 );
+			if ( $poll_info['votes'] > 0 ) {
+				$bar_width = floor( 480 * ( $choice['votes'] / $poll_info['votes'] ) );
+			}
+			$bar_img = "<img src=\"{$wgExtensionAssetsPath}/PollNY/images/vote-bar-{$x}.gif\" border=\"0\" class=\"image-choice-{$x}\" style=\"width:{$choice['percent']}%;height:12px;\"/>";
+
+			$output .= "<div class=\"poll-choice\">
+		<div class=\"poll-choice-left\">{$choice['choice']} ({$choice['percent']}%)</div>";
+
+			$output .= "<div class=\"poll-choice-right\">{$bar_img} <span class=\"poll-choice-votes\">" .
+				wfMessage( 'poll-votes', $choice['votes'] )->parse() .
+				'</span></div>';
+			$output .= '</div>';
+
+			$x++;
+		}
+
+		return $output;
+	}
+
+	function titleExists( $pageName ) {
+		// Construct page title object to convert to database key
+		$pageTitle = Title::makeTitle( NS_MAIN, urldecode( $pageName ) );
+		$dbKey = $pageTitle->getDBKey();
+
+		// Database key would be in page_title if the page already exists
+		$dbr = wfGetDB( DB_MASTER );
+		$s = $dbr->selectRow(
+			'page',
+			array( 'page_id' ),
+			array( 'page_title' => $dbKey, 'page_namespace' => NS_POLL ),
+			__METHOD__
+		);
+		if ( $s !== false ) {
+			return 'Page exists';
+		} else {
+			return 'OK';
+		}
+	}
+
+	function updateStatus( $pollID, $status ) {		
+		if(
+			$status == 2 ||
+			$this->poll->doesUserOwnPoll( $this->getUser()->getID(), $pollID ) ||
+			$this->getUser()->isAllowed( 'polladmin' )
+		)
+		{
+			$this->poll->updatePollStatus( $pollID, $status );
+			return 'Status successfully changed';
+		} else {
+			return 'error';
+		}
+	}
+
+	function vote( $pollID, $choiceID ) {
+		if ( !$this->poll->userVoted( $this->getUser()->getName(), $pollID ) ) {
+			$this->poll->addPollVote( $pollID, $choiceID );
+		}
+
+		return 'OK';
+	}
+
+	/**
+	 * @return String: human-readable module description
+	 */
+	public function getDescription() {
+		return 'PollNY API - includes both user and admin functions';
+	}
+
+	/**
+	 * @return Array
+	 */
+	public function getAllowedParams() {
+		return array(
+			'what' => array(
+				ApiBase::PARAM_TYPE => 'string',
+				ApiBase::PARAM_REQUIRED => true
+			),
+			'choiceID' => array(
+				ApiBase::PARAM_TYPE => 'integer',
+			),
+			'pageName' => array(
+				ApiBase::PARAM_TYPE => 'string',
+			),
+			'pollID' => array(
+				ApiBase::PARAM_TYPE => 'integer',
+			),
+			'pageID' => array(
+				ApiBase::PARAM_TYPE => 'integer',
+			),
+			'status' => array(
+				ApiBase::PARAM_TYPE => 'integer',
+			)
+		);
+	}
+
+	// Describe the parameter
+	public function getParamDescription() {
+		return array_merge( parent::getParamDescription(), array(
+			'what' => 'What to do?',
+			'choiceID' => 'Same as clicking the <choiceID>th choice via the GUI; only used when what=vote',
+			'pageName' => 'Title to check for (only used when what=titleExists); should be URL-encoded',
+			'pollID' => 'Poll ID of the poll that is being deleted/updated/voted for',
+			'pageID' => 'Page ID (only used when what=getPollResults)',
+			'status' => 'New status of the poll (when what=updateStatus); possible values are 0 (=closed), 1 and 2 (=flagged)',
+		) );
+	}
+
+	// Get examples
+	public function getExamples() {
+		return array(
+			'api.php?action=pollny&what=delete&pollID=66' => 'Deletes the poll #66',
+			'api.php?action=pollny&what=getPollResults&pollID=666' => 'Gets the results of the poll #666',
+			'api.php?action=pollny&what=getRandom' => 'Gets a random poll to which the current user hasn\'t answered yet',
+			'api.php?action=pollny&what=titleExists&pageName=Is%20PollNY%20awesome%3F' => 'Checks if there is already a poll with the title "Is PollNY awesome?"',
+			'api.php?action=pollny&what=updateStatus&pollID=47&status=1' => 'Sets the status of the poll #47 to 1 (=open); possible status values are 0 (=closed), 1 and 2 (=flagged)',
+			'api.php?action=pollny&what=vote&pollID=33&choiceID=4' => 'Votes (answers) the poll #33 with the 4th choice',
+		);
+	}
+}

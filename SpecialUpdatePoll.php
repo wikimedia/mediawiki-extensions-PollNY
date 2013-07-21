@@ -15,17 +15,19 @@ class UpdatePoll extends UnlistedSpecialPage {
 	 * @param $par Mixed: parameter passed to the page or null
 	 */
 	public function execute( $par ) {
-		global $wgUser, $wgOut, $wgRequest, $wgPollScripts;
+		$out = $this->getOutput();
+		$request = $this->getRequest();
+		$user = $this->getUser();
 
 		// Show a message if the database is in read-only mode
 		if ( wfReadOnly() ) {
-			$wgOut->readOnlyPage();
+			$out->readOnlyPage();
 			return;
 		}
 
 		// If user is blocked, s/he doesn't need to access this page
-		if ( $wgUser->isBlocked() ) {
-			$wgOut->blockedPage();
+		if ( $user->isBlocked() ) {
+			$out->blockedPage();
 			return;
 		}
 
@@ -33,30 +35,29 @@ class UpdatePoll extends UnlistedSpecialPage {
 		 * Redirect Non-logged in users to Login Page
 		 * It will automatically return them to the UpdatePoll page
 		 */
-		if( $wgUser->getID() == 0 ) {
-			$wgOut->setPageTitle( wfMsgHtml( 'poll-woops' ) );
+		if( $user->getID() == 0 ) {
+			$out->setPageTitle( $this->msg( 'poll-woops' )->plain() );
 			$login = SpecialPage::getTitleFor( 'Userlogin' );
-			$wgOut->redirect( $login->getFullURL( 'returnto=Special:UpdatePoll' ) );
+			$out->redirect( $login->getFullURL( 'returnto=Special:UpdatePoll' ) );
 			return false;
 		}
 
 		// Add CSS & JS
-		$wgOut->addScriptFile( $wgPollScripts . '/Poll.js' );
-		$wgOut->addExtensionStyle( $wgPollScripts . '/Poll.css' );
+		$out->addModules( 'ext.pollNY' );
 
-		if( $wgRequest->wasPosted() && $_SESSION['alreadysubmitted'] == false ) {
+		if( $request->wasPosted() && $_SESSION['alreadysubmitted'] == false ) {
 			$_SESSION['alreadysubmitted'] = true;
 			$p = new Poll();
-			$poll_info = $p->getPoll( $wgRequest->getInt( 'id' ) );
+			$poll_info = $p->getPoll( $request->getInt( 'id' ) );
 
 			// Add Choices
 			for( $x = 1; $x <= 10; $x++ ) {
-				if( $wgRequest->getVal( "poll_answer_{$x}" ) ) {
+				if( $request->getVal( "poll_answer_{$x}" ) ) {
 					$dbw = wfGetDB( DB_MASTER );
 
 					$dbw->update(
 						'poll_choice',
-						array( 'pc_text' => $wgRequest->getVal( "poll_answer_{$x}" ) ),
+						array( 'pc_text' => $request->getVal( "poll_answer_{$x}" ) ),
 						array(
 							'pc_poll_id' => intval( $poll_info['id'] ),
 							'pc_order' => $x
@@ -67,28 +68,28 @@ class UpdatePoll extends UnlistedSpecialPage {
 			}
 
 			// Update image
-			if( $wgRequest->getVal( 'poll_image_name' ) ) {
+			if( $request->getVal( 'poll_image_name' ) ) {
 				$dbw = wfGetDB( DB_MASTER );
 
 				$dbw->update(
 					'poll_question',
-					array( 'poll_image' => $wgRequest->getVal( 'poll_image_name' ) ),
+					array( 'poll_image' => $request->getVal( 'poll_image_name' ) ),
 					array( 'poll_id' => intval( $poll_info['id'] ) ),
 					__METHOD__
 				);
 			}
 
 			$prev_qs = '';
-			$poll_page = Title::newFromID( $wgRequest->getInt( 'id' ) );
-			if( $wgRequest->getInt( 'prev_poll_id' ) ) {
-				$prev_qs = 'prev_id=' . $wgRequest->getInt( 'prev_poll_id' );
+			$poll_page = Title::newFromID( $request->getInt( 'id' ) );
+			if( $request->getInt( 'prev_poll_id' ) ) {
+				$prev_qs = 'prev_id=' . $request->getInt( 'prev_poll_id' );
 			}
 
 			// Redirect to new Poll Page
-			$wgOut->redirect( $poll_page->getFullURL( $prev_qs ) );
+			$out->redirect( $poll_page->getFullURL( $prev_qs ) );
 		} else {
 			$_SESSION['alreadysubmitted'] = false;
-			$wgOut->addHTML( $this->displayForm() );
+			$out->addHTML( $this->displayForm() );
 		}
 	}
 
@@ -98,17 +99,19 @@ class UpdatePoll extends UnlistedSpecialPage {
 	 * @return String: HTML
 	 */
 	function displayForm() {
-		global $wgUser, $wgOut, $wgRequest, $wgScriptPath, $wgHooks;
+		$out = $this->getOutput();
+		$request = $this->getRequest();
+		$user = $this->getUser();
 
 		$p = new Poll();
-		$poll_info = $p->getPoll( $wgRequest->getInt( 'id' ) );
+		$poll_info = $p->getPoll( $request->getInt( 'id' ) );
 
 		if(
 			!$poll_info['id'] ||
-			!( $wgUser->isAllowed( 'polladmin' ) || $wgUser->getID() == $poll_info['user_id'] )
+			!( $user->isAllowed( 'polladmin' ) || $user->getID() == $poll_info['user_id'] )
 		) {
-			$wgOut->setPageTitle( wfMsgHtml( 'poll-woops' ) );
-			$wgOut->addHTML( wfMsg( 'poll-edit-invalid-access' ) );
+			$out->setPageTitle( $this->msg( 'poll-woops' )->plain() );
+			$out->addHTML( $this->msg( 'poll-edit-invalid-access' )->text() );
 			return false;
 		}
 
@@ -128,24 +131,21 @@ class UpdatePoll extends UnlistedSpecialPage {
 			$poll_image_tag = '<img width="' . $width . '" alt="" src="' . $poll_image_url . '"/>';
 		}
 
-		$poll_page = Title::newFromID( $wgRequest->getInt( 'id' ) );
+		$poll_page = Title::newFromID( $request->getInt( 'id' ) );
 		$prev_qs = '';
-		if( $wgRequest->getInt( 'prev_poll_id' ) ) {
-			$prev_qs = 'prev_id=' . $wgRequest->getInt( 'prev_poll_id' );
+		if( $request->getInt( 'prev_poll_id' ) ) {
+			$prev_qs = 'prev_id=' . $request->getInt( 'prev_poll_id' );
 		}
 
-		// i18n for JS (by SpecialCreatePoll.php, to reduce code duplication)
-		$wgHooks['MakeGlobalVariablesScript'][] = 'CreatePoll::addJSGlobals';
-
-		$wgOut->setPageTitle( wfMsg( 'poll-edit-title', $poll_info['question'] ) );
+		$out->setPageTitle( $this->msg( 'poll-edit-title', $poll_info['question'] )->plain() );
 
 		$form = "<div class=\"update-poll-left\">
 			<form action=\"\" method=\"post\" enctype=\"multipart/form-data\" name=\"form1\">
 			<input type=\"hidden\" name=\"poll_id\" value=\"{$poll_info['id']}\" />
-			<input type=\"hidden\" name=\"prev_poll_id\" value=\"" . $wgRequest->getInt( 'prev_id' ) . '" />
+			<input type=\"hidden\" name=\"prev_poll_id\" value=\"" . $request->getInt( 'prev_id' ) . '" />
 			<input type="hidden" name="poll_image_name" id="poll_image_name" />
 
-			<h1>' . wfMsg( 'poll-edit-answers' ) . '</h1>';
+			<h1>' . $this->msg( 'poll-edit-answers' )->text() . '</h1>';
 
 		$x = 1;
 		foreach( $poll_info['choices'] as $choice ) {
@@ -161,20 +161,21 @@ class UpdatePoll extends UnlistedSpecialPage {
 		if ( $wgRightsText ) {
 			$copywarnMsg = 'copyrightwarning';
 			$copywarnMsgParams = array(
-				'[[' . wfMsgForContent( 'copyrightpage' ) . ']]',
+				'[[' . $this->msg( 'copyrightpage' )->inContentLanguage()->plain() . ']]',
 				$wgRightsText
 			);
 		} else {
 			$copywarnMsg = 'copyrightwarning2';
 			$copywarnMsgParams = array(
-				'[[' . wfMsgForContent( 'copyrightpage' ) . ']]'
+				'[[' . $this->msg( 'copyrightpage' )->inContentLanguage()->plain() . ']]'
 			);
 		}
 
-		$form .= '</div>
+		$form .= '</form>
+			</div><!-- .update-poll-left -->
 
 			<div class="update-poll-right">
-			<h1>' . wfMsg( 'poll-edit-image' ) . "</h1>
+			<h1>' . $this->msg( 'poll-edit-image' )->plain() . "</h1>
 			<div id=\"poll_image\" class=\"update-poll-image\">{$poll_image_tag}</div>
 
 			<!--
@@ -194,12 +195,11 @@ class UpdatePoll extends UnlistedSpecialPage {
 
 		</div>
 		<div class="cleared"></div>
-		<div class="update-poll-warning">' . wfMsgExt( $copywarnMsg, 'parse', $copywarnMsgParams ) . "</div>
+		<div class="update-poll-warning">' . $this->msg( $copywarnMsg, $copywarnMsgParams )->parse() . "</div>
 		<div class=\"update-poll-buttons\">
-			<input type=\"button\" class=\"site-button\" value=\"" . wfMsg( 'poll-edit-button' ) . "\" size=\"20\" onclick=\"document.form1.submit()\" />
-			<input type=\"button\" class=\"site-button\" value=\"" . wfMsg( 'poll-cancel-button' ) . "\" size=\"20\" onclick=\"window.location='" . $poll_page->getFullURL( $prev_qs ) . "'\" />
-		</div>
-		</form>";
+			<input type=\"button\" class=\"site-button\" value=\"" . $this->msg( 'poll-edit-button' )->plain() . "\" size=\"20\" onclick=\"document.form1.submit()\" />
+			<input type=\"button\" class=\"site-button\" value=\"" . $this->msg( 'poll-cancel-button' )->plain() . "\" size=\"20\" onclick=\"window.location='" . $poll_page->getFullURL( $prev_qs ) . "'\" />
+		</div>";
 		return $form;
 	}
 }
