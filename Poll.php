@@ -20,10 +20,11 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 // Extension credits that will show up on Special:Version
 $wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
 	'name' => 'PollNY',
 	'version' => '3.0',
 	'author' => array( 'Aaron Wright', 'David Pean', 'Jack Phoenix' ),
-	'description' => 'Advanced polling system that uses special pages and allows embedding polls to wiki pages',
+	'descriptionmsg' => 'poll-desc',
 	'url' => 'https://www.mediawiki.org/wiki/Extension:PollNY'
 );
 
