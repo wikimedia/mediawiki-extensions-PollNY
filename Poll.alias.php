@@ -6,10 +6,10 @@
  * @ingroup Extensions
  */
 
-$aliases = array();
+$specialPageAliases = array();
 
-/** English */
-$aliases['en'] = array(
+/** English (English) */
+$specialPageAliases['en'] = array(
 	'AdminPoll' => array( 'AdminPoll' ),
 	'CreatePoll' => array( 'CreatePoll' ),
 	'PollAjaxUpload' => array( 'PollAjaxUpload' ),
@@ -18,8 +18,8 @@ $aliases['en'] = array(
 	'ViewPoll' => array( 'ViewPoll' ),
 );
 
-/** Finnish (Suomi) */
-$aliases['fi'] = array(
+/** Finnish (suomi) */
+$specialPageAliases['fi'] = array(
 	'AdminPoll' => array( 'Ylläpidä äänestyksiä' ),
 	'CreatePoll' => array( 'Luo äänestys' ),
 	'RandomPoll' => array( 'Satunnainen äänestys' ),
@@ -28,7 +28,7 @@ $aliases['fi'] = array(
 );
 
 /** Dutch (Nederlands) */
-$aliases['nl'] = array(
+$specialPageAliases['nl'] = array(
 	'AdminPoll' => array( 'Beheer peiling' ),
 	'CreatePoll' => array( 'Maak peiling' ),
 	'RandomPoll' => array( 'Willekeurige peiling' ),
