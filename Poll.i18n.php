@@ -103,99 +103,217 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Shirayuki
  * @author Siebrand
  */
 $messages['qqq'] = array(
-	'adminpoll' => 'Title of Special:AdminPoll, the special page to administrate polls. Shown on Special:SpecialPages, etc.',
-	'createpoll' => 'Title of Special:CreatePoll, the special page to create a new poll. Shown on Special:SpecialPages, etc.',
-	'randompoll' => "Title of Special:RandomPoll, which takes you to a poll that you haven't voted in yet. Shown on Special:SpecialPages.",
-	'viewpoll' => 'Title of Special:ViewPoll, which allows to view all available polls. Shown on Special:SpecialPages, etc.',
-	'poll-admin-no-polls' => 'Message displayed on Special:AdminPoll and Special:ViewPoll when no polls match the supplied criteria or when there are absolutely no polls at all in the database.',
-	'poll-admin-closed' => 'Link title; clicking on this link shows all closed polls',
-	'poll-admin-flagged' => 'Link title; clicking on this link shows all flagged polls',
-	'poll-admin-open' => 'Link title; clicking on this link shows all open polls',
-	'poll-admin-panel' => 'Title of the admin panel link; shown on all Poll: pages, below the box {{msg-mw|poll-submitted-by}}.',
-	'poll-admin-status-nav' => 'Title of the right-hand navigation menu on Special:AdminPoll',
-	'poll-admin-title-all' => 'Default title of Special:AdminPoll',
-	'poll-admin-title-closed' => 'Title of Special:AdminPoll when viewing closed polls (status=closed in the URL)',
-	'poll-admin-title-flagged' => 'Title of Special:AdminPoll when viewing flagged polls (status=flagged in the URL)',
-	'poll-admin-title-open' => 'Title of Special:AdminPoll when viewing open polls (status=open in the URL)',
-	'poll-admin-viewall' => 'Link title; displayed in the right-hand navigation menu on Special:AdminPolls. Clicking on this link displays all polls in the database (as opposed to only displaying closed/open/flagged polls).',
-	'poll-ago' => 'Used on Special:ViewPoll. $1 is one of the following:
-* [[MediaWiki:Poll-time-days]]
-* [[MediaWiki:Poll-time-hours]]
-* [[MediaWiki:Poll-time-minutes]]
-* [[MediaWiki:Poll-time-seconds]]',
-	'poll-atleast' => 'Error message shown in a JavaScript <code>alert()</code> on Special:CreatePoll after the user has pressed the {{msg-mw|poll-create-button}} button if there is only one answer choice.',
+	'adminpoll' => '{{doc-special|AdminPoll}}
+The special page to administrate polls.',
+	'createpoll' => '{{doc-special|CreatePoll}}
+The special page to create a new poll.',
+	'randompoll' => "{{doc-special|RandomPoll}}
+The special page which takes you to a poll that you haven't voted in yet.",
+	'viewpoll' => '{{doc-special|ViewPoll}}
+The special page to view all available polls.',
+	'poll-desc' => '{{desc|name=Poll NY|url=http://www.mediawiki.org/wiki/Extension:PollNY}}',
+	'poll-admin-no-polls' => 'Message displayed on [[Special:AdminPoll]] and [[Special:ViewPoll]] when no polls match the supplied criteria or when there are absolutely no polls at all in the database.',
+	'poll-admin-closed' => 'Link title; clicking on this link shows all closed polls.
+{{Identical|Closed}}',
+	'poll-admin-flagged' => 'Link title; clicking on this link shows all flagged polls.
+{{Identical|Flagged}}',
+	'poll-admin-open' => 'Link title; clicking on this link shows all open polls.
+{{Identical|Open}}',
+	'poll-admin-panel' => 'Title of the admin panel link; shown on all Poll: pages, below the box {{msg-mw|poll-submitted-by}}.
+{{Identical|Admin}}',
+	'poll-admin-status-nav' => 'Title of the right-hand navigation menu on [[Special:AdminPoll]].
+
+Followed by the following link texts:
+* {{msg-mw|Poll-admin-viewall}}
+* {{msg-mw|Poll-admin-open}}
+* {{msg-mw|Poll-admin-closed}}
+* {{msg-mw|Poll-admin-flagged}}',
+	'poll-admin-title-all' => 'Default title of [[Special:AdminPoll]].
+{{Related|Poll-admin-title}}',
+	'poll-admin-title-closed' => 'Title of [[Special:AdminPoll]] when viewing closed polls (status=closed in the URL)
+{{Related|Poll-admin-title}}',
+	'poll-admin-title-flagged' => 'Title of [[Special:AdminPoll]] when viewing flagged polls (status=flagged in the URL)
+{{Related|Poll-admin-title}}',
+	'poll-admin-title-open' => 'Title of [[Special:AdminPoll]] when viewing open polls (status=open in the URL)
+{{Related|Poll-admin-title}}',
+	'poll-admin-viewall' => 'Link title; displayed in the right-hand navigation menu on [[Special:AdminPolls]].
+
+Clicking on this link displays all polls in the database (as opposed to only displaying closed/open/flagged polls).
+{{Identical|View all}}',
+	'poll-ago' => 'Used on [[Special:ViewPoll]]. Parameters:
+* $1 - any one of the following:
+** {{msg-mw|Poll-time-days}}
+** {{msg-mw|Poll-time-hours}}
+** {{msg-mw|Poll-time-minutes}}
+** {{msg-mw|Poll-time-seconds}}
+{{Identical|$1 ago}}',
+	'poll-atleast' => 'Error message shown in a JavaScript <code>alert()</code> on [[Special:CreatePoll]] after the user has pressed the {{msg-mw|poll-create-button}} button if there is only one answer choice.',
 	'poll-based-on-votes' => 'Shown on the output of a poll embedded via the <code>&lt;pollembed&gt;</code> tag',
-	'poll-cancel-button' => 'Button label',
-	'poll-category' => "Name of the category where '''all''' Poll: pages will be stored",
-	'poll-category-user' => "Name of the category where '''all''' Poll: pages (polls) created by the user will be stored; $1 is thus a username",
-	'poll-choices-label' => 'Shown on Special:CreatePoll; the input elements for entering the answer choices are shown below this text',
-	'poll-close-message' => 'Confirmation message shown to the user (who has the "polladmin" user right) in a JavaScript <code>alert()</code> after they\'ve pressed the {{int:poll-close-poll}} link to close a poll.',
+	'poll-cancel-button' => 'Button label.
+{{Identical|Cancel}}',
+	'poll-category' => "Name of the category where '''all''' Poll: pages will be stored.
+{{Identical|Poll}}",
+	'poll-category-user' => "Name of the category where '''all''' Poll: pages (polls) created by the user will be stored.
+
+Parameters:
+* $1 - thus a username",
+	'poll-choices-label' => 'Shown on [[Special:CreatePoll]].
+
+Used as label for the list of input boxes entering the answer choices.',
+	'poll-close-message' => 'Confirmation message shown to the user (who has the "polladmin" user right) in a JavaScript <code>alert()</code> after they\'ve pressed the {{msg-mw|Poll-close-poll}} link to close a poll.',
 	'poll-close-poll' => 'Link text; closing a poll prevents users from voting in it',
 	'poll-closed' => 'Informational message displayed on a page where a poll has been embedded via the <code>&lt;pollembed&gt;</code> tag and said poll has since been closed for voting, i.e. no new votes are accepted',
-	'poll-create' => 'Link title; this link is shown on the right-hand "{{int:poll-submitted-by}}" box on all Poll: pages',
+	'poll-create' => 'Link title; this link is shown on the right-hand {{msg-mw|Poll-submitted-by}} box on all Poll: pages',
 	'poll-createpoll-error-nomore' => 'Error message; keep it simple, this is used in JavaScript so it cannot contain links etc.',
-	'poll-create-button' => 'Button text',
-	'poll-create-threshold-reason' => 'Error message displayed when <code>$wgCreatePollThresholds</code> is defined and the user does not match one or more of the defined thresholds. $1 could be something like "5 edits".',
-	'poll-create-threshold-title' => 'Page title for Special:CreatePoll when <code>$wgCreatePollThresholds</code> is defined and the user cannot create a new poll due to not meeting the set threshold(s); similar to [[MediaWiki:Poll-create-title]]',
-	'poll-create-title' => 'Title of Special:CreatePoll, which allows creating new polls',
-	'poll-createdago' => 'Displayed at the bottom of every Poll: page as well as at the bottom of polls embedded via the <code>&lt;pollembed&gt;</code> tag. $1 is a timestamp, like "one hour and 15 minutes"',
-	'poll-delete-message' => 'Confirmation message shown to the user (who has the "polladmin" user right) in a JavaScript <code>alert()</code> after they\'ve pressed the {{int:poll-delete-poll}} link to delete a poll.',
-	'poll-delete-poll' => 'Link title; this link is shown below the right-hand "{{int:poll-submitted-by}}" box on all Poll: pages for users who have the "polladmin" user right',
-	'poll-discuss' => 'Link title; this link is shown below the [[MediaWiki:Poll-based-on-votes|based on X vote(s)]] text when a poll has been embedded on a wiki page via the <code>&lt;pollembed&gt;</code> tag',
-	'poll-edit-answers' => 'Shown on Special:UpdatePoll; the answer boxes are displayed below this text on the left-hand side of the page',
-	'poll-edit-button' => 'Button label shown on Special:UpdatePoll; pressing this button saves all changes (both those to the answers as well as if the picture was changed)',
-	'poll-edit-desc' => 'Edit summary for the edit when a new poll is created via Special:CreatePoll',
-	'poll-edit-image' => 'Heading on Special:UpdatePoll',
-	'poll-edit-invalid-access' => "Error message shown on Special:UpdatePoll if a poll ID wasn't supplied or the user trying to edit the poll is neither a poll admin nor the poll's original creator.",
-	'poll-edit-title' => 'Displayed on Special:UpdatePoll as the page title. $1 is the name of the poll (the poll question without the Poll: namespace or its equivalent localization)',
+	'poll-create-button' => 'Shown on [[Special:CreatePoll]].
+
+Used as label for the Submit button.
+
+This means "Create a poll and open it".',
+	'poll-create-threshold-reason' => 'Error message displayed when <code>$wgCreatePollThresholds</code> is defined and the user does not match one or more of the defined thresholds.
+
+Parameters:
+* $1 - could be something like "5 edits" (NOT localizable)',
+	'poll-create-threshold-title' => 'Page title for [[Special:CreatePoll]] when <code>$wgCreatePollThresholds</code> is defined and the user cannot create a new poll due to not meeting the set threshold(s).
+
+Similar to {{msg-mw|Poll-create-title}}.',
+	'poll-create-title' => '{{doc-special|CreatePoll}}
+The special page to create new polls.',
+	'poll-createdago' => 'Displayed at the bottom of every Poll: page as well as at the bottom of polls embedded via the <code>&lt;pollembed&gt;</code> tag.
+
+Parameters:
+* $1 - a timestamp, like "{{int:Poll-time-hours|1}} {{int:Poll-time-minutes|15}} " (with trailing whitespace) which uses the following messages:
+** {{msg-mw|Poll-time-days}}
+** {{msg-mw|Poll-time-hours}}
+** {{msg-mw|Poll-time-minutes}}
+** {{msg-mw|Poll-time-seconds}}',
+	'poll-delete-message' => 'Confirmation message shown to the user (who has the "polladmin" user right) in a JavaScript <code>alert()</code> after they\'ve pressed the {{msg-mw|Poll-delete-poll}} link to delete a poll.',
+	'poll-delete-poll' => 'Link title; this link is shown below the right-hand {{msg-mw|Poll-submitted-by}} box on all Poll: pages for users who have the "polladmin" user right',
+	'poll-discuss' => 'Link title; this link is shown below the {{msg-mw|Poll-based-on-votes}} text when a poll has been embedded on a wiki page via the <code>&lt;pollembed&gt;</code> tag',
+	'poll-edit-answers' => 'Shown on [[Special:UpdatePoll]].
+
+Used as <code><nowiki><h1></nowiki></code> heading.
+
+The answer boxes are displayed below this text on the left-hand side of the page',
+	'poll-edit-button' => 'Button label shown on [[Special:UpdatePoll]]; pressing this button saves all changes (both those to the answers as well as if the picture was changed)
+{{Identical|Save page}}',
+	'poll-edit-desc' => 'Edit summary for the edit when a new poll is created via [[Special:CreatePoll]].',
+	'poll-edit-image' => 'Heading on [[Special:UpdatePoll]].',
+	'poll-edit-invalid-access' => "Error message shown on [[Special:UpdatePoll]] if a poll ID wasn't supplied or the user trying to edit the poll is neither a poll admin nor the poll's original creator.
+
+The title for this error message is {{msg-mw|Poll-woops}}.",
+	'poll-edit-title' => 'Displayed on [[Special:UpdatePoll]] as the page title. Parameters:
+* $1 - the name of the poll (the poll question without the Poll: namespace or its equivalent localization)',
 	'poll-embed' => 'Shown on all Poll: pages; this is followed by an input that contains code for embedding the poll in question to a normal wiki page',
-	'poll-enterquestion' => 'Shown in a JavaScript <code>alert()</code> on Special:CreatePoll if the user has pressed the {{int:poll-create-button}} button without entering a question',
-	'poll-finished' => 'Shown (via JavaScript) when the user has voted in all available polls. $1 is the URL to Special:CreatePoll, $2 is the URL to the current page.',
+	'poll-enterquestion' => 'Shown in a JavaScript <code>alert()</code> on [[Special:CreatePoll]] if the user has pressed the {{msg-mw|poll-create-button}} button without entering a question.',
+	'poll-finished' => 'Shown (via JavaScript) when the user has voted in all available polls. Parameters:
+* $1 - the URL to [[Special:CreatePoll]]
+* $2 - the URL to the current page',
 	'poll-flagged' => 'Informational message displayed on the Poll: page of a poll that has been flagged by someone and thus is not accepting any new votes at the moment',
-	'poll-flagged-message' => "Displayed to the user in a JavaScript <code>alert()</code> after they've pressed the {{int:poll-flag-poll}} link on a Poll: page.",
+	'poll-flagged-message' => "Displayed to the user in a JavaScript <code>alert()</code> after they've pressed the {{msg-mw|Poll-flag-poll}} link on a Poll: page.",
 	'poll-flag-poll' => 'Link title; flagging removes the poll from circulation until an admin has reviewed and either reapproved or deleted it.',
-	'poll-hash' => "Displayed to the user in a JavaScript <code>alert()</code> if they try to create a poll where the question contains the # (hash) character after they've pressed the {{int:poll-create-button}} button.",
-	'poll-image-label' => 'Heading title on Special:CreatePoll; the upload form for uploading a picture to the poll is displayed below this header',
-	'poll-instructions' => 'Instructions displayed to the user on Special:CreatePoll, below the "{{int:poll-create-title}}" title',
-	'poll-js-action-complete' => "Displayed (via JavaScript) to the user when they've performed an administrative action, such as closing a poll.",
-	'poll-js-loading' => 'Shown via JavaScript to users using the Firefox browser on a Mac instead of the Flash animation at /extensions/PollNY/ajax-loading.swf',
-	'poll-next' => 'Pagination link; abbreviation of the word "next". Keep this message short!',
-	'poll-next-poll' => "Link title; shown on Poll: pages if there's a next poll available",
-	'poll-no-more-message' => "Error-ish message displayed to the user when they've voted for all available polls",
-	'poll-no-more-title' => 'Title of the (error) page displayed when there are no (more) polls to participate in',
+	'poll-hash' => "Displayed to the user in a JavaScript <code>alert()</code> if they try to create a poll where the question contains the # (hash) character after they've pressed the {{msg-mw|poll-create-button}} button.",
+	'poll-image-label' => 'Heading title on [[Special:CreatePoll]]; the upload form for uploading a picture to the poll is displayed below this header',
+	'poll-instructions' => 'Instructions displayed to the user on [[Special:CreatePoll]], below the {{msg-mw|Poll-create-title}} title.',
+	'poll-js-action-complete' => "Displayed (via JavaScript) to the user when they've performed an administrative action, such as closing a poll.
+
+See also:
+* {{msg-mw|poll-close-message}}
+* {{msg-mw|poll-open-message}}
+* {{msg-mw|poll-flagged-message}}
+* {{msg-mw|poll-delete-message}}",
+	'poll-js-loading' => 'Shown via JavaScript to users using the Firefox browser on a Mac instead of the Flash animation at /extensions/PollNY/ajax-loading.swf
+{{Identical|Loading}}',
+	'poll-next' => 'Pagination link; abbreviation of the word "next". Keep this message short!
+{{Identical|Next}}',
+	'poll-next-poll' => "Link title; shown on Poll: pages if there's a next poll available.
+
+See also:
+* {{msg-mw|Poll-previous-poll}}",
+	'poll-no-more-message' => "Error-ish message displayed to the user when they've voted for all available polls.
+
+The page title for this message is {{msg-mw|Poll-no-more-title}}.",
+	'poll-no-more-title' => 'Title of the (error) page displayed when there are no (more) polls to participate in.
+
+Used as error page title in [[Special:RandomPoll]].
+
+Error message for this title is {{msg-mw|Poll-no-more-message}}.',
 	'poll-open-message' => "Displayed to the user in a JavaScript <code>alert()</code> after they've pressed the {{int:poll-open-poll}} link on a Poll: page.",
 	'poll-open-poll' => 'Link text; opening a poll allows users to vote in it',
 	'poll-pleasechoose' => "Error message displayed to the user in a JavaScript <code>alert()</code> after the user has pressed the {{int:poll-create-bytton}} button to attempt to create a new poll if the new poll's title fails validation (i.e. if there already exists a poll with the exact same title)",
-	'poll-prev' => 'Pagination link; abbreviation of the word "previous". Keep this message short!',
-	'poll-previous-poll' => 'Link title; shown on Poll: pages if there is a previous poll available',
-	'poll-question-label' => 'Shown on Special:CreatePoll; the input element for entering the question is shown below this text',
-	'poll-skip' => 'Link title; shown on the bottom of each Poll: page. Clicking on this link allows the user to skip voting in the current poll and bring up a new poll.',
+	'poll-prev' => 'Pagination link; abbreviation of the word "previous". Keep this message short!
+{{Identical|Prev}}',
+	'poll-previous-poll' => 'Link title; shown on Poll: pages if there is a previous poll available.
+
+See also:
+* {{msg-mw|Poll-next-poll}}',
+	'poll-question-label' => 'Shown on [[Special:CreatePoll]].
+
+Used as label for the input box entering the question.',
+	'poll-skip' => 'Link title; shown on the bottom of each Poll: page. Clicking on this link allows the user to skip voting in the current poll and bring up a new poll.
+{{Identical|Skip}}',
 	'poll-submitted-by' => "Title of the box shown on each Poll: page that contains the poll author's username, avatar, some statistics about the poll author and a link to all the polls created by that user.",
-	'poll-take-button' => 'Link title, shown on both Special:AdminPoll and Special:ViewPoll; on the latter page, clicking on this link takes the user to a random poll via Special:RandomPoll',
+	'poll-take-button' => 'Link title, shown on both [[Special:AdminPoll]] and [[Special:ViewPoll]]; on the latter page, clicking on this link takes the user to a random poll via [[Special:RandomPoll]].',
 	'poll-unavailable' => "Message displayed when a poll embedded to a page with the <code>&lt;pollembed&gt;</code> tag cannot be rendered (the poll page's page ID is zero or less)",
 	'poll-unflag-poll' => 'Link text; unflagging a poll allows the poll to be shown to users so that they can participate in it',
-	'poll-upload-image-button' => 'Button text',
-	'poll-upload-new-image' => "Link title. This link is shown on Special:CreatePoll after the user has uploaded an image with that special page's built-in upload form.",
-	'poll-view-title' => "$1 is a username; this message can be the title of Special:ViewPoll when viewing the polls of a certain user (as opposed to viewing all available polls, in which case that special page's title is [[MediaWiki:Viewpoll]])",
-	'poll-view-order' => 'Heading of the right-hand navigation menu on Special:ViewPoll; "order" refers to the sort order',
-	'poll-view-newest' => 'Link title on the right-hand navigation menu on Special:ViewPoll',
-	'poll-view-popular' => 'the right-hand navigation menu on Special:ViewPoll;',
-	'poll-view-answered-times' => 'Shown on Special:AdminPoll below the last answer option of each poll; $1 is the number indicating how many times the poll has been answered',
-	'poll-view-all-by' => "Link text shown in the {{int:poll-submitted-by}} box, below the user's avatar. $1 is a username (truncated if it's over 27 characters long).",
-	'poll-voted-for' => "Message shown to registered users after they've voted in a poll. $1 is the amount of polls in which the current user has voted, $2 is the amount of all polls in the database and $3 is the total amount of points the user has received from voting in polls",
-	'poll-votes' => 'Amount of votes, displayed next to or below the bar indicating vote perentages (when displaying a poll on a wiki page via the <code>&lt;pollembed&gt;</code> tag',
-	'poll-woops' => 'Error message title',
-	'poll-would-have-earned' => "Message shown to anonymous users after they've voted in a poll, prompting them to join the wiki. Registered users are shown the [[MediaWiki:Poll-voted-for]] message instead.",
-	'poll-time-ago' => '$1 is one of the following:
-* [[MediaWiki:Poll-time-days]]
-* [[MediaWiki:Poll-time-hours]]
-* [[MediaWiki:Poll-time-minutes]]
-* [[MediaWiki:Poll-time-seconds]]',
-	'specialpages-group-poll' => 'Special page group title, shown on Special:SpecialPages',
-	'right-polladmin' => 'Description of the "polladmin" user right, shown on Special:ListGroupRights',
+	'poll-upload-image-button' => 'Button text.
+{{Identical|Upload}}',
+	'poll-upload-new-image' => "Link title.
+
+This link is shown on [[Special:CreatePoll]] after the user has uploaded an image with that special page's built-in upload form.",
+	'poll-view-title' => "this message can be the title of [[Special:ViewPoll]] when viewing the polls of a certain user (as opposed to viewing all available polls, in which case that special page's title is {{msg-mw|Viewpoll}}).
+
+Parameters:
+* $1 - a username",
+	'poll-view-order' => 'Heading of the right-hand navigation menu on [[Special:ViewPoll]]; "order" refers to the sort order.
+
+Followed by the following link texts:
+* {{msg-mw|Poll-view-popular}}
+* {{msg-mw|Poll-view-newest}}
+{{Identical|Order}}',
+	'poll-view-newest' => 'Link title on the right-hand navigation menu on [[Special:ViewPoll]].
+{{Identical|Newest}}',
+	'poll-view-popular' => 'the right-hand navigation menu on [[Special:ViewPoll]].',
+	'poll-view-answered-times' => 'Shown on [[Special:AdminPoll]] below the last answer option of each poll.
+
+Parameters:
+* $1 - the number indicating how many times the poll has been answered',
+	'poll-view-all-by' => "Link text shown in the {{msg-mw|Poll-submitted-by}} box, below the user's avatar.
+
+Parameters:
+* $1 - a username (truncated if it's over 27 characters long)",
+	'poll-voted-for' => "Message shown to registered users after they've voted in a poll. Parameters:
+* $1 - the amount of polls in which the current user has voted
+* $2 - the amount of all polls in the database
+* $3 - the total amount of points the user has received from voting in polls
+
+If anonymous users, the following message will be used:
+* {{msg-mw|Poll-would-have-earned}}",
+	'poll-votes' => 'Amount of votes, displayed next to or below the bar indicating vote perentages (when displaying a poll on a wiki page via the <code>&lt;pollembed&gt;</code> tag.
+{{Identical|Vote}}',
+	'poll-woops' => 'Used as page title for the error message page.',
+	'poll-would-have-earned' => "Message shown to anonymous users after they've voted in a poll, prompting them to join the wiki.
+
+Registered users are shown the following message instead:
+* {{msg-mw|Poll-voted-for}}",
+	'poll-time-ago' => 'Parameters:
+* $1 - any one of the following:
+** {{msg-mw|Poll-time-days}}
+** {{msg-mw|Poll-time-hours}}
+** {{msg-mw|Poll-time-minutes}}
+** {{msg-mw|Poll-time-seconds}}
+{{Identical|$1 ago}}',
+	'poll-time-days' => '{{Identical|Day}}',
+	'poll-time-hours' => '{{Identical|Hour}}',
+	'poll-time-minutes' => '{{Identical|Minute}}',
+	'poll-time-seconds' => '{{Identical|Second}}',
+	'specialpages-group-poll' => '{{doc-special-group}}
+{{Identical|Poll}}',
+	'right-polladmin' => '{{doc-right|polladmin}}',
 );
 
 /** German (Deutsch)
@@ -253,11 +371,11 @@ $messages['de'] = array(
 	'poll-hash' => '# ist ein ungültiges Zeichen für die Abstimmungsfrage.',
 	'poll-image-label' => 'Ein Bild hinzufügen',
 	'poll-instructions' => 'Stelle eine Abstimmungsfrage, biete einige Antwortmöglichkeiten an und klicke auf „{{int:poll-create-button}}“. Es ist so einfach!',
-	'poll-js-action-complete' => 'Aktion vollständig',
+	'poll-js-action-complete' => 'Aktion vollständig', # Fuzzy
 	'poll-js-loading' => 'Lade …',
 	'poll-next' => 'nächste',
 	'poll-next-poll' => 'Nächste Abstimmung',
-	'poll-no-more-message' => 'Du hast für jede Abstimmung gestimmt!<br />Sei nicht traurig, [[Special:CreatePoll|erstelle deine eigene]]!',
+	'poll-no-more-message' => 'Du hast bei jeder Abstimmung abgestimmt!<br />Sei nicht traurig, [[Special:CreatePoll|erstelle deine eigene]]!',
 	'poll-no-more-title' => 'Keine weiteren Abstimmungen!',
 	'poll-open-message' => 'Willst du diese Abstimmung wirklich eröffnen?',
 	'poll-open-poll' => 'Offene Abstimmung',
@@ -278,7 +396,7 @@ $messages['de'] = array(
 	'poll-view-popular' => 'Beliebt',
 	'poll-view-answered-times' => '{{PLURAL:$1|Einmal|$1 mal}} geantwortet',
 	'poll-view-all-by' => 'Alle Abstimmungen von $1 ansehen',
-	'poll-voted-for' => 'Du hast für {{PLURAL:$1|eine Abstimmung|$1 Abstimmungen}} gestimmt von insgesamt <b>$2</b> und hast <span class="profile-on">$3 Punkte</span> erhalten',
+	'poll-voted-for' => 'Du hast bei {{PLURAL:$1|einer Abstimmung|$1 Abstimmungen}} abgestimmt von insgesamt <b>$2</b> und hast <span class="profile-on">$3 Punkte</span> erhalten',
 	'poll-votes' => '{{PLURAL:$1|eine Abstimmung|$1 Abstimmungen}}',
 	'poll-woops' => 'Hoppla!',
 	'poll-would-have-earned' => 'Du hättest <span class="profile-on">$1 Punkte</span> verdient, wenn du dich [[Special:UserLogin/signup|registriert hättest]].',
@@ -344,7 +462,7 @@ $messages['fi'] = array(
 	'poll-hash' => '# on merkki, joka ei kelpaa äänestyksen kysymykseen.',
 	'poll-image-label' => 'Lisää kuva',
 	'poll-instructions' => 'Kysy kysymys, kirjoita joitakin vastausvaihtoehtoja ja paina "{{int:poll-create-button}}" -painiketta. Se on niin helppoa!',
-	'poll-js-action-complete' => 'Toiminto suoritettu',
+	'poll-js-action-complete' => 'Toiminto suoritettu', # Fuzzy
 	'poll-js-loading' => 'Ladataan...',
 	'poll-next' => 'seur.',
 	'poll-next-poll' => 'Seuraava äänestys',
@@ -384,93 +502,274 @@ $messages['fi'] = array(
 
 /** French (français)
  * @author Constant Depièreux
+ * @author Gomoko
+ * @author Wyz
  */
 $messages['fr'] = array(
 	'adminpoll' => 'Administration des sondages',
 	'createpoll' => 'Créer un sondage',
-	'randompoll' => 'Sondages aléatoires',
+	'randompoll' => 'Sondage aléatoire',
 	'viewpoll' => 'Voir les sondages',
+	'poll-desc' => 'Système de sondage évolué qui utilise les pages spéciales et permet d’incorporer des sondages dans les pages de wiki',
 	'poll-admin-no-polls' => "Il n'y a pas de sondage. [[Special:CreatePoll|Créer un sondage!]]",
 	'poll-admin-closed' => 'Fermé',
 	'poll-admin-flagged' => 'Marqué',
 	'poll-admin-open' => 'Ouvrir',
 	'poll-admin-panel' => 'Admininistrer',
-	'poll-admin-status-nav' => 'Filtrer par statut',
+	'poll-admin-status-nav' => 'Filtrer par état',
 	'poll-admin-title-all' => 'Adminstration des sondages - Voir tous les sondages',
 	'poll-admin-title-closed' => 'Adminstration des sondages - Voir les sondages clôturés',
 	'poll-admin-title-flagged' => 'Adminstration des sondages - Voir les sondages marqués',
-	'poll-admin-title-open' => 'Adminstration des sondages - Voir les sondages ouverts',
+	'poll-admin-title-open' => 'Administration des sondages - voir les sondages ouverts',
 	'poll-admin-viewall' => 'Tout visualiser',
-	'poll-ago' => '$1 passé',
+	'poll-ago' => 'il y a $1',
 	'poll-atleast' => 'Vous devez avoir au moins deux réponses possibles',
 	'poll-based-on-votes' => 'basé sur {{PLURAL:$1|un vote|$1 votes}}',
-	'poll-cancel-button' => 'Supprimer',
+	'poll-cancel-button' => 'Annuler',
 	'poll-category' => 'Sondages',
-	'poll-category-user' => 'Sondage par utilisateur $1',
+	'poll-category-user' => 'Sondages proposés par l’utilisateur $1',
 	'poll-choices-label' => 'Réponses possibles',
 	'poll-close-message' => 'Etes-vous sûr que vous voulez clôturer ce sondage? Tous les votes futurs seront suspendus.',
 	'poll-close-poll' => 'Clôturer le sondage',
 	'poll-closed' => 'Ce sondage est clos. Tous les votes sont terminés',
 	'poll-create' => 'Créer un sondage',
-	'poll-createpoll-error-nomore' => "Il n'y a plus de sondage ouvert!",
-	'poll-create-button' => 'Créez et jouez!',
-	'poll-create-threshold-reason' => "Désolé, vous ne pouvez créer de sondage avant d'avoir $1",
+	'poll-createpoll-error-nomore' => "Il n'y a plus de sondages ouverts !",
+	'poll-create-button' => 'Créer et lancer !',
+	'poll-create-threshold-reason' => 'Désolé, vous ne pouvez pas créer de sondage avant d’avoir au moins $1',
 	'poll-create-threshold-title' => 'Créer un sondage',
 	'poll-create-title' => 'Créer un sondage',
-	'poll-createdago' => 'Créé il y a $1 passé',
-	'poll-delete-message' => 'Etes-vous sûr que vous vouler supprimer ce sondage?',
+	'poll-createdago' => 'Créé il y a $1',
+	'poll-delete-message' => 'Êtes-vous sûr(e) de vouloir supprimer ce sondage ?',
 	'poll-delete-poll' => 'Supprimer un sondage',
 	'poll-discuss' => 'Discussions',
 	'poll-edit-answers' => 'Edition des réponses',
-	'poll-edit-button' => 'Sauvegarde de la page',
+	'poll-edit-button' => 'Enregistrer la page',
 	'poll-edit-desc' => 'nouveau sondage',
 	'poll-edit-image' => "Edition de l'image",
 	'poll-edit-invalid-access' => 'Accès invalide',
 	'poll-edit-title' => 'Edition du sondage - $1',
 	'poll-embed' => 'Inclusion sur une page wiki',
-	'poll-enterquestion' => 'Vous devez entrer une question',
+	'poll-enterquestion' => 'Vous devez saisir une question',
 	'poll-finished' => '<b>Il n\'y a plus de sondage. Créez votre <a href="$1">propre sondage</a></b> ou <a href="$2">visualisez le résultat du sondage en cours</a>',
 	'poll-flagged' => 'Ce sondage a été marqué',
 	'poll-flagged-message' => 'Etes-vous sûr que vous souhaitez marquer ce sondage?',
 	'poll-flag-poll' => 'Marquer le sondage',
-	'poll-hash' => '# est un caractère invalide.',
+	'poll-hash' => '# est un caractère invalide pour la question.',
 	'poll-image-label' => 'Ajouter une image',
 	'poll-instructions' => 'Posez une question de sondage, proposez un choix de réponses possibles, pressez le bouton "{{int:poll-create-button}}". N\'est-ce pas facile!',
-	'poll-js-loading' => 'En cours de chargement ...',
-	'poll-next' => 'suivant',
+	'poll-js-action-complete' => 'Action terminée', # Fuzzy
+	'poll-js-loading' => 'Chargement ...',
+	'poll-next' => 'suiv',
 	'poll-next-poll' => 'Sondage suivant',
 	'poll-no-more-message' => 'Vous avez voté pour tous les sondages!<br />Ne soyez pas désolé, [[Special:CreatePoll|créez le vôtre!]]!',
-	'poll-no-more-title' => 'Plus de sondage!',
+	'poll-no-more-title' => 'Plus de sondages !',
 	'poll-open-message' => 'Etes-vous sûr que vous souhaitez ouvrir ce sondage?',
-	'poll-open-poll' => 'Sondage ouvert',
-	'poll-pleasechoose' => 'Choississez une autre nom pour ce sondage SVP.',
-	'poll-prev' => 'précédent',
+	'poll-open-poll' => 'Ouvrir un sondage',
+	'poll-pleasechoose' => 'Veuillez choisir un autre nom pour ce sondage.',
+	'poll-prev' => 'préc',
 	'poll-previous-poll' => 'Sondage précédent',
 	'poll-question-label' => 'Question du sondage',
-	'poll-skip' => 'Aller à >',
+	'poll-skip' => 'Passer >',
 	'poll-submitted-by' => 'Proposé par',
 	'poll-take-button' => '&lt; Retour aux sondages',
 	'poll-unavailable' => 'Ce sondage est indisponible',
 	'poll-unflag-poll' => 'Démarquez ce sondage',
-	'poll-upload-image-button' => 'Charger',
-	'poll-upload-new-image' => 'Cherger une nouvelle image',
-	'poll-view-title' => 'Voir le sondage $1',
+	'poll-upload-image-button' => 'Importer',
+	'poll-upload-new-image' => 'Importer une nouvelle image',
+	'poll-view-title' => 'Voir les sondage de $1',
 	'poll-view-order' => 'Ordre',
-	'poll-view-newest' => 'Nouveau',
+	'poll-view-newest' => 'Derniers',
 	'poll-view-popular' => 'Populaire',
 	'poll-view-answered-times' => 'Répondu {{PLURAL:$1|une fois|$1 fois}}',
 	'poll-view-all-by' => 'Voir tous les sondages proposés par $1',
 	'poll-voted-for' => 'Vous avez voté pour $1 {{PLURAL:$1|sondage|sondages}} parmi <b>$2</b> sondages possibles et obtenu <span class="profile-on">$3 points</span>',
 	'poll-votes' => '{{PLURAL:$1|un vote|$1 votes}}',
-	'poll-woops' => 'Oups!',
+	'poll-woops' => 'Oups !',
 	'poll-would-have-earned' => 'Vous avez gagné <span class="profile-on">$1 points</span> si vous vous êtes [[Special:UserLogin/signup|identifié]]',
-	'poll-time-ago' => '$1 passé',
+	'poll-time-ago' => 'il y a $1',
 	'poll-time-days' => '{{PLURAL:$1|un jour|$1 jours}}',
 	'poll-time-hours' => '{{PLURAL:$1|une heure|$1 heures}}',
 	'poll-time-minutes' => '{{PLURAL:$1|une minute|$1 minutes}}',
 	'poll-time-seconds' => '{{PLURAL:$1|une seconde|$1 secondes}}',
 	'specialpages-group-poll' => 'Sondages',
 	'right-polladmin' => 'Administrer les sondages',
+);
+
+/** Japanese (日本語)
+ * @author Shirayuki
+ */
+$messages['ja'] = array(
+	'adminpoll' => '投票所の管理',
+	'createpoll' => '投票所の作成',
+	'randompoll' => 'おまかせ投票所',
+	'viewpoll' => '投票所の閲覧',
+	'poll-desc' => '特別ページを使用し、投票所をウィキページに埋め込めるようにする、高度な投票所システム',
+	'poll-admin-no-polls' => '投票所はありません。[[Special:CreatePoll|作成してください。]]',
+	'poll-admin-closed' => '終了したもの',
+	'poll-admin-open' => '実施中',
+	'poll-admin-panel' => '管理',
+	'poll-admin-status-nav' => '状態で絞り込み',
+	'poll-admin-title-all' => '投票所の管理 - すべての投票所の閲覧',
+	'poll-admin-title-closed' => '投票所の管理 - 終了した投票所の閲覧',
+	'poll-admin-title-open' => '投票所の管理 - 実施中の投票所の閲覧',
+	'poll-admin-viewall' => 'すべて表示',
+	'poll-ago' => '$1前',
+	'poll-atleast' => '回答の選択肢が 2 個以上必要です',
+	'poll-cancel-button' => 'キャンセル',
+	'poll-category' => '投票所',
+	'poll-category-user' => '利用者 $1 による投票所',
+	'poll-choices-label' => '回答の選択肢',
+	'poll-close-message' => 'この投票所を本当に終了しますか? すべての投票は一時停止されます。',
+	'poll-close-poll' => '投票所を終了',
+	'poll-closed' => 'この投票所での投票は終了しました',
+	'poll-create' => '投票所を作成',
+	'poll-create-button' => '作成して開始',
+	'poll-create-threshold-reason' => '申し訳ありませんが、$1 に達するまで投票所は作成できません',
+	'poll-create-threshold-title' => '投票所の作成',
+	'poll-create-title' => '投票所の作成',
+	'poll-createdago' => '$1前に作成',
+	'poll-delete-message' => 'この投票所を本当に削除しますか?',
+	'poll-delete-poll' => '投票所を削除',
+	'poll-discuss' => '議論',
+	'poll-edit-answers' => '回答の編集',
+	'poll-edit-button' => 'ページを保存',
+	'poll-edit-desc' => '投票所の新規作成',
+	'poll-edit-image' => '画像の編集',
+	'poll-edit-invalid-access' => '無効なアクセスです。',
+	'poll-edit-title' => '投票所の編集 - $1',
+	'poll-embed' => 'ウィキページへの埋め込み',
+	'poll-enterquestion' => '質問文を入力してください',
+	'poll-hash' => '# は投票所の質問文に使用できない無効な文字です。',
+	'poll-image-label' => '画像の追加',
+	'poll-instructions' => '投票所に掲載する質問文と、その回答の選択肢を記入して、「{{int:poll-create-button}}」をクリックしてください。簡単な手順です。',
+	'poll-js-action-complete' => '操作が完了しました', # Fuzzy
+	'poll-js-loading' => '読み込み中...',
+	'poll-next' => '次',
+	'poll-next-poll' => '次の投票所',
+	'poll-no-more-message' => 'あなたはすべての投票所で投票しました!<br />ご安心ください。[[Special:CreatePoll|自分で作成することもできます]]!',
+	'poll-no-more-title' => '投票所はこれ以上ありません',
+	'poll-open-message' => 'この投票所を本当に開始しますか?',
+	'poll-open-poll' => '投票所を開始',
+	'poll-pleasechoose' => '別の投票所名を指定してください',
+	'poll-prev' => '前',
+	'poll-previous-poll' => '前の投票所',
+	'poll-question-label' => '投票所の質問文',
+	'poll-skip' => 'スキップ >',
+	'poll-submitted-by' => '投稿者',
+	'poll-take-button' => '< 投票所に戻る',
+	'poll-unavailable' => 'この投票所は利用できません',
+	'poll-upload-image-button' => 'アップロード',
+	'poll-upload-new-image' => '新しい画像をアップロード',
+	'poll-view-title' => '$1 の投票所の閲覧',
+	'poll-view-order' => '並び順',
+	'poll-view-newest' => '新しい順',
+	'poll-view-popular' => '人気順',
+	'poll-view-answered-times' => '{{PLURAL:$1|$1 回}}回答',
+	'poll-view-all-by' => '$1 によるすべての投票所を閲覧',
+	'poll-voted-for' => 'あなたは <b>$2</b> 件中 $1 {{PLURAL:$1|件の投票所}}で投票し、<span class="profile-on">$3 点</span>を獲得しました',
+	'poll-votes' => '{{PLURAL:$1|$1 票}}',
+	'poll-woops' => 'エラー',
+	'poll-would-have-earned' => 'あなたが[[Special:UserLogin/signup|利用者登録]]済みであれば、<span class="profile-on">$1 点</span>を獲得したところでした',
+	'poll-time-ago' => '$1前',
+	'poll-time-days' => '{{PLURAL:$1|$1日}}',
+	'poll-time-hours' => '{{PLURAL:$1|$1時間}}',
+	'poll-time-minutes' => '{{PLURAL:$1|$1分}}',
+	'poll-time-seconds' => '{{PLURAL:$1|$1秒}}',
+	'specialpages-group-poll' => '投票所',
+	'right-polladmin' => '投票所を管理',
+);
+
+/** Macedonian (македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'adminpoll' => 'Раководење со анкети',
+	'createpoll' => 'Направи анкета',
+	'randompoll' => 'Случајна анкета',
+	'viewpoll' => 'Преглед на анкети',
+	'poll-desc' => 'Напреден анкетен систем што користи сецијални страници и овозможува вметнување на анкети во викистраници',
+	'poll-admin-no-polls' => 'Нема анкети. [[Special:CreatePoll|Направете анкета!]]',
+	'poll-admin-closed' => 'Завршени',
+	'poll-admin-flagged' => 'Означени',
+	'poll-admin-open' => 'Тековни',
+	'poll-admin-panel' => 'Админ',
+	'poll-admin-status-nav' => 'Филтрирај по статус',
+	'poll-admin-title-all' => 'Раководење со анкети — Преглед на сите анкети',
+	'poll-admin-title-closed' => 'Раководење со анкети — Преглед на завршени анкети',
+	'poll-admin-title-flagged' => 'Раководење со анкети — Преглед на означени анкети',
+	'poll-admin-title-open' => 'Раководење со анкети — Преглед на тековни анкети',
+	'poll-admin-viewall' => 'Погл. сите',
+	'poll-ago' => 'пред $1',
+	'poll-atleast' => 'Мора да внесете барем два можни одговора',
+	'poll-based-on-votes' => 'врз основа на {{PLURAL:$1|еден глас|$1 гласа}}',
+	'poll-cancel-button' => 'Откажи',
+	'poll-category' => 'Анкети',
+	'poll-category-user' => 'Анкети на корисникот $1',
+	'poll-choices-label' => 'Избор на одговори',
+	'poll-close-message' => 'Дали сте сигурни дека сакате да ја затворите анкетата? Сите гласови ќе бидат поништени.',
+	'poll-close-poll' => 'Затвори анкета',
+	'poll-closed' => 'Анкетата е затворена за гласови',
+	'poll-create' => 'Направи анкета',
+	'poll-createpoll-error-nomore' => 'Нема повеќе анкети!',
+	'poll-create-button' => 'Направи и играј!',
+	'poll-create-threshold-reason' => 'Нажалост, не можете да направите анкета пред да имате барем $1',
+	'poll-create-threshold-title' => 'Правење на акета',
+	'poll-create-title' => 'Правење на акета',
+	'poll-createdago' => 'Направена пред $1',
+	'poll-delete-message' => 'Дали сте сигурни дека сакате да ја избришете анкетата?',
+	'poll-delete-poll' => 'Избриши анкета',
+	'poll-discuss' => 'Расправа',
+	'poll-edit-answers' => 'Измени одговори',
+	'poll-edit-button' => 'Зачувај',
+	'poll-edit-desc' => 'нова анкета',
+	'poll-edit-image' => 'Измени слика',
+	'poll-edit-invalid-access' => 'Несоодветен пристап',
+	'poll-edit-title' => 'Уредување на анкета — $1',
+	'poll-embed' => 'Вметни во викистраница',
+	'poll-enterquestion' => 'Мора да внесете прашање',
+	'poll-finished' => '<b>Нема повеќе анкети. Ставете <a href="$1">ваша!</a></b> или <a href="$2">погледајте го исходот од оваа</a>',
+	'poll-flagged' => 'Анкетата е означена',
+	'poll-flagged-message' => 'Дали сте сигурни дека сакате да ја означите анкетата?',
+	'poll-flag-poll' => 'Означи анкета',
+	'poll-hash' => '# е неважечки како знак во анкетно прашање.',
+	'poll-image-label' => 'Стави слика',
+	'poll-instructions' => 'Поставете анкетно прашање и внесете одговори, па стиснете на копчето „{{int:poll-create-button}}“. Толку!',
+	'poll-js-action-complete' => 'Дејството е извршено', # Fuzzy
+	'poll-js-loading' => 'Вчитувам...',
+	'poll-next' => 'следна',
+	'poll-next-poll' => 'Следна анкета',
+	'poll-no-more-message' => 'Веќе гласовте на сите анкети!<br />Не очајувајте, туку [[Special:CreatePoll|направете своја]]!',
+	'poll-no-more-title' => 'Нема повеќе анкети!',
+	'poll-open-message' => 'Дали сте сигурни дека сакате да ја отворите анкетата?',
+	'poll-open-poll' => 'Отвори анкета',
+	'poll-pleasechoose' => 'Одберете друго име за анкетата',
+	'poll-prev' => 'прет',
+	'poll-previous-poll' => 'Претходна анкета',
+	'poll-question-label' => 'Анкетно прашање',
+	'poll-skip' => 'Прескокни >',
+	'poll-submitted-by' => 'Создал:',
+	'poll-take-button' => '< Назад на анкетите',
+	'poll-unavailable' => 'Анкетата е недостапна',
+	'poll-unflag-poll' => 'Тргни ознака',
+	'poll-upload-image-button' => 'Подигни',
+	'poll-upload-new-image' => 'Подигни нова слика',
+	'poll-view-title' => 'Анкети на $1',
+	'poll-view-order' => 'Редослед',
+	'poll-view-newest' => 'Најнови',
+	'poll-view-popular' => 'Популарни',
+	'poll-view-answered-times' => 'Одговорена {{PLURAL:$1|еднаш|$1 пати}}',
+	'poll-view-all-by' => 'Сите анкети на $1',
+	'poll-voted-for' => 'Имате гласано на $1 {{PLURAL:$1|анкета|анкети}} од вкупно <b>$2</b> и добивте <span class="profile-on">$3 бода</span>',
+	'poll-votes' => '{{PLURAL:$1|еден глас|$1 гласа}}',
+	'poll-woops' => 'Упс!',
+	'poll-would-have-earned' => 'Ќе добиевте <span class="profile-on">$1 бода</span> ако  [[Special:UserLogin/signup|се регистриравте]]',
+	'poll-time-ago' => 'пред $1',
+	'poll-time-days' => '{{PLURAL:$1|еден ден|$1 дена}}',
+	'poll-time-hours' => '{{PLURAL:$1|еден час|$1 часа}}',
+	'poll-time-minutes' => '{{PLURAL:$1|една минута|$1 минути}}',
+	'poll-time-seconds' => '{{PLURAL:$1|една секунда|$1 секунди}}',
+	'specialpages-group-poll' => 'Анкети',
+	'right-polladmin' => 'Раководење со анкети',
 );
 
 /** Dutch (Nederlands)
@@ -563,4 +862,212 @@ $messages['nl'] = array(
 	'poll-time-seconds' => '{{PLURAL:$1|1 seconde|$1 seconden}}',
 	'specialpages-group-poll' => 'Peilingen',
 	'right-polladmin' => 'Peilingen beheren',
+);
+
+/** Brazilian Portuguese (português do Brasil)
+ * @author Fúlvio
+ */
+$messages['pt-br'] = array(
+	'adminpoll' => 'Administrar enquetes',
+	'createpoll' => 'Criar uma enquete',
+	'randompoll' => 'Enquete aleatória',
+	'viewpoll' => 'Ver enquetes',
+	'poll-desc' => 'Sistema avançado de enquetes que usa páginas especiais e permite a incorporação de enquetes em páginas wiki',
+	'poll-admin-no-polls' => 'Não há enquetes. [[Special:CreatePoll|Crie uma enquete!]]',
+	'poll-admin-closed' => 'Fechados',
+	'poll-admin-flagged' => 'Marcados',
+	'poll-admin-open' => 'Abertas',
+	'poll-admin-panel' => 'Administrador',
+	'poll-admin-status-nav' => 'Filtrar por status',
+	'poll-admin-title-all' => 'Administração da enquete - Ver todas as enquetes',
+	'poll-admin-title-closed' => 'Administração da enquete - Ver todas as enquetes fechadas',
+	'poll-admin-title-flagged' => 'Administração da enquete - Ver todas as enquetes marcadas',
+	'poll-admin-title-open' => 'Administração da enquete - Ver todas as enquetes abertas',
+	'poll-admin-viewall' => 'Ver todas',
+	'poll-ago' => '$1 atrás',
+	'poll-atleast' => 'Deve ter pelo menos duas opções de resposta',
+	'poll-based-on-votes' => 'baseado em {{PLURAL:$1|um voto|$1 votos}}',
+	'poll-cancel-button' => 'Cancelar',
+	'poll-category' => 'Enquetes',
+	'poll-category-user' => 'Enquetes do(a) usuário(a) $1',
+	'poll-choices-label' => 'Opções de resposta',
+	'poll-close-message' => 'Tem certeza de que deseja fechar esta enquete? Todas as votações serão suspensas.',
+	'poll-close-poll' => 'Fechar enquete',
+	'poll-closed' => 'Esta enquete está fechada para novos votos',
+	'poll-create' => 'Criar enquete',
+	'poll-createpoll-error-nomore' => 'Não há mais enquetes restantes!',
+	'poll-create-button' => 'Crie e comece!',
+	'poll-create-threshold-reason' => 'Desculpe, você não pode criar uma enquete até que você possua pelo menos $1',
+	'poll-create-threshold-title' => 'Criar enquete',
+	'poll-create-title' => 'Criar uma enquete',
+	'poll-createdago' => 'Criada há $1 atrás',
+	'poll-delete-message' => 'Tem certeza de que deseja excluir esta enquete?',
+	'poll-delete-poll' => 'Excluir enquete',
+	'poll-discuss' => 'Discussão',
+	'poll-edit-answers' => 'Editar respostas',
+	'poll-edit-button' => 'Salvar página',
+	'poll-edit-desc' => 'nova enquete',
+	'poll-edit-image' => 'Editar imagem',
+	'poll-edit-invalid-access' => 'Acesso inválido',
+	'poll-edit-title' => 'Editando enquete - $1',
+	'poll-embed' => 'Incorporar à página wiki',
+	'poll-enterquestion' => 'Você deve digitar uma pergunta',
+	'poll-finished' => '<b>Não há mais enquetes disponíveis. Adicione a sua <a href="$1">própria enquete!</a></b> ou <a href="$2">Veja os resultados desta enquete</a>',
+	'poll-flagged' => 'Esta enquete foi marcada',
+	'poll-flagged-message' => 'Tem certeza de que deseja marcar esta enquete?',
+	'poll-flag-poll' => 'Marcar enquete',
+	'poll-hash' => '# é um caractere inválido para a pergunta da enquete.',
+	'poll-image-label' => 'Adicionar uma imagem',
+	'poll-instructions' => 'Crie uma pergunta para a enquete, escreva algumas opções de resposta, pressione o botão "{{int:poll-create-button}}". É muito fácil!',
+	'poll-js-action-complete' => 'Ação concluída', # Fuzzy
+	'poll-js-loading' => 'Carregando...',
+	'poll-next' => 'próx.',
+	'poll-next-poll' => 'Próxima enquete',
+	'poll-no-more-message' => 'Você já votou em todas as enquetes!<br />Não fique triste, [[Special:CreatePoll|crie sua própria enquete]]"',
+	'poll-no-more-title' => 'Não há mais enquetes',
+	'poll-open-message' => 'Você tem certeza de que deseja abrir esta enquete?',
+	'poll-open-poll' => 'Abrir enquete',
+	'poll-pleasechoose' => 'Por favor, escolha outro nome para a enquete',
+	'poll-prev' => 'ant.',
+	'poll-previous-poll' => 'Enquete anterior',
+	'poll-question-label' => 'Pergunta da enquete',
+	'poll-skip' => 'Pular >',
+	'poll-submitted-by' => 'Enviada por',
+	'poll-take-button' => '< Voltar às enquetes',
+	'poll-unavailable' => 'Esta enquete está indisponível',
+	'poll-unflag-poll' => 'Desmarcar enquete',
+	'poll-upload-image-button' => 'Carregar',
+	'poll-upload-new-image' => 'Carregar nova imagem',
+	'poll-view-title' => 'Ver enquetes de $1',
+	'poll-view-order' => 'Ordenar',
+	'poll-view-newest' => 'Mais recentes',
+	'poll-view-popular' => 'Populares',
+	'poll-view-answered-times' => 'Respondida {{PLURAL:$1|uma vez|$1 vezes}}',
+	'poll-view-all-by' => 'Ver todas as enquetes de $1',
+	'poll-voted-for' => 'Você votou em $1 {{PLURAL:$1|enquete|enquetes}} de um total de <b>$2</b> enquetes e ganhou <span class="profile-on">$3 pontos</span>',
+	'poll-votes' => '{{PLURAL:$1|um voto|$1 votos}}',
+	'poll-woops' => 'Ops!',
+	'poll-would-have-earned' => 'Você teria ganho <span class="profile-on">$1 pontos</span> se você tivesse [[Special:UserLogin/signup|se inscrito nesta wiki]]',
+	'poll-time-ago' => '$1 atrás',
+	'poll-time-days' => '{{PLURAL:$1|um dia|$1 dias}}',
+	'poll-time-hours' => '{{PLURAL:S1|uma hora|$1 horas}}',
+	'poll-time-minutes' => '{{PLURAL:$1|um minuto|$1 minutos}}',
+	'poll-time-seconds' => '{{PLURAL:$1|um segundo|$1 segundos}}',
+	'specialpages-group-poll' => 'Enquetes',
+	'right-polladmin' => 'Administrar enquetes',
+);
+
+/** tarandíne (tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'adminpoll' => 'Amministre le sondagge',
+	'createpoll' => "Ccreje 'nu sondagge",
+	'randompoll' => 'Sondagge a uecchije',
+	'viewpoll' => "'Ndruche le sondagge",
+	'poll-admin-closed' => 'Achiuse',
+	'poll-admin-flagged' => 'Signate',
+	'poll-admin-open' => 'Iapre',
+	'poll-admin-panel' => 'Amministratore',
+	'poll-admin-status-nav' => 'Filtre pe state',
+	'poll-admin-viewall' => "'Ndruche tutte",
+	'poll-ago' => '$1 fà',
+	'poll-cancel-button' => 'Annulle',
+	'poll-category' => 'Sondagge',
+	'poll-category-user' => 'Sondagge pe utende $1',
+	'poll-time-ago' => '$1 fà',
+	'specialpages-group-poll' => 'Sondagge',
+);
+
+/** Swedish (svenska)
+ * @author Jopparn
+ */
+$messages['sv'] = array(
+	'adminpoll' => 'Administrera enkäter',
+	'createpoll' => 'Skapa en enkät',
+	'randompoll' => 'Slumpmässiga enkät',
+	'viewpoll' => 'Visa enkäter',
+	'poll-desc' => 'Avancerat enkätundersökningssystem som använder specialsidor och tillåter inbäddning av enkäter på wiki-sidor',
+	'poll-admin-no-polls' => 'Det finns inga enkäter. [[Special:CreatePoll|Skapa en enkät!]]',
+	'poll-admin-closed' => 'Stängd',
+	'poll-admin-flagged' => 'Flaggad',
+	'poll-admin-open' => 'Öppen',
+	'poll-admin-panel' => 'Administratör',
+	'poll-admin-status-nav' => 'Filtrera efter status',
+	'poll-admin-title-all' => 'Enkätadministratör - Visa alla omröstningar',
+	'poll-admin-title-closed' => 'Enkätadministratör - Visa stängda omröstningar',
+	'poll-admin-title-flagged' => 'Enkätadministratör - Visa flaggade omröstningar',
+	'poll-admin-title-open' => 'Enkätadministratör - Visa öppna omröstningar',
+	'poll-admin-viewall' => 'Visa alla',
+	'poll-ago' => '$1 sedan',
+	'poll-atleast' => 'Du måste ha minst två svarsalternativ',
+	'poll-based-on-votes' => '{{PLURAL:$1|ett svar|$1 svar}}',
+	'poll-cancel-button' => 'Avbryt',
+	'poll-category' => 'Enkäter',
+	'poll-category-user' => 'Enkäter av användare $1',
+	'poll-choices-label' => 'Svarsalternativ',
+	'poll-close-message' => 'Är du säker på att du vill stänga denna enkät? Alla omröstningar kommer att upphöra.',
+	'poll-close-poll' => 'Stäng enkät',
+	'poll-closed' => 'Denna enkät har stängts för omröstning',
+	'poll-create' => 'Skapa enkät',
+	'poll-createpoll-error-nomore' => 'Det finns inga fler enkäter kvar!',
+	'poll-create-button' => 'Skapa och spela!',
+	'poll-create-threshold-reason' => 'Tyvärr, kan inte du skapa en enkät tills du har minst $1',
+	'poll-create-threshold-title' => 'Skapa enkät',
+	'poll-create-title' => 'Skapa en enkät',
+	'poll-createdago' => 'Skapad $1 sedan',
+	'poll-delete-message' => 'Är du säker på att du vill ta bort den här enkäten?',
+	'poll-delete-poll' => 'Radera enkät',
+	'poll-discuss' => 'Diskutera',
+	'poll-edit-answers' => 'Redigera svar',
+	'poll-edit-button' => 'Spara sidan',
+	'poll-edit-desc' => 'ny enkät',
+	'poll-edit-image' => 'Redigera bild',
+	'poll-edit-invalid-access' => 'Ogiltig tillgång',
+	'poll-edit-title' => 'Redigerar enkät - $1',
+	'poll-embed' => 'Inbäddad på en wikisida',
+	'poll-enterquestion' => 'Du måste skriva in en fråga',
+	'poll-finished' => '<b>Det finns inga fler omröstningar kvar. Lägg till din <a href="$1">egna!</a></b> </b> eller <a href="$2">Visa resultaten av denna undersökning</a>',
+	'poll-flagged' => 'Denna enkät har flaggats',
+	'poll-flagged-message' => 'Är du säker du vill flagga denna enkät?',
+	'poll-flag-poll' => 'Flagga enkät',
+	'poll-hash' => '# är ett ogiltigt tecken för enkätfrågan.',
+	'poll-image-label' => 'Lägg till en bild',
+	'poll-instructions' => 'Ställ en enkätfråga, skriva ned några svarsalternativ, tryck på "{{int:poll-create-button}}"-knappen. Så enkelt är det!',
+	'poll-js-action-complete' => 'Genomfört', # Fuzzy
+	'poll-js-loading' => 'Laddar...',
+	'poll-next' => 'nästa',
+	'poll-next-poll' => 'Nästa enkät',
+	'poll-no-more-message' => 'Du har svarat på alla enkäter!<br />Bli inte ledsen, [[Special:CreatePoll|skapa din egna]]!',
+	'poll-no-more-title' => 'Inga fler enkäter!',
+	'poll-open-message' => 'Är du säker på att du vill öppna denna enkät?',
+	'poll-open-poll' => 'Öppna enkät',
+	'poll-pleasechoose' => 'Vänligen välj ett annat namn på enkäten.',
+	'poll-prev' => 'föreg.',
+	'poll-previous-poll' => 'Föregående enkät',
+	'poll-question-label' => 'Enkätfråga',
+	'poll-skip' => 'Hoppa över >',
+	'poll-submitted-by' => 'Inskickad av',
+	'poll-take-button' => '< Tillbaka till enkäter',
+	'poll-unavailable' => 'Denna enkät är inte tillgänglig',
+	'poll-unflag-poll' => 'Avflagga enkät',
+	'poll-upload-image-button' => 'Ladda upp',
+	'poll-upload-new-image' => 'Ladda upp ny bild',
+	'poll-view-title' => 'Visa $1s enkäter',
+	'poll-view-order' => 'Sortera',
+	'poll-view-newest' => 'Nyaste',
+	'poll-view-popular' => 'Populär',
+	'poll-view-answered-times' => 'Svarade {{PLURAL:$1|en gång|$1 gånger}}',
+	'poll-view-all-by' => 'Visa alla enkäter av $1',
+	'poll-voted-for' => 'Du har svarat på $1 {{PLURAL:$1|enkät|enkäter}} av totalt <b>$2</b> enkäter och fick <span class="profile-on"> $3 poäng</span>',
+	'poll-votes' => '{{PLURAL:$1|ett svar|$1 svar}}',
+	'poll-woops' => 'Woops!',
+	'poll-would-have-earned' => 'Du skulle ha tjänat <span class="profile-on">$1 poäng</span> om du hade varit [[Special:UserLogin/signup|inloggad]]',
+	'poll-time-ago' => '$1 sedan',
+	'poll-time-days' => '{{PLURAL:$1|en dag|$1 dagar}}',
+	'poll-time-hours' => '{{PLURAL:$1|en timme|$1 timmar}}',
+	'poll-time-minutes' => '{{PLURAL:$1|en minut|$1 minuter}}',
+	'poll-time-seconds' => '{{PLURAL:$1|en sekund|$1 sekunder}}',
+	'specialpages-group-poll' => 'Enkäter',
+	'right-polladmin' => 'Administrera enkäter',
 );

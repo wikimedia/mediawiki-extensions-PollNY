@@ -18,6 +18,16 @@ $specialPageAliases['en'] = array(
 	'ViewPoll' => array( 'ViewPoll' ),
 );
 
+/** German (Deutsch) */
+$specialPageAliases['de'] = array(
+	'AdminPoll' => array( 'Abstimmung_verwalten' ),
+	'CreatePoll' => array( 'Abstimmung_erstellen' ),
+	'PollAjaxUpload' => array( 'Abstimmung_hochladen' ),
+	'RandomPoll' => array( 'Zufällige_Abstimmung' ),
+	'UpdatePoll' => array( 'Abstimmung_aktualisieren' ),
+	'ViewPoll' => array( 'Abstimmung_ansehen' ),
+);
+
 /** Finnish (suomi) */
 $specialPageAliases['fi'] = array(
 	'AdminPoll' => array( 'Ylläpidä äänestyksiä' ),
@@ -25,6 +35,16 @@ $specialPageAliases['fi'] = array(
 	'RandomPoll' => array( 'Satunnainen äänestys' ),
 	'UpdatePoll' => array( 'Päivitä äänestys' ),
 	'ViewPoll' => array( 'Katso äänestys' ),
+);
+
+/** Macedonian (македонски) */
+$specialPageAliases['mk'] = array(
+	'AdminPoll' => array( 'РаководиАнкета' ),
+	'CreatePoll' => array( 'НаправиАнкета' ),
+	'PollAjaxUpload' => array( 'АнкетаПодигањеAjax' ),
+	'RandomPoll' => array( 'СлучајнаАнкета' ),
+	'UpdatePoll' => array( 'ИзмениАнкета' ),
+	'ViewPoll' => array( 'ПрегледАнкета' ),
 );
 
 /** Dutch (Nederlands) */
