@@ -393,6 +393,8 @@ class Poll {
 	public static function getTimeOffset( $time, $timeabrv, $timename ) {
 		$timeStr = '';
 		if( $time[$timeabrv] > 0 ) {
+			// Give grep a chance to find the usages:
+			// poll-time-days, poll-time-hours, poll-time-minutes, poll-time-seconds
 			$timeStr = wfMessage( "poll-time-{$timename}", $time[$timeabrv] )->parse();
 		}
 		if( $timeStr ) {
