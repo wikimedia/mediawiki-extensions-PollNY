@@ -57,7 +57,7 @@ $messages['en'] = array(
 	'poll-edit-title' => 'Editing poll - $1',
 	'poll-embed' => 'Embed on wiki page',
 	'poll-enterquestion' => 'You must enter a question.',
-	'poll-finished' => '<b>There are no more polls left. Add your <a href="$1">own!</a></b> Or <a href="$2">view results of this poll</a>',
+	'poll-finished' => '<b>There are no more polls left. Add your <a href="$1">own!</a></b> Or <a href="$2">view results of this poll</a>.',
 	'poll-flagged' => 'This poll has been flagged',
 	'poll-flagged-message' => 'Are you sure you want to flag this poll?',
 	'poll-flag-poll' => 'Flag poll',
