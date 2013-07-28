@@ -289,7 +289,7 @@ Parameters:
 	'poll-voted-for' => "Message shown to registered users after they've voted in a poll. Parameters:
 * $1 - the amount of polls in which the current user has voted
 * $2 - the amount of all polls in the database
-* $3 - the total amount of points the user has received from voting in polls
+* $3 - the total amount of points the user has received from voting in polls (0, 5, 10, 15, ...)
 
 If anonymous users, the following message will be used:
 * {{msg-mw|Poll-would-have-earned}}",
@@ -297,6 +297,9 @@ If anonymous users, the following message will be used:
 {{Identical|Vote}}',
 	'poll-woops' => 'Used as page title for the error message page.',
 	'poll-would-have-earned' => "Message shown to anonymous users after they've voted in a poll, prompting them to join the wiki.
+
+Parameters:
+* $1 - the total amount of points the registered user can receive from voting in polls (0, 5, 10, 15, ...)
 
 Registered users are shown the following message instead:
 * {{msg-mw|Poll-voted-for}}",
@@ -314,6 +317,17 @@ Registered users are shown the following message instead:
 	'specialpages-group-poll' => '{{doc-special-group}}
 {{Identical|Poll}}',
 	'right-polladmin' => '{{doc-right|polladmin}}',
+);
+
+/** Bengali (বাংলা)
+ * @author Aftab1995
+ */
+$messages['bn'] = array(
+	'poll-time-ago' => '$1 আগে',
+	'poll-time-days' => '{{PLURAL:$1|এক দিন|$1 দিন}}',
+	'poll-time-hours' => '{{PLURAL:$1|এক ঘণ্টা|$1 ঘণ্টা}}',
+	'poll-time-minutes' => '{{PLURAL:$1|এক মিনিট|$1 মিনিট}}',
+	'poll-time-seconds' => '{{PLURAL:$1|এক সেকেন্ড|$1 সেকেন্ড}}',
 );
 
 /** German (Deutsch)
@@ -371,7 +385,7 @@ $messages['de'] = array(
 	'poll-hash' => '# ist ein ungültiges Zeichen für die Abstimmungsfrage.',
 	'poll-image-label' => 'Ein Bild hinzufügen',
 	'poll-instructions' => 'Stelle eine Abstimmungsfrage, biete einige Antwortmöglichkeiten an und klicke auf „{{int:poll-create-button}}“. Es ist so einfach!',
-	'poll-js-action-complete' => 'Aktion vollständig', # Fuzzy
+	'poll-js-action-complete' => 'Die Aktion wurde vervollständigt.',
 	'poll-js-loading' => 'Lade …',
 	'poll-next' => 'nächste',
 	'poll-next-poll' => 'Nächste Abstimmung',
@@ -614,17 +628,17 @@ $messages['ja'] = array(
 	'poll-admin-title-open' => '投票所の管理 - 実施中の投票所の閲覧',
 	'poll-admin-viewall' => 'すべて表示',
 	'poll-ago' => '$1前',
-	'poll-atleast' => '回答の選択肢が 2 個以上必要です',
+	'poll-atleast' => '回答の選択肢が 2 個以上必要です。',
 	'poll-cancel-button' => 'キャンセル',
 	'poll-category' => '投票所',
 	'poll-category-user' => '利用者 $1 による投票所',
 	'poll-choices-label' => '回答の選択肢',
 	'poll-close-message' => 'この投票所を本当に終了しますか? すべての投票は一時停止されます。',
 	'poll-close-poll' => '投票所を終了',
-	'poll-closed' => 'この投票所での投票は終了しました',
+	'poll-closed' => 'この投票所での投票は終了しました。',
 	'poll-create' => '投票所を作成',
 	'poll-create-button' => '作成して開始',
-	'poll-create-threshold-reason' => '申し訳ありませんが、$1 に達するまで投票所は作成できません',
+	'poll-create-threshold-reason' => '申し訳ありませんが、$1 に達するまで投票所は作成できません。',
 	'poll-create-threshold-title' => '投票所の作成',
 	'poll-create-title' => '投票所の作成',
 	'poll-createdago' => '$1前に作成',
@@ -638,11 +652,11 @@ $messages['ja'] = array(
 	'poll-edit-invalid-access' => '無効なアクセスです。',
 	'poll-edit-title' => '投票所の編集 - $1',
 	'poll-embed' => 'ウィキページへの埋め込み',
-	'poll-enterquestion' => '質問文を入力してください',
+	'poll-enterquestion' => '質問文を入力してください。',
 	'poll-hash' => '# は投票所の質問文に使用できない無効な文字です。',
 	'poll-image-label' => '画像の追加',
 	'poll-instructions' => '投票所に掲載する質問文と、その回答の選択肢を記入して、「{{int:poll-create-button}}」をクリックしてください。簡単な手順です。',
-	'poll-js-action-complete' => '操作が完了しました', # Fuzzy
+	'poll-js-action-complete' => '操作が完了しました。',
 	'poll-js-loading' => '読み込み中...',
 	'poll-next' => '次',
 	'poll-next-poll' => '次の投票所',
@@ -650,7 +664,7 @@ $messages['ja'] = array(
 	'poll-no-more-title' => '投票所はこれ以上ありません',
 	'poll-open-message' => 'この投票所を本当に開始しますか?',
 	'poll-open-poll' => '投票所を開始',
-	'poll-pleasechoose' => '別の投票所名を指定してください',
+	'poll-pleasechoose' => '別の投票所名を指定してください。',
 	'poll-prev' => '前',
 	'poll-previous-poll' => '前の投票所',
 	'poll-question-label' => '投票所の質問文',
@@ -666,10 +680,10 @@ $messages['ja'] = array(
 	'poll-view-popular' => '人気順',
 	'poll-view-answered-times' => '{{PLURAL:$1|$1 回}}回答',
 	'poll-view-all-by' => '$1 によるすべての投票所を閲覧',
-	'poll-voted-for' => 'あなたは <b>$2</b> 件中 $1 {{PLURAL:$1|件の投票所}}で投票し、<span class="profile-on">$3 点</span>を獲得しました',
+	'poll-voted-for' => 'あなたは <b>$2</b> 件中 $1 {{PLURAL:$1|件の投票所}}で投票し、<span class="profile-on">$3 点</span>を獲得しました。',
 	'poll-votes' => '{{PLURAL:$1|$1 票}}',
 	'poll-woops' => 'エラー',
-	'poll-would-have-earned' => 'あなたが[[Special:UserLogin/signup|利用者登録]]済みであれば、<span class="profile-on">$1 点</span>を獲得したところでした',
+	'poll-would-have-earned' => '[[Special:UserLogin/signup|利用者登録]]を行うと、投票で <span class="profile-on">$1 点</span>を獲得できます。',
 	'poll-time-ago' => '$1前',
 	'poll-time-days' => '{{PLURAL:$1|$1日}}',
 	'poll-time-hours' => '{{PLURAL:$1|$1時間}}',
@@ -734,7 +748,7 @@ $messages['mk'] = array(
 	'poll-hash' => '# е неважечки како знак во анкетно прашање.',
 	'poll-image-label' => 'Стави слика',
 	'poll-instructions' => 'Поставете анкетно прашање и внесете одговори, па стиснете на копчето „{{int:poll-create-button}}“. Толку!',
-	'poll-js-action-complete' => 'Дејството е извршено', # Fuzzy
+	'poll-js-action-complete' => 'Дејството е извршено.',
 	'poll-js-loading' => 'Вчитувам...',
 	'poll-next' => 'следна',
 	'poll-next-poll' => 'Следна анкета',
