@@ -124,7 +124,6 @@ class PollPage extends Article {
 		} else {
 			$output .= wfMessage(
 				'poll-would-have-earned',
-				'parse',
 				$lang->formatNum( $total_polls * 5 )
 			)->parse();
 		}
