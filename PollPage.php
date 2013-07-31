@@ -122,10 +122,8 @@ class PollPage extends Article {
 				$lang->formatNum( $stats_current_user['poll_votes'] * 5 )
 			)->parse();
 		} else {
-			$output .= wfMessage(
-				'poll-would-have-earned',
-				$lang->formatNum( $total_polls * 5 )
-			)->parse();
+			$output .= wfMessage( 'poll-would-have-earned' )
+				->numParams( $total_polls * 5 )->parse();
 		}
 
 		$output .= '</div>' . "\n";
