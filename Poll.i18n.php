@@ -694,6 +694,31 @@ $messages['ja'] = array(
 	'right-polladmin' => '投票所を管理',
 );
 
+/** Kurdish (Latin script) (Kurdî (latînî)‎)
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'poll-admin-panel' => 'Rêveber',
+	'poll-cancel-button' => 'Betal bike',
+	'poll-edit-answers' => 'Bersivan biguherîne',
+	'poll-edit-button' => 'Rûpelê tomar bike',
+	'poll-edit-image' => 'Wêneyî biguherînê',
+	'poll-time-ago' => 'berî $1',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'poll-ago' => 'Viru(n) $1',
+	'poll-edit-button' => 'Säit späicheren',
+	'poll-edit-desc' => 'Nei Ëmfr',
+	'poll-edit-image' => 'Bild änneren',
+	'poll-image-label' => 'E Bild derbäisetzen',
+	'poll-skip' => 'Iwwersprangen >',
+	'poll-upload-new-image' => 'Neit Bild eroplueden',
+);
+
 /** Macedonian (македонски)
  * @author Bjankuloski06
  */
