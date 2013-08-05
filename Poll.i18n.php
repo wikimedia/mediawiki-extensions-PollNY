@@ -1413,9 +1413,11 @@ $messages['te'] = array(
 );
 
 /** Simplified Chinese (中文（简体）‎)
+ * @author Liuxinyu970226
  * @author Qiyue2001
  */
 $messages['zh-hans'] = array(
+	'adminpoll' => '管理调查',
 	'createpoll' => '创建调查',
 	'randompoll' => '随机调查',
 	'viewpoll' => '查看调查',
@@ -1444,6 +1446,7 @@ $messages['zh-hans'] = array(
 	'poll-create' => '创建调查',
 	'poll-createpoll-error-nomore' => '没有更多的调查！',
 	'poll-create-button' => '创建并开始！',
+	'poll-create-threshold-reason' => '对不起，直到您至少拥有$1之前您不能创建调查。',
 	'poll-create-threshold-title' => '创建调查',
 	'poll-create-title' => '创建一个调查',
 	'poll-createdago' => '于$1前创建',
@@ -1467,6 +1470,9 @@ $messages['zh-hans'] = array(
 	'poll-next' => '下一个',
 	'poll-next-poll' => '下一个调查',
 	'poll-no-more-title' => '没有更多的调查！',
+	'poll-open-message' => '您确信要开启此次调查？',
+	'poll-open-poll' => '开放调查',
+	'poll-pleasechoose' => '请选择其他调查名称。',
 	'poll-prev' => '前一个',
 	'poll-previous-poll' => '前一个调查',
 	'poll-question-label' => '调查的问题',
@@ -1477,6 +1483,7 @@ $messages['zh-hans'] = array(
 	'poll-unflag-poll' => '取消标记调查',
 	'poll-upload-image-button' => '上传',
 	'poll-upload-new-image' => '上传新图像',
+	'poll-view-title' => '查看$1的调查',
 	'poll-view-newest' => '最新',
 	'poll-view-popular' => '最受欢迎',
 	'poll-time-ago' => '$1前',
