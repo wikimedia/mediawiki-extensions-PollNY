@@ -103,6 +103,7 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Nemo bis
  * @author Shirayuki
  * @author Siebrand
  */
@@ -160,7 +161,7 @@ Clicking on this link displays all polls in the database (as opposed to only dis
 	'poll-category-user' => "Name of the category where '''all''' Poll: pages (polls) created by the user will be stored.
 
 Parameters:
-* $1 - thus a username",
+* $1 - the user's username; can be used for GENDER",
 	'poll-choices-label' => 'Shown on [[Special:CreatePoll]].
 
 Used as label for the list of input boxes entering the answer choices.',
