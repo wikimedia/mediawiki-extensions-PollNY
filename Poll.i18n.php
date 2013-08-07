@@ -1088,6 +1088,42 @@ $messages['mk'] = array(
 	'right-polladmin' => 'Раководење со анкети',
 );
 
+/** Marathi (मराठी)
+ * @author V.narsikar
+ */
+$messages['mr'] = array(
+	'viewpoll' => 'मतदान बघा',
+	'poll-admin-status-nav' => 'दर्जाप्रमाणे गाळणी करा',
+	'poll-admin-viewall' => 'सर्व बघा',
+	'poll-atleast' => 'आपला किमान दोन उत्तरांचा पर्याय हवा.',
+	'poll-closed' => 'मत देण्यास मतदान बंद करण्यात आले आहे',
+	'poll-create-threshold-reason' => 'माफ करा,आपणापाशी किमान $1 असल्याशिवाय आपण मतदान सुरू करू शकत नाही .',
+	'poll-create-title' => 'मतदान निर्माण करा',
+	'poll-createdago' => '$1 पूर्वी निर्मिले',
+	'poll-discuss' => 'चर्चा करा',
+	'poll-edit-answers' => 'उत्तरे संपादित करा',
+	'poll-edit-button' => 'पान जतन करा',
+	'poll-enterquestion' => 'आपण एखादा प्रश्न टाकावयास हवा',
+	'poll-finished' => '<b>आता मतदान करायचे बाकी नाही. येथे जोडा आपले <a href="$1">स्वतःचे! </a></b> किंवा<a href="$2">या मतदानाचा निकाल बघा</a>.',
+	'poll-flagged-message' => 'हे नक्की आहे काय कि आपणास या मतदानास खूणपताका लावायची आहे?',
+	'poll-flag-poll' => 'मतदानास खूणपताका लावा',
+	'poll-js-action-complete' => 'क्रिया पूर्ण झाली.',
+	'poll-js-loading' => 'भारण करीत आहे...',
+	'poll-next-poll' => 'नंतरचे मतदान',
+	'poll-question-label' => 'मतदानाचा प्रश्न',
+	'poll-skip' => 'टाळा >',
+	'poll-unavailable' => 'हे मतदान उपलब्ध नाही',
+	'poll-unflag-poll' => 'मतदानाची खूणपताका काढा',
+	'poll-upload-image-button' => 'अपभारण करा',
+	'poll-upload-new-image' => 'नविन चित्र अपभारण करा',
+	'poll-view-title' => '$1चे मतदान दाखवा',
+	'poll-view-newest' => 'नविनतम',
+	'poll-view-popular' => 'आवडता',
+	'poll-woops' => 'ओह!',
+	'poll-time-seconds' => '{{PLURAL:$1|एक सेकंद|$1 सेकंद}}',
+	'right-polladmin' => 'सेवा-सदस्य',
+);
+
 /** Dutch (Nederlands)
  * @author Mitchel Corstjens
  * @author Siebrand
