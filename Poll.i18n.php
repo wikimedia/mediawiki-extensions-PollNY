@@ -1088,14 +1088,36 @@ $messages['mk'] = array(
 	'right-polladmin' => 'Раководење со анкети',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Kavya Manohar
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'poll-edit-answers' => 'ഉത്തരങ്ങൾ തിരുത്തുക',
+	'poll-edit-button' => 'താൾ സേവ് ചെയ്യുക',
+	'poll-edit-image' => 'ചിത്രം തിരുത്തുക',
+	'poll-enterquestion' => 'താങ്കൾ ഒരു ചോദ്യം ചേർക്കേണ്ടതുണ്ട്',
+	'poll-upload-image-button' => 'അപ്‌‌ലോഡ് ചെയ്യുക',
+	'poll-upload-new-image' => 'പുതിയ ചിത്രം അപ്‌ലോഡ് ചെയ്യുക',
+	'poll-view-newest' => 'ഏറ്റവും പുതിയവ',
+	'poll-time-ago' => '$1 മുമ്പ്',
+);
+
 /** Marathi (मराठी)
  * @author V.narsikar
  */
 $messages['mr'] = array(
 	'viewpoll' => 'मतदान बघा',
+	'poll-admin-closed' => 'बंद आहे',
+	'poll-admin-flagged' => 'खूणपताका लावलेला',
+	'poll-admin-open' => 'मुक्त',
+	'poll-admin-panel' => 'प्रशासक',
 	'poll-admin-status-nav' => 'दर्जाप्रमाणे गाळणी करा',
 	'poll-admin-viewall' => 'सर्व बघा',
+	'poll-ago' => '$1 पूर्वी',
 	'poll-atleast' => 'आपला किमान दोन उत्तरांचा पर्याय हवा.',
+	'poll-cancel-button' => 'रद्द करा',
+	'poll-choices-label' => 'उत्तरांची निवड',
 	'poll-closed' => 'मत देण्यास मतदान बंद करण्यात आले आहे',
 	'poll-create-threshold-reason' => 'माफ करा,आपणापाशी किमान $1 असल्याशिवाय आपण मतदान सुरू करू शकत नाही .',
 	'poll-create-title' => 'मतदान निर्माण करा',
@@ -1103,15 +1125,20 @@ $messages['mr'] = array(
 	'poll-discuss' => 'चर्चा करा',
 	'poll-edit-answers' => 'उत्तरे संपादित करा',
 	'poll-edit-button' => 'पान जतन करा',
+	'poll-edit-image' => 'चित्र संपादन करा',
+	'poll-edit-invalid-access' => 'अवैध पोहोच',
 	'poll-enterquestion' => 'आपण एखादा प्रश्न टाकावयास हवा',
 	'poll-finished' => '<b>आता मतदान करायचे बाकी नाही. येथे जोडा आपले <a href="$1">स्वतःचे! </a></b> किंवा<a href="$2">या मतदानाचा निकाल बघा</a>.',
 	'poll-flagged-message' => 'हे नक्की आहे काय कि आपणास या मतदानास खूणपताका लावायची आहे?',
 	'poll-flag-poll' => 'मतदानास खूणपताका लावा',
+	'poll-image-label' => 'चित्र जोडा',
 	'poll-js-action-complete' => 'क्रिया पूर्ण झाली.',
 	'poll-js-loading' => 'भारण करीत आहे...',
+	'poll-next' => 'नंतर',
 	'poll-next-poll' => 'नंतरचे मतदान',
 	'poll-question-label' => 'मतदानाचा प्रश्न',
 	'poll-skip' => 'टाळा >',
+	'poll-submitted-by' => 'द्वारे सादर केले',
 	'poll-unavailable' => 'हे मतदान उपलब्ध नाही',
 	'poll-unflag-poll' => 'मतदानाची खूणपताका काढा',
 	'poll-upload-image-button' => 'अपभारण करा',
@@ -1120,6 +1147,8 @@ $messages['mr'] = array(
 	'poll-view-newest' => 'नविनतम',
 	'poll-view-popular' => 'आवडता',
 	'poll-woops' => 'ओह!',
+	'poll-time-ago' => '$1 पूर्वी',
+	'poll-time-days' => '{{PLURAL:$1|एक दिवस|$1 दिवस}}',
 	'poll-time-seconds' => '{{PLURAL:$1|एक सेकंद|$1 सेकंद}}',
 	'right-polladmin' => 'सेवा-सदस्य',
 );
