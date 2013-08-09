@@ -986,13 +986,27 @@ $messages['ku-latn'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'randompoll' => 'Zoufälleg Ëmfro',
+	'viewpoll' => 'Ëmfroe weisen',
+	'poll-admin-viewall' => 'All weisen',
 	'poll-ago' => 'Viru(n) $1',
+	'poll-cancel-button' => 'Ofbriechen',
+	'poll-category' => 'Ëmfroen',
+	'poll-discuss' => 'Diskutéieren',
 	'poll-edit-button' => 'Säit späicheren',
 	'poll-edit-desc' => 'Nei Ëmfr',
 	'poll-edit-image' => 'Bild änneren',
+	'poll-enterquestion' => 'Dir musst eng Fro aginn.',
 	'poll-image-label' => 'E Bild derbäisetzen',
 	'poll-skip' => 'Iwwersprangen >',
 	'poll-upload-new-image' => 'Neit Bild eroplueden',
+	'poll-view-newest' => 'Neist',
+	'poll-time-ago' => 'viru(n) $1',
+	'poll-time-days' => '{{PLURAL:$1|een Dag|$1 Deeg}}',
+	'poll-time-hours' => '{{PLURAL:$1|eng Stonn|$1 Stonnen}}',
+	'poll-time-minutes' => '{{PLURAL:$1|eng Minutt|$1 Minutten}}',
+	'poll-time-seconds' => '{{PLURAL:$1|eng Sekonn|$1 Sekonnen}}',
+	'specialpages-group-poll' => 'Ëmfroen',
 );
 
 /** Macedonian (македонски)
