@@ -146,7 +146,7 @@ Followed by the following link texts:
 Clicking on this link displays all polls in the database (as opposed to only displaying closed/open/flagged polls).
 {{Identical|View all}}',
 	'poll-ago' => 'Used on [[Special:ViewPoll]]. Parameters:
-* $1 - any one of the following:
+* $1 - the duration (e.g. "{{int:Poll-time-minutes|1}} {{int:Poll-time-seconds|42}} "), uses the following messages:
 ** {{msg-mw|Poll-time-days}}
 ** {{msg-mw|Poll-time-hours}}
 ** {{msg-mw|Poll-time-minutes}}
@@ -305,16 +305,32 @@ Parameters:
 Registered users are shown the following message instead:
 * {{msg-mw|Poll-voted-for}}",
 	'poll-time-ago' => 'Parameters:
-* $1 - any one of the following:
+* $1 - the duration (e.g. "{{int:Poll-time-minutes|1}} {{int:Poll-time-seconds|42}} "), uses the following messages:
 ** {{msg-mw|Poll-time-days}}
 ** {{msg-mw|Poll-time-hours}}
 ** {{msg-mw|Poll-time-minutes}}
 ** {{msg-mw|Poll-time-seconds}}
 {{Identical|$1 ago}}',
-	'poll-time-days' => '{{Identical|Day}}',
-	'poll-time-hours' => '{{Identical|Hour}}',
-	'poll-time-minutes' => '{{Identical|Minute}}',
-	'poll-time-seconds' => '{{Identical|Second}}',
+	'poll-time-days' => 'Used as the duration in the following messages:
+* {{msg-mw|Poll-ago}}
+* {{msg-mw|Poll-time-ago}}
+{{Related|Poll-time}}
+{{Identical|Day}}',
+	'poll-time-hours' => 'Used as the duration in the following messages:
+* {{msg-mw|Poll-ago}}
+* {{msg-mw|Poll-time-ago}}
+{{Related|Poll-time}}
+{{Identical|Hour}}',
+	'poll-time-minutes' => 'Used as the duration in the following messages:
+* {{msg-mw|Poll-ago}}
+* {{msg-mw|Poll-time-ago}}
+{{Related|Poll-time}}
+{{Identical|Minute}}',
+	'poll-time-seconds' => 'Used as the duration in the following messages:
+* {{msg-mw|Poll-ago}}
+* {{msg-mw|Poll-time-ago}}
+{{Related|Poll-time}}
+{{Identical|Second}}',
 	'specialpages-group-poll' => '{{doc-special-group}}
 {{Identical|Poll}}',
 	'right-polladmin' => '{{doc-right|polladmin}}',
@@ -962,10 +978,10 @@ $messages['ja'] = array(
 	'poll-woops' => 'エラー',
 	'poll-would-have-earned' => '[[Special:UserLogin/signup|利用者登録]]を行うと、投票で <span class="profile-on">$1 点</span>を獲得できます。',
 	'poll-time-ago' => '$1前',
-	'poll-time-days' => '{{PLURAL:$1|$1日}}',
-	'poll-time-hours' => '{{PLURAL:$1|$1時間}}',
-	'poll-time-minutes' => '{{PLURAL:$1|$1分}}',
-	'poll-time-seconds' => '{{PLURAL:$1|$1秒}}',
+	'poll-time-days' => '{{PLURAL:$1|$1 日}}',
+	'poll-time-hours' => '{{PLURAL:$1|$1 時間}}',
+	'poll-time-minutes' => '{{PLURAL:$1|$1 分}}',
+	'poll-time-seconds' => '{{PLURAL:$1|$1 秒}}',
 	'specialpages-group-poll' => '投票所',
 	'right-polladmin' => '投票所を管理',
 );
@@ -986,17 +1002,23 @@ $messages['ku-latn'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'createpoll' => 'eng Ëmfro uleeën',
 	'randompoll' => 'Zoufälleg Ëmfro',
 	'viewpoll' => 'Ëmfroe weisen',
 	'poll-admin-closed' => 'Zougemaach',
 	'poll-admin-flagged' => 'Markéiert',
+	'poll-admin-status-nav' => 'Nom Status filteren',
 	'poll-admin-viewall' => 'All weisen',
 	'poll-ago' => 'Viru(n) $1',
 	'poll-cancel-button' => 'Ofbriechen',
 	'poll-category' => 'Ëmfroen',
+	'poll-close-poll' => 'Ëmfro zoumaachen',
+	'poll-closed' => 'Dës Ëmfro ass ofgeschloss. Dir kënnt net méi ofstëmmen.',
 	'poll-create' => 'Ëmfro uleeën',
 	'poll-createpoll-error-nomore' => 'Et gëtt keng Ëmfroe méi!',
 	'poll-create-button' => 'Uleeën a spillen!',
+	'poll-create-title' => 'Eng Ëmfro uleeën',
+	'poll-createdago' => 'Viru(n) $1 ugeluecht',
 	'poll-delete-message' => 'Sidd Dir sécher datt Dir dës Ëmfro läsche wëllt?',
 	'poll-delete-poll' => 'Ëmfro läschen',
 	'poll-discuss' => 'Diskutéieren',
@@ -1005,16 +1027,26 @@ $messages['lb'] = array(
 	'poll-edit-desc' => 'Nei Ëmfr',
 	'poll-edit-image' => 'Bild änneren',
 	'poll-enterquestion' => 'Dir musst eng Fro aginn.',
+	'poll-flagged' => 'Dës Ëmfro gouf markéiert',
+	'poll-flagged-message' => 'Sidd Dir sécher datt Dir dës Ëmfro markéiere wëllt?',
 	'poll-image-label' => 'E Bild derbäisetzen',
+	'poll-js-action-complete' => 'Aktioun gouf ofgeschloss',
 	'poll-js-loading' => 'Lueden...',
 	'poll-next' => 'nächst',
 	'poll-next-poll' => 'Nächst Ëmfro',
+	'poll-no-more-title' => 'Keng Ëmfroe méi!',
+	'poll-prev' => 'vireg',
 	'poll-previous-poll' => 'Vireg Ëmfro',
+	'poll-question-label' => 'Fro vun der Ëmfro',
 	'poll-skip' => 'Iwwersprangen >',
+	'poll-take-button' => "< Zréck op d'Ëmfroen",
+	'poll-unavailable' => 'Dës Ëmfro ass net disponibel',
 	'poll-upload-image-button' => 'Eroplueden',
 	'poll-upload-new-image' => 'Neit Bild eroplueden',
 	'poll-view-newest' => 'Neist',
 	'poll-view-popular' => ' Beléift',
+	'poll-votes' => '({{PLURAL:$1|eng Stëmm|$1 Stëmmen}})',
+	'poll-woops' => 'Ups!',
 	'poll-time-ago' => 'viru(n) $1',
 	'poll-time-days' => '{{PLURAL:$1|een Dag|$1 Deeg}}',
 	'poll-time-hours' => '{{PLURAL:$1|eng Stonn|$1 Stonnen}}',
@@ -1273,6 +1305,14 @@ $messages['nl'] = array(
 	'poll-time-seconds' => '{{PLURAL:$1|1 seconde|$1 seconden}}',
 	'specialpages-group-poll' => 'Peilingen',
 	'right-polladmin' => 'Peilingen beheren',
+);
+
+/** Portuguese (português)
+ * @author Luckas
+ */
+$messages['pt'] = array(
+	'poll-cancel-button' => 'Cancelar',
+	'poll-edit-button' => 'Salvar página',
 );
 
 /** Brazilian Portuguese (português do Brasil)
