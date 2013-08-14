@@ -1017,6 +1017,7 @@ $messages['lb'] = array(
 	'poll-create' => 'Ëmfro uleeën',
 	'poll-createpoll-error-nomore' => 'Et gëtt keng Ëmfroe méi!',
 	'poll-create-button' => 'Uleeën a spillen!',
+	'poll-create-threshold-title' => 'Ëmfro uleeën',
 	'poll-create-title' => 'Eng Ëmfro uleeën',
 	'poll-createdago' => 'Viru(n) $1 ugeluecht',
 	'poll-delete-message' => 'Sidd Dir sécher datt Dir dës Ëmfro läsche wëllt?',
