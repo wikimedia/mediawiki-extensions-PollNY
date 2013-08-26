@@ -153,7 +153,10 @@ Clicking on this link displays all polls in the database (as opposed to only dis
 ** {{msg-mw|Poll-time-seconds}}
 {{Identical|$1 ago}}',
 	'poll-atleast' => 'Error message shown in a JavaScript <code>alert()</code> on [[Special:CreatePoll]] after the user has pressed the {{msg-mw|poll-create-button}} button if there is only one answer choice.',
-	'poll-based-on-votes' => 'Shown on the output of a poll embedded via the <code>&lt;pollembed&gt;</code> tag',
+	'poll-based-on-votes' => 'Shown on the output of a poll embedded via the <code>&lt;pollembed&gt;</code> tag.
+
+Parameters:
+* $1 - total number of votes',
 	'poll-cancel-button' => 'Button label.
 {{Identical|Cancel}}',
 	'poll-category' => "Name of the category where '''all''' Poll: pages will be stored.
@@ -294,7 +297,10 @@ Parameters:
 
 If anonymous users, the following message will be used:
 * {{msg-mw|Poll-would-have-earned}}",
-	'poll-votes' => 'Amount of votes, displayed next to or below the bar indicating vote perentages (when displaying a poll on a wiki page via the <code>&lt;pollembed&gt;</code> tag.
+	'poll-votes' => 'Amount of votes, displayed next to or below the bar indicating vote percentages (when displaying a poll on a wiki page via the <code>&lt;pollembed&gt;</code> tag.
+
+Parameters:
+* $1 - number of votes
 {{Identical|Vote}}',
 	'poll-woops' => 'Used as page title for the error message page.',
 	'poll-would-have-earned' => "Message shown to anonymous users after they've voted in a poll, prompting them to join the wiki.
@@ -311,24 +317,32 @@ Registered users are shown the following message instead:
 ** {{msg-mw|Poll-time-minutes}}
 ** {{msg-mw|Poll-time-seconds}}
 {{Identical|$1 ago}}',
-	'poll-time-days' => 'Used as the duration in the following messages:
+	'poll-time-days' => 'Used as <code>$1</code> in the following messages:
 * {{msg-mw|Poll-ago}}
 * {{msg-mw|Poll-time-ago}}
+Parameters:
+* $1 - number of days
 {{Related|Poll-time}}
 {{Identical|Day}}',
-	'poll-time-hours' => 'Used as the duration in the following messages:
+	'poll-time-hours' => 'Used as <code>$1</code> in the following messages:
 * {{msg-mw|Poll-ago}}
 * {{msg-mw|Poll-time-ago}}
+Parameters:
+* $1 - number of hours
 {{Related|Poll-time}}
 {{Identical|Hour}}',
-	'poll-time-minutes' => 'Used as the duration in the following messages:
+	'poll-time-minutes' => 'Used as <code>$1</code> in the following messages:
 * {{msg-mw|Poll-ago}}
 * {{msg-mw|Poll-time-ago}}
+Parameters:
+* $1 - number of minutes
 {{Related|Poll-time}}
 {{Identical|Minute}}',
-	'poll-time-seconds' => 'Used as the duration in the following messages:
+	'poll-time-seconds' => 'Used as <code>$1</code> in the following messages:
 * {{msg-mw|Poll-ago}}
 * {{msg-mw|Poll-time-ago}}
+Parameters:
+* $1 - number of seconds
 {{Related|Poll-time}}
 {{Identical|Second}}',
 	'specialpages-group-poll' => '{{doc-special-group}}
