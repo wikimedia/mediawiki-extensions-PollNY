@@ -1021,16 +1021,27 @@ $messages['lb'] = array(
 	'viewpoll' => 'Ëmfroe weisen',
 	'poll-admin-closed' => 'Zougemaach',
 	'poll-admin-flagged' => 'Markéiert',
+	'poll-admin-panel' => 'Gestioun',
 	'poll-admin-status-nav' => 'Nom Status filteren',
+	'poll-admin-title-all' => 'Gestioun vun Ëmfroen - all Ëmfroe weisen',
+	'poll-admin-title-closed' => 'Gestioun vun Ëmfroen - ofgeschlossen Ëmfroe weisen',
+	'poll-admin-title-flagged' => 'Gestioun vun Ëmfroen - markéiert Ëmfroe weisen',
+	'poll-admin-title-open' => 'Gestioun vun Ëmfroen - oppen Ëmfroe weisen',
 	'poll-admin-viewall' => 'All weisen',
 	'poll-ago' => 'Viru(n) $1',
+	'poll-atleast' => 'Dir musst mindestens zwou méiglech Äntwerten hunn.',
+	'poll-based-on-votes' => 'baséiert op {{PLURAL:$1|enger Stëmm|$1 Stëmmen}}',
 	'poll-cancel-button' => 'Ofbriechen',
 	'poll-category' => 'Ëmfroen',
+	'poll-category-user' => 'Ëmfroe vum Benotzer $1',
+	'poll-choices-label' => 'Méiglech Äntwerten',
+	'poll-close-message' => 'Sidd Dir sécher datt Dir dës Ëmfro zoumaache wëllt? All Ofstëmmungen gi vun elo u suspendéiert.',
 	'poll-close-poll' => 'Ëmfro zoumaachen',
 	'poll-closed' => 'Dës Ëmfro ass ofgeschloss. Dir kënnt net méi ofstëmmen.',
 	'poll-create' => 'Ëmfro uleeën',
 	'poll-createpoll-error-nomore' => 'Et gëtt keng Ëmfroe méi!',
 	'poll-create-button' => 'Uleeën a spillen!',
+	'poll-create-threshold-reason' => 'Pardon, Dir kënnt keng Ëmfro uleeë bis Dir net mindestens $1 hutt.',
 	'poll-create-threshold-title' => 'Ëmfro uleeën',
 	'poll-create-title' => 'Eng Ëmfro uleeën',
 	'poll-createdago' => 'Viru(n) $1 ugeluecht',
@@ -1042,6 +1053,7 @@ $messages['lb'] = array(
 	'poll-edit-desc' => 'Nei Ëmfr',
 	'poll-edit-image' => 'Bild änneren',
 	'poll-edit-title' => 'Ëmfro änneren - $1',
+	'poll-embed' => 'Op Wikisäit abauen',
 	'poll-enterquestion' => 'Dir musst eng Fro aginn.',
 	'poll-flagged' => 'Dës Ëmfro gouf markéiert',
 	'poll-flagged-message' => 'Sidd Dir sécher datt Dir dës Ëmfro markéiere wëllt?',
@@ -1072,6 +1084,7 @@ $messages['lb'] = array(
 	'poll-time-minutes' => '{{PLURAL:$1|eng Minutt|$1 Minutten}}',
 	'poll-time-seconds' => '{{PLURAL:$1|eng Sekonn|$1 Sekonnen}}',
 	'specialpages-group-poll' => 'Ëmfroen',
+	'right-polladmin' => 'Ëmfroe geréieren',
 );
 
 /** Macedonian (македонски)
@@ -1324,6 +1337,31 @@ $messages['nl'] = array(
 	'poll-time-seconds' => '{{PLURAL:$1|1 seconde|$1 seconden}}',
 	'specialpages-group-poll' => 'Peilingen',
 	'right-polladmin' => 'Peilingen beheren',
+);
+
+/** Occitan (occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'adminpoll' => 'Administracion dels sondatges',
+	'createpoll' => 'Crear un sondatge',
+	'randompoll' => 'Sondatge aleatòri',
+	'viewpoll' => 'Veire los sondatges',
+	'poll-desc' => "Sistèma de sondatge evoluat qu'utiliza las paginas especialas e permet d’incorporar de sondatges dins las paginas de wiki",
+	'poll-admin-no-polls' => 'I a pas cap de sondatge. [[Special:CreatePoll|Crear un sondatge !]]',
+	'poll-admin-closed' => 'Tampat',
+	'poll-admin-flagged' => 'Marcat',
+	'poll-admin-open' => 'Dobrir',
+	'poll-admin-panel' => 'Administrar',
+	'poll-admin-status-nav' => 'Filtrar per estat',
+	'poll-admin-title-all' => 'Administracion dels sondatges - Veire totes los sondatges',
+	'poll-admin-title-closed' => 'Administracion dels sondatges - Veire los sondatges clausurats',
+	'poll-admin-title-flagged' => 'Administracion dels sondatges - Veire los sondatges marcats',
+	'poll-admin-title-open' => 'Administracion dels sondatges - Veire los sondatges dobèrts',
+	'poll-admin-viewall' => 'Afichar tot',
+	'poll-ago' => 'I a $1',
+	'poll-cancel-button' => 'Anullar',
+	'poll-category' => 'Sondatges',
 );
 
 /** Portuguese (português)
