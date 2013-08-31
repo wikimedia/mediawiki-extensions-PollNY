@@ -269,10 +269,10 @@ Used as label for the input box entering the question.',
 	'poll-upload-new-image' => "Link title.
 
 This link is shown on [[Special:CreatePoll]] after the user has uploaded an image with that special page's built-in upload form.",
-	'poll-view-title' => "this message can be the title of [[Special:ViewPoll]] when viewing the polls of a certain user (as opposed to viewing all available polls, in which case that special page's title is {{msg-mw|Viewpoll}}).
+	'poll-view-title' => "This message can be the title of [[Special:ViewPoll]] when viewing the polls of a certain user (as opposed to viewing all available polls, in which case that special page's title is {{msg-mw|Viewpoll}}).
 
 Parameters:
-* $1 - a username",
+* $1 - a username (<nowiki>{{GENDER}}</nowiki> can be used for this for languages that need it)",
 	'poll-view-order' => 'Heading of the right-hand navigation menu on [[Special:ViewPoll]]; "order" refers to the sort order.
 
 Followed by the following link texts:
@@ -289,7 +289,8 @@ Parameters:
 	'poll-view-all-by' => "Link text shown in the {{msg-mw|Poll-submitted-by}} box, below the user's avatar.
 
 Parameters:
-* $1 - a username (truncated if it's over 27 characters long)",
+* $1 - a username (truncated if it's over 27 characters long)
+* $2 - full, untruncated username for gendered languages that need to be able to use <nowiki>{{GENDER}}</nowiki>",
 	'poll-voted-for' => "Message shown to registered users after they've voted in a poll. Parameters:
 * $1 - the amount of polls in which the current user has voted
 * $2 - the amount of all polls in the database
@@ -304,6 +305,8 @@ Parameters:
 {{Identical|Vote}}',
 	'poll-woops' => 'Used as page title for the error message page.',
 	'poll-would-have-earned' => "Message shown to anonymous users after they've voted in a poll, prompting them to join the wiki.
+
+<nowiki>{{PLURAL}}</nowiki> can be used as this message supports full wikitext parsing.
 
 Parameters:
 * $1 - the total amount of points the registered user can receive from voting in polls (0, 5, 10, 15, ...)

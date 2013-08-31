@@ -108,7 +108,7 @@ class PollPage extends Article {
 					<div class=\"cleared\"></div>
 
 					<a href=\"" . SpecialPage::getTitleFor( 'ViewPoll' )->escapeFullURL( 'user=' . $poll_info['user_name'] ) . '">'
-						. wfMessage( 'poll-view-all-by', $user_name_short )->parse() . '</a>
+						. wfMessage( 'poll-view-all-by', $user_name_short, $poll_info['user_name'] )->parse() . '</a>
 
 				</div>';
 
