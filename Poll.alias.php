@@ -43,7 +43,7 @@ $specialPageAliases['ko'] = array(
 	'CreatePoll' => array( '설문조사만들기' ),
 	'PollAjaxUpload' => array( '설문조사Ajax올리기' ),
 	'RandomPoll' => array( '임의설문조사' ),
-	'UpdatePoll' => array( '설문조사올리기' ),
+	'UpdatePoll' => array( '설문조사업데이트' ),
 	'ViewPoll' => array( '설문조사보기' ),
 );
 
