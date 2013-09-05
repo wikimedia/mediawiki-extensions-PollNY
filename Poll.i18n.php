@@ -1457,6 +1457,7 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (português do Brasil)
+ * @author Cainamarques
  * @author Fúlvio
  */
 $messages['pt-br'] = array(
@@ -1511,7 +1512,7 @@ $messages['pt-br'] = array(
 	'poll-hash' => '# é um caractere inválido para a pergunta da enquete.',
 	'poll-image-label' => 'Adicionar uma imagem',
 	'poll-instructions' => 'Crie uma pergunta para a enquete, escreva algumas opções de resposta, pressione o botão "{{int:poll-create-button}}". É muito fácil!',
-	'poll-js-action-complete' => 'Ação concluída', # Fuzzy
+	'poll-js-action-complete' => 'A ação foi concluída',
 	'poll-js-loading' => 'Carregando...',
 	'poll-next' => 'próx.',
 	'poll-next-poll' => 'Próxima enquete',
