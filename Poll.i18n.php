@@ -286,11 +286,12 @@ Followed by the following link texts:
 
 Parameters:
 * $1 - the number indicating how many times the poll has been answered',
-	'poll-view-all-by' => "Link text shown in the {{msg-mw|Poll-submitted-by}} box, below the user's avatar.
+	'poll-view-all-by' => "{{gender}}
+Link text shown in the {{msg-mw|Poll-submitted-by}} box, below the user's avatar.
 
 Parameters:
 * $1 - a username (truncated if it's over 27 characters long)
-* $2 - full, untruncated username for gendered languages that need to be able to use <nowiki>{{GENDER}}</nowiki>",
+* $2 - (Optional) full, untruncated username, for <nowiki>{{GENDER}}</nowiki> support",
 	'poll-voted-for' => "Message shown to registered users after they've voted in a poll. Parameters:
 * $1 - the amount of polls in which the current user has voted
 * $2 - the amount of all polls in the database
