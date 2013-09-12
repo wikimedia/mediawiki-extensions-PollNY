@@ -173,11 +173,11 @@ Used as label for the list of input boxes entering the answer choices.',
 	'poll-closed' => 'Informational message displayed on a page where a poll has been embedded via the <code>&lt;pollembed&gt;</code> tag and said poll has since been closed for voting, i.e. no new votes are accepted',
 	'poll-create' => 'Link title; this link is shown on the right-hand {{msg-mw|Poll-submitted-by}} box on all Poll: pages',
 	'poll-createpoll-error-nomore' => 'Error message; keep it simple, this is used in JavaScript so it cannot contain links etc.',
-	'poll-create-button' => 'Shown on [[Special:CreatePoll]].
+	'poll-create-button' => 'Used as label for the Submit button, in [[Special:CreatePoll]].
 
-Used as label for the Submit button.
+This means "Create a poll and open it".
 
-This means "Create a poll and open it".',
+Used in {{msg-mw|Poll-instructions}}.',
 	'poll-create-threshold-reason' => 'Error message displayed when <code>$wgCreatePollThresholds</code> is defined and the user does not match one or more of the defined thresholds.
 
 Parameters:
@@ -222,7 +222,9 @@ The title for this error message is {{msg-mw|Poll-woops}}.",
 	'poll-flag-poll' => 'Link title; flagging removes the poll from circulation until an admin has reviewed and either reapproved or deleted it.',
 	'poll-hash' => "Displayed to the user in a JavaScript <code>alert()</code> if they try to create a poll where the question contains the # (hash) character after they've pressed the {{msg-mw|poll-create-button}} button.",
 	'poll-image-label' => 'Heading title on [[Special:CreatePoll]]; the upload form for uploading a picture to the poll is displayed below this header',
-	'poll-instructions' => 'Instructions displayed to the user on [[Special:CreatePoll]], below the {{msg-mw|Poll-create-title}} title.',
+	'poll-instructions' => 'Instructions displayed to the user on [[Special:CreatePoll]], below the {{msg-mw|Poll-create-title}} title.
+
+Refers to {{msg-mw|Poll-create-button}}.',
 	'poll-js-action-complete' => "Displayed (via JavaScript) to the user when they've performed an administrative action, such as closing a poll.
 
 See also:
