@@ -153,7 +153,7 @@ Clicking on this link displays all polls in the database (as opposed to only dis
 ** {{msg-mw|Poll-time-seconds}}
 {{Identical|$1 ago}}',
 	'poll-atleast' => 'Error message shown in a JavaScript <code>alert()</code> on [[Special:CreatePoll]] after the user has pressed the {{msg-mw|poll-create-button}} button if there is only one answer choice.',
-	'poll-based-on-votes' => 'Shown on the output of a poll embedded via the <code>&lt;pollembed&gt;</code> tag.
+	'poll-based-on-votes' => 'Shown on the output of a poll embedded via the <code><nowiki><pollembed></nowiki></code> tag.
 
 Parameters:
 * $1 - total number of votes',
@@ -170,7 +170,7 @@ Parameters:
 Used as label for the list of input boxes entering the answer choices.',
 	'poll-close-message' => 'Confirmation message shown to the user (who has the "polladmin" user right) in a JavaScript <code>alert()</code> after they\'ve pressed the {{msg-mw|Poll-close-poll}} link to close a poll.',
 	'poll-close-poll' => 'Link text; closing a poll prevents users from voting in it',
-	'poll-closed' => 'Informational message displayed on a page where a poll has been embedded via the <code>&lt;pollembed&gt;</code> tag and said poll has since been closed for voting, i.e. no new votes are accepted',
+	'poll-closed' => 'Informational message displayed on a page where a poll has been embedded via the <code><nowiki><pollembed></nowiki></code> tag and said poll has since been closed for voting, i.e. no new votes are accepted.',
 	'poll-create' => 'Link title; this link is shown on the right-hand {{msg-mw|Poll-submitted-by}} box on all Poll: pages',
 	'poll-createpoll-error-nomore' => 'Error message; keep it simple, this is used in JavaScript so it cannot contain links etc.',
 	'poll-create-button' => 'Used as label for the Submit button, in [[Special:CreatePoll]].
@@ -187,7 +187,7 @@ Parameters:
 Similar to {{msg-mw|Poll-create-title}}.',
 	'poll-create-title' => '{{doc-special|CreatePoll}}
 The special page to create new polls.',
-	'poll-createdago' => 'Displayed at the bottom of every Poll: page as well as at the bottom of polls embedded via the <code>&lt;pollembed&gt;</code> tag.
+	'poll-createdago' => 'Displayed at the bottom of every Poll: page as well as at the bottom of polls embedded via the <code><nowiki><pollembed></nowiki></code> tag.
 
 Parameters:
 * $1 - a timestamp, like "{{int:Poll-time-hours|1}} {{int:Poll-time-minutes|15}} " (with trailing whitespace) which uses the following messages:
@@ -197,7 +197,7 @@ Parameters:
 ** {{msg-mw|Poll-time-seconds}}',
 	'poll-delete-message' => 'Confirmation message shown to the user (who has the "polladmin" user right) in a JavaScript <code>alert()</code> after they\'ve pressed the {{msg-mw|Poll-delete-poll}} link to delete a poll.',
 	'poll-delete-poll' => 'Link title; this link is shown below the right-hand {{msg-mw|Poll-submitted-by}} box on all Poll: pages for users who have the "polladmin" user right',
-	'poll-discuss' => 'Link title; this link is shown below the {{msg-mw|Poll-based-on-votes}} text when a poll has been embedded on a wiki page via the <code>&lt;pollembed&gt;</code> tag',
+	'poll-discuss' => 'Link title; this link is shown below the {{msg-mw|Poll-based-on-votes}} text when a poll has been embedded on a wiki page via the <code><nowiki><pollembed></nowiki></code> tag.',
 	'poll-edit-answers' => 'Shown on [[Special:UpdatePoll]].
 
 Used as <code><nowiki><h1></nowiki></code> heading.
@@ -264,7 +264,7 @@ Used as label for the input box entering the question.',
 {{Identical|Skip}}',
 	'poll-submitted-by' => "Title of the box shown on each Poll: page that contains the poll author's username, avatar, some statistics about the poll author and a link to all the polls created by that user.",
 	'poll-take-button' => 'Link title, shown on both [[Special:AdminPoll]] and [[Special:ViewPoll]]; on the latter page, clicking on this link takes the user to a random poll via [[Special:RandomPoll]].',
-	'poll-unavailable' => "Message displayed when a poll embedded to a page with the <code>&lt;pollembed&gt;</code> tag cannot be rendered (the poll page's page ID is zero or less)",
+	'poll-unavailable' => "Message displayed when a poll embedded to a page with the <code><nowiki><pollembed></nowiki></code> tag cannot be rendered (the poll page's page ID is zero or less)",
 	'poll-unflag-poll' => 'Link text; unflagging a poll allows the poll to be shown to users so that they can participate in it',
 	'poll-upload-image-button' => 'Button text.
 {{Identical|Upload}}',
@@ -301,7 +301,7 @@ Parameters:
 
 If anonymous users, the following message will be used:
 * {{msg-mw|Poll-would-have-earned}}",
-	'poll-votes' => 'Amount of votes, displayed next to or below the bar indicating vote percentages (when displaying a poll on a wiki page via the <code>&lt;pollembed&gt;</code> tag.
+	'poll-votes' => 'Amount of votes, displayed next to or below the bar indicating vote percentages (when displaying a poll on a wiki page via the <code><nowiki><pollembed></nowiki></code> tag.
 
 Parameters:
 * $1 - number of votes
