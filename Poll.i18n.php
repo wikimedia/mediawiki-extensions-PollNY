@@ -151,7 +151,7 @@ Clicking on this link displays all polls in the database (as opposed to only dis
 ** {{msg-mw|Poll-time-hours}}
 ** {{msg-mw|Poll-time-minutes}}
 ** {{msg-mw|Poll-time-seconds}}
-{{Identical|$1 ago}}',
+{{Identical|Ago}}',
 	'poll-atleast' => 'Error message shown in a JavaScript <code>alert()</code> on [[Special:CreatePoll]] after the user has pressed the {{msg-mw|poll-create-button}} button if there is only one answer choice.',
 	'poll-based-on-votes' => 'Shown on the output of a poll embedded via the <code><nowiki><pollembed></nowiki></code> tag.
 
@@ -322,7 +322,7 @@ Registered users are shown the following message instead:
 ** {{msg-mw|Poll-time-hours}}
 ** {{msg-mw|Poll-time-minutes}}
 ** {{msg-mw|Poll-time-seconds}}
-{{Identical|$1 ago}}',
+{{Identical|Ago}}',
 	'poll-time-days' => 'Used as <code>$1</code> in the following messages:
 * {{msg-mw|Poll-ago}}
 * {{msg-mw|Poll-time-ago}}
