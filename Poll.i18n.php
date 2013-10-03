@@ -548,6 +548,14 @@ $messages['de'] = array(
 	'right-polladmin' => 'Abstimmungen verwalten',
 );
 
+/** Spanish (español)
+ * @author Ovruni
+ */
+$messages['es'] = array(
+	'poll-cancel-button' => 'Cancelar',
+	'poll-js-loading' => 'Cargando...',
+);
+
 /** Finnish (suomi)
  * @author Jack Phoenix <jack@countervandalism.net>
  */
