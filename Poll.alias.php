@@ -5,6 +5,7 @@
  * @file
  * @ingroup Extensions
  */
+// @codingStandardsIgnoreFile
 
 $specialPageAliases = array();
 
@@ -59,9 +60,9 @@ $specialPageAliases['mk'] = array(
 
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
-	'AdminPoll' => array( 'Beheer peiling' ),
-	'CreatePoll' => array( 'Maak peiling' ),
-	'RandomPoll' => array( 'Willekeurige peiling' ),
-	'UpdatePoll' => array( 'Update peiling' ),
-	'ViewPoll' => array( 'Bekijk peiling' ),
+	'AdminPoll' => array( 'PeilingBeheren' ),
+	'CreatePoll' => array( 'PeilingMaken' ),
+	'RandomPoll' => array( 'WillekeurigePeiling' ),
+	'UpdatePoll' => array( 'PeilingBijwerken' ),
+	'ViewPoll' => array( 'PeilingWeergeven' ),
 );
