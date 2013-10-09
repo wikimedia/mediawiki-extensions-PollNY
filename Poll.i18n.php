@@ -572,6 +572,7 @@ $messages['es'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Ebraminio
  * @author Omidh
  */
 $messages['fa'] = array(
@@ -644,7 +645,7 @@ $messages['fa'] = array(
 	'poll-unavailable' => 'این نظر سنجی دردسترس نیست',
 	'poll-unflag-poll' => 'حذف علامت نظرسنجی',
 	'poll-upload-image-button' => 'بارگذاری',
-	'poll-upload-new-image' => 'بارگزاری تصویر جدید',
+	'poll-upload-new-image' => 'بارگذاری نگارهٔ جدید',
 	'poll-view-title' => 'نظرسنجی های $1',
 	'poll-view-order' => 'مرتب سازی',
 	'poll-view-newest' => 'جدیدترین',
@@ -1636,11 +1637,12 @@ $messages['oc'] = array(
 );
 
 /** Portuguese (português)
+ * @author Hamilton Abreu
  * @author Luckas
  */
 $messages['pt'] = array(
 	'poll-cancel-button' => 'Cancelar',
-	'poll-edit-button' => 'Salvar página',
+	'poll-edit-button' => 'Gravar página',
 );
 
 /** Brazilian Portuguese (português do Brasil)
