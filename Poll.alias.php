@@ -66,3 +66,12 @@ $specialPageAliases['nl'] = array(
 	'UpdatePoll' => array( 'PeilingBijwerken' ),
 	'ViewPoll' => array( 'PeilingWeergeven' ),
 );
+
+/** Simplified Chinese (中文（简体）‎) */
+$specialPageAliases['zh-hans'] = array(
+	'AdminPoll' => array( '管理员投票' ),
+	'CreatePoll' => array( '创建投票' ),
+	'PollAjaxUpload' => array( '投票Ajax上传' ),
+	'UpdatePoll' => array( '更新投票' ),
+	'ViewPoll' => array( '查看投票' ),
+);
