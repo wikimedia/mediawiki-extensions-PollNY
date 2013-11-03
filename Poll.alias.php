@@ -75,3 +75,12 @@ $specialPageAliases['zh-hans'] = array(
 	'UpdatePoll' => array( '更新投票' ),
 	'ViewPoll' => array( '查看投票' ),
 );
+
+/** Traditional Chinese (中文（繁體）‎) */
+$specialPageAliases['zh-hant'] = array(
+	'AdminPoll' => array( '管理員投票' ),
+	'CreatePoll' => array( '建立投票' ),
+	'PollAjaxUpload' => array( '投票Ajax上載' ),
+	'UpdatePoll' => array( '覆寫投票' ),
+	'ViewPoll' => array( '查看投票' ),
+);
