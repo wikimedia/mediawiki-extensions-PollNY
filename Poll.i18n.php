@@ -1767,6 +1767,60 @@ $messages['roa-tara'] = array(
 	'right-polladmin' => 'Amministre le sondagge',
 );
 
+/** Russian (русский)
+ * @author Okras
+ */
+$messages['ru'] = array(
+	'adminpoll' => 'Администрирование опросов',
+	'createpoll' => 'Создать опрос',
+	'randompoll' => 'Случайный опрос',
+	'viewpoll' => 'Просмотр опросов',
+	'poll-desc' => 'Продвинутая система опросов, которая использует спецстраницы и позволяет внедрять опросы на вики-страницы',
+	'poll-admin-closed' => 'Закрытые',
+	'poll-admin-flagged' => 'Отмеченные',
+	'poll-admin-open' => 'Открытые',
+	'poll-admin-panel' => 'Администрирование',
+	'poll-admin-status-nav' => 'Фильтровать по статусу',
+	'poll-ago' => '$1 назад',
+	'poll-cancel-button' => 'Отмена',
+	'poll-category' => 'Опросы',
+	'poll-category-user' => 'Опросы от участника $1',
+	'poll-choices-label' => 'Варианты ответа',
+	'poll-close-poll' => 'Закрыть опрос',
+	'poll-closed' => 'Голосование по этому опрос было закрыто.',
+	'poll-create' => 'Создать опрос',
+	'poll-create-threshold-title' => 'Создать опрос',
+	'poll-create-title' => 'Создать опрос',
+	'poll-createdago' => 'Создан $1 назад',
+	'poll-delete-message' => 'Вы уверены, что хотите удалить этот опрос?',
+	'poll-delete-poll' => 'Удалить опрос',
+	'poll-discuss' => 'Обсудить',
+	'poll-edit-answers' => 'Изменить ответы',
+	'poll-edit-button' => 'Сохранить страницу',
+	'poll-edit-desc' => 'новый опрос',
+	'poll-edit-image' => 'Редактировать изображение',
+	'poll-image-label' => 'Добавить изображение',
+	'poll-js-action-complete' => 'Действие было выполнено.',
+	'poll-js-loading' => 'Загрузка…',
+	'poll-next' => 'след.',
+	'poll-next-poll' => 'Следующий опрос',
+	'poll-prev' => 'пред.',
+	'poll-previous-poll' => 'Предыдущий опрос',
+	'poll-skip' => 'Пропустить >',
+	'poll-take-button' => '< Обратно в опросы',
+	'poll-unavailable' => 'Этот опрос недоступен',
+	'poll-upload-image-button' => 'Загрузить',
+	'poll-view-newest' => 'Последние',
+	'poll-view-popular' => 'Популярные',
+	'poll-time-ago' => '$1 назад',
+	'poll-time-days' => '{{PLURAL:$1|один день|$1 дня|$1 дней}}',
+	'poll-time-hours' => '{{PLURAL:$1|один час|$1 часа|$1 часов}}',
+	'poll-time-minutes' => '{{PLURAL:$1|одну минуту|$1 минуты|$1 минут}}',
+	'poll-time-seconds' => '{{PLURAL:$1|одну секунду|$1 секунды|$1 секунд}}',
+	'specialpages-group-poll' => 'Опросы',
+	'right-polladmin' => 'Администрирование опросов',
+);
+
 /** Swedish (svenska)
  * @author Jopparn
  * @author McDutchie
