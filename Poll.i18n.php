@@ -1038,6 +1038,18 @@ $messages['ia'] = array(
 	'right-polladmin' => 'Administrar sondages',
 );
 
+/** Italian (italiano)
+ * @author Beta16
+ */
+$messages['it'] = array(
+	'poll-ago' => '$1 fa',
+	'poll-time-ago' => '$1 fa',
+	'poll-time-days' => '{{PLURAL:$1|un giorno|$1 giorni}}',
+	'poll-time-hours' => "{{PLURAL:$1|un'ora|$1 ore}}",
+	'poll-time-minutes' => '{{PLURAL:$1|un minuto|$1 minuti}}',
+	'poll-time-seconds' => '{{PLURAL:$1|un secondo|$1 secondi}}',
+);
+
 /** Japanese (日本語)
  * @author Shirayuki
  */
