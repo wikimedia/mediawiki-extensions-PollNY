@@ -1042,12 +1042,36 @@ $messages['ia'] = array(
  * @author Beta16
  */
 $messages['it'] = array(
+	'adminpoll' => 'Amministra sondaggi',
+	'createpoll' => 'Crea un sondaggio',
+	'randompoll' => 'Sondaggio casuale',
+	'viewpoll' => 'Vedi sondaggi',
+	'poll-admin-no-polls' => 'Non ci sono sondaggi. [[Special:CreatePoll|Crea un sondaggio!]]',
+	'poll-admin-closed' => 'Chiusi',
+	'poll-admin-flagged' => 'Contrassegnati',
+	'poll-admin-open' => 'Aperti',
+	'poll-admin-panel' => 'Amministra',
+	'poll-admin-status-nav' => 'Filtra per stato',
 	'poll-ago' => '$1 fa',
+	'poll-based-on-votes' => 'basato su {{PLURAL:$1|un voto|$1 voti}}',
+	'poll-cancel-button' => 'Annulla',
+	'poll-category' => 'Sondaggi',
+	'poll-create-threshold-title' => 'Crea sondaggio',
+	'poll-create-title' => 'Crea un sondaggio',
+	'poll-createdago' => 'Creato $1 fa',
+	'poll-edit-answers' => 'Modifica risposte',
+	'poll-edit-button' => 'Salva la pagina',
+	'poll-edit-desc' => 'nuovo sondaggio',
+	'poll-edit-image' => 'Modifica immagine',
+	'poll-edit-invalid-access' => 'Accesso non valido',
+	'poll-votes' => '{{PLURAL:$1|un voto|$1 voti}}',
+	'poll-woops' => 'Oops!',
 	'poll-time-ago' => '$1 fa',
 	'poll-time-days' => '{{PLURAL:$1|un giorno|$1 giorni}}',
 	'poll-time-hours' => "{{PLURAL:$1|un'ora|$1 ore}}",
 	'poll-time-minutes' => '{{PLURAL:$1|un minuto|$1 minuti}}',
 	'poll-time-seconds' => '{{PLURAL:$1|un secondo|$1 secondi}}',
+	'specialpages-group-poll' => 'Sondaggi',
 );
 
 /** Japanese (日本語)
