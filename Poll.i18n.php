@@ -455,6 +455,14 @@ $messages['br'] = array(
 	'right-polladmin' => 'Merañ ar sontadegoù',
 );
 
+/** Chechen (нохчийн)
+ * @author Умар
+ */
+$messages['ce'] = array(
+	'poll-cancel-button' => 'Цаоьшу',
+	'poll-upload-image-button' => 'Чуяккха',
+);
+
 /** German (Deutsch)
  * @author Metalhead64
  */
