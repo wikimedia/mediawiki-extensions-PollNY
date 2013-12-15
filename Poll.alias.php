@@ -29,6 +29,15 @@ $specialPageAliases['de'] = array(
 	'ViewPoll' => array( 'Abstimmung_ansehen' ),
 );
 
+/** Zazaki (Zazaki) */
+$specialPageAliases['diq'] = array(
+	'AdminPoll' => array( 'AnketAdmin' ),
+	'CreatePoll' => array( 'AnketVıraz' ),
+	'RandomPoll' => array( 'AnketakRaştamé' ),
+	'UpdatePoll' => array( 'AnketerNewek' ),
+	'ViewPoll' => array( 'AketerBıvin' ),
+);
+
 /** Finnish (suomi) */
 $specialPageAliases['fi'] = array(
 	'AdminPoll' => array( 'Ylläpidä äänestyksiä' ),
