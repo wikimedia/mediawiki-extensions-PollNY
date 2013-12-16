@@ -19,6 +19,16 @@ $specialPageAliases['en'] = array(
 	'ViewPoll' => array( 'ViewPoll' ),
 );
 
+/** Arabic (العربية) */
+$specialPageAliases['ar'] = array(
+	'AdminPoll' => array( 'استطلاع_إداري' ),
+	'CreatePoll' => array( 'إنشاء_استطلاع' ),
+	'PollAjaxUpload' => array( 'رفع_أجاكس_لاستطلاع' ),
+	'RandomPoll' => array( 'استطلاع_عشوائي' ),
+	'UpdatePoll' => array( 'تحديث_الاستطلاع' ),
+	'ViewPoll' => array( 'عرض_الاستطلاع' ),
+);
+
 /** German (Deutsch) */
 $specialPageAliases['de'] = array(
 	'AdminPoll' => array( 'Abstimmung_verwalten' ),
@@ -45,6 +55,16 @@ $specialPageAliases['fi'] = array(
 	'RandomPoll' => array( 'Satunnainen äänestys' ),
 	'UpdatePoll' => array( 'Päivitä äänestys' ),
 	'ViewPoll' => array( 'Katso äänestys' ),
+);
+
+/** Japanese (日本語) */
+$specialPageAliases['ja'] = array(
+	'AdminPoll' => array( '投票所管理' ),
+	'CreatePoll' => array( '投票所作成' ),
+	'PollAjaxUpload' => array( '投票所Ajaxアップロード', '投票所Ａｊａｘアップロード' ),
+	'RandomPoll' => array( 'おまかせ投票所' ),
+	'UpdatePoll' => array( '投票所更新' ),
+	'ViewPoll' => array( '投票所閲覧' ),
 );
 
 /** Korean (한국어) */
