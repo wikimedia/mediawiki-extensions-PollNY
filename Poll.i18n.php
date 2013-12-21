@@ -860,6 +860,15 @@ $messages['fr'] = array(
 	'right-polladmin' => 'Administrer les sondages',
 );
 
+/** Western Frisian (Frysk)
+ * @author Kening Aldgilles
+ */
+$messages['fy'] = array(
+	'poll-admin-viewall' => 'Alles sjen litte',
+	'poll-cancel-button' => 'Ofbrekke',
+	'poll-edit-button' => 'Fêstlizze',
+);
+
 /** Galician (galego)
  * @author Toliño
  */
