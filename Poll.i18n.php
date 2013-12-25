@@ -459,8 +459,10 @@ $messages['br'] = array(
  * @author Умар
  */
 $messages['ce'] = array(
+	'poll-ago' => '$1 хьалха',
 	'poll-cancel-button' => 'Цаоьшу',
 	'poll-upload-image-button' => 'Чуяккха',
+	'poll-time-ago' => '$1 хьалха',
 );
 
 /** German (Deutsch)
