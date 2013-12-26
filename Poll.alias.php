@@ -77,6 +77,12 @@ $specialPageAliases['ko'] = array(
 	'ViewPoll' => array( '설문조사보기' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$specialPageAliases['lb'] = array(
+	'UpdatePoll' => array( 'Ëmfro_aktualiséieren' ),
+	'ViewPoll' => array( 'Ëmfro_weisen' ),
+);
+
 /** Macedonian (македонски) */
 $specialPageAliases['mk'] = array(
 	'AdminPoll' => array( 'РаководиАнкета' ),
