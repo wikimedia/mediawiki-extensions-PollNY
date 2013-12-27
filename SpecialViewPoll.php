@@ -21,7 +21,7 @@ class ViewPoll extends SpecialPage {
 	public function execute( $par ) {
 		$out = $this->getOutput();
 		$request = $this->getRequest();
-		$thisTitle = $this->getTitle();
+		$thisTitle = $this->getPageTitle();
 
 		// Add CSS & JS
 		$out->addModules( 'ext.pollNY' );

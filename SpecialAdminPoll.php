@@ -75,7 +75,7 @@ class AdminPoll extends SpecialPage {
 		foreach( $nav as $status => $title ) {
 			$output .= '<p>';
 			if( $current_status != $status ) {
-				$output .= '<a href="' . $this->getTitle()->escapeFullURL( "status={$status}" ) . "\">{$title}</a>";
+				$output .= '<a href="' . $this->getPageTitle()->escapeFullURL( "status={$status}" ) . "\">{$title}</a>";
 			} else {
 				$output .= "<b>{$title}</b>";
 			}
