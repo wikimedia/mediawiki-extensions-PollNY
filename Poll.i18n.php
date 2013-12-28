@@ -560,6 +560,7 @@ $messages['de'] = array(
 
 /** Zazaki (Zazaki)
  * @author Gorizon
+ * @author Mirzali
  */
 $messages['diq'] = array(
 	'poll-admin-closed' => 'Racneya',
@@ -568,7 +569,7 @@ $messages['diq'] = array(
 	'poll-admin-panel' => 'Admin',
 	'poll-cancel-button' => 'Bıterkn',
 	'poll-category' => 'Anketi',
-	'poll-discuss' => 'Vaten',
+	'poll-discuss' => 'werêne',
 	'poll-skip' => 'Raver >',
 	'specialpages-group-poll' => 'Anketi',
 );
