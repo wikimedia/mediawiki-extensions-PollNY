@@ -1827,6 +1827,7 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (русский)
+ * @author Kaganer
  * @author Okras
  */
 $messages['ru'] = array(
@@ -1848,7 +1849,7 @@ $messages['ru'] = array(
 	'poll-admin-viewall' => 'Посмотреть все',
 	'poll-ago' => '$1 назад',
 	'poll-atleast' => 'У вас должно быть как минимум два варианта ответа.',
-	'poll-based-on-votes' => 'на основании {{PLURAL:$1|1=одного голоса|$1 голосов}}', # Fuzzy
+	'poll-based-on-votes' => 'на основании {{PLURAL:$1|$1 голоса|$1 голосов|1=одного голоса}}',
 	'poll-cancel-button' => 'Отмена',
 	'poll-category' => 'Опросы',
 	'poll-category-user' => 'Опросы от участника $1',
@@ -1904,17 +1905,17 @@ $messages['ru'] = array(
 	'poll-view-order' => 'Порядок',
 	'poll-view-newest' => 'Последние',
 	'poll-view-popular' => 'Популярные',
-	'poll-view-answered-times' => 'Ответили {{PLURAL:$1|один раз|$1 раз|$1 раза}}', # Fuzzy
+	'poll-view-answered-times' => 'Ответили {{PLURAL:$1|$1 раз|$1 раз|$1 раза|1=один раз}}',
 	'poll-view-all-by' => 'Посмотреть все опросы участника $1',
-	'poll-voted-for' => 'Вы проголосовали в $1 {{PLURAL:$1|1=опросе|опросах}} из <b>$2</b> и получили <span class="profile-on">$3 очков</span>.', # Fuzzy
-	'poll-votes' => '{{PLURAL:$1|один голос|$1 голосов|$1 голоса}}', # Fuzzy
+	'poll-voted-for' => 'Вы проголосовали в $1 {{PLURAL:$1|1=опросе|опросах}} из <b>$2</b> и получили <span class="profile-on">$3 {{PLURAL:$3|очко|очков|очка}}</span>.',
+	'poll-votes' => '{{PLURAL:$1|$1 голос|$1 голосов|$1 голоса|1=один голос}}',
 	'poll-woops' => 'Ой-ойǃ',
 	'poll-would-have-earned' => 'Вы бы заработали <span class="profile-on">$1 очков</span>, если бы [[Special:UserLogin/signup|зарегистрировались]].',
 	'poll-time-ago' => '$1 назад',
-	'poll-time-days' => '{{PLURAL:$1|один день|$1 дней|$1 дня}}', # Fuzzy
-	'poll-time-hours' => '{{PLURAL:$1|один час|$1 часов|$1 часа}}', # Fuzzy
-	'poll-time-minutes' => '{{PLURAL:$1|одну минуту|$1 минут|$1 минуты}}', # Fuzzy
-	'poll-time-seconds' => '{{PLURAL:$1|одну секунду|$1 секунд|$1 секунды}}', # Fuzzy
+	'poll-time-days' => '{{PLURAL:$1|$1 день|$1 дней|$1 дня|1=один день}}',
+	'poll-time-hours' => '{{PLURAL:$1|$1 час|$1 часов|$1 часа|1=один час}}',
+	'poll-time-minutes' => '{{PLURAL:$1|$1 минуту|$1 минут|$1 минуты|1=одну минуту}}',
+	'poll-time-seconds' => '{{PLURAL:$1|$1 секунду|$1 секунд|$1 секунды|1=одну секунду}}',
 	'specialpages-group-poll' => 'Опросы',
 	'right-polladmin' => 'Администрирование опросов',
 );
