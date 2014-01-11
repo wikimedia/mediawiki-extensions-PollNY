@@ -192,7 +192,7 @@ class PollNYHooks {
 
 			// Load CSS for non-Monaco skins - Monaco's ny.css already contains
 			// PollNY's styles (and more)
-			if ( get_class( $wgUser->getSkin() ) !== 'SkinMonaco' ) {
+			if ( get_class( $wgOut->getSkin() ) !== 'SkinMonaco' ) {
 				$wgOut->addModuleStyles( 'ext.pollNY' );
 			}
 
