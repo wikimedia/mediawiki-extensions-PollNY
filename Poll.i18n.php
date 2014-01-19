@@ -1182,6 +1182,7 @@ $messages['ja'] = array(
 );
 
 /** Korean (한국어)
+ * @author Priviet
  * @author 아라
  */
 $messages['ko'] = array(
@@ -1204,9 +1205,14 @@ $messages['ko'] = array(
 	'poll-ago' => '$1 전',
 	'poll-cancel-button' => '취소',
 	'poll-category' => '설문 조사',
+	'poll-category-user' => '$1 사용자가 만든 설문 조사',
+	'poll-choices-label' => '답변 선택지',
 	'poll-close-poll' => '설문 조사 폐쇄',
 	'poll-closed' => '이 설문 조사는 투표가 종료되었습니다.',
 	'poll-create' => '설문 조사 만들기',
+	'poll-createpoll-error-nomore' => '설문조사가 더 이상 없습니다!',
+	'poll-create-button' => '만들기 및 재생!',
+	'poll-create-threshold-reason' => '죄송합니다. 최소 $1회 이상 편집할 때까지 설문 조사를 열 수 없습니다.',
 	'poll-create-threshold-title' => '설문 조사 만들기',
 	'poll-create-title' => '설문 조사 만들기',
 	'poll-createdago' => '$1 전에 만듦',
