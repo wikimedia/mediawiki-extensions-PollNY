@@ -43,9 +43,9 @@ class PollNYHooks {
 	 * @return Boolean: true
 	 */
 	public static function deletePollQuestion( &$article, &$user, $reason ) {
-		global $wgTitle, $wgSupressPageTitle;
+		global $wgSupressPageTitle;
 
-		if( $wgTitle->getNamespace() == NS_POLL ) {
+		if( $article->getTitle()->getNamespace() == NS_POLL ) {
 			$wgSupressPageTitle = true;
 
 			$dbw = wfGetDB( DB_MASTER );
@@ -108,7 +108,7 @@ class PollNYHooks {
 	 */
 	public static function pollFromTitle( &$title, &$article ) {
 		if ( $title->getNamespace() == NS_POLL ) {
-			global $wgRequest, $wgOut, $wgTitle;
+			global $wgRequest, $wgOut;
 			global $wgPollScripts, $wgSupressSubTitle, $wgSupressPageCategories;
 
 			// We don't want caching here, it'll only cause problems...
@@ -117,15 +117,15 @@ class PollNYHooks {
 
 			// Prevents editing of polls
 			if( $wgRequest->getVal( 'action' ) == 'edit' ) {
-				if( $wgTitle->getArticleID() == 0 ) {
+				if( $title->getArticleID() == 0 ) {
 					$create = SpecialPage::getTitleFor( 'CreatePoll' );
 					$wgOut->redirect(
-						$create->getFullURL( 'wpDestName=' . $wgTitle->getText() )
+						$create->getFullURL( 'wpDestName=' . $title->getText() )
 					);
 				} else {
 					$update = SpecialPage::getTitleFor( 'UpdatePoll' );
 					$wgOut->redirect(
-						$update->getFullURL( 'id=' . $wgTitle->getArticleID() )
+						$update->getFullURL( 'id=' . $title->getArticleID() )
 					);
 				}
 			}
@@ -136,7 +136,7 @@ class PollNYHooks {
 			// Add required JS & CSS
 			$wgOut->addModules( array( 'ext.pollNY', 'ext.pollNY.lightBox' ) );
 
-			$article = new PollPage( $wgTitle );
+			$article = new PollPage( $title );
 		}
 
 		return true;
