@@ -1791,6 +1791,21 @@ $messages['oc'] = array(
 	'right-polladmin' => 'Administrar los sondatges',
 );
 
+/** Polish (polski)
+ * @author Chrumps
+ */
+$messages['pl'] = array(
+	'poll-cancel-button' => 'Anuluj',
+	'poll-enterquestion' => 'Musisz wpisać pytanie.',
+	'poll-skip' => 'Pomiń >',
+	'poll-submitted-by' => 'Dodano przez',
+	'poll-votes' => '{{PLURAL:$1|1 głos|$1 głosy|$1 głosów}}',
+	'poll-time-days' => '{{PLURAL:$1|dzień|$1 dni}}',
+	'poll-time-hours' => '{{PLURAL:$1|godzina|$1 godziny|$1 godzin}}',
+	'poll-time-minutes' => '{{PLURAL:$1|minuta|$1 minuty|$1 minut}}',
+	'poll-time-seconds' => '{{PLURAL:$1|sekunda|$1 sekundy|$1 sekund}}',
+);
+
 /** Portuguese (português)
  * @author Hamilton Abreu
  * @author Luckas
