@@ -434,6 +434,19 @@ $messages['ast'] = array(
 	'poll-view-order' => 'Orde',
 	'poll-view-newest' => 'Más nueva',
 	'poll-view-popular' => 'Popular',
+	'poll-view-answered-times' => 'Respondida {{PLURAL:$1|una vez|$1 veces}}',
+	'poll-view-all-by' => 'Ver toles encuestes de $1',
+	'poll-voted-for' => 'Votó yá en $1 {{PLURAL:$1|encuesta|encuestes}} d\'un total de <b>$2</b> y recibió <span class="profile-on">$3 puntos</span>.',
+	'poll-votes' => '{{PLURAL:$1|un votu|$1 votos}}',
+	'poll-woops' => '¡Coime!',
+	'poll-would-have-earned' => 'Habría ganao <span class="profile-on">$1 puntos</span> si hubiera [[Special:UserLogin/signup|aniciao sesión]].',
+	'poll-time-ago' => 'hai $1',
+	'poll-time-days' => '{{PLURAL:$1|un día|$1 díes}}',
+	'poll-time-hours' => '{{PLURAL:$1|una hora|$1 hores}}',
+	'poll-time-minutes' => '{{PLURAL:$1|un minutu|$1 minutos}}',
+	'poll-time-seconds' => '{{PLURAL:$1|un segundu|$1 segundos}}',
+	'specialpages-group-poll' => 'Encuestes',
+	'right-polladmin' => 'Alministrar encuestes',
 );
 
 /** Bengali (বাংলা)
