@@ -29,6 +29,16 @@ $specialPageAliases['ar'] = array(
 	'ViewPoll' => array( 'عرض_الاستطلاع' ),
 );
 
+/** Egyptian Spoken Arabic (مصرى) */
+$specialPageAliases['arz'] = array(
+	'AdminPoll' => array( 'استطلاع_سيسوب' ),
+	'CreatePoll' => array( 'عمل_استطلاع' ),
+	'PollAjaxUpload' => array( 'رفع_اجاكس_لاستطلاع' ),
+	'RandomPoll' => array( 'استطلاع_عشوائى' ),
+	'UpdatePoll' => array( 'تحديث_الاستطلاع' ),
+	'ViewPoll' => array( 'عرض_الاستطلاع' ),
+);
+
 /** German (Deutsch) */
 $specialPageAliases['de'] = array(
 	'AdminPoll' => array( 'Abstimmung_verwalten' ),
@@ -107,6 +117,7 @@ $specialPageAliases['zh-hans'] = array(
 	'AdminPoll' => array( '管理员投票' ),
 	'CreatePoll' => array( '创建投票' ),
 	'PollAjaxUpload' => array( '投票Ajax上传' ),
+	'RandomPoll' => array( '随机投票' ),
 	'UpdatePoll' => array( '更新投票' ),
 	'ViewPoll' => array( '查看投票' ),
 );
@@ -116,6 +127,7 @@ $specialPageAliases['zh-hant'] = array(
 	'AdminPoll' => array( '管理員投票' ),
 	'CreatePoll' => array( '建立投票' ),
 	'PollAjaxUpload' => array( '投票Ajax上載' ),
+	'RandomPoll' => array( '隨機投票' ),
 	'UpdatePoll' => array( '覆寫投票' ),
 	'ViewPoll' => array( '查看投票' ),
 );
