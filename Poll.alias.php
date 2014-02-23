@@ -89,6 +89,10 @@ $specialPageAliases['ko'] = array(
 
 /** Luxembourgish (Lëtzebuergesch) */
 $specialPageAliases['lb'] = array(
+	'AdminPoll' => array( 'Ëmfro_geréieren' ),
+	'CreatePoll' => array( 'Ëmfro_uleeën' ),
+	'PollAjaxUpload' => array( 'Ëmfro_eroplueden' ),
+	'RandomPoll' => array( 'Zoufälleg_Ëmfro' ),
 	'UpdatePoll' => array( 'Ëmfro_aktualiséieren' ),
 	'ViewPoll' => array( 'Ëmfro_weisen' ),
 );
