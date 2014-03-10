@@ -554,6 +554,7 @@ $messages['br'] = array(
 $messages['ce'] = array(
 	'poll-ago' => '$1 хьалха',
 	'poll-cancel-button' => 'Цаоьшу',
+	'poll-createpoll-error-nomore' => 'Кхин дисна дац хаттарш!',
 	'poll-createdago' => 'Кхоьллина $1 хьалха',
 	'poll-upload-image-button' => 'Чуяккха',
 	'poll-time-ago' => '$1 хьалха',
