@@ -556,6 +556,7 @@ $messages['ce'] = array(
 	'poll-cancel-button' => 'Цаоьшу',
 	'poll-createpoll-error-nomore' => 'Кхин дисна дац хаттарш!',
 	'poll-createdago' => 'Кхоьллина $1 хьалха',
+	'poll-edit-answers' => 'Хийца жоьпаш',
 	'poll-upload-image-button' => 'Чуяккха',
 	'poll-time-ago' => '$1 хьалха',
 	'poll-time-days' => '{{PLURAL:$1|де}}',
