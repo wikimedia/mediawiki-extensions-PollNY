@@ -6,7 +6,6 @@
  *
  * @file
  * @ingroup Extensions
- * @version 3.0
  * @author Aaron Wright <aaron.wright@gmail.com>
  * @author David Pean <david.pean@gmail.com>
  * @author Jack Phoenix <jack@countervandalism.net>
@@ -22,7 +21,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'PollNY',
-	'version' => '3.0',
+	'version' => '3.1.0',
 	'author' => array( 'Aaron Wright', 'David Pean', 'Jack Phoenix' ),
 	'descriptionmsg' => 'poll-desc',
 	'url' => 'https://www.mediawiki.org/wiki/Extension:PollNY'
@@ -48,6 +47,7 @@ $wgGroupPermissions['sysop']['polladmin'] = true;
 
 // Set up the new special pages
 $dir = dirname( __FILE__ ) . '/';
+$wgMessagesDirs['PollNY'] = __DIR__ . '/i18n';
 $wgExtensionMessagesFiles['PollNY'] = $dir . 'Poll.i18n.php';
 $wgExtensionMessagesFiles['PollNYAlias'] = $dir . 'Poll.alias.php';
 // Namespace translations

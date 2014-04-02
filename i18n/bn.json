@@ -1,0 +1,28 @@
+{
+    "@metadata": {
+        "authors": [
+            "Aftab1995"
+        ]
+    },
+    "poll-admin-closed": "বন্ধ",
+    "poll-admin-open": "খোলা",
+    "poll-admin-panel": "প্রশাসক",
+    "poll-admin-viewall": "সব দেখুন",
+    "poll-ago": "$1 আগে",
+    "poll-cancel-button": "বাতিল",
+    "poll-createdago": "$1 আগে তৈরি করা",
+    "poll-edit-button": "পাতা সংরক্ষণ",
+    "poll-edit-image": "চিত্র সম্পাদনা",
+    "poll-image-label": "চিত্র যোগ করুন",
+    "poll-js-loading": "লোড করা হচ্ছে...",
+    "poll-next": "পরবর্তী",
+    "poll-prev": "পূর্ব",
+    "poll-skip": "এড়াও >",
+    "poll-submitted-by": "জমা দিয়েছেন",
+    "poll-votes": "{{PLURAL:$1|একটি ভোট|$1টি ভোট}}",
+    "poll-time-ago": "$1 আগে",
+    "poll-time-days": "{{PLURAL:$1|এক দিন|$1 দিন}}",
+    "poll-time-hours": "{{PLURAL:$1|এক ঘণ্টা|$1 ঘণ্টা}}",
+    "poll-time-minutes": "{{PLURAL:$1|এক মিনিট|$1 মিনিট}}",
+    "poll-time-seconds": "{{PLURAL:$1|এক সেকেন্ড|$1 সেকেন্ড}}"
+}
