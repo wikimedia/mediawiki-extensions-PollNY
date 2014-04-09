@@ -1,7 +1,8 @@
 {
     "@metadata": {
         "authors": [
-            "Toliño"
+            "Toliño",
+            "Vivaelcelta"
         ]
     },
     "adminpoll": "Administrar as enquisas",
@@ -72,7 +73,7 @@
     "poll-take-button": "< Volver ás enquisas",
     "poll-unavailable": "Esta enquisa non está dispoñible",
     "poll-unflag-poll": "Desmarcar a enquisa",
-    "poll-upload-image-button": "Cargar",
+    "poll-upload-image-button": "Subir",
     "poll-upload-new-image": "Cargar unha nova imaxe",
     "poll-view-title": "Ver as enquisas de $1",
     "poll-view-order": "Orde",
