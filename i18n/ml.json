@@ -1,16 +1,16 @@
 {
-    "@metadata": {
-        "authors": [
-            "Kavya Manohar",
-            "Praveenp"
-        ]
-    },
-    "poll-edit-answers": "ഉത്തരങ്ങൾ തിരുത്തുക",
-    "poll-edit-button": "താൾ സേവ് ചെയ്യുക",
-    "poll-edit-image": "ചിത്രം തിരുത്തുക",
-    "poll-enterquestion": "താങ്കൾ ഒരു ചോദ്യം ചേർക്കേണ്ടതുണ്ട്",
-    "poll-upload-image-button": "അപ്‌‌ലോഡ് ചെയ്യുക",
-    "poll-upload-new-image": "പുതിയ ചിത്രം അപ്‌ലോഡ് ചെയ്യുക",
-    "poll-view-newest": "ഏറ്റവും പുതിയവ",
-    "poll-time-ago": "$1 മുമ്പ്"
+	"@metadata": {
+		"authors": [
+			"Kavya Manohar",
+			"Praveenp"
+		]
+	},
+	"poll-edit-answers": "ഉത്തരങ്ങൾ തിരുത്തുക",
+	"poll-edit-button": "താൾ സേവ് ചെയ്യുക",
+	"poll-edit-image": "ചിത്രം തിരുത്തുക",
+	"poll-enterquestion": "താങ്കൾ ഒരു ചോദ്യം ചേർക്കേണ്ടതുണ്ട്",
+	"poll-upload-image-button": "അപ്‌‌ലോഡ് ചെയ്യുക",
+	"poll-upload-new-image": "പുതിയ ചിത്രം അപ്‌ലോഡ് ചെയ്യുക",
+	"poll-view-newest": "ഏറ്റവും പുതിയവ",
+	"poll-time-ago": "$1 മുമ്പ്"
 }

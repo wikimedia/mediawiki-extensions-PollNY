@@ -1,29 +1,29 @@
 {
-    "@metadata": {
-        "authors": [
-            "Joetaras"
-        ]
-    },
-    "adminpoll": "Amministre le sondagge",
-    "createpoll": "Ccreje 'nu sondagge",
-    "randompoll": "Sondagge a uecchije",
-    "viewpoll": "'Ndruche le sondagge",
-    "poll-admin-closed": "Achiuse",
-    "poll-admin-flagged": "Signate",
-    "poll-admin-open": "Iapre",
-    "poll-admin-panel": "Amministratore",
-    "poll-admin-status-nav": "Filtre pe state",
-    "poll-admin-viewall": "'Ndruche tutte",
-    "poll-ago": "$1 fà",
-    "poll-cancel-button": "Annulle",
-    "poll-category": "Sondagge",
-    "poll-category-user": "Sondagge pe utende $1",
-    "poll-view-order": "Ordine",
-    "poll-view-newest": "Le cchiù nuève",
-    "poll-view-popular": "Popolare",
-    "poll-view-answered-times": "Resposte {{PLURAL:$1|'na vote|$1 vote}}",
-    "poll-view-all-by": "'Ndruche tutte le sondagge de $1",
-    "poll-time-ago": "$1 fà",
-    "specialpages-group-poll": "Sondagge",
-    "right-polladmin": "Amministre le sondagge"
+	"@metadata": {
+		"authors": [
+			"Joetaras"
+		]
+	},
+	"adminpoll": "Amministre le sondagge",
+	"createpoll": "Ccreje 'nu sondagge",
+	"randompoll": "Sondagge a uecchije",
+	"viewpoll": "'Ndruche le sondagge",
+	"poll-admin-closed": "Achiuse",
+	"poll-admin-flagged": "Signate",
+	"poll-admin-open": "Iapre",
+	"poll-admin-panel": "Amministratore",
+	"poll-admin-status-nav": "Filtre pe state",
+	"poll-admin-viewall": "'Ndruche tutte",
+	"poll-ago": "$1 fà",
+	"poll-cancel-button": "Annulle",
+	"poll-category": "Sondagge",
+	"poll-category-user": "Sondagge pe utende $1",
+	"poll-view-order": "Ordine",
+	"poll-view-newest": "Le cchiù nuève",
+	"poll-view-popular": "Popolare",
+	"poll-view-answered-times": "Resposte {{PLURAL:$1|'na vote|$1 vote}}",
+	"poll-view-all-by": "'Ndruche tutte le sondagge de $1",
+	"poll-time-ago": "$1 fà",
+	"specialpages-group-poll": "Sondagge",
+	"right-polladmin": "Amministre le sondagge"
 }
