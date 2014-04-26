@@ -79,7 +79,7 @@
 	"poll-view-title": "This message can be the title of [[Special:ViewPoll]] when viewing the polls of a certain user (as opposed to viewing all available polls, in which case that special page's title is {{msg-mw|Viewpoll}}).\n\nParameters:\n* $1 - a username (<nowiki>{{GENDER}}</nowiki> can be used for this for languages that need it)",
 	"poll-view-order": "Heading of the right-hand navigation menu on [[Special:ViewPoll]]; \"order\" refers to the sort order.\n\nFollowed by the following link texts:\n* {{msg-mw|Poll-view-popular}}\n* {{msg-mw|Poll-view-newest}}\n{{Identical|Order}}",
 	"poll-view-newest": "Link title on the right-hand navigation menu on [[Special:ViewPoll]].\n{{Identical|Newest}}",
-	"poll-view-popular": "the right-hand navigation menu on [[Special:ViewPoll]].",
+	"poll-view-popular": "the right-hand navigation menu on [[Special:ViewPoll]].\n{{Identical|Popular}}",
 	"poll-view-answered-times": "Shown on [[Special:AdminPoll]] below the last answer option of each poll.\n\nParameters:\n* $1 - the number indicating how many times the poll has been answered",
 	"poll-view-all-by": "{{gender}}\nLink text shown in the {{msg-mw|Poll-submitted-by}} box, below the user's avatar.\n\nParameters:\n* $1 - a username (truncated if it's over 27 characters long)\n* $2 - (Optional) full, untruncated username, for <nowiki>{{GENDER}}</nowiki> support",
 	"poll-voted-for": "Message shown to registered users after they've voted in a poll. Parameters:\n* $1 - the amount of polls in which the current user has voted\n* $2 - the amount of all polls in the database\n* $3 - the total amount of points the user has received from voting in polls (0, 5, 10, 15, ...)\n\nIf anonymous users, the following message will be used:\n* {{msg-mw|Poll-would-have-earned}}",
