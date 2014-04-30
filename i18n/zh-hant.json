@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Cwlin0416"
 		]
 	},
 	"adminpoll": "管理調查",
@@ -30,6 +31,7 @@
 	"poll-edit-answers": "編輯答案",
 	"poll-edit-button": "儲存本頁",
 	"poll-edit-desc": "新調查",
+	"poll-edit-image": "編輯圖片",
 	"poll-flag-poll": "標記調查",
 	"poll-image-label": "加入圖像",
 	"poll-js-loading": "載入中…",
