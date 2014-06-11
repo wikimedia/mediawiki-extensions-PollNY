@@ -82,7 +82,7 @@
 	"poll-view-answered-times": "回答{{PLURAL:$1|one time|$1时间}}",
 	"poll-view-all-by": "查看所有由$1作出的选票",
 	"poll-voted-for": "您已对$1{{PLURAL:$1|poll|个投票}}及其衍生的<b>$2</b>次调查和<span class=\"profile-on\">$3个关键点</span>进行了投票。",
-	"poll-votes": "{{PLURAL:$1|one vote|$1张票}}",
+	"poll-votes": "{{PLURAL:$1|$1张票}}",
 	"poll-woops": "麻烦了！",
 	"poll-would-have-earned": "您应该在[[Special:UserLogin/signup|注册]]之后赚取了<span class=\"profile-on\">$1个点数</span>。",
 	"poll-time-ago": "$1前",

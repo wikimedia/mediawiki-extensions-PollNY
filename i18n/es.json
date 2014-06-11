@@ -5,6 +5,14 @@
 			"Fitoschido"
 		]
 	},
+	"adminpoll": "Gestionar encuestas",
+	"createpoll": "Crear una encuesta",
+	"randompoll": "Encuesta al azar",
+	"viewpoll": "Ver encuestas",
+	"poll-admin-no-polls": "No hay encuestas. [[Special:CreatePoll|Crea una.]]",
+	"poll-admin-closed": "Cerradas",
+	"poll-admin-flagged": "Marcadas",
+	"poll-admin-open": "Abiertas",
 	"poll-admin-viewall": "Ver todas",
 	"poll-ago": "Hace $1",
 	"poll-cancel-button": "Cancelar",
@@ -27,6 +35,7 @@
 	"poll-next": "siguiente",
 	"poll-next-poll": "Siguiente encuesta",
 	"poll-no-more-title": "No hay más encuestas.",
+	"poll-prev": "ant.",
 	"poll-skip": "Omitir >",
 	"poll-submitted-by": "Enviada por",
 	"poll-unavailable": "Esta encuesta no está disponible",
