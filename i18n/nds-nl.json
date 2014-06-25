@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Servien"
+		]
+	},
+	"poll-ago": "$1 elejen",
+	"poll-createdago": "$1 elejen an-emaakt",
+	"poll-time-ago": "$1 elejen"
+}
