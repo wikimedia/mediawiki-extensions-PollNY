@@ -75,7 +75,7 @@ class PollPage extends Article {
 		// Show the "create a poll" link to registered users
 		if( $wgUser->isLoggedIn() ) {
 			$output .= '<div class="create-link">
-				<a href="' . $createPollObj->escapeFullURL() . '">
+				<a href="' . htmlspecialchars( $createPollObj->getFullURL() ) . '">
 					<img src="' . $wgExtensionAssetsPath . '/PollNY/images/addIcon.gif" alt="" />'
 					. wfMessage( 'poll-create' )->text() .
 				'</a>
@@ -107,7 +107,7 @@ class PollPage extends Article {
 					</div>
 					<div class=\"cleared\"></div>
 
-					<a href=\"" . SpecialPage::getTitleFor( 'ViewPoll' )->escapeFullURL( 'user=' . $poll_info['user_name'] ) . '">'
+					<a href=\"" . htmlspecialchars( SpecialPage::getTitleFor( 'ViewPoll' )->getFullURL( 'user=' . $poll_info['user_name'] ) ) . '">'
 						. wfMessage( 'poll-view-all-by', $user_name_short, $poll_info['user_name'] )->parse() . '</a>
 
 				</div>';

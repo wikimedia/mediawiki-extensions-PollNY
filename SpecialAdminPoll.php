@@ -75,7 +75,7 @@ class AdminPoll extends SpecialPage {
 		foreach( $nav as $status => $title ) {
 			$output .= '<p>';
 			if( $current_status != $status ) {
-				$output .= '<a href="' . $this->getPageTitle()->escapeFullURL( "status={$status}" ) . "\">{$title}</a>";
+				$output .= '<a href="' . htmlspecialchars( $this->getPageTitle()->getFullURL( "status={$status}" ) ) . "\">{$title}</a>";
 			} else {
 				$output .= "<b>{$title}</b>";
 			}
@@ -179,7 +179,7 @@ class AdminPoll extends SpecialPage {
 					<div class=\"view-poll-user-image\"><img src=\"{$wgUploadPath}/avatars/{$avatar->getAvatarImage()}\" alt=\"\" /></div>
 					<div class=\"view-poll-user-name\">{$user_create}</div>
 					<div class=\"view-poll-text\">
-					<p><b><a href=\"{$title->escapeFullURL()}\">{$poll_title}</a></b></p>
+					<p><b><a href=\"{htmlspecialchars( $title->getFullURL() )}\">{$poll_title}</a></b></p>
 					<p>";
 			foreach( $poll_choices as $choice ) {
 				$output .= "{$choice['choice']}<br />";

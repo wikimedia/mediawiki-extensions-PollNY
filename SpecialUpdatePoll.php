@@ -189,7 +189,7 @@ class UpdatePoll extends UnlistedSpecialPage {
 			<div id=\"real-form\" style=\"display:block;height:90px;\">
 				<iframe id=\"imageUpload-frame\" class=\"imageUpload-frame\" width=\"610\"
 					scrolling=\"no\" frameborder=\"0\" src=\"" .
-					SpecialPage::getTitleFor( 'PollAjaxUpload' )->escapeFullURL( 'wpThumbWidth=75' ) . '">
+					htmlspecialchars( SpecialPage::getTitleFor( 'PollAjaxUpload' )->getFullURL( 'wpThumbWidth=75' ) ) . '">
 				</iframe>
 			</div>
 

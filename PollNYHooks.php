@@ -286,7 +286,7 @@ class PollNYHooks {
 							'poll-based-on-votes',
 							$poll_info['votes']
 						)->parse() . ')</div>';
-					$output .= '<div><a href="' . $poll_title->escapeFullURL() . '">' .
+					$output .= '<div><a href="' . htmlspecialchars( $poll_title->getFullURL() ) . '">' .
 						wfMessage( 'poll-discuss' )->text() . '</a></div>';
 					$output .= '<div class="poll-timestamp">' .
 						wfMessage( 'poll-createdago', Poll::getTimeAgo( $poll_info['timestamp'] ) )->parse() .
