@@ -13,6 +13,6 @@
 	"poll-time-ago": "$1 хьалха",
 	"poll-time-days": "{{PLURAL:$1|де}}",
 	"poll-time-hours": "{{PLURAL:$1|$1 сахьт|1=цхьа сахьт}}",
-	"poll-time-minutes": "{{PLURAL:$1|$1 минут|1=цхьа минут}}",
+	"poll-time-minutes": "{{PLURAL:$1|$1 минот|1=цхьа минот}}",
 	"poll-time-seconds": "{{PLURAL:$1|$1 секунд|1=цхьа секунд}}"
 }
