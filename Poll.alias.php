@@ -133,5 +133,5 @@ $specialPageAliases['zh-hant'] = array(
 	'PollAjaxUpload' => array( '投票Ajax上載' ),
 	'RandomPoll' => array( '隨機投票' ),
 	'UpdatePoll' => array( '覆寫投票' ),
-	'ViewPoll' => array( '查看投票' ),
+	'ViewPoll' => array( '檢視投票' ),
 );
