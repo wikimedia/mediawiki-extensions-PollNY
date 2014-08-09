@@ -13,7 +13,7 @@
 	"poll-admin-no-polls": "Er zijn nog geen peilingen. U kunt [[Special:CreatePoll|een peiling aanmaken]].",
 	"poll-admin-closed": "Gesloten",
 	"poll-admin-flagged": "Gemarkeerd",
-	"poll-admin-open": "Open",
+	"poll-admin-open": "Openen",
 	"poll-admin-panel": "Beheren",
 	"poll-admin-status-nav": "Filter op status",
 	"poll-admin-title-all": "Peilingenbeheer - Alle peilingen bekijken",

@@ -3,7 +3,8 @@
 		"authors": [
 			"Nemo bis",
 			"Shirayuki",
-			"Siebrand"
+			"Siebrand",
+			"Liuxinyu970226"
 		]
 	},
 	"adminpoll": "{{doc-special|AdminPoll}}\nThe special page to administrate polls.",
@@ -41,7 +42,7 @@
 	"poll-createdago": "Displayed at the bottom of every Poll: page as well as at the bottom of polls embedded via the <code><nowiki><pollembed></nowiki></code> tag.\n\nParameters:\n* $1 - a timestamp, like \"{{int:Poll-time-hours|1}} {{int:Poll-time-minutes|15}} \" (with trailing whitespace) which uses the following messages:\n** {{msg-mw|Poll-time-days}}\n** {{msg-mw|Poll-time-hours}}\n** {{msg-mw|Poll-time-minutes}}\n** {{msg-mw|Poll-time-seconds}}",
 	"poll-delete-message": "Confirmation message shown to the user (who has the \"polladmin\" user right) in a JavaScript <code>alert()</code> after they've pressed the {{msg-mw|Poll-delete-poll}} link to delete a poll.",
 	"poll-delete-poll": "Link title; this link is shown below the right-hand {{msg-mw|Poll-submitted-by}} box on all Poll: pages for users who have the \"polladmin\" user right",
-	"poll-discuss": "Link title; this link is shown below the {{msg-mw|Poll-based-on-votes}} text when a poll has been embedded on a wiki page via the <code><nowiki><pollembed></nowiki></code> tag.",
+	"poll-discuss": "Link title; this link is shown below the {{msg-mw|Poll-based-on-votes}} text when a poll has been embedded on a wiki page via the <code><nowiki><pollembed></nowiki></code> tag.\n{{Identical|Discuss}}",
 	"poll-edit-answers": "Shown on [[Special:UpdatePoll]].\n\nUsed as <code><nowiki><h1></nowiki></code> heading.\n\nThe answer boxes are displayed below this text on the left-hand side of the page",
 	"poll-edit-button": "Button label shown on [[Special:UpdatePoll]]; pressing this button saves all changes (both those to the answers as well as if the picture was changed)\n{{Identical|Save page}}",
 	"poll-edit-desc": "Edit summary for the edit when a new poll is created via [[Special:CreatePoll]].",
