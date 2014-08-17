@@ -2,7 +2,7 @@
 
 class PollPage extends Article {
 
-	var $title = null;
+	public $title = null;
 
 	/**
 	 * Constructor and clear the article
