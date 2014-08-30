@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Ebraminio",
-			"Omidh"
+			"Omidh",
+			"Alirezaaa"
 		]
 	},
 	"adminpoll": "مدیریت نظرسنجی‌ها",
@@ -43,7 +44,7 @@
 	"poll-discuss": "بحث",
 	"poll-edit-answers": "ویرایش پاسخ‌ها",
 	"poll-edit-button": "ذخیرهٔ صفحه",
-	"poll-edit-desc": "نظرسنجی جدید",
+	"poll-edit-desc": "نظرسنجی تازه",
 	"poll-edit-image": "ویرایش تصویر",
 	"poll-edit-invalid-access": "دسترسی نامجاز",
 	"poll-edit-title": "ویرایش نظرسنجی - $1",
