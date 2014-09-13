@@ -175,11 +175,12 @@ class AdminPoll extends SpecialPage {
 				$output .= "<div class=\"view-poll-row-bottom\" id=\"{$rowId}\">";
 			}
 
+			$poll_url = htmlspecialchars( $title->getFullURL() );
 			$output .= "<div class=\"view-poll-number\">{$x}.</div>
 					<div class=\"view-poll-user-image\"><img src=\"{$wgUploadPath}/avatars/{$avatar->getAvatarImage()}\" alt=\"\" /></div>
 					<div class=\"view-poll-user-name\">{$user_create}</div>
 					<div class=\"view-poll-text\">
-					<p><b><a href=\"{htmlspecialchars( $title->getFullURL() )}\">{$poll_title}</a></b></p>
+					<p><b><a href=\"{$poll_url}\">{$poll_title}</a></b></p>
 					<p>";
 			foreach( $poll_choices as $choice ) {
 				$output .= "{$choice['choice']}<br />";

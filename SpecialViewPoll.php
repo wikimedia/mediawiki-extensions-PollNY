@@ -152,9 +152,11 @@ class ViewPoll extends SpecialPage {
 			$title = Title::makeTitle( NS_POLL, $poll_title );
 
 			if( ( $x < $dbr->numRows( $res ) ) && ( $x % $per_page != 0 ) ) {
-				$output .= "<div class=\"view-poll-row\" id=\"{$row_id}\" onclick=\"window.location='{htmlspecialchars( $title->getFullURL() )}'\">";
+				$url = htmlspecialchars( $title->getFullURL() );
+				$output .= "<div class=\"view-poll-row\" id=\"{$row_id}\" onclick=\"window.location='{$url}'\">";
 			} else {
-				$output .= "<div class=\"view-poll-row-bottom\" id=\"{$row_id}\" onclick=\"window.location='{htmlspecialchars( $title->getFullURL() )}'\">";
+				$url = htmlspecialchars( $title->getFullURL() );
+				$output .= "<div class=\"view-poll-row-bottom\" id=\"{$row_id}\" onclick=\"window.location='{$url}'\">";
 			}
 
 			$output .= "<div class=\"view-poll-number\">{$x}.</div>
