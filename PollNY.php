@@ -21,7 +21,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'PollNY',
-	'version' => '3.1.0',
+	'version' => '3.2',
 	'author' => array( 'Aaron Wright', 'David Pean', 'Jack Phoenix' ),
 	'descriptionmsg' => 'poll-desc',
 	'url' => 'https://www.mediawiki.org/wiki/Extension:PollNY'
@@ -46,20 +46,18 @@ $wgAvailableRights[] = 'polladmin';
 $wgGroupPermissions['sysop']['polladmin'] = true;
 
 // Set up the new special pages
-$dir = dirname( __FILE__ ) . '/';
 $wgMessagesDirs['PollNY'] = __DIR__ . '/i18n';
-$wgExtensionMessagesFiles['PollNY'] = $dir . 'Poll.i18n.php';
-$wgExtensionMessagesFiles['PollNYAlias'] = $dir . 'Poll.alias.php';
+$wgExtensionMessagesFiles['PollNYAlias'] = __DIR__ . '/Poll.alias.php';
 // Namespace translations
-$wgExtensionMessagesFiles['PollNYNamespaces'] = $dir . 'Poll.namespaces.php';
+$wgExtensionMessagesFiles['PollNYNamespaces'] = __DIR__ . '/Poll.namespaces.php';
 
-$wgAutoloadClasses['AdminPoll'] = $dir . 'SpecialAdminPoll.php';
-$wgAutoloadClasses['CreatePoll'] = $dir . 'SpecialCreatePoll.php';
-$wgAutoloadClasses['Poll'] = $dir . 'PollClass.php';
-$wgAutoloadClasses['PollPage'] = $dir . 'PollPage.php';
-$wgAutoloadClasses['RandomPoll'] = $dir . 'SpecialRandomPoll.php';
-$wgAutoloadClasses['UpdatePoll'] = $dir . 'SpecialUpdatePoll.php';
-$wgAutoloadClasses['ViewPoll'] = $dir . 'SpecialViewPoll.php';
+$wgAutoloadClasses['AdminPoll'] = __DIR__ . '/SpecialAdminPoll.php';
+$wgAutoloadClasses['CreatePoll'] = __DIR__ . '/SpecialCreatePoll.php';
+$wgAutoloadClasses['Poll'] = __DIR__ . '/PollClass.php';
+$wgAutoloadClasses['PollPage'] = __DIR__ . '/PollPage.php';
+$wgAutoloadClasses['RandomPoll'] = __DIR__ . '/SpecialRandomPoll.php';
+$wgAutoloadClasses['UpdatePoll'] = __DIR__ . '/SpecialUpdatePoll.php';
+$wgAutoloadClasses['ViewPoll'] = __DIR__ . '/SpecialViewPoll.php';
 
 $wgSpecialPages['AdminPoll'] = 'AdminPoll';
 $wgSpecialPages['CreatePoll'] = 'CreatePoll';
@@ -68,9 +66,9 @@ $wgSpecialPages['UpdatePoll'] = 'UpdatePoll';
 $wgSpecialPages['ViewPoll'] = 'ViewPoll';
 
 // Upload form
-$wgAutoloadClasses['SpecialPollAjaxUpload'] = $dir . 'MiniAjaxUpload.php';
-$wgAutoloadClasses['PollAjaxUploadForm'] = $dir . 'MiniAjaxUpload.php';
-$wgAutoloadClasses['PollUpload'] = $dir . 'MiniAjaxUpload.php';
+$wgAutoloadClasses['SpecialPollAjaxUpload'] = __DIR__ . '/MiniAjaxUpload.php';
+$wgAutoloadClasses['PollAjaxUploadForm'] = __DIR__ . '/MiniAjaxUpload.php';
+$wgAutoloadClasses['PollUpload'] = __DIR__ . '/MiniAjaxUpload.php';
 $wgSpecialPages['PollAjaxUpload'] = 'SpecialPollAjaxUpload';
 
 // New special page group for poll-related special pages
@@ -80,11 +78,11 @@ $wgSpecialPageGroups['RandomPoll'] = 'poll';
 $wgSpecialPageGroups['ViewPoll'] = 'poll';
 
 // Load the API module
-$wgAutoloadClasses['ApiPollNY'] = $dir . 'ApiPollNY.php';
+$wgAutoloadClasses['ApiPollNY'] = __DIR__ . '/ApiPollNY.php';
 $wgAPIModules['pollny'] = 'ApiPollNY';
 
 // Hooked functions
-$wgAutoloadClasses['PollNYHooks'] = $dir . 'PollNYHooks.php';
+$wgAutoloadClasses['PollNYHooks'] = __DIR__ . '/PollNYHooks.php';
 
 $wgHooks['TitleMoveComplete'][] = 'PollNYHooks::updatePollQuestion';
 $wgHooks['ArticleDelete'][] = 'PollNYHooks::deletePollQuestion';
@@ -97,7 +95,7 @@ $wgHooks['CanonicalNamespaces'][] = 'PollNYHooks::onCanonicalNamespaces';
 
 // ResourceLoader support for MediaWiki 1.17+
 $resourceTemplate = array(
-	'localBasePath' => dirname( __FILE__ ),
+	'localBasePath' => __DIR__,
 	'remoteExtPath' => 'PollNY',
 	'position' => 'top' // available since r85616
 );
