@@ -264,24 +264,6 @@ var PollNY = {
 		} );
 	},
 
-	// The next two functions are from SpecialViewPoll.php
-	/**
-	 * Change the background color of the given element when the user hovers
-	 * their mouse over the said element.
-	 *
-	 * @param divID String: element name
-	 */
-	doHover: function( divID ) {
-		document.getElementById( divID ).style.backgroundColor = '#FFFCA9';
-	},
-
-	/**
-	 * @param divID String: element name
-	 */
-	endHover: function( divID ) {
-		document.getElementById( divID ).style.backgroundColor = '';
-	},
-
 	// The next two functions are from SpecialAdminPoll.php
 	/**
 	 * @todo FIXME: would be nice if we could somehow merge this function with
@@ -533,17 +515,5 @@ jQuery( document ).ready( function() {
 		jQuery( 'input#poll-create-button' ).on( 'click', function() {
 			PollNY.create();
 		} );
-	}
-
-	// Hovers on Special:ViewPoll
-	if ( mw.config.get( 'wgCanonicalSpecialPageName' ) == 'ViewPoll' ) {
-		jQuery( 'div.view-poll-row' ).on({
-			'mouseout': function() {
-				PollNY.endHover( jQuery( this ).attr( 'id' ) );
-			},
-			'mouseover': function() {
-				PollNY.doHover( jQuery( this ).attr( 'id' ) );
-			}
-		});
 	}
 } );

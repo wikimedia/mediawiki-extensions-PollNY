@@ -537,6 +537,12 @@
 	font-weight: bold;
 }
 
+/* Hover effect when moving the mouse over a poll row on Special:ViewPoll; used to be done w/ JS */
+.mw-special-ViewPoll div.view-poll-row:hover,
+.mw-special-ViewPoll div.view-poll-row-bottom:hover {
+	background-color: #FFFCA9;
+}
+
 .poll-unit-title {
 	font-size: 12px;
 	line-height: 13px;
