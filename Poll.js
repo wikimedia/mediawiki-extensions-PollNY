@@ -45,18 +45,20 @@ var PollNY = {
 		objLink.href = '';
 		objLink.title = '';
 
-		LightBox.show( objLink );
+		mw.loader.using( 'ext.pollNY.lightBox', function() {
+			LightBox.show( objLink );
 
-		if( !PollNY.detectMacXFF() ) {
-			LightBox.setText(
-				'<embed src="' + mw.config.get( 'wgExtensionAssetsPath' ) + '/PollNY/ajax-loading.swf" quality="high" wmode="transparent" bgcolor="#ffffff"' +
-				'pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"' +
-				'type="application/x-shockwave-flash" width="100" height="100">' +
-				'</embed>'
-			);
-		} else {
-			LightBox.setText( mw.msg( 'poll-js-loading' ) );
-		}
+			if( !PollNY.detectMacXFF() ) {
+				LightBox.setText(
+					'<embed src="' + mw.config.get( 'wgExtensionAssetsPath' ) + '/PollNY/ajax-loading.swf" quality="high" wmode="transparent" bgcolor="#ffffff"' +
+					'pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"' +
+					'type="application/x-shockwave-flash" width="100" height="100">' +
+					'</embed>'
+				);
+			} else {
+				LightBox.setText( mw.msg( 'poll-js-loading' ) );
+			}
+		} );
 	},
 
 	/**
@@ -136,7 +138,7 @@ var PollNY = {
 			// redirect to next poll they haven't voted for
 			// old code: if( req.responseText.indexOf( 'error' ) == -1 ) {
 			if ( data.pollny.result !== 'error' ) {
-				window.location = mw.config.get( 'wgServer' ) + 
+				window.location = mw.config.get( 'wgServer' ) +
 					mw.config.get( 'wgScriptPath' ) +
 					'/index.php?title=' + data.pollny.result +
 					'&prev_id=' + mw.config.get( 'wgArticleId' );
@@ -462,10 +464,9 @@ jQuery( document ).ready( function() {
 	// Poll.namespaces.php in order to change that...
 	if ( jQuery( 'body' ).hasClass( 'ns-300' ) ) {
 		// If LightBox is not yet loaded, well, load it!
-		if ( typeof LightBox == undefined ) {
-			mw.loader.load( 'ext.pollNY.lightBox' );
-		}
-		LightBox.init();
+		mw.loader.using( 'ext.pollNY.lightBox', function() {
+			LightBox.init();
+		} );
 		PollNY.show();
 
 		jQuery( 'a.poll-status-toggle-link' ).on( 'click', function() {

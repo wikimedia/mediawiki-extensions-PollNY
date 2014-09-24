@@ -9,7 +9,7 @@
 	Rewritten to be more object-oriented by Jack Phoenix <jack@countervandalism.net>
 	on 21 June 2011
 */
-var LightBox = {
+window.LightBox = {
 	/**
 	 * Core code from quirksmode.org
 	 * @return Array with x,y page scroll values.
