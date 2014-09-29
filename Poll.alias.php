@@ -60,11 +60,11 @@ $specialPageAliases['diq'] = array(
 
 /** Finnish (suomi) */
 $specialPageAliases['fi'] = array(
-	'AdminPoll' => array( 'Ylläpidä äänestyksiä' ),
-	'CreatePoll' => array( 'Luo äänestys' ),
-	'RandomPoll' => array( 'Satunnainen äänestys' ),
-	'UpdatePoll' => array( 'Päivitä äänestys' ),
-	'ViewPoll' => array( 'Katso äänestys' ),
+	'AdminPoll' => array( 'Hallitse_äänestyksiä' ),
+	'CreatePoll' => array( 'Luo_äänestys' ),
+	'RandomPoll' => array( 'Satunnainen_äänestys' ),
+	'UpdatePoll' => array( 'Päivitä_äänestys' ),
+	'ViewPoll' => array( 'Katso_äänestys' ),
 );
 
 /** Japanese (日本語) */
