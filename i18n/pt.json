@@ -2,9 +2,16 @@
 	"@metadata": {
 		"authors": [
 			"Hamilton Abreu",
-			"Luckas"
+			"Luckas",
+			"Vitorvicentevalente"
 		]
 	},
+	"adminpoll": "Administrar sondagens",
+	"createpoll": "Criar sondagem",
+	"randompoll": "Sondagem aleatória",
+	"viewpoll": "Ver sondagens",
+	"poll-desc": "Sistema avançado de sondagens que usa páginas especiais e permite a sua incorporação nas páginas wiki",
+	"poll-admin-no-polls": "Não existem sondagens. [[Special:CreatePoll|Criar uma!]]",
 	"poll-cancel-button": "Cancelar",
 	"poll-edit-button": "Gravar página"
 }
