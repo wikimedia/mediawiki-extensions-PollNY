@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kening Aldgilles"
+			"Kening Aldgilles",
+			"Robin0van0der0vliet"
 		]
 	},
 	"poll-admin-viewall": "Alles sjen litte",
-	"poll-cancel-button": "Ofbrekke",
+	"poll-cancel-button": "Annulearje",
 	"poll-edit-button": "Fêstlizze"
 }
