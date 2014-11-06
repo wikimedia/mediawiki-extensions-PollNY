@@ -6,6 +6,13 @@
 		]
 	},
 	"poll-admin-viewall": "Alles sjen litte",
+	"poll-ago": "$1 lyn",
 	"poll-cancel-button": "Annulearje",
-	"poll-edit-button": "Fêstlizze"
+	"poll-edit-button": "Fêstlizze",
+	"poll-prev": "foarige",
+	"poll-time-ago": "$1 lyn",
+	"poll-time-days": "{{PLURAL:$1|ien dei|$1 dagen}}",
+	"poll-time-hours": "{{PLURAL:$1|ien oere|$1 oeren}}",
+	"poll-time-minutes": "{{PLURAL:$1|ien minút|$1 minuten}}",
+	"poll-time-seconds": "{{PLURAL:$1|ien sekonde|$1 sekonden}}"
 }
