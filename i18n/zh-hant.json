@@ -50,6 +50,7 @@
 	"poll-view-title": "檢視$1調查",
 	"poll-view-newest": "最新",
 	"poll-view-popular": "最受歡迎",
+	"poll-votes": "{{PLURAL:$1|$1 票}}",
 	"poll-woops": "糟糕！",
 	"poll-time-ago": "$1以前",
 	"poll-time-days": "$1天",
