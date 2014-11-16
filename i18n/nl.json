@@ -51,7 +51,7 @@
 	"poll-enterquestion": "Geef een vraag op",
 	"poll-finished": "<b>Er zijn geen peilingen meer over. Maak uw <a href=\"$1\">eigen peiling</a></b> of <a href=\"$2\">bekijk resultaten van deze peiling</a>.",
 	"poll-flagged": "Deze peiling is gemarkeerd als ongepast",
-	"poll-flagged-message": "Weet je zeker dat u deze peiling als ongepast wilt markeren?",
+	"poll-flagged-message": "Weet u zeker dat u deze peiling als ongepast wilt markeren?",
 	"poll-flag-poll": "Peiling als ongepast markeren",
 	"poll-hash": "\"#\" is een ongeldig teken voor de vraag.",
 	"poll-image-label": "Afbeelding toevoegen",
