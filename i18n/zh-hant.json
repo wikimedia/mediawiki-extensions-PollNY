@@ -19,7 +19,7 @@
 	"poll-ago": "$1以前",
 	"poll-cancel-button": "取消",
 	"poll-category": "調查",
-	"poll-category-user": "由用戶$1發起之調查",
+	"poll-category-user": "由使用者 $1 發起之調查",
 	"poll-choices-label": "答案選項",
 	"poll-close-poll": "關閉調查",
 	"poll-create": "建立調查",
