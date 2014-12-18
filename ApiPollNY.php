@@ -211,7 +211,7 @@ class ApiPollNY extends ApiBase {
 	}
 
 	/**
-	 * @return String: human-readable module description
+	 * @deprecated since MediaWiki core 1.25
 	 */
 	public function getDescription() {
 		return 'PollNY API - includes both user and admin functions';
@@ -244,7 +244,9 @@ class ApiPollNY extends ApiBase {
 		);
 	}
 
-	// Describe the parameter
+	/**
+	 * @deprecated since MediaWiki core 1.25
+	 */
 	public function getParamDescription() {
 		return array_merge( parent::getParamDescription(), array(
 			'what' => 'What to do?',
@@ -256,7 +258,9 @@ class ApiPollNY extends ApiBase {
 		) );
 	}
 
-	// Get examples
+	/**
+	 * @deprecated since MediaWiki core 1.25
+	 */
 	public function getExamples() {
 		return array(
 			'api.php?action=pollny&what=delete&pollID=66' => 'Deletes the poll #66',
@@ -265,6 +269,26 @@ class ApiPollNY extends ApiBase {
 			'api.php?action=pollny&what=titleExists&pageName=Is%20PollNY%20awesome%3F' => 'Checks if there is already a poll with the title "Is PollNY awesome?"',
 			'api.php?action=pollny&what=updateStatus&pollID=47&status=1' => 'Sets the status of the poll #47 to 1 (=open); possible status values are 0 (=closed), 1 and 2 (=flagged)',
 			'api.php?action=pollny&what=vote&pollID=33&choiceID=4' => 'Votes (answers) the poll #33 with the 4th choice',
+		);
+	}
+
+	/**
+	 * @see ApiBase::getExamplesMessages()
+	 */
+	protected function getExamplesMessages() {
+		return array(
+			'action=pollny&what=delete&pollID=66'
+				=> 'apihelp-pollny-example-1',
+			'action=pollny&what=getPollResults&pollID=666'
+				=> 'apihelp-pollny-example-2',
+			'action=pollny&what=getRandom'
+				=> 'apihelp-pollny-example-3',
+			'action=pollny&what=titleExists&pageName=Is%20PollNY%20awesome%3F'
+				=> 'apihelp-pollny-example-4',
+			'action=pollny&what=updateStatus&pollID=47&status=1'
+				=> 'apihelp-pollny-example-5',
+			'action=pollny&what=vote&pollID=33&choiceID=4'
+				=> 'apihelp-pollny-example-6'
 		);
 	}
 }

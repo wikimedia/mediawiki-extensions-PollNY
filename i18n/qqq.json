@@ -93,5 +93,18 @@
 	"poll-time-minutes": "Used as <code>$1</code> in the following messages:\n* {{msg-mw|Poll-ago}}\n* {{msg-mw|Poll-time-ago}}\nParameters:\n* $1 - number of minutes\n{{Related|Poll-time}}\n{{Identical|Minute}}",
 	"poll-time-seconds": "Used as <code>$1</code> in the following messages:\n* {{msg-mw|Poll-ago}}\n* {{msg-mw|Poll-time-ago}}\nParameters:\n* $1 - number of seconds\n{{Related|Poll-time}}\n{{Identical|Second}}",
 	"specialpages-group-poll": "{{doc-special-group}}\n{{Identical|Poll}}",
-	"right-polladmin": "{{doc-right|polladmin}}"
+	"right-polladmin": "{{doc-right|polladmin}}",
+	"apihelp-pollny-description": "{{doc-apihelp-description|pollny}}",
+	"apihelp-pollny-param-what": "{{doc-apihelp-param|pollny|what}}",
+	"apihelp-pollny-param-choiceID": "{{doc-apihelp-param|pollny|choiceID}}",
+	"apihelp-pollny-param-pageName": "{{doc-apihelp-param|pollny|pageName}}",
+	"apihelp-pollny-param-pollID": "{{doc-apihelp-param|pollny|pollID}}",
+	"apihelp-pollny-param-pageID": "{{doc-apihelp-param|pollny|pageID}}",
+	"apihelp-pollny-param-status": "{{doc-apihelp-param|pollny|status}}",
+	"apihelp-pollny-example-1": "{{doc-apihelp-example|pollny}}",
+	"apihelp-pollny-example-2": "{{doc-apihelp-example|pollny}}",
+	"apihelp-pollny-example-3": "{{doc-apihelp-example|pollny}}",
+	"apihelp-pollny-example-4": "{{doc-apihelp-example|pollny}}",
+	"apihelp-pollny-example-5": "{{doc-apihelp-example|pollny}}",
+	"apihelp-pollny-example-6": "{{doc-apihelp-example|pollny}}"
 }

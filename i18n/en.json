@@ -91,5 +91,18 @@
     "poll-time-minutes": "{{PLURAL:$1|one minute|$1 minutes}}",
     "poll-time-seconds": "{{PLURAL:$1|one second|$1 seconds}}",
     "specialpages-group-poll": "Polls",
-    "right-polladmin": "Administer polls"
+    "right-polladmin": "Administer polls",
+    "apihelp-pollny-description": "PollNY API - includes both user and admin functions.",
+    "apihelp-pollny-param-what": "What to do?",
+    "apihelp-pollny-param-choiceID": "Same as clicking the <choiceID>th choice via the GUI; only used when what=vote.",
+    "apihelp-pollny-param-pageName": "Title to check for (only used when what=titleExists); should be URL-encoded.",
+    "apihelp-pollny-param-pollID": "Poll ID of the poll that is being deleted/updated/voted for.",
+    "apihelp-pollny-param-pageID": "Page ID (only used when what=getPollResults).",
+    "apihelp-pollny-param-status": "New status of the poll (when what=updateStatus); possible values are 0 (=closed), 1 and 2 (=flagged).",
+    "apihelp-pollny-example-1": "Deletes the poll #66",
+    "apihelp-pollny-example-2": "Gets the results of the poll #666",
+    "apihelp-pollny-example-3": "Gets a random poll to which the current user hasn't answered yet",
+    "apihelp-pollny-example-4": "Checks if there is already a poll with the title \"Is PollNY awesome?\"",
+    "apihelp-pollny-example-5": "Sets the status of the poll #47 to 1 (=open); possible status values are 0 (=closed), 1 and 2 (=flagged)",
+    "apihelp-pollny-example-6": "Votes (answers) the poll #33 with the 4th choice"
 }
