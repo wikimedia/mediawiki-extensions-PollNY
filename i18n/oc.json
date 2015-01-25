@@ -90,5 +90,6 @@
 	"poll-time-minutes": "{{PLURAL:$1|una minuta|$1 minutas}}",
 	"poll-time-seconds": "{{PLURAL:$1|una segonda|$1 segondas}}",
 	"specialpages-group-poll": "Sondatges",
-	"right-polladmin": "Administrar los sondatges"
+	"right-polladmin": "Administrar los sondatges",
+	"apihelp-pollny-param-what": "De qué far ?"
 }

@@ -75,5 +75,6 @@
 	"poll-time-minutes": "{{PLURAL:$1|eng Minutt|$1 Minutten}}",
 	"poll-time-seconds": "{{PLURAL:$1|eng Sekonn|$1 Sekonnen}}",
 	"specialpages-group-poll": "Ëmfroen",
-	"right-polladmin": "Ëmfroe geréieren"
+	"right-polladmin": "Ëmfroe geréieren",
+	"apihelp-pollny-param-what": "Wat maachen?"
 }

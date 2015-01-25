@@ -12,5 +12,6 @@
 	"poll-time-days": "{{PLURAL:$1|dzień|$1 dni}}",
 	"poll-time-hours": "{{PLURAL:$1|godzina|$1 godziny|$1 godzin}}",
 	"poll-time-minutes": "{{PLURAL:$1|minuta|$1 minuty|$1 minut}}",
-	"poll-time-seconds": "{{PLURAL:$1|sekunda|$1 sekundy|$1 sekund}}"
+	"poll-time-seconds": "{{PLURAL:$1|sekunda|$1 sekundy|$1 sekund}}",
+	"apihelp-pollny-param-what": "Co robić?"
 }

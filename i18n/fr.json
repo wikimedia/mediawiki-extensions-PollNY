@@ -4,7 +4,8 @@
 			"Constant Depièreux",
 			"Gomoko",
 			"Wyz",
-			"Y-M D"
+			"Y-M D",
+			"Benjozork"
 		]
 	},
 	"adminpoll": "Administration des sondages",
@@ -93,5 +94,9 @@
 	"poll-time-minutes": "{{PLURAL:$1|une minute|$1 minutes}}",
 	"poll-time-seconds": "{{PLURAL:$1|une seconde|$1 secondes}}",
 	"specialpages-group-poll": "Sondages",
-	"right-polladmin": "Administrer les sondages"
+	"right-polladmin": "Administrer les sondages",
+	"apihelp-pollny-param-pollID": "Identifiant du sondage en cours de suppression/mise à jour/participation",
+	"apihelp-pollny-example-1": "Supprime le sondage n ° 66",
+	"apihelp-pollny-example-2": "Obtient les résultats du sondage n ° 666",
+	"apihelp-pollny-example-3": "Obtient un sondage aléatoire auquel l'utilisateur actuel n'a pas encore répondu"
 }
