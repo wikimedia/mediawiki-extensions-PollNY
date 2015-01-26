@@ -101,5 +101,6 @@
 	"apihelp-pollny-example-1": "删除调查#66",
 	"apihelp-pollny-example-2": "获取#666的调查结果",
 	"apihelp-pollny-example-3": "随机获取一个当前用户还未回答的调查",
-	"apihelp-pollny-example-5": "设置调查#47的状态为1（=打开）可能的值为：0（=已关闭）、1和2（=已标记）"
+	"apihelp-pollny-example-5": "设置调查#47的状态为1（=打开）可能的值为：0（=已关闭）、1和2（=已标记）",
+	"apihelp-pollny-example-6": "对调查#33投第四个选择票（回答）"
 }
