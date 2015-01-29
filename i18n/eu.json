@@ -4,5 +4,7 @@
 			"Subi"
 		]
 	},
+	"poll-js-loading": "Kargatzen...",
+	"poll-next": "hurrengoa",
 	"apihelp-pollny-param-what": "Zer egin?"
 }
