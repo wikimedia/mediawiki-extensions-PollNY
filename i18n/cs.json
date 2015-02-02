@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Aktron"
+		]
+	},
+	"apihelp-pollny-param-what": "Co dělat?",
+	"apihelp-pollny-example-1": "Smaže hlasování #66",
+	"apihelp-pollny-example-2": "Zjistí výsledky hlasování #666"
+}
