@@ -72,7 +72,7 @@ class ViewPoll extends SpecialPage {
 		$user = $request->getVal( 'user' );
 		$userLink = array();
 		if ( $user ) {
-			$where['poll_user_name'] = $dbr->strencode( $user );
+			$where['poll_user_name'] = $user;
 			$userLink['user'] = $user;
 		}
 
@@ -122,7 +122,7 @@ class ViewPoll extends SpecialPage {
 		$res_total = $dbr->select(
 			'poll_question',
 			'COUNT(*) AS total_polls',
-			( ( $user ) ? array( 'poll_user_name' => $dbr->strencode( $user ) ) : array() ),
+			( ( $user ) ? array( 'poll_user_name' => $user ) : array() ),
 			__METHOD__
 		);
 		$row_total = $dbr->fetchObject( $res_total );

@@ -283,7 +283,7 @@ class Poll {
 		$randstr = wfRandom();
 		$sql = "SELECT poll_page_id FROM {$dbr->tableName( 'poll_question' )} {$use_index}
 			INNER JOIN {$dbr->tableName( 'page' )} ON page_id=poll_page_id WHERE poll_id NOT IN
-				(SELECT pv_poll_id FROM {$dbr->tableName( 'poll_user_vote' )} WHERE pv_user_name = '" . $dbr->strencode( $user_name ) . "')
+				(SELECT pv_poll_id FROM {$dbr->tableName( 'poll_user_vote' )} WHERE pv_user_name = {$dbr->addQuotes( $user_name )})
 				AND poll_status=1 AND poll_random>$randstr ORDER BY poll_random LIMIT 0,1";
 		$res = $dbr->query( $sql, __METHOD__ );
 		$row = $dbr->fetchObject( $res );
@@ -291,7 +291,7 @@ class Poll {
 		if( !$row ) {
 			$sql = "SELECT poll_page_id FROM {$dbr->tableName( 'poll_question' )} {$use_index}
 				INNER JOIN {$dbr->tableName( 'page' )} ON page_id=poll_page_id WHERE poll_id NOT IN
-					(SELECT pv_poll_id FROM {$dbr->tableName( 'poll_user_vote' )} WHERE pv_user_name = '" . $dbr->strencode( $user_name ) . "')
+					(SELECT pv_poll_id FROM {$dbr->tableName( 'poll_user_vote' )} WHERE pv_user_name = {$dbr->addQuotes( $user_name )})
 					AND poll_status=1 AND poll_random<$randstr ORDER BY poll_random LIMIT 0,1";
 			wfDebugLog( 'PollNY', $sql );
 			$res = $dbr->query( $sql, __METHOD__ );
