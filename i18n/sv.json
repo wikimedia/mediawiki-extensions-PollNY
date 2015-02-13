@@ -3,7 +3,8 @@
 		"authors": [
 			"Jopparn",
 			"McDutchie",
-			"WikiPhoenix"
+			"WikiPhoenix",
+			"Jenniesarina"
 		]
 	},
 	"adminpoll": "Administrera enkäter",
@@ -92,5 +93,6 @@
 	"poll-time-minutes": "{{PLURAL:$1|en minut|$1 minuter}}",
 	"poll-time-seconds": "{{PLURAL:$1|en sekund|$1 sekunder}}",
 	"specialpages-group-poll": "Enkäter",
-	"right-polladmin": "Administrera enkäter"
+	"right-polladmin": "Administrera enkäter",
+	"apihelp-pollny-param-what": "Vad göra?"
 }
