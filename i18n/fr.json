@@ -5,7 +5,8 @@
 			"Gomoko",
 			"Wyz",
 			"Y-M D",
-			"Benjozork"
+			"Benjozork",
+			"Hercule"
 		]
 	},
 	"adminpoll": "Administration des sondages",
@@ -41,7 +42,7 @@
 	"poll-create-threshold-title": "Créer un sondage",
 	"poll-create-title": "Créer un sondage",
 	"poll-createdago": "Créé il y a $1",
-	"poll-delete-message": "Êtes-vous sûr(e) de vouloir supprimer ce sondage ?",
+	"poll-delete-message": "Confirmez-vous vouloir supprimer ce sondage ?",
 	"poll-delete-poll": "Supprimer un sondage",
 	"poll-discuss": "Discussions",
 	"poll-edit-answers": "Edition des réponses",
