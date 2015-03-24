@@ -4,14 +4,15 @@
 			"Nemo bis",
 			"Shirayuki",
 			"Siebrand",
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Umherirrender"
 		]
 	},
 	"adminpoll": "{{doc-special|AdminPoll}}\nThe special page to administrate polls.",
 	"createpoll": "{{doc-special|CreatePoll}}\nThe special page to create a new poll.",
 	"randompoll": "{{doc-special|RandomPoll}}\nThe special page which takes you to a poll that you haven't voted in yet.",
 	"viewpoll": "{{doc-special|ViewPoll}}\nThe special page to view all available polls.",
-	"poll-desc": "{{desc|name=Poll NY|url=http://www.mediawiki.org/wiki/Extension:PollNY}}",
+	"poll-desc": "{{desc|name=Poll NY|url=https://www.mediawiki.org/wiki/Extension:PollNY}}",
 	"poll-admin-no-polls": "Message displayed on [[Special:AdminPoll]] and [[Special:ViewPoll]] when no polls match the supplied criteria or when there are absolutely no polls at all in the database.",
 	"poll-admin-closed": "Link title; clicking on this link shows all closed polls.\n{{Identical|Closed}}",
 	"poll-admin-flagged": "Link title; clicking on this link shows all flagged polls.\n{{Identical|Flagged}}",
