@@ -3,7 +3,8 @@
 		"authors": [
 			"Toliño",
 			"Vivaelcelta",
-			"Beninho"
+			"Beninho",
+			"Elisardojm"
 		]
 	},
 	"adminpoll": "Administrar as enquisas",
@@ -93,5 +94,10 @@
 	"poll-time-seconds": "{{PLURAL:$1|un segundo|$1 segundos}}",
 	"specialpages-group-poll": "Enquisas",
 	"right-polladmin": "Administrar as enquisas",
-	"apihelp-pollny-param-what": "Que facer?"
+	"apihelp-pollny-description": "PollNY API - inclúe funcións de usuario e de administrador",
+	"apihelp-pollny-param-what": "Que facer?",
+	"apihelp-pollny-example-1": "Elimina a enquisa #66",
+	"apihelp-pollny-example-2": "Obtén os resultados da consulta #666",
+	"apihelp-pollny-example-3": "Devolve unha enquisa aleatoria á que o usuario actual aínda non respondeu",
+	"apihelp-pollny-example-4": "Consulta se xa hai unha enquisa co título \"Is PollNY awesome?\""
 }
