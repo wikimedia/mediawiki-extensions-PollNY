@@ -81,6 +81,11 @@ class PollPage extends Article {
 				'</a>
 			</div>';
 		}
+
+		$formattedVoteCount = $lang->formatNum( $stats_data['votes'] );
+		$formattedEditCount = $lang->formatNum( $stats_data['edits'] );
+		$formattedCommentCount = $lang->formatNum( $stats_data['comments'] );
+
 		$output .= '<div class="credit-box">
 					<h1>' . wfMessage( 'poll-submitted-by' )->text() . "</h1>
 					<div class=\"submitted-by-image\">
@@ -93,15 +98,15 @@ class PollPage extends Article {
 						<ul>
 							<li>
 								<img src=\"{$wgExtensionAssetsPath}/PollNY/images/voteIcon.gif\" alt=\"\" />
-								{$stats_data['votes']}
+								{$formattedVoteCount}
 							</li>
 							<li>
 								<img src=\"{$wgExtensionAssetsPath}/PollNY/images/pencilIcon.gif\" alt=\"\" />
-								{$stats_data['edits']}
+								{$formattedEditCount}
 							</li>
 							<li>
 								<img src=\"{$wgExtensionAssetsPath}/PollNY/images/commentsIcon.gif\" alt=\"\" />
-								{$stats_data['comments']}
+								{$formattedCommentCount}
 							</li>
 						</ul>
 					</div>
