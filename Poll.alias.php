@@ -29,7 +29,7 @@ $specialPageAliases['ar'] = array(
 	'ViewPoll' => array( 'عرض_الاستطلاع' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Arabic (مصرى) */
 $specialPageAliases['arz'] = array(
 	'AdminPoll' => array( 'استطلاع_سيسوب' ),
 	'CreatePoll' => array( 'عمل_استطلاع' ),

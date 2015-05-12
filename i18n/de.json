@@ -91,5 +91,6 @@
 	"poll-time-seconds": "{{PLURAL:$1|einer Sekunde|$1 Sekunden}}",
 	"specialpages-group-poll": "Abstimmungen",
 	"right-polladmin": "Abstimmungen verwalten",
-	"apihelp-pollny-example-1": "Löscht die Umfrage Nummer 66"
+	"apihelp-pollny-example-1": "Löscht die Umfrage Nummer 66",
+	"apihelp-pollny-example-2": "Ruft die Ergebnisse der Abstimmung 666 ab"
 }
