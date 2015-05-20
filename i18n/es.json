@@ -3,7 +3,8 @@
 		"authors": [
 			"Ovruni",
 			"Fitoschido",
-			"Ryo567"
+			"Ryo567",
+			"Macofe"
 		]
 	},
 	"adminpoll": "Gestionar encuestas",
@@ -84,7 +85,7 @@
 	"poll-time-seconds": "{{PLURAL:$1|un segundo|$1 segundos}}",
 	"specialpages-group-poll": "Encuestas",
 	"right-polladmin": "Gestionar encuestas",
-	"apihelp-pollny-description": "PollNY APIː incluye tanto las funciones de usuario como las de administrador.",
+	"apihelp-pollny-description": "PollNY API: incluye tanto las funciones de usuario como las de administrador.",
 	"apihelp-pollny-param-what": "¿Qué hacer?",
 	"apihelp-pollny-example-1": "Elimina la encuesta #66",
 	"apihelp-pollny-example-2": "Obtiene los resultados de la encuesta #666"
