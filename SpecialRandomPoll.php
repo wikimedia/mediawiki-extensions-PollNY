@@ -34,4 +34,8 @@ class RandomPoll extends SpecialPage {
 
 		return $pollPage;
 	}
+
+	protected function getGroupName() {
+		return 'poll';
+	}
 }

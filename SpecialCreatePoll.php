@@ -150,4 +150,8 @@ class CreatePoll extends SpecialPage {
 			$out->addTemplate( $template );
 		}
 	}
+
+	protected function getGroupName() {
+		return 'poll';
+	}
 }

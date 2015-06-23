@@ -300,4 +300,8 @@ class AdminPoll extends SpecialPage {
 
 		return $output;
 	}
+
+	protected function getGroupName() {
+		return 'poll';
+	}
 }

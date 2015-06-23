@@ -71,12 +71,6 @@ $wgAutoloadClasses['PollAjaxUploadForm'] = __DIR__ . '/MiniAjaxUpload.php';
 $wgAutoloadClasses['PollUpload'] = __DIR__ . '/MiniAjaxUpload.php';
 $wgSpecialPages['PollAjaxUpload'] = 'SpecialPollAjaxUpload';
 
-// New special page group for poll-related special pages
-$wgSpecialPageGroups['AdminPoll'] = 'poll';
-$wgSpecialPageGroups['CreatePoll'] = 'poll';
-$wgSpecialPageGroups['RandomPoll'] = 'poll';
-$wgSpecialPageGroups['ViewPoll'] = 'poll';
-
 // Load the API module
 $wgAutoloadClasses['ApiPollNY'] = __DIR__ . '/ApiPollNY.php';
 $wgAPIModules['pollny'] = 'ApiPollNY';
