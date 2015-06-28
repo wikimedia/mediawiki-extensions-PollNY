@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Metalhead64"
+			"Metalhead64",
+			"Kghbln"
 		]
 	},
 	"adminpoll": "Abstimmungen verwalten",
@@ -92,7 +93,9 @@
 	"specialpages-group-poll": "Abstimmungen",
 	"right-polladmin": "Abstimmungen verwalten",
 	"apihelp-pollny-description": "PollNY-API – schließt sowohl Benutzer- als auch Administratorfunktionen ein.",
+	"apihelp-pollny-param-what": "Was ist zu tun?",
 	"apihelp-pollny-param-pollID": "Kennung der Umfrage, die gelöscht, aktualisiert oder für die abgestimmt werden soll.",
+	"apihelp-pollny-param-pageID": "Seitenkennung (wird nur verwendet sofern was=getPollResults).",
 	"apihelp-pollny-example-1": "Löscht die Umfrage Nummer 66",
 	"apihelp-pollny-example-2": "Ruft die Ergebnisse der Abstimmung 666 ab",
 	"apihelp-pollny-example-3": "Ruft eine zufällige Umfrage ab, die der aktuelle Benutzer noch nicht beantwortet hat",
