@@ -6,7 +6,6 @@
  * @file
  * @ingroup Extensions
  * @author Jack Phoenix
- * @date 21 July 2013
  */
 var PollNY = {
 	voted: 0,
@@ -508,6 +507,13 @@ jQuery( document ).ready( function() {
 		// have an ID ranging from answer_2 to answer_9
 		for ( var x = 1; x <= 9; x++ ) {
 			jQuery( 'input#answer_' + x ).on( 'keyup', function() {
+				PollNY.updateAnswerBoxes();
+			} );
+			// Mobile (Android) support
+			// @see https://mathiasbynens.be/notes/oninput
+			// @todo FIXME: jumpy, but better than not showing the boxes 3-10 at all
+			jQuery( 'input#answer_' + x ).on( 'input', function() {
+				jQuery( this ).off( 'keyup' );
 				PollNY.updateAnswerBoxes();
 			} );
 		}
