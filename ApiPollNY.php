@@ -152,7 +152,7 @@ class ApiPollNY extends ApiBase {
 			if ( $poll_info['votes'] > 0 ) {
 				$bar_width = floor( 480 * ( $choice['votes'] / $poll_info['votes'] ) );
 			}
-			$bar_img = "<img src=\"{$wgExtensionAssetsPath}/PollNY/images/vote-bar-{$x}.gif\" border=\"0\" class=\"image-choice-{$x}\" style=\"width:{$choice['percent']}%;height:12px;\"/>";
+			$bar_img = "<img src=\"{$wgExtensionAssetsPath}/SocialProfile/images/vote-bar-{$x}.gif\" border=\"0\" class=\"image-choice-{$x}\" style=\"width:{$choice['percent']}%;height:12px;\"/>";
 
 			$output .= "<div class=\"poll-choice\">
 		<div class=\"poll-choice-left\">{$choice['choice']} ({$choice['percent']}%)</div>";
@@ -188,7 +188,7 @@ class ApiPollNY extends ApiBase {
 		}
 	}
 
-	function updateStatus( $pollID, $status ) {		
+	function updateStatus( $pollID, $status ) {
 		if(
 			$status == 2 ||
 			$this->poll->doesUserOwnPoll( $this->getUser()->getID(), $pollID ) ||

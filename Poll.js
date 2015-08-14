@@ -35,7 +35,7 @@ var PollNY = {
 
 	/**
 	 * Show the "Loading..." text in the lightbox; Firefox on Mac gets only
-	 * that whereas all other User-Agents get the pretty Flash animation.
+	 * that whereas all other User-Agents get the pretty animation.
 	 */
 	loadingLightBox: function() {
 		// pop up the lightbox
@@ -44,20 +44,22 @@ var PollNY = {
 		objLink.href = '';
 		objLink.title = '';
 
-		mw.loader.using( 'ext.pollNY.lightBox', function() {
-			LightBox.show( objLink );
+		window.LightBox.show( objLink );
 
-			if( !PollNY.detectMacXFF() ) {
-				LightBox.setText(
-					'<embed src="' + mw.config.get( 'wgExtensionAssetsPath' ) + '/PollNY/ajax-loading.swf" quality="high" wmode="transparent" bgcolor="#ffffff"' +
-					'pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"' +
-					'type="application/x-shockwave-flash" width="100" height="100">' +
-					'</embed>'
-				);
-			} else {
-				LightBox.setText( mw.msg( 'poll-js-loading' ) );
-			}
-		} );
+		if ( !PollNY.detectMacXFF() && window.isFlashSupported() ) {
+			window.LightBox.setText(
+				'<embed src="' + mw.config.get( 'wgExtensionAssetsPath' ) + '/SocialProfile/images/ajax-loading.swf" quality="high" wmode="transparent" bgcolor="#ffffff"' +
+				'pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"' +
+				'type="application/x-shockwave-flash" width="100" height="100">' +
+				'</embed>'
+			);
+		} else if ( !window.isFlashSupported() ) {
+			window.LightBox.setText(
+				'<img src="' + mw.config.get( 'wgExtensionAssetsPath' ) + '/SocialProfile/images/ajax-loader-white.gif" alt="" />'
+			);
+		} else {
+			window.LightBox.setText( mw.msg( 'poll-js-loading' ) );
+		}
 	},
 
 	/**
@@ -150,9 +152,9 @@ var PollNY = {
 				} else {
 					// We have run out of polls to show
 					// Show a lightbox prompting the user to create more polls
-					LightBox.setText( mw.msg(
+					window.LightBox.setText( mw.msg(
 						'poll-finished',
-						mw.util.wikiGetlink( mw.config.get( 'wgFormattedNamespaces' )[-1] + ':' + 'CreatePoll' ),
+						mw.util.getUrl( mw.config.get( 'wgFormattedNamespaces' )[-1] + ':' + 'CreatePoll' ),
 						window.location
 					) );
 				}
@@ -445,7 +447,7 @@ jQuery( document ).ready( function() {
 	// Poll.namespaces.php in order to change that...
 	if ( jQuery( 'body' ).hasClass( 'ns-300' ) ) {
 		// If LightBox is not yet loaded, well, load it!
-		mw.loader.using( 'ext.pollNY.lightBox', function() {
+		mw.loader.using( 'ext.socialprofile.LightBox', function() {
 			LightBox.init();
 		} );
 		PollNY.show();

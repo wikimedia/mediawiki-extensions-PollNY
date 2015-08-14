@@ -45,6 +45,7 @@ class AdminPoll extends SpecialPage {
 		}
 
 		// Add CSS & JS
+		$out->addModuleStyles( 'ext.pollNY.css' );
 		$out->addModules( 'ext.pollNY' );
 
 		// Pagination
@@ -213,14 +214,14 @@ class AdminPoll extends SpecialPage {
 				$this->msg( 'poll-delete-poll' )->text() . '</a>
 						</div>
 					</div>
-					<div class="cleared"></div>
+					<div class="visualClear"></div>
 				</div>';
 
 			$x++;
 		}
 
 		$output .= '</div>
-		<div class="cleared"></div>';
+		<div class="visualClear"></div>';
 
 		$output .= $this->buildPagination( $total, $per_page, $page );
 
