@@ -90,5 +90,18 @@
 	"poll-time-minutes": "{{PLURAL:$1|un minutu|$1 minutos}}",
 	"poll-time-seconds": "{{PLURAL:$1|un segundu|$1 segundos}}",
 	"specialpages-group-poll": "Encuestes",
-	"right-polladmin": "Alministrar encuestes"
+	"right-polladmin": "Alministrar encuestes",
+	"apihelp-pollny-description": "PollNY API - incluye les funciones d'usuariu y d'alministrador.",
+	"apihelp-pollny-param-what": "¿Qué facer?",
+	"apihelp-pollny-param-choiceID": "Igual que facer click na <choiceID>ª opción na interfaz, sólo s'usa cuando what=vote.",
+	"apihelp-pollny-param-pageName": "Títulu a revisar (sólo s'usa cuando what=titleExists); tien de tener codificación d'URL.",
+	"apihelp-pollny-param-pollID": "ID de la encuesta que ta desaniciándose/actualizándose/votándose.",
+	"apihelp-pollny-param-pageID": "ID de la páxina (sólo s'usa cuando what=getPollResults).",
+	"apihelp-pollny-param-status": "Nuevu estáu de la encuesta (cuando what=updateStatus); los valores posibles son 0 (=zarrada), 1 y 2 (=marcada).",
+	"apihelp-pollny-example-1": "Desanicia la encuesta #66",
+	"apihelp-pollny-example-2": "Recibe los resultaos de la encuesta #666",
+	"apihelp-pollny-example-3": "Recibe una encuesta al debalu a la qu'inda nun contestó l'usuariu actual",
+	"apihelp-pollny-example-4": "Comprueba si yá hai una encuesta col títulu \"Is PollNY awesome?\"",
+	"apihelp-pollny-example-5": "Conseña l'estáu de la encuesta #47 a 1 (=abierta); los valores posibles del estáu son 0 (=zarrada), 1 y 2 (=marcada)",
+	"apihelp-pollny-example-6": "Vota (respuende) a la encuesta #33 cola cuarta opción"
 }
