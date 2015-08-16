@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Andriykopanytsia"
+			"Andriykopanytsia",
+			"Ата"
 		]
 	},
 	"adminpoll": "Адмініструвати опитування",
@@ -90,5 +91,18 @@
 	"poll-time-minutes": "{{PLURAL:$1|одна хвилина|$1 хвилини|$1 хвилин}}",
 	"poll-time-seconds": "{{PLURAL:$1|одна секунда|$1 секунди|$1 секунд}}",
 	"specialpages-group-poll": "Опитування",
-	"right-polladmin": "Адміністрування опитувань"
+	"right-polladmin": "Адміністрування опитувань",
+	"apihelp-pollny-description": "PollNY API — включає функції і користувача, й адміністратора.",
+	"apihelp-pollny-param-what": "Що робити?",
+	"apihelp-pollny-param-choiceID": "Теж саме, що й натискання на вибір <choiceID> через GUI; використовується лише при what=vote.",
+	"apihelp-pollny-param-pageName": "Назва, яку шукати (використовується лише коли what=titleExists); має бути у вигляді URL.",
+	"apihelp-pollny-param-pollID": "Ідентифікатор опитування, яке вилучається/оновлюється/у якому робиться голос.",
+	"apihelp-pollny-param-pageID": "ID сторінки (використовується лише коли what=getPollResults).",
+	"apihelp-pollny-param-status": "Новий статус голосування (коли what=updateStatus); можливі значення: (=closed), 1 та 2 (=flagged).",
+	"apihelp-pollny-example-1": "Вилучає опитування #66",
+	"apihelp-pollny-example-2": "Отримує результати опитування #666",
+	"apihelp-pollny-example-3": "Отримує випадкове опитування, на яке поточний користувач іще не відповів",
+	"apihelp-pollny-example-4": "Перевіряє, чи вже є опитування з назвою «Чи Ви згодні, що PollNY прекрасний?»",
+	"apihelp-pollny-example-5": "Встановлює статус опитування #47 як 1 (=open); можливі значення статусу: 0 (=closed), 1 та 2 (=flagged)",
+	"apihelp-pollny-example-6": "Голоси (відповіді) у голосуванні #33 з вибраним 4"
 }
