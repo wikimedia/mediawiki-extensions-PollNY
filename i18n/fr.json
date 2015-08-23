@@ -6,7 +6,8 @@
 			"Wyz",
 			"Y-M D",
 			"Benjozork",
-			"Hercule"
+			"Hercule",
+			"Wladek92"
 		]
 	},
 	"adminpoll": "Administration des sondages",
@@ -96,9 +97,17 @@
 	"poll-time-seconds": "{{PLURAL:$1|une seconde|$1 secondes}}",
 	"specialpages-group-poll": "Sondages",
 	"right-polladmin": "Administrer les sondages",
+	"apihelp-pollny-description": "API PollNY - comprend à la fois les fonctions utilisateur et administrateur.",
 	"apihelp-pollny-param-what": "Quoi faire?",
+	"apihelp-pollny-param-choiceID": "Même chose qu'en cliquant sur le <choiceID>ième choix via l'interface graphique; utilisé seulement si what=vote.",
+	"apihelp-pollny-param-pageName": "Titre à vérifier (uniquement utilisé si what=titleExists); doit être encodé au format URL.",
 	"apihelp-pollny-param-pollID": "Identifiant du sondage en cours de suppression/mise à jour/participation",
+	"apihelp-pollny-param-pageID": "Identifiant de page (utilisé uniquement si what=getPollResults).",
+	"apihelp-pollny-param-status": "Nouveau statut du sondage (quand what=updateStatus); les valeurs possibles sont 0 (=fermé), 1 et 2 (=marqués).",
 	"apihelp-pollny-example-1": "Supprime le sondage n ° 66",
 	"apihelp-pollny-example-2": "Obtient les résultats du sondage n ° 666",
-	"apihelp-pollny-example-3": "Obtient un sondage aléatoire auquel l'utilisateur actuel n'a pas encore répondu"
+	"apihelp-pollny-example-3": "Obtient un sondage aléatoire auquel l'utilisateur actuel n'a pas encore répondu",
+	"apihelp-pollny-example-4": "Vérifie s'il existe déjà un sondage avec le titre \"PollNY est-il génial?\"",
+	"apihelp-pollny-example-5": "Définit l'état du sondage n°47 à 1 (=ouvert); les valeurs d'état possibles sont 0 (=fermé), 1 et 2 (=marqués)",
+	"apihelp-pollny-example-6": "Voix (réponses) du sondage n°33 avec le 4e choix"
 }
