@@ -77,7 +77,7 @@ var PollNY = {
 				choiceID: -1,
 				format: 'json'
 			}
-		} ).done( function( data ) {
+		} ).done( function() {
 			PollNY.goToNewPoll();
 		} );
 	},
@@ -112,7 +112,7 @@ var PollNY = {
 					choiceID: choice_id,
 					format: 'json'
 				}
-			} ).done( function( data ) {
+			} ).done( function() {
 				PollNY.goToNewPoll();
 			} );
 		}
@@ -192,7 +192,7 @@ var PollNY = {
 					status: status,
 					format: 'json'
 				}
-			} ).done( function( data ) {
+			} ).done( function() {
 				window.location.reload();
 			} );
 		}
@@ -218,6 +218,7 @@ var PollNY = {
 	 */
 	pollEmbedVote: function( id, pageId ) {
 		var choice_id = 0;
+		/* jshint evil:true */
 		var poll_form = eval( 'document.poll_'	+ id + '.poll_choice' );
 
 		for ( var i = 0; i < poll_form.length; i++ ) {
@@ -238,7 +239,7 @@ var PollNY = {
 					choiceID: choice_id,
 					format: 'json'
 				}
-			} ).done( function( data ) {
+			} ).done( function() {
 				PollNY.showResults( id, pageId );
 			} );
 		}
@@ -275,7 +276,7 @@ var PollNY = {
 	 */
 	poll_admin_status: function( id, status ) {
 		var msg;
-		if( status == 0 ) {
+		if( status === 0 ) {
 			msg = mw.msg( 'poll-close-message' );
 		}
 		if( status == 1 ) {
@@ -297,7 +298,7 @@ var PollNY = {
 					status: status,
 					format: 'json'
 				}
-			} ).done( function( data ) {
+			} ).done( function() {
 				jQuery( '#poll-' + id + '-controls' ).html( mw.msg( 'poll-js-action-complete' ) );
 			} );
 		}
@@ -322,7 +323,7 @@ var PollNY = {
 					pollID: id,
 					format: 'json'
 				}
-			} ).done( function( data ) {
+			} ).done( function() {
 				jQuery( '#poll-' + id + '-controls' ).html( mw.msg( 'poll-js-action-complete' ) );
 			} );
 		}
@@ -508,6 +509,7 @@ jQuery( document ).ready( function() {
 		// Register PollNY.updateAnswerBoxes() as the handler for elements that
 		// have an ID ranging from answer_2 to answer_9
 		for ( var x = 1; x <= 9; x++ ) {
+			/* jshint loopfunc:true */
 			jQuery( 'input#answer_' + x ).on( 'keyup', function() {
 				PollNY.updateAnswerBoxes();
 			} );
