@@ -91,6 +91,7 @@
 	"poll-time-minutes": "{{PLURAL:$1|einer Minute|$1 Minuten}}",
 	"poll-time-seconds": "{{PLURAL:$1|einer Sekunde|$1 Sekunden}}",
 	"specialpages-group-poll": "Abstimmungen",
+	"action-polladmin": "Abstimmungen zu verwalten",
 	"right-polladmin": "Abstimmungen verwalten",
 	"apihelp-pollny-description": "PollNY-API – schließt sowohl Benutzer- als auch Administratorfunktionen ein.",
 	"apihelp-pollny-param-what": "Was ist zu tun?",
