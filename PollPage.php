@@ -63,6 +63,8 @@ class PollPage extends Article {
 			return '';
 		}
 
+		$imgPath = $wgExtensionAssetsPath . '/SocialProfile/images';
+
 		// Set up submitter data
 		$user_title = Title::makeTitle( NS_USER, $poll_info['user_name'] );
 		$avatar = new wAvatar( $poll_info['user_id'], 'l' );
@@ -76,7 +78,7 @@ class PollPage extends Article {
 		if( $wgUser->isLoggedIn() ) {
 			$output .= '<div class="create-link">
 				<a href="' . htmlspecialchars( $createPollObj->getFullURL() ) . '">
-					<img src="' . $wgExtensionAssetsPath . '/PollNY/images/addIcon.gif" alt="" />'
+					<img src="' . $imgPath . '/addIcon.gif" alt="" />'
 					. wfMessage( 'poll-create' )->text() .
 				'</a>
 			</div>';
@@ -97,20 +99,20 @@ class PollPage extends Article {
 						<a href=\"{$user_title->getFullURL()}\">{$user_name_short}</a>
 						<ul>
 							<li>
-								<img src=\"{$wgExtensionAssetsPath}/PollNY/images/voteIcon.gif\" alt=\"\" />
+								<img src=\"{$imgPath}/voteIcon.gif\" alt=\"\" />
 								{$formattedVoteCount}
 							</li>
 							<li>
-								<img src=\"{$wgExtensionAssetsPath}/PollNY/images/pencilIcon.gif\" alt=\"\" />
+								<img src=\"{$imgPath}/editIcon.gif\" alt=\"\" />
 								{$formattedEditCount}
 							</li>
 							<li>
-								<img src=\"{$wgExtensionAssetsPath}/PollNY/images/commentsIcon.gif\" alt=\"\" />
+								<img src=\"{$imgPath}/commentsIcon.gif\" alt=\"\" />
 								{$formattedCommentCount}
 							</li>
 						</ul>
 					</div>
-					<div class=\"cleared\"></div>
+					<div class=\"visualClear\"></div>
 
 					<a href=\"" . htmlspecialchars( SpecialPage::getTitleFor( 'ViewPoll' )->getFullURL( 'user=' . $poll_info['user_name'] ) ) . '">'
 						. wfMessage( 'poll-view-all-by', $user_name_short, $poll_info['user_name'] )->parse() . '</a>
@@ -171,7 +173,7 @@ class PollPage extends Article {
 		if( $poll_info['image'] ) {
 			$poll_image_width = 150;
 			$poll_image = wfFindFile( $poll_info['image'] );
-			$poll_image_url = $width = '';
+			$poll_image_tag = $poll_image_url = $width = '';
 			if ( is_object( $poll_image ) ) {
 				$poll_image_url = $poll_image->createThumb( $poll_image_width );
 				if ( $poll_image->getWidth() >= $poll_image_width ) {
@@ -180,7 +182,9 @@ class PollPage extends Article {
 					$width = $poll_image->getWidth();
 				}
 			}
-			$poll_image_tag = '<img width="' . $width . '" alt="" src="' . $poll_image_url . '"/>';
+			if ( !empty( $poll_image_url ) ) {
+				$poll_image_tag = '<img width="' . $width . '" alt="" src="' . $poll_image_url . '"/>';
+			}
 			$output .= "<div class=\"poll-image\">{$poll_image_tag}</div>";
 		}
 
@@ -236,7 +240,7 @@ class PollPage extends Article {
 						$choice['votes'] = 0;
 					}
 
-					$bar_img = '<img src="' . $wgExtensionAssetsPath . '/PollNY/images/vote-bar-' . $x .
+					$bar_img = '<img src="' . $wgExtensionAssetsPath . '/SocialProfile/images/vote-bar-' . $x .
 						'.gif" class="image-choice-' . $x .
 						'" style="width:' . $bar_width . 'px;height:11px;"/>';
 					$output .= "<div class=\"previous-poll-choice\">
@@ -288,7 +292,7 @@ class PollPage extends Article {
 					if ( empty( $choice['votes'] ) ) {
 						$choice['votes'] = 0;
 					}
-					$bar_img = "<img src=\"{$wgExtensionAssetsPath}/PollNY/images/vote-bar-{$x}.gif\" class=\"image-choice-{$x}\" style=\"width:{$bar_width}px;height:12px;\"/>";
+					$bar_img = "<img src=\"{$wgExtensionAssetsPath}/SocialProfile/images/vote-bar-{$x}.gif\" class=\"image-choice-{$x}\" style=\"width:{$bar_width}px;height:12px;\"/>";
 
 					$output .= "<div class=\"poll-choice\">
 					<div class=\"poll-choice-left\">{$choice['choice']} ({$percent}%)</div>";
@@ -335,7 +339,7 @@ class PollPage extends Article {
 
 		$output .= '</div>' . "\n"; // .poll
 
-		$output .= '<div class="cleared"></div>';
+		$output .= '<div class="visualClear"></div>';
 
 		$wgOut->addHTML( $output );
 

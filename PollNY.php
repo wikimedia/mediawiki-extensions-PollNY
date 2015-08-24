@@ -13,15 +13,11 @@
  * @link https://www.mediawiki.org/wiki/Extension:PollNY Documentation
  */
 
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( "This is not a valid entry point.\n" );
-}
-
 // Extension credits that will show up on Special:Version
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'PollNY',
-	'version' => '3.2',
+	'version' => '3.3',
 	'author' => array( 'Aaron Wright', 'David Pean', 'Jack Phoenix' ),
 	'descriptionmsg' => 'poll-desc',
 	'url' => 'https://www.mediawiki.org/wiki/Extension:PollNY'
@@ -88,14 +84,7 @@ $wgHooks['RenameUserSQL'][] = 'PollNYHooks::onUserRename'; // For the Renameuser
 $wgHooks['CanonicalNamespaces'][] = 'PollNYHooks::onCanonicalNamespaces';
 
 // ResourceLoader support for MediaWiki 1.17+
-$resourceTemplate = array(
-	'localBasePath' => __DIR__,
-	'remoteExtPath' => 'PollNY',
-	'position' => 'top' // available since r85616
-);
-
-$wgResourceModules['ext.pollNY'] = $resourceTemplate + array(
-	'styles' => 'Poll.css',
+$wgResourceModules['ext.pollNY'] = array(
 	'scripts' => 'Poll.js',
 	'messages' => array(
 		// PollPage.php
@@ -108,9 +97,19 @@ $wgResourceModules['ext.pollNY'] = $resourceTemplate + array(
 		'poll-createpoll-error-nomore', 'poll-upload-new-image',
 		'poll-atleast', 'poll-enterquestion', 'poll-hash',
 		'poll-pleasechoose',
-	)
+	),
+	'dependencies' => array(
+		'ext.socialprofile.flash',
+		'ext.socialprofile.LightBox'
+	),
+	'localBasePath' => __DIR__,
+	'remoteExtPath' => 'PollNY',
+	'position' => 'bottom'
 );
 
-$wgResourceModules['ext.pollNY.lightBox'] = $resourceTemplate + array(
-	'scripts' => 'LightBox.js'
+$wgResourceModules['ext.pollNY.css'] = array(
+	'styles' => 'Poll.css',
+	'localBasePath' => __DIR__,
+	'remoteExtPath' => 'PollNY',
+	'position' => 'top' // available since r85616
 );

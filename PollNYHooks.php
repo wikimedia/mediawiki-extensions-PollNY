@@ -134,7 +134,8 @@ class PollNYHooks {
 			$wgSupressPageCategories = true;
 
 			// Add required JS & CSS
-			$wgOut->addModules( array( 'ext.pollNY', 'ext.pollNY.lightBox' ) );
+			$wgOut->addModules( 'ext.pollNY' );
+			$wgOut->addModuleStyles( 'ext.pollNY.css' );
 
 			$article = new PollPage( $title );
 		}
@@ -193,7 +194,7 @@ class PollNYHooks {
 			// Load CSS for non-Monaco skins - Monaco's ny.css already contains
 			// PollNY's styles (and more)
 			if ( get_class( $wgOut->getSkin() ) !== 'SkinMonaco' ) {
-				$wgOut->addModuleStyles( 'ext.pollNY' );
+				$wgOut->addModuleStyles( 'ext.pollNY.css' );
 			}
 
 			// Disable caching; this is important so that we don't cause subtle
@@ -235,7 +236,7 @@ class PollNYHooks {
 					$poll_info['status'] == 1
 				)
 				{
-					$wgOut->addModuleScripts( 'ext.pollNY' );
+					$wgOut->addModules( 'ext.pollNY' );
 					$output .= "<div id=\"loading-poll_{$poll_info['id']}\" class=\"poll-loading-msg\">" . wfMessage( 'poll-js-loading' )->text() . '</div>';
 					$output .= "<div id=\"poll-display_{$poll_info['id']}\" style=\"display:none;\">";
 					$output .= "<form name=\"poll_{$poll_info['id']}\"><input type=\"hidden\" id=\"poll_id_{$poll_info['id']}\" name=\"poll_id_{$poll_info['id']}\" value=\"{$poll_info['id']}\"/>";
@@ -262,7 +263,7 @@ class PollNYHooks {
 						if( $poll_info['votes'] > 0 ) {
 							$bar_width = floor( 480 * ( $choice['votes'] / $poll_info['votes'] ) );
 						}
-						$bar_img = "<img src=\"{$wgExtensionAssetsPath}/PollNY/images/vote-bar-{$x}.gif\" border=\"0\" class=\"image-choice-{$x}\" style=\"width:{$choice['percent']}%;height:12px;\" alt=\"\" />";
+						$bar_img = "<img src=\"{$wgExtensionAssetsPath}/SocialProfile/images/vote-bar-{$x}.gif\" border=\"0\" class=\"image-choice-{$x}\" style=\"width:{$choice['percent']}%;height:12px;\" alt=\"\" />";
 
 						$output .= "<div class=\"poll-choice\">
 						<div class=\"poll-choice-left\">{$choice['choice']} ({$choice['percent']}%)</div>";

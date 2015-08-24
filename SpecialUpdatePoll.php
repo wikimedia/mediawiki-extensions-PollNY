@@ -43,6 +43,7 @@ class UpdatePoll extends UnlistedSpecialPage {
 		}
 
 		// Add CSS & JS
+		$out->addModuleStyles( 'ext.pollNY.css' );
 		$out->addModules( 'ext.pollNY' );
 
 		if( $request->wasPosted() && $_SESSION['alreadysubmitted'] == false ) {
@@ -194,7 +195,7 @@ class UpdatePoll extends UnlistedSpecialPage {
 			</div>
 
 		</div>
-		<div class="cleared"></div>
+		<div class="visualClear"></div>
 		<div class="update-poll-warning">' . $this->msg( $copywarnMsg, $copywarnMsgParams )->parse() . "</div>
 		<div class=\"update-poll-buttons\">
 			<input type=\"button\" class=\"site-button\" value=\"" . $this->msg( 'poll-edit-button' )->plain() . "\" size=\"20\" onclick=\"document.form1.submit()\" />

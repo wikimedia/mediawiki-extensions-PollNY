@@ -77,6 +77,7 @@ class CreatePoll extends SpecialPage {
 		}
 
 		// Add CSS & JS
+		$out->addModuleStyles( 'ext.pollNY.css' );
 		$out->addModules( 'ext.pollNY' );
 
 		// If the request was POSTed, try creating the poll
@@ -110,7 +111,7 @@ class CreatePoll extends SpecialPage {
 				'[[' . $localizedCategoryNS . ':' .
 					$this->msg( 'poll-category-user', $user->getName() )->inContentLanguage()->text()  . "]]\n" .
 				'[[' . $localizedCategoryNS . ":{{subst:CURRENTMONTHNAME}} {{subst:CURRENTDAY}}, {{subst:CURRENTYEAR}}]]\n\n__NOEDITSECTION__",
-				$this->msg( 'poll-edit-desc' )->inContentLanguage()->plain() 
+				$this->msg( 'poll-edit-desc' )->inContentLanguage()->plain()
 			);
 
 			$newPageId = $article->getID();

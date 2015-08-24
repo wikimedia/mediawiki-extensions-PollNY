@@ -24,6 +24,7 @@ class ViewPoll extends SpecialPage {
 		$thisTitle = $this->getPageTitle();
 
 		// Add CSS & JS
+		$out->addModuleStyles( 'ext.pollNY.css' );
 		$out->addModules( 'ext.pollNY' );
 
 		// Page either most or newest for everyone
@@ -177,14 +178,14 @@ class ViewPoll extends SpecialPage {
 								Poll::getTimeAgo( $poll_date )
 							)->parse() . ')</p>
 					</div>
-					<div class="cleared"></div>
+					<div class="visualClear"></div>
 				</div>';
 
 			$x++;
 		}
 
 		$output .= '</div>
-		<div class="cleared"></div>';
+		<div class="visualClear"></div>';
 
 		$numofpages = $total / $per_page;
 
