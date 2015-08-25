@@ -90,6 +90,7 @@
 	"poll-time-minutes": "{{PLURAL:$1|една минута|$1 минути}}",
 	"poll-time-seconds": "{{PLURAL:$1|една секунда|$1 секунди}}",
 	"specialpages-group-poll": "Анкети",
+	"action-polladmin": "раководење со анкети",
 	"right-polladmin": "Раководење со анкети",
 	"apihelp-pollny-description": "Извршник „PollNY“ — опфаќа и кориснички и администраторски функции.",
 	"apihelp-pollny-param-what": "Што да се прави?",

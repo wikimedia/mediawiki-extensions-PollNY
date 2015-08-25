@@ -96,6 +96,7 @@
 	"poll-time-minutes": "{{PLURAL:$1|une minute|$1 minutes}}",
 	"poll-time-seconds": "{{PLURAL:$1|une seconde|$1 secondes}}",
 	"specialpages-group-poll": "Sondages",
+	"action-polladmin": "administrer les sondages",
 	"right-polladmin": "Administrer les sondages",
 	"apihelp-pollny-description": "API PollNY - comprend à la fois les fonctions utilisateur et administrateur.",
 	"apihelp-pollny-param-what": "Quoi faire?",
