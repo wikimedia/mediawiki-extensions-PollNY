@@ -90,6 +90,7 @@
 	"poll-time-minutes": "{{PLURAL:$1|un minutu|$1 minutos}}",
 	"poll-time-seconds": "{{PLURAL:$1|un segundu|$1 segundos}}",
 	"specialpages-group-poll": "Encuestes",
+	"action-polladmin": "alministrar encuestes",
 	"right-polladmin": "Alministrar encuestes",
 	"apihelp-pollny-description": "PollNY API - incluye les funciones d'usuariu y d'alministrador.",
 	"apihelp-pollny-param-what": "¿Qué facer?",
