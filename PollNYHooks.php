@@ -189,7 +189,7 @@ class PollNYHooks {
 	public static function renderEmbedPoll( $input, $args, $parser ) {
 		$poll_name = $args['title'];
 		if( $poll_name ) {
-			global $wgOut, $wgUser, $wgExtensionAssetsPath;
+			global $wgOut, $wgUser, $wgExtensionAssetsPath, $wgPollDisplay;
 
 			// Load CSS for non-Monaco skins - Monaco's ny.css already contains
 			// PollNY's styles (and more)
@@ -287,8 +287,10 @@ class PollNYHooks {
 							'poll-based-on-votes',
 							$poll_info['votes']
 						)->parse() . ')</div>';
-					$output .= '<div><a href="' . htmlspecialchars( $poll_title->getFullURL() ) . '">' .
-						wfMessage( 'poll-discuss' )->text() . '</a></div>';
+					if ( isset( $wgPollDisplay['comments'] ) && $wgPollDisplay['comments'] ) {
+						$output .= '<div><a href="' . htmlspecialchars( $poll_title->getFullURL() ) . '">' .
+							wfMessage( 'poll-discuss' )->text() . '</a></div>';
+					}
 					$output .= '<div class="poll-timestamp">' .
 						wfMessage( 'poll-createdago', Poll::getTimeAgo( $poll_info['timestamp'] ) )->parse() .
 					'</div>';
