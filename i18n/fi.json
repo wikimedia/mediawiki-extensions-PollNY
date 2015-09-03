@@ -88,6 +88,8 @@
 	"poll-time-minutes": "{{PLURAL:$1|yksi minuutti|$1 minuuttia}}",
 	"poll-time-seconds": "{{PLURAL:$1|yksi sekunti|$1 sekuntia}}",
 	"specialpages-group-poll": "Äänestykset",
+	"action-pollny-vote": "äänestää äänestyksissä",
+	"right-pollny-vote": "Äänestää äänestyksissä",
 	"action-polladmin": "hallinnoida äänestyksiä",
 	"right-polladmin": "Hallinnoida äänestyksiä"
 }

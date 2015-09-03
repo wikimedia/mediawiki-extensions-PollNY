@@ -203,7 +203,15 @@ class ApiPollNY extends ApiBase {
 	}
 
 	function vote( $pollID, $choiceID ) {
-		if ( !$this->poll->userVoted( $this->getUser()->getName(), $pollID ) ) {
+		$user = $this->getUser();
+		if ( !$user->isAllowed( 'pollny-vote' ) ) {
+			return 'error';
+		}
+		if (
+			!$this->poll->userVoted( $user->getName(), $pollID ) &&
+			$user->isAllowed( 'pollny-vote' )
+		)
+		{
 			$this->poll->addPollVote( $pollID, $choiceID );
 		}
 

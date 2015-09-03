@@ -91,6 +91,8 @@
 	"poll-time-minutes": "{{PLURAL:$1|one minute|$1 minutes}}",
 	"poll-time-seconds": "{{PLURAL:$1|one second|$1 seconds}}",
 	"specialpages-group-poll": "Polls",
+	"action-pollny-vote": "vote in polls",
+	"right-pollny-vote": "Vote in polls",
 	"action-polladmin": "administer polls",
 	"right-polladmin": "Administer polls",
 	"apihelp-pollny-description": "PollNY API - includes both user and admin functions.",

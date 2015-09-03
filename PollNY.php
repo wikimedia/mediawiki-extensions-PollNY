@@ -17,7 +17,7 @@
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'PollNY',
-	'version' => '3.3.1',
+	'version' => '3.3.2',
 	'author' => array( 'Aaron Wright', 'David Pean', 'Jack Phoenix' ),
 	'descriptionmsg' => 'poll-desc',
 	'url' => 'https://www.mediawiki.org/wiki/Extension:PollNY'
@@ -36,6 +36,10 @@ $wgPollDisplay['comments'] = false;
 // edits before they can create new polls.
 $wgCreatePollThresholds = array();
 # End configuration values
+
+// New user right for voting in polls
+$wgAvailableRights[] = 'pollny-vote';
+$wgGroupPermissions['*']['pollny-vote'] = true;
 
 // New user right for administering polls
 $wgAvailableRights[] = 'polladmin';
