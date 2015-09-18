@@ -189,7 +189,12 @@ class PollPage extends Article {
 		}
 
 		// Display question and let user vote
-		if( !$p->userVoted( $wgUser->getName(), $poll_info['id'] ) && $poll_info['status'] == 1 ) {
+		if (
+			$wgUser->isAllowed( 'pollny-vote' ) &&
+			!$p->userVoted( $wgUser->getName(), $poll_info['id'] ) &&
+			$poll_info['status'] == 1
+		)
+		{
 			$output .= '<div id="loading-poll">' . wfMessage( 'poll-js-loading' )->text() . '</div>' . "\n";
 			$output .= '<div id="poll-display" style="display:none;">' . "\n";
 			$output .= '<form name="poll"><input type="hidden" id="poll_id" name="poll_id" value="' . $poll_info['id'] . '"/>' . "\n";
@@ -256,7 +261,6 @@ class PollPage extends Article {
 				}
 				$output .= '</div>';
 			}
-
 		} else {
 			$show_results = true;
 			// Display message if poll has been closed for voting

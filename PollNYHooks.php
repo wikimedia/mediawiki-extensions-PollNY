@@ -229,9 +229,11 @@ class PollNYHooks {
 					$output .= "\t\t<div class=\"poll-image\">{$poll_image_tag}</div>\n";
 				}
 
-				// If the user hasn't voted for this poll yet and the poll is open
-				// for votes, display the question and let the user vote
-				if(
+				// If the user hasn't voted for this poll yet, they're allowed
+				// to do so and the poll is open for votes, display the question
+				// and let the user vote
+				if (
+					$wgUser->isAllowed( 'pollny-vote' ) &&
 					!$p->userVoted( $wgUser->getName(), $poll_info['id'] ) &&
 					$poll_info['status'] == 1
 				)
