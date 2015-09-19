@@ -75,6 +75,8 @@
 	"poll-time-minutes": "{{PLURAL:$1|eng Minutt|$1 Minutten}}",
 	"poll-time-seconds": "{{PLURAL:$1|eng Sekonn|$1 Sekonnen}}",
 	"specialpages-group-poll": "Ëmfroen",
+	"action-pollny-vote": "bei Ëmfroen ofstëmmen",
+	"right-pollny-vote": "Bäi Ëmfroen ofstëmmen",
 	"right-polladmin": "Ëmfroe geréieren",
 	"apihelp-pollny-param-what": "Wat maachen?",
 	"apihelp-pollny-example-1": "D'Ëmfro #66 läschen"
