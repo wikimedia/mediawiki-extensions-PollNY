@@ -3,7 +3,8 @@
 		"authors": [
 			"Hamilton Abreu",
 			"Luckas",
-			"Vitorvicentevalente"
+			"Vitorvicentevalente",
+			"Jkb8"
 		]
 	},
 	"adminpoll": "Administrar sondagens",
@@ -13,5 +14,7 @@
 	"poll-desc": "Sistema avançado de sondagens que usa páginas especiais e permite a sua incorporação nas páginas wiki",
 	"poll-admin-no-polls": "Não existem sondagens. [[Special:CreatePoll|Criar uma!]]",
 	"poll-cancel-button": "Cancelar",
-	"poll-edit-button": "Gravar página"
+	"poll-edit-button": "Gravar página",
+	"action-pollny-vote": "votar em sondagens",
+	"right-pollny-vote": "Votar em sondagens"
 }
