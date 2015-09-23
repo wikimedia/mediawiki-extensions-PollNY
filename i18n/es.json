@@ -11,6 +11,7 @@
 	"createpoll": "Crear una encuesta",
 	"randompoll": "Encuesta al azar",
 	"viewpoll": "Ver encuestas",
+	"poll-desc": "Sistema avanzado de votación que utiliza páginas especiales y permite incrustar encuestas a páginas wiki",
 	"poll-admin-no-polls": "No hay encuestas. [[Special:CreatePoll|Crea una.]]",
 	"poll-admin-closed": "Cerradas",
 	"poll-admin-flagged": "Marcadas",
@@ -85,6 +86,7 @@
 	"poll-voted-for": "Has votado en $1 {{PLURAL:$1|encuesta|encuestas}} de un total de <b>$2</b> encuestas y has recibido <span class=\"profile-on\">$3 puntos</span>.",
 	"poll-votes": "{{PLURAL:$1|un voto|$1 votos}}",
 	"poll-woops": "¡Vaya!",
+	"poll-would-have-earned": "Habrías ganado <span class=\"profile-on\">$1 puntos</span> si te hubieras [[Special:UserLogin/signup|registrado]].",
 	"poll-time-ago": "hace $1",
 	"poll-time-days": "{{PLURAL:$1|un día|$1 días}}",
 	"poll-time-hours": "{{PLURAL:$1|una hora|$1 horas}}",
@@ -97,6 +99,15 @@
 	"right-polladmin": "Gestionar encuestas",
 	"apihelp-pollny-description": "PollNY API: incluye tanto las funciones de usuario como las de administrador.",
 	"apihelp-pollny-param-what": "¿Qué hacer?",
+	"apihelp-pollny-param-choiceID": "Igual que hacer clic en la opción <choiceID> mediante la interfaz gráfica. Solo se usa cuando what=vote.",
+	"apihelp-pollny-param-pageName": "Título que comprobar (solo se utiliza cuando what=titleExists). Debe tener codificación de URL.",
+	"apihelp-pollny-param-pollID": "Identificador de la encuesta que se está borrando/actualizando/votando.",
+	"apihelp-pollny-param-pageID": "Identificador de página (solo se utiliza cuando what=getPollResults).",
+	"apihelp-pollny-param-status": "Nuevo estado de la encuesta (cuando what=updateStatus). Los valores posibles son 0 (=cerrada), 1 y 2 (=marcada).",
 	"apihelp-pollny-example-1": "Elimina la encuesta #66",
-	"apihelp-pollny-example-2": "Obtiene los resultados de la encuesta #666"
+	"apihelp-pollny-example-2": "Obtiene los resultados de la encuesta #666",
+	"apihelp-pollny-example-3": "Obtiene una encuesta aleatoria a la que el usuario actual no ha respondido aún",
+	"apihelp-pollny-example-4": "Comprueba si ya hay una encuesta con el título \"¿Es PollNY impresionante?\"",
+	"apihelp-pollny-example-5": "Establece el estado de la encuesta #47 a 1 (=abierta). Los valores posibles de estado son 0 (=cerrada), 1 y 2 (=marcada)",
+	"apihelp-pollny-example-6": "Vota (responde) la encuesta #33 con la opción 4"
 }
