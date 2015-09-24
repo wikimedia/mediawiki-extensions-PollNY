@@ -5,7 +5,8 @@
 			"Shirayuki",
 			"Siebrand",
 			"Liuxinyu970226",
-			"Umherirrender"
+			"Umherirrender",
+			"Beta16"
 		]
 	},
 	"adminpoll": "{{doc-special|AdminPoll}}\nThe special page to administrate polls.",
@@ -94,6 +95,8 @@
 	"poll-time-minutes": "Used as <code>$1</code> in the following messages:\n* {{msg-mw|Poll-ago}}\n* {{msg-mw|Poll-time-ago}}\nParameters:\n* $1 - number of minutes\n{{Related|Poll-time}}\n{{Identical|Minute}}",
 	"poll-time-seconds": "Used as <code>$1</code> in the following messages:\n* {{msg-mw|Poll-ago}}\n* {{msg-mw|Poll-time-ago}}\nParameters:\n* $1 - number of seconds\n{{Related|Poll-time}}\n{{Identical|Second}}",
 	"specialpages-group-poll": "{{doc-special-group}}\n{{Identical|Poll}}",
+	"action-pollny-vote": "{{Doc-action|pollny-vote}}",
+	"right-pollny-vote": "{{Doc-right|pollny-vote}}",
 	"right-polladmin": "{{doc-right|polladmin}}",
 	"apihelp-pollny-description": "{{doc-apihelp-description|pollny}}",
 	"apihelp-pollny-param-what": "{{doc-apihelp-param|pollny|what}}",
