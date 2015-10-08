@@ -93,6 +93,8 @@
 	"poll-time-minutes": "{{PLURAL:$1|un minuto|$1 minutos}}",
 	"poll-time-seconds": "{{PLURAL:$1|un segundo|$1 segundos}}",
 	"specialpages-group-poll": "Enquisas",
+	"action-pollny-vote": "votar en enquisas",
+	"right-pollny-vote": "Votar en enquisas",
 	"action-polladmin": "xestionar enquisas",
 	"right-polladmin": "Administrar as enquisas",
 	"apihelp-pollny-description": "PollNY API - inclúe funcións de usuario e de administrador",
