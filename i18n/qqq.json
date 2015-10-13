@@ -97,6 +97,7 @@
 	"specialpages-group-poll": "{{doc-special-group}}\n{{Identical|Poll}}",
 	"action-pollny-vote": "{{Doc-action|pollny-vote}}",
 	"right-pollny-vote": "{{Doc-right|pollny-vote}}",
+	"action-polladmin": "{{doc-action|polladmin}}",
 	"right-polladmin": "{{doc-right|polladmin}}",
 	"apihelp-pollny-description": "{{doc-apihelp-description|pollny}}",
 	"apihelp-pollny-param-what": "{{doc-apihelp-param|pollny|what}}",
