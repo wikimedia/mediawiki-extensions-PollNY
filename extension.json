@@ -1,0 +1,131 @@
+{
+	"name": "PollNY",
+	"version": "3.3.3",
+	"author": [
+		"Aaron Wright",
+		"David Pean",
+		"Jack Phoenix"
+	],
+	"license-name": "GPL-2.0+",
+	"url": "https://www.mediawiki.org/wiki/Extension:PollNY",
+	"descriptionmsg": "poll-desc",
+	"type": "other",
+	"config": {
+		"CreatePollThresholds": [],
+		"PollDisplay": {
+			"comments": true
+		}
+	},
+	"SpecialPages": {
+		"AdminPoll": "AdminPoll",
+		"CreatePoll": "CreatePoll",
+		"PollAjaxUpload": "SpecialPollAjaxUpload",
+		"RandomPoll": "RandomPoll",
+		"UpdatePoll": "UpdatePoll",
+		"ViewPoll": "ViewPoll"
+	},
+	"MessagesDirs": {
+		"PollNY": [
+			"i18n"
+		]
+	},
+	"namespaces": [
+		{
+			"id": 300,
+			"constant": "NS_POLL",
+			"name": "Poll"
+		},
+		{
+			"id": 301,
+			"constant": "NS_POLL_TALK",
+			"name": "Poll_talk"
+		}
+	],
+	"APIModules": {
+		"pollny": "ApiPollNY"
+	},
+	"ExtensionMessagesFiles": {
+		"PollNYAlias": "Poll.alias.php",
+		"PollNYNamespaces": "Poll.namespaces.php"
+	},
+	"AutoloadClasses": {
+		"ApiPollNY": "ApiPollNY.php",
+		"AdminPoll": "SpecialAdminPoll.php",
+		"CreatePoll": "SpecialCreatePoll.php",
+		"Poll": "PollClass.php",
+		"PollAjaxUploadForm": "MiniAjaxUpload.php",
+		"PollNYHooks": "PollNYHooks.php",
+		"PollPage": "PollPage.php",
+		"PollUpload": "MiniAjaxUpload.php",
+		"RandomPoll": "SpecialRandomPoll.php",
+		"SpecialPollAjaxUpload": "MiniAjaxUpload.php",
+		"UpdatePoll": "SpecialUpdatePoll.php",
+		"ViewPoll": "SpecialViewPoll.php"
+	},
+	"Hooks": {
+		"TitleMoveComplete": [
+			"PollNYHooks::updatePollQuestion"
+		],
+		"ArticleDelete": [
+			"PollNYHooks::deletePollQuestion"
+		],
+		"ArticleFromTitle": [
+			"PollNYHooks::pollFromTitle"
+		],
+		"ParserFirstCallInit": [
+			"PollNYHooks::registerUserPollHook"
+		],
+		"ParserFirstCallInit": [
+			"PollNYHooks::registerPollEmbedHook"
+		],
+		"LoadExtensionSchemaUpdates": [
+			"PollNYHooks::addTables"
+		],
+		"CanonicalNamespaces": [
+			"PollNYHooks::onCanonicalNamespaces"
+		],
+		"RenameUserSQL": [
+			"PollNYHooks::onUserRename"
+		]
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "",
+		"remoteExtPath": "PollNY"
+	},
+	"ResourceModules": {
+		"ext.pollNY": {
+			"scripts": "Poll.js",
+			"messages": [
+				"poll-open-message", "poll-close-message", "poll-flagged-message",
+				"poll-finished",
+				"poll-open-message", "poll-close-message", "poll-flagged-message",
+				"poll-delete-message", "poll-js-action-complete",
+				"poll-createpoll-error-nomore", "poll-upload-new-image",
+				"poll-atleast", "poll-enterquestion", "poll-hash",
+				"poll-pleasechoose",
+			],
+			"dependencies": [
+				"ext.socialprofile.flash",
+				"ext.socialprofile.LightBox"
+			],
+			"position": "bottom"
+		},
+		"ext.pollNY.css": {
+			"styles": "Poll.css",
+			"position": "top"
+		}
+	},
+	"AvailableRights": [
+		"pollny-vote",
+		"polladmin"
+	],
+	"GroupPermissions": {
+		"*": {
+			"pollny-vote": true
+		},
+		"sysop": {
+			"polladmin": true
+		}
+	},
+	"manifest_version": 1
+}

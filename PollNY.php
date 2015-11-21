@@ -17,7 +17,7 @@
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'PollNY',
-	'version' => '3.3.2',
+	'version' => '3.3.3',
 	'author' => array( 'Aaron Wright', 'David Pean', 'Jack Phoenix' ),
 	'descriptionmsg' => 'poll-desc',
 	'url' => 'https://www.mediawiki.org/wiki/Extension:PollNY'
