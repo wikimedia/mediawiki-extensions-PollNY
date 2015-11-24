@@ -102,7 +102,7 @@
 				"poll-delete-message", "poll-js-action-complete",
 				"poll-createpoll-error-nomore", "poll-upload-new-image",
 				"poll-atleast", "poll-enterquestion", "poll-hash",
-				"poll-pleasechoose",
+				"poll-pleasechoose"
 			],
 			"dependencies": [
 				"ext.socialprofile.flash",
