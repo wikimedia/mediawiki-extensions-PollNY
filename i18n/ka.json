@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Otogi"
+			"Otogi",
+			"David1010"
 		]
 	},
-	"poll-cancel-button": "გაუქმება"
+	"poll-cancel-button": "გაუქმება",
+	"poll-upload-image-button": "ატვირთვა"
 }
