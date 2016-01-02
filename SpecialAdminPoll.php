@@ -39,8 +39,7 @@ class AdminPoll extends SpecialPage {
 
 		// If user is blocked, s/he doesn't need to access this page
 		if ( $user->isBlocked() ) {
-			$out->blockedPage();
-			return;
+			throw new UserBlockedError( $user->getBlock() );
 		}
 
 		// Add CSS & JS

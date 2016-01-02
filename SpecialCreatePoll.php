@@ -29,8 +29,7 @@ class CreatePoll extends SpecialPage {
 
 		// Blocked users cannot create polls
 		if( $user->isBlocked() ) {
-			$out->blockedPage( false );
-			return false;
+			throw new UserBlockedError( $user->getBlock() );
 		}
 
 		// Check that the DB isn't locked
