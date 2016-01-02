@@ -28,8 +28,7 @@ class AdminPoll extends SpecialPage {
 
 		// If the user doesn't have the required permission, display an error
 		if( !$user->isAllowed( 'polladmin' ) ) {
-			$out->permissionRequired( 'polladmin' );
-			return;
+			throw new PermissionsError( 'polladmin' );
 		}
 
 		// Show a message if the database is in read-only mode
