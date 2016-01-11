@@ -49,7 +49,7 @@ class Poll {
 			),
 			__METHOD__
 		);
-		$dbw->commit();
+		$dbw->commit( __METHOD__ );
 	}
 
 	/**
@@ -73,7 +73,7 @@ class Poll {
 			),
 			__METHOD__
 		);
-		$dbw->commit();
+		$dbw->commit( __METHOD__ );
 		if( $choiceID > 0 ) {
 			$this->incPollVoteCount( $pollID );
 			$this->incChoiceVoteCount( $choiceID );
@@ -96,7 +96,7 @@ class Poll {
 			array( 'pc_id' => $choiceID ),
 			__METHOD__
 		);
-		$dbw->commit();
+		$dbw->commit( __METHOD__ );
 	}
 
 	/**
@@ -112,7 +112,7 @@ class Poll {
 			array( 'poll_id' => $pollID ),
 			__METHOD__
 		);
-		$dbw->commit();
+		$dbw->commit( __METHOD__ );
 	}
 
 	/**
@@ -319,7 +319,7 @@ class Poll {
 			array( 'poll_id' => (int)$pollId ),
 			__METHOD__
 		);
-		$dbw->commit();
+		$dbw->commit( __METHOD__ );
 	}
 
 	/**
