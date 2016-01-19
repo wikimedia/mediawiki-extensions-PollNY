@@ -14,6 +14,10 @@ class AdminPoll extends SpecialPage {
 		parent::__construct( 'AdminPoll', 'polladmin' );
 	}
 
+	public function doesWrites() {
+		return true;
+	}
+
 	/**
 	 * Show the special page
 	 *

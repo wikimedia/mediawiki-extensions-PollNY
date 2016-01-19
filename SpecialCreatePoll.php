@@ -13,6 +13,10 @@ class CreatePoll extends SpecialPage {
 		parent::__construct( 'CreatePoll' );
 	}
 
+	public function doesWrites() {
+		return true;
+	}
+
 	/**
 	 * Show the special page
 	 *
