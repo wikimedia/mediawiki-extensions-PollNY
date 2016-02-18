@@ -3,7 +3,8 @@
 		"authors": [
 			"Andriykopanytsia",
 			"Ата",
-			"Dars"
+			"Dars",
+			"Piramidion"
 		]
 	},
 	"adminpoll": "Адмініструвати опитування",
@@ -92,7 +93,9 @@
 	"poll-time-minutes": "{{PLURAL:$1|одна хвилина|$1 хвилини|$1 хвилин}}",
 	"poll-time-seconds": "{{PLURAL:$1|одна секунда|$1 секунди|$1 секунд}}",
 	"specialpages-group-poll": "Опитування",
-	"action-polladmin": "адміністрування опитуваннями",
+	"action-pollny-vote": "голосування в опитуваннях",
+	"right-pollny-vote": "Голосування в опитуваннях",
+	"action-polladmin": "адміністрування опитувань",
 	"right-polladmin": "Адміністрування опитувань",
 	"apihelp-pollny-description": "PollNY API — включає функції і користувача, й адміністратора.",
 	"apihelp-pollny-param-what": "Що робити?",
