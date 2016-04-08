@@ -141,7 +141,7 @@ class Poll {
 			$poll['id'] = $row->poll_id;
 			$poll['status'] = $row->poll_status;
 			$poll['timestamp'] = $row->timestamp;
-			$poll['choices'] = $this->getPollChoices( $row->poll_id, $row->poll_vote_count );
+			$poll['choices'] = self::getPollChoices( $row->poll_id, $row->poll_vote_count );
 		}
 		return $poll;
 	}
@@ -154,7 +154,7 @@ class Poll {
 	 * @return Array: poll answer choice info (answer ID, text,
 	 * 					amount of votes and percent of total votes)
 	 */
-	public function getPollChoices( $poll_id, $poll_vote_count = 0 ) {
+	public static function getPollChoices( $poll_id, $poll_vote_count = 0 ) {
 		global $wgLang;
 
 		$dbr = wfGetDB( DB_SLAVE );
@@ -325,7 +325,7 @@ class Poll {
 	 * @param $count Integer: how many polls to fetch? Default is 3.
 	 * @param $order String: ORDER BY for SQL query, default being 'poll_id'.
 	 */
-	public function getPollList( $count = 3, $order = 'poll_id' ) {
+	public static function getPollList( $count = 3, $order = 'poll_id' ) {
 		global $wgMemc;
 
 		$polls = array();
