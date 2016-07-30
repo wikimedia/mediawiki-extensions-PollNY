@@ -57,7 +57,7 @@
 	"poll-hash": "# 는 설문 조사에 대해 잘못된 문자입니다.",
 	"poll-image-label": "그림 추가",
 	"poll-instructions": "설문조사 질문을 만들고 선택지를 쓰고 나서 \"{{int:poll-create-button}}\" 버튼을 눌러주세요. 간단합니다!",
-	"poll-js-action-complete": "행동이 완료되었습니다.",
+	"poll-js-action-complete": "동작이 완료되었습니다.",
 	"poll-js-loading": "불러오는 중...",
 	"poll-next": "다음",
 	"poll-next-poll": "다음 설문 조사",
