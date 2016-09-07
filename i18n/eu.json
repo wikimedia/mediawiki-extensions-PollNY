@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Subi"
+			"Subi",
+			"Sator"
 		]
 	},
+	"poll-admin-viewall": "Denak ikusi",
 	"poll-js-loading": "Kargatzen...",
 	"poll-next": "hurrengoa",
 	"apihelp-pollny-param-what": "Zer egin?"
