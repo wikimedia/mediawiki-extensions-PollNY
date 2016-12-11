@@ -106,18 +106,22 @@ class CreatePoll extends SpecialPage {
 
 			// Create poll wiki page
 			$localizedCategoryNS = $wgContLang->getNsText( NS_CATEGORY );
-			$article = new Article( $poll_title );
-			$article->doEdit(
+			$page = WikiPage::factory( $poll_title );
+			$content = ContentHandler::makeContent(
 				"<userpoll>\n$choices</userpoll>\n\n[[" .
 					$localizedCategoryNS . ':' .
 					$this->msg( 'poll-category' )->inContentLanguage()->plain() . "]]\n" .
 				'[[' . $localizedCategoryNS . ':' .
 					$this->msg( 'poll-category-user', $user->getName() )->inContentLanguage()->text()  . "]]\n" .
 				'[[' . $localizedCategoryNS . ":{{subst:CURRENTMONTHNAME}} {{subst:CURRENTDAY}}, {{subst:CURRENTYEAR}}]]\n\n__NOEDITSECTION__",
+				$pool_title
+			);
+			$page->doEditContent(
+				$content,
 				$this->msg( 'poll-edit-desc' )->inContentLanguage()->plain()
 			);
 
-			$newPageId = $article->getID();
+			$newPageId = $page->getID();
 
 			$p = new Poll();
 			$poll_id = $p->addPollQuestion(
