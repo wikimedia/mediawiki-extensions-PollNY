@@ -167,11 +167,10 @@ class PollNYHooks {
 	}
 
 	public static function followPollID( $pollTitle ) {
-		$pollArticle = new Article( $pollTitle );
-		$pollWikiContent = $pollArticle->getContent();
+		$pollPage = new WikiPage( $pollTitle );
 
-		if( $pollArticle->isRedirect( $pollWikiContent ) ) {
-			$pollTitle = $pollArticle->followRedirect();
+		if( $pollPage->isRedirect() ) {
+			$pollTitle = $pollPage->followRedirect();
 			return PollNYHooks::followPollID( $pollTitle );
 		} else {
 			return $pollTitle;
