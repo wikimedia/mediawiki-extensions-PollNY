@@ -73,9 +73,7 @@
 			"PollNYHooks::pollFromTitle"
 		],
 		"ParserFirstCallInit": [
-			"PollNYHooks::registerUserPollHook"
-		],
-		"ParserFirstCallInit": [
+			"PollNYHooks::registerUserPollHook",
 			"PollNYHooks::registerPollEmbedHook"
 		],
 		"LoadExtensionSchemaUpdates": [
