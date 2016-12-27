@@ -55,8 +55,8 @@ class CreatePollTemplate extends QuickTemplate {
 		<h1><?php echo $parentClass->msg( 'poll-image-label' )->text() ?></h1>
 		<div id="poll_image"></div>
 
-		<div id="real-form" style="display: block; height: 90px;">
-			<iframe id="imageUpload-frame" class="imageUpload-frame" width="610" scrolling="no" frameborder="0" src="<?php echo htmlspecialchars( $iframeTitle->getFullURL( 'wpThumbWidth=75' ) ) ?>"></iframe>
+		<div id="real-form">
+			<iframe id="imageUpload-frame" class="imageUpload-frame" src="<?php echo htmlspecialchars( $iframeTitle->getFullURL( 'wpThumbWidth=75' ) ) ?>"></iframe>
 		</div>
 	</div>
 

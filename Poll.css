@@ -71,10 +71,16 @@
 	width: 250px;
 }
 
-/* Width of the image upload frame on Special:CreatePoll. If you alter this,
- * remember to change the height of #real-form in create-poll.tmpl.php, too! */
+/* Width of the image upload frame on Special:CreatePoll */
+#real-form {
+	display: block;
+	height: auto;
+}
+
 .imageUpload-frame {
-	height: 90px;
+	border: 0;
+	width: 610px;
+	overflow: hidden;
 }
 
 /* Poll Window */
