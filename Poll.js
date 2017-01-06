@@ -443,7 +443,7 @@ var PollNY = {
 	}
 };
 
-jQuery( document ).ready( function() {
+jQuery( function() {
 	// This is assuming that NS_POLL == 300 and no-one ever touches
 	// Poll.namespaces.php in order to change that...
 	if ( jQuery( 'body' ).hasClass( 'ns-300' ) ) {
