@@ -106,9 +106,8 @@ class ViewPoll extends SpecialPage {
 		$res = $dbr->select(
 			array( 'poll_question', 'page' ),
 			array(
-				'poll_user_id', 'UNIX_TIMESTAMP(poll_date) AS poll_time',
-				'poll_vote_count', 'poll_user_name', 'poll_text',
-				'poll_page_id', 'page_id'
+				'poll_user_id', 'poll_date', 'poll_vote_count',
+				'poll_user_name', 'poll_text', 'poll_page_id', 'page_id'
 			),
 			$where,
 			__METHOD__,
@@ -147,7 +146,7 @@ class ViewPoll extends SpecialPage {
 			$user_id = $row->poll_user_id;
 			$avatar = new wAvatar( $user_id, 'm' );
 			$poll_title = $row->poll_text;
-			$poll_date = $row->poll_time;
+			$poll_date = wfTimestamp( TS_UNIX, $row->poll_date );
 			$poll_answers = $row->poll_vote_count;
 			$row_id = "poll-row-{$x}";
 			$title = Title::makeTitle( NS_POLL, $poll_title );

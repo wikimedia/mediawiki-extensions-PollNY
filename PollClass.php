@@ -124,7 +124,7 @@ class Poll {
 			array(
 				'poll_text', 'poll_vote_count', 'poll_id', 'poll_status',
 				'poll_user_id', 'poll_user_name', 'poll_image',
-				'UNIX_TIMESTAMP(poll_date) AS timestamp'
+				'poll_date'
 			),
 			array( 'poll_page_id' => $pageID ),
 			__METHOD__,
@@ -140,7 +140,7 @@ class Poll {
 			$poll['votes'] = $row->poll_vote_count;
 			$poll['id'] = $row->poll_id;
 			$poll['status'] = $row->poll_status;
-			$poll['timestamp'] = $row->timestamp;
+			$poll['timestamp'] = wfTimestamp( TS_UNIX, $row->poll_date );
 			$poll['choices'] = self::getPollChoices( $row->poll_id, $row->poll_vote_count );
 		}
 		return $poll;
@@ -344,7 +344,7 @@ class Poll {
 				array( 'poll_question', 'page' ),
 				array(
 					'page_title', 'poll_id', 'poll_vote_count', 'poll_image',
-					'UNIX_TIMESTAMP(poll_date) AS poll_date'
+					'poll_date'
 				),
 				/* WHERE */array( 'poll_status' => 1 ),
 				__METHOD__,
@@ -354,7 +354,7 @@ class Poll {
 			foreach( $res as $row ) {
 				$polls[] = array(
 					'title' => $row->page_title,
-					'timestamp' => $row->poll_date,
+					'timestamp' => wfTimestamp( TS_UNIX, $row->poll_date ),
 					'image' => $row->poll_image,
 					'choices' => self::getPollChoices( $row->poll_id, $row->poll_vote_count )
 				);
