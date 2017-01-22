@@ -87,7 +87,7 @@
 	"poll-woops": "麻烦了！",
 	"poll-would-have-earned": "您应该在[[Special:UserLogin/signup|注册]]之后赚取了<span class=\"profile-on\">$1个点数</span>。",
 	"poll-time-ago": "$1前",
-	"poll-time-days": "$1天",
+	"poll-time-days": "{{PLURAL:$1|$1天}}",
 	"poll-time-hours": "$1小时",
 	"poll-time-minutes": "$1分钟",
 	"poll-time-seconds": "$1秒",
