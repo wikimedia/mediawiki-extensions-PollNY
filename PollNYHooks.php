@@ -43,11 +43,7 @@ class PollNYHooks {
 	 * @return Boolean: true
 	 */
 	public static function deletePollQuestion( &$article, &$user, $reason ) {
-		global $wgSupressPageTitle;
-
 		if( $article->getTitle()->getNamespace() == NS_POLL ) {
-			$wgSupressPageTitle = true;
-
 			$dbw = wfGetDB( DB_MASTER );
 
 			$s = $dbw->selectRow(
@@ -109,7 +105,7 @@ class PollNYHooks {
 	public static function pollFromTitle( &$title, &$article ) {
 		if ( $title->getNamespace() == NS_POLL ) {
 			global $wgRequest, $wgOut;
-			global $wgPollScripts, $wgSupressSubTitle, $wgSupressPageCategories;
+			global $wgPollScripts;
 
 			// We don't want caching here, it'll only cause problems...
 			$wgOut->enableClientCache( false );
@@ -129,9 +125,6 @@ class PollNYHooks {
 					);
 				}
 			}
-
-			$wgSupressSubTitle = true;
-			$wgSupressPageCategories = true;
 
 			// Add required JS & CSS
 			$wgOut->addModules( 'ext.pollNY' );

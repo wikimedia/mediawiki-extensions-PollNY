@@ -23,13 +23,11 @@ class CreatePoll extends SpecialPage {
 	 * @param $par Mixed: parameter passed to the page or null
 	 */
 	public function execute( $par ) {
-		global $wgMemc, $wgContLang, $wgSupressPageTitle;
+		global $wgMemc, $wgContLang;
 
 		$out = $this->getOutput();
 		$request = $this->getRequest();
 		$user = $this->getUser();
-
-		$wgSupressPageTitle = true;
 
 		// https://phabricator.wikimedia.org/T155405
 		// Throws error message when SocialProfile extension is not installed
@@ -78,7 +76,6 @@ class CreatePoll extends SpecialPage {
 			}
 
 			if( $canCreate == false ) {
-				$wgSupressPageTitle = false;
 				$out->setPageTitle( $this->msg( 'poll-create-threshold-title' )->plain() );
 				$out->addWikiMsg( 'poll-create-threshold-reason', $threshold_reason );
 				return '';
@@ -96,7 +93,6 @@ class CreatePoll extends SpecialPage {
 			// Add poll
 			$poll_title = Title::makeTitleSafe( NS_POLL, $request->getVal( 'poll_question' ) );
 			if( is_null( $poll_title ) && !$poll_title instanceof Title ) {
-				$wgSupressPageTitle = false;
 				$out->setPageTitle( $this->msg( 'poll-create-threshold-title' )->plain() );
 				$out->addWikiMsg( 'poll-create-threshold-reason', $threshold_reason );
 				return '';
