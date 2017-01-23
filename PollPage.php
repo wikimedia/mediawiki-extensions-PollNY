@@ -17,7 +17,7 @@ class PollPage extends Article {
 	 */
 	public function view() {
 		global $wgUser, $wgOut, $wgRequest, $wgExtensionAssetsPath, $wgUploadPath;
-		global $wgSupressPageTitle, $wgNameSpacesWithEditMenu;
+		global $wgSupressPageTitle;
 
 		// Perform no custom handling if the poll in question has been deleted
 		if ( !$this->getID() ) {
@@ -34,8 +34,6 @@ class PollPage extends Article {
 
 		$wgOut->setHTMLTitle( $title->getText() );
 		$wgOut->setPageTitle( $title->getText() );
-
-		$wgNameSpacesWithEditMenu[] = NS_POLL;
 
 		$createPollObj = SpecialPage::getTitleFor( 'CreatePoll' );
 
