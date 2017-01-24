@@ -19,6 +19,12 @@ class UpdatePoll extends UnlistedSpecialPage {
 		$request = $this->getRequest();
 		$user = $this->getUser();
 
+		// https://phabricator.wikimedia.org/T155405
+		// Throws error message when SocialProfile extension is not installed
+		if( !class_exists( 'UserStats' ) ) {
+			throw new ErrorPageError( 'poll-error-socialprofile-title', 'poll-error-socialprofile' );
+		}
+
 		// Show a message if the database is in read-only mode
 		if ( wfReadOnly() ) {
 			$out->readOnlyPage();

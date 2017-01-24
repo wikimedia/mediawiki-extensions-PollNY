@@ -18,6 +18,8 @@
 	"poll-admin-closed": "Link title; clicking on this link shows all closed polls.\n{{Identical|Closed}}",
 	"poll-admin-flagged": "Link title; clicking on this link shows all flagged polls.\n{{Identical|Flagged}}",
 	"poll-admin-open": "Link title; clicking on this link shows all open polls.\n{{Identical|Open}}",
+	"poll-error-socialprofile": "Error message shown when SocialProfle extension is not installed.",
+	"poll-error-socialprofile-title": "Title for <code>poll-error-socialprofile</code>.",
 	"poll-admin-panel": "Title of the admin panel link; shown on all Poll: pages, below the box {{msg-mw|poll-submitted-by}}.\n{{Identical|Admin}}",
 	"poll-admin-status-nav": "Title of the right-hand navigation menu on [[Special:AdminPoll]].\n\nFollowed by the following link texts:\n* {{msg-mw|Poll-admin-viewall}}\n* {{msg-mw|Poll-admin-open}}\n* {{msg-mw|Poll-admin-closed}}\n* {{msg-mw|Poll-admin-flagged}}",
 	"poll-admin-title-all": "Default title of [[Special:AdminPoll]].\n{{Related|Poll-admin-title}}",

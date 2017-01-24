@@ -14,6 +14,8 @@
 	"poll-admin-closed": "Closed",
 	"poll-admin-flagged": "Flagged",
 	"poll-admin-open": "Open",
+	"poll-error-socialprofile": "[https://www.mediawiki.org/wiki/Extension:SocialProfile SocialProfile extension] is not installed. Please install this extension and try again.",
+	"poll-error-socialprofile-title": "SocialProfile extension is not installed.",
 	"poll-admin-panel": "Admin",
 	"poll-admin-status-nav": "Filter by status",
 	"poll-admin-title-all": "Poll admin - View all polls",

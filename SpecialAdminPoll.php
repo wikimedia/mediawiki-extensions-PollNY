@@ -30,6 +30,12 @@ class AdminPoll extends SpecialPage {
 		$request = $this->getRequest();
 		$user = $this->getUser();
 
+		// https://phabricator.wikimedia.org/T155405
+		// Throws error message when SocialProfile extension is not installed
+		if( !class_exists( 'UserStats' ) ) {
+			throw new ErrorPageError( 'poll-error-socialprofile-title', 'poll-error-socialprofile' );
+		}
+
 		// If the user doesn't have the required permission, display an error
 		if( !$user->isAllowed( 'polladmin' ) ) {
 			throw new PermissionsError( 'polladmin' );

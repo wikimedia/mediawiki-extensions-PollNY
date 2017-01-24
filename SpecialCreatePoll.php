@@ -31,6 +31,12 @@ class CreatePoll extends SpecialPage {
 
 		$wgSupressPageTitle = true;
 
+		// https://phabricator.wikimedia.org/T155405
+		// Throws error message when SocialProfile extension is not installed
+		if( !class_exists( 'UserStats' ) ) {
+			throw new ErrorPageError( 'poll-error-socialprofile-title', 'poll-error-socialprofile' );
+		}
+
 		// Blocked users cannot create polls
 		if( $user->isBlocked() ) {
 			throw new UserBlockedError( $user->getBlock() );
