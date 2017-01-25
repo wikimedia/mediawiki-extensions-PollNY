@@ -12,6 +12,7 @@
 	"poll-admin-closed": "Chiusi",
 	"poll-admin-flagged": "Contrassegnati",
 	"poll-admin-open": "Aperti",
+	"poll-error-socialprofile-title": "L'estensione SocialProfile non è installata.",
 	"poll-admin-panel": "Amministrazione",
 	"poll-admin-status-nav": "Filtra per stato",
 	"poll-ago": "$1 fa",

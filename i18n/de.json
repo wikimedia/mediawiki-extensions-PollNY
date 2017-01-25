@@ -14,6 +14,8 @@
 	"poll-admin-closed": "Geschlossen",
 	"poll-admin-flagged": "Markiert",
 	"poll-admin-open": "Offen",
+	"poll-error-socialprofile": "Die Erweiterung „[https://www.mediawiki.org/wiki/Extension:SocialProfile SocialProfile]“ ist nicht installiert. Bitte installiere sie und versuche es erneut.",
+	"poll-error-socialprofile-title": "Die Erweiterung „SocialProfile“ ist nicht installiert.",
 	"poll-admin-panel": "Verwalten",
 	"poll-admin-status-nav": "Nach Status filtern",
 	"poll-admin-title-all": "Abstimmungsverwaltung – Alle Abstimmungen ansehen",

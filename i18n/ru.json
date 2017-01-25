@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Kaganer",
-			"Okras"
+			"Okras",
+			"Alex Great"
 		]
 	},
 	"adminpoll": "Администрирование опросов",
@@ -14,6 +15,8 @@
 	"poll-admin-closed": "Закрытые",
 	"poll-admin-flagged": "Отмеченные",
 	"poll-admin-open": "Открытые",
+	"poll-error-socialprofile": "[https://www.mediawiki.org/wiki/Extension:SocialProfile Расширение «SocialProfile»] не установлено. Пожалуйста, установите это расширение и попробуйте снова.",
+	"poll-error-socialprofile-title": "Расширение «SocialProfile» не установлено.",
 	"poll-admin-panel": "Администрирование",
 	"poll-admin-status-nav": "Фильтровать по статусу",
 	"poll-admin-title-all": "Администратор опросов — Посмотреть все опросы",

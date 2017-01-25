@@ -20,6 +20,8 @@
 	"poll-admin-closed": "Fermé",
 	"poll-admin-flagged": "Marqué",
 	"poll-admin-open": "Ouvrir",
+	"poll-error-socialprofile": "[https://www.mediawiki.org/wiki/Extension:SocialProfile L’extension SocialProfile] n’est pas installée. Veuillez l’installer puis réessayer.",
+	"poll-error-socialprofile-title": "L’extension SocialProfile n’est pas installée.",
 	"poll-admin-panel": "Admininistrer",
 	"poll-admin-status-nav": "Filtrer par état",
 	"poll-admin-title-all": "Adminstration des sondages - Voir tous les sondages",

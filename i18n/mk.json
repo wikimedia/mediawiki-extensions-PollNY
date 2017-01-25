@@ -13,6 +13,8 @@
 	"poll-admin-closed": "Завршени",
 	"poll-admin-flagged": "Означени",
 	"poll-admin-open": "Тековни",
+	"poll-error-socialprofile": "[https://www.mediawiki.org/wiki/Extension:SocialProfile Додатокот „Друштвен профил“] не е воспоставен. Воспоставете го, па пробајте повторно.",
+	"poll-error-socialprofile-title": "Додатокот „Друштвен профил“ не е воспоставен.",
 	"poll-admin-panel": "Админ",
 	"poll-admin-status-nav": "Филтрирај по статус",
 	"poll-admin-title-all": "Раководење со анкети — Преглед на сите анкети",
