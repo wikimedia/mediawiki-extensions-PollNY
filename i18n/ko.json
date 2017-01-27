@@ -3,7 +3,8 @@
 		"authors": [
 			"Priviet",
 			"아라",
-			"Revi"
+			"Revi",
+			"Ykhwong"
 		]
 	},
 	"adminpoll": "설문 조사 관리",
@@ -15,6 +16,7 @@
 	"poll-admin-closed": "폐쇄됨",
 	"poll-admin-flagged": "플래그됨",
 	"poll-admin-open": "열기",
+	"poll-error-socialprofile-title": "SocialProfile 확장 기능이 설치되어 있지 않습니다.",
 	"poll-admin-panel": "관리",
 	"poll-admin-status-nav": "상태별 필터",
 	"poll-admin-title-all": "설문 조사 관리 - 모든 설문 조사 보기",
@@ -23,7 +25,7 @@
 	"poll-admin-title-open": "설문 조사 관리 - 열린 설문 조사 보기",
 	"poll-admin-viewall": "모두 보기",
 	"poll-ago": "$1 전",
-	"poll-atleast": "최소 2 가지의 선택지가 있어야 합니다.",
+	"poll-atleast": "적어도 2개의 답안 선택지가 있어야 합니다.",
 	"poll-based-on-votes": "{{PLURAL:$1|하나의 투표|$1개의 투표}}에 기초함",
 	"poll-cancel-button": "취소",
 	"poll-category": "설문 조사",
