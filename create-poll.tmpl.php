@@ -21,7 +21,6 @@ class CreatePollTemplate extends QuickTemplate {
 		$iframeTitle = SpecialPage::getTitleFor( 'PollAjaxUpload' );
 ?>
 	<div class="create-poll-top">
-		<h1><?php echo $parentClass->msg( 'poll-create-title' )->text() ?></h1>
 		<?php echo $parentClass->msg( 'poll-instructions' )->text() ?>
 		<p><input type="button" class="site-button" value="<?php echo $parentClass->msg( 'poll-take-button' )->text() ?>" /></p>
 	</div>

@@ -17,14 +17,11 @@ class PollPage extends Article {
 	 */
 	public function view() {
 		global $wgUser, $wgOut, $wgRequest, $wgExtensionAssetsPath, $wgUploadPath;
-		global $wgSupressPageTitle;
 
 		// Perform no custom handling if the poll in question has been deleted
 		if ( !$this->getID() ) {
 			parent::view();
 		}
-
-		$wgSupressPageTitle = true;
 
 		// WHAT DOES MARSELLUS WALLACE LOOK LIKE?
 		$what = $this->getContext();
@@ -165,8 +162,6 @@ class PollPage extends Article {
 
 		$output .= '</div>' . "\n"; // .poll-right
 		$output .= '<div class="poll">' . "\n";
-
-		$output .= "<h1 class=\"pagetitle\">{$title->getText()}</h1>\n";
 
 		if( $poll_info['image'] ) {
 			$poll_image_width = 150;
