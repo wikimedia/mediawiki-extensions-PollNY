@@ -13,6 +13,8 @@
 	"poll-admin-closed": "Zarraes",
 	"poll-admin-flagged": "Marcaes",
 	"poll-admin-open": "Abiertes",
+	"poll-error-socialprofile": "La [https://www.mediawiki.org/wiki/Extension:SocialProfile estensión SocialProfile] nun ta instalada. Instala esta estensión y tenta otra vuelta.",
+	"poll-error-socialprofile-title": "La estensión SocialProfile nun ta instalada.",
 	"poll-admin-panel": "Almin",
 	"poll-admin-status-nav": "Filtrar por estáu",
 	"poll-admin-title-all": "Alministración d'encuestes - Ver toles encuestes",
