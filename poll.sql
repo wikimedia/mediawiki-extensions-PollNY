@@ -1,6 +1,6 @@
 -- Three tables for PollNY extension
 CREATE TABLE /*_*/poll_choice (
-  `pc_id` int(11) NOT NULL auto_increment PRIMARY KEY,
+  `pc_id` int(11) NOT NULL PRIMARY KEY auto_increment,
   `pc_poll_id` int(11) NOT NULL default '0',
   `pc_order` int(5) default '0',
   `pc_text` text NOT NULL,
@@ -10,7 +10,7 @@ CREATE TABLE /*_*/poll_choice (
 CREATE INDEX /*i*/pc_poll_id ON /*_*/poll_choice (pc_poll_id);
 
 CREATE TABLE /*_*/poll_question (
-  `poll_id` int(11) NOT NULL auto_increment PRIMARY KEY,
+  `poll_id` int(11) NOT NULL PRIMARY KEY auto_increment,
   `poll_page_id` int(11) NOT NULL default '0',
   `poll_user_id` int(11) NOT NULL default '0',
   `poll_user_name` varchar(255) NOT NULL default '',
@@ -29,7 +29,7 @@ CREATE INDEX /*i*/poll_user_id ON /*_*/poll_question (poll_user_id);
 CREATE INDEX /*i*/poll_random ON /*_*/poll_question (poll_random);
 
 CREATE TABLE /*_*/poll_user_vote (
-  `pv_id` int(11) NOT NULL auto_increment PRIMARY KEY,
+  `pv_id` int(11) NOT NULL PRIMARY KEY auto_increment,
   `pv_poll_id` int(11) NOT NULL default '0',
   `pv_pc_id` int(5) default '0',
   `pv_user_id` int(11) NOT NULL default '0',
