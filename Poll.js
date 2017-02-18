@@ -40,7 +40,6 @@ var PollNY = {
 	loadingLightBox: function() {
 		// pop up the lightbox
 		var objLink = {};
-		//objLink.href = wgServer + wgScriptPath + '/extensions/PollNY/images/ajax-loader.gif';
 		objLink.href = '';
 		objLink.title = '';
 
