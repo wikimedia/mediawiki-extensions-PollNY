@@ -1,4 +1,5 @@
 <?php
+use MediaWiki\MediaWikiServices;
 
 class PollPage extends Article {
 
@@ -144,7 +145,7 @@ class PollPage extends Article {
 		$adminLinks = array();
 		// Poll administrators can access the poll admin panel
 		if( $wgUser->isAllowed( 'polladmin' ) ) {
-			$adminLinks[] = Linker::link(
+			$adminLinks[] = MediaWikiServices::getInstance()->getLinkRenderer()->makeLink(
 				SpecialPage::getTitleFor( 'AdminPoll' ),
 				wfMessage( 'poll-admin-panel' )->text()
 			);

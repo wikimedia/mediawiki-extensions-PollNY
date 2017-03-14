@@ -22,6 +22,7 @@ class ViewPoll extends SpecialPage {
 		$out = $this->getOutput();
 		$request = $this->getRequest();
 		$thisTitle = $this->getPageTitle();
+		$linkRenderer = $this->getLinkRenderer();
 
 		// Add CSS & JS
 		$out->addModuleStyles( 'ext.pollNY.css' );
@@ -78,7 +79,7 @@ class ViewPoll extends SpecialPage {
 		}
 
 		if ( $type == 'newest' ) {
-			$output .= '<p>' . Linker::link(
+			$output .= '<p>' . $linkRenderer->makeLink(
 				$thisTitle,
 				$this->msg( 'poll-view-popular' )->text(),
 				array(),
@@ -87,7 +88,7 @@ class ViewPoll extends SpecialPage {
 				$this->msg( 'poll-view-newest' )->text() . '</b></p>';
 		} else {
 			$output .= '<p><b>' . $this->msg( 'poll-view-popular' )->text() .
-				'</b></p><p>' . Linker::link(
+				'</b></p><p>' . $linkRenderer->makeLink(
 					$thisTitle,
 					$this->msg( 'poll-view-newest' )->text(),
 					array(),
@@ -191,7 +192,7 @@ class ViewPoll extends SpecialPage {
 		if( $numofpages > 1 ) {
 			$output .= '<div class="view-poll-page-nav">';
 			if( $page > 1 ) {
-				$output .= Linker::link(
+				$output .= $linkRenderer->makeLink(
 					$thisTitle,
 					$this->msg( 'poll-prev' )->text(),
 					array(),
@@ -216,7 +217,7 @@ class ViewPoll extends SpecialPage {
 				if( $i == $page ) {
 					$output .= ( $i . ' ' );
 				} else {
-					$output .= Linker::link(
+					$output .= $linkRenderer->makeLink(
 						$thisTitle,
 						$i,
 						array(),
@@ -229,7 +230,7 @@ class ViewPoll extends SpecialPage {
 			}
 
 			if( ( $total - ( $per_page * $page ) ) > 0 ) {
-				$output .= $this->msg( 'word-separator' )->plain() . Linker::link(
+				$output .= $this->msg( 'word-separator' )->plain() . $linkRenderer->makeLink(
 					$thisTitle,
 					$i,
 					array(),

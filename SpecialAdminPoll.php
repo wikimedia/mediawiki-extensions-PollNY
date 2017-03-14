@@ -248,12 +248,13 @@ class AdminPoll extends SpecialPage {
 		$output = '';
 		$numofpages = $total / $perPage;
 		$viewPoll = SpecialPage::getTitleFor( 'ViewPoll' );
+		$linkRenderer = $this->getLinkRenderer();
 
 		if( $numofpages > 1 ) {
 			$output .= '<div class="view-poll-page-nav">';
 
 			if( $page > 1 ) {
-				$output .= Linker::link(
+				$output .= $linkRenderer->makeLink(
 					$viewPoll,
 					$this->msg( 'poll-prev' )->text(),
 					array(),
@@ -278,7 +279,7 @@ class AdminPoll extends SpecialPage {
 				if( $i == $page ) {
 					$output .= ( $i . ' ' );
 				} else {
-					$output .= Linker::link(
+					$output .= $linkRenderer->makeLink(
 						$viewPoll,
 						$i,
 						array(),
@@ -292,7 +293,7 @@ class AdminPoll extends SpecialPage {
 
 			if( ( $total - ( $per_page * $page ) ) > 0 ) {
 				$output .= $this->msg( 'word-separator' )->plain() .
-					Linker::link(
+					$linkRenderer->makeLink(
 						$viewPoll,
 						$this->msg( 'poll-next' )->text(),
 						array(),
