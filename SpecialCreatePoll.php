@@ -41,10 +41,7 @@ class CreatePoll extends SpecialPage {
 		}
 
 		// Check that the DB isn't locked
-		if( wfReadOnly() ) {
-			$out->readOnlyPage();
-			return;
-		}
+		$this->checkReadOnly();
 
 		/**
 		 * Redirect anonymous users to login page
