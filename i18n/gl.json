@@ -16,6 +16,8 @@
 	"poll-admin-closed": "Pechadas",
 	"poll-admin-flagged": "Marcadas",
 	"poll-admin-open": "Abertas",
+	"poll-error-socialprofile": "[https://www.mediawiki.org/wiki/Extension:SocialProfile A extensión SocialProfile] non está instalada. Por favor, instale esta extensión e probe de novo.",
+	"poll-error-socialprofile-title": "A extensión SocialProfile non está instalada.",
 	"poll-admin-panel": "Administración",
 	"poll-admin-status-nav": "Filtrar por estado",
 	"poll-admin-title-all": "Administración das enquisas - Ver todas as enquisas",
