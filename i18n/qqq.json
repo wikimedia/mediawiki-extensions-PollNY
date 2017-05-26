@@ -102,6 +102,7 @@
 	"action-polladmin": "{{doc-action|polladmin}}",
 	"right-polladmin": "{{doc-right|polladmin}}",
 	"apihelp-pollny-description": "{{doc-apihelp-description|pollny}}",
+	"apihelp-pollny-summary": "{{doc-apihelp-summary|pollny}}",
 	"apihelp-pollny-param-what": "{{doc-apihelp-param|pollny|what}}",
 	"apihelp-pollny-param-choiceID": "{{doc-apihelp-param|pollny|choiceID}}",
 	"apihelp-pollny-param-pageName": "{{doc-apihelp-param|pollny|pageName}}",
