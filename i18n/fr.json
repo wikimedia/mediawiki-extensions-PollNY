@@ -8,7 +8,8 @@
 			"Benjozork",
 			"Hercule",
 			"Wladek92",
-			"Macofe"
+			"Macofe",
+			"Urhixidur"
 		]
 	},
 	"adminpoll": "Administration des sondages",
@@ -89,10 +90,10 @@
 	"poll-view-popular": "Populaire",
 	"poll-view-answered-times": "Répondu {{PLURAL:$1|une fois|$1 fois}}",
 	"poll-view-all-by": "Voir tous les sondages proposés par $1",
-	"poll-voted-for": "Vous avez voté pour $1 {{PLURAL:$1|sondage|sondages}} parmi <b>$2</b> sondages possibles et obtenu <span class=\"profile-on\">$3 points</span>",
+	"poll-voted-for": "Vous avez voté pour $1 {{PLURAL:$1|sondage|sondages}} parmi <b>$2</b> sondages possibles et obtenu <span class=\"profile-on\">$3 {{PLURAL:$3|point|points}}</span>",
 	"poll-votes": "{{PLURAL:$1|un vote|$1 votes}}",
 	"poll-woops": "Oups !",
-	"poll-would-have-earned": "Vous avez gagné <span class=\"profile-on\">$1 points</span> si vous vous êtes [[Special:UserLogin/signup|identifié]]",
+	"poll-would-have-earned": "Vous avez gagné <span class=\"profile-on\">$1 {{PLURAL:$1|point|points}}</span> si vous vous êtes [[Special:UserLogin/signup|identifié]]",
 	"poll-time-ago": "il y a $1",
 	"poll-time-days": "{{PLURAL:$1|un jour|$1 jours}}",
 	"poll-time-hours": "{{PLURAL:$1|une heure|$1 heures}}",
