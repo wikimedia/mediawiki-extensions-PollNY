@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Zoranzoki21"
+			"Zoranzoki21",
+			"Obsuser"
 		]
 	},
-	"poll-error-socialprofile-title": "Екстензија SocialProfile није инсталирана."
+	"poll-error-socialprofile-title": "Екстензија SocialProfile није инсталирана.",
+	"poll-time-seconds": "{{PLURAL:$1|1 секунда|$1 секунда|$1 секунди}}"
 }
