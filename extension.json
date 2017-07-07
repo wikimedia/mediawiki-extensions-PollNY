@@ -1,6 +1,6 @@
 {
 	"name": "PollNY",
-	"version": "3.3.6",
+	"version": "3.4.0",
 	"author": [
 		"Aaron Wright",
 		"David Pean",
@@ -45,22 +45,22 @@
 		"pollny": "ApiPollNY"
 	},
 	"ExtensionMessagesFiles": {
-		"PollNYAlias": "Poll.alias.php",
-		"PollNYNamespaces": "Poll.namespaces.php"
+		"PollNYAlias": "includes/PollNY.alias.php",
+		"PollNYNamespaces": "includes/PollNY.namespaces.php"
 	},
 	"AutoloadClasses": {
-		"ApiPollNY": "ApiPollNY.php",
-		"AdminPoll": "SpecialAdminPoll.php",
-		"CreatePoll": "SpecialCreatePoll.php",
-		"Poll": "PollClass.php",
-		"PollAjaxUploadForm": "MiniAjaxUpload.php",
-		"PollNYHooks": "PollNYHooks.php",
-		"PollPage": "PollPage.php",
-		"PollUpload": "MiniAjaxUpload.php",
-		"RandomPoll": "SpecialRandomPoll.php",
-		"SpecialPollAjaxUpload": "MiniAjaxUpload.php",
-		"UpdatePoll": "SpecialUpdatePoll.php",
-		"ViewPoll": "SpecialViewPoll.php"
+		"ApiPollNY": "includes/api/ApiPollNY.php",
+		"AdminPoll": "includes/specials/SpecialAdminPoll.php",
+		"CreatePoll": "includes/specials/SpecialCreatePoll.php",
+		"Poll": "includes/Poll.class.php",
+		"PollAjaxUploadForm": "includes/upload/PollAjaxUploadForm.class.php",
+		"PollNYHooks": "includes/PollNY.hooks.php",
+		"PollPage": "includes/PollPage.class.php",
+		"PollUpload": "includes/upload/PollUpload.class.php",
+		"RandomPoll": "includes/specials/SpecialRandomPoll.php",
+		"SpecialPollAjaxUpload": "includes/specials/SpecialPollAjaxUpload.php",
+		"UpdatePoll": "includes/specials/SpecialUpdatePoll.php",
+		"ViewPoll": "includes/specials/SpecialViewPoll.php"
 	},
 	"Hooks": {
 		"TitleMoveComplete": [
@@ -92,7 +92,7 @@
 	},
 	"ResourceModules": {
 		"ext.pollNY": {
-			"scripts": "Poll.js",
+			"scripts": "resources/js/Poll.js",
 			"messages": [
 				"poll-open-message", "poll-close-message", "poll-flagged-message",
 				"poll-finished",
@@ -109,7 +109,7 @@
 			"position": "bottom"
 		},
 		"ext.pollNY.css": {
-			"styles": "Poll.css",
+			"styles": "resources/css/Poll.css",
 			"position": "top"
 		}
 	},
