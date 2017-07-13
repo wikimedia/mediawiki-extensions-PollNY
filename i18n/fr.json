@@ -105,6 +105,7 @@
 	"action-polladmin": "administrer les sondages",
 	"right-polladmin": "Administrer les sondages",
 	"apihelp-pollny-description": "API PollNY - comprend à la fois les fonctions utilisateur et administrateur.",
+	"apihelp-pollny-summary": "API PollNY — inclut à la fois les fonctions utilisateur et administrateur",
 	"apihelp-pollny-param-what": "Quoi faire?",
 	"apihelp-pollny-param-choiceID": "Même chose qu'en cliquant sur le <choiceID>ième choix via l'interface graphique; utilisé seulement si what=vote.",
 	"apihelp-pollny-param-pageName": "Titre à vérifier (uniquement utilisé si what=titleExists); doit être encodé au format URL.",
