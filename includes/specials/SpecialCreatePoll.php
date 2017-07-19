@@ -148,8 +148,6 @@ class CreatePoll extends SpecialPage {
 			$out->redirect( $poll_title->getFullURL() );
 		} else {
 			$_SESSION['alreadysubmitted'] = false;
-			// Load the GUI template class
-			include( 'create-poll.tmpl.php' );
 			$template = new CreatePollTemplate;
 			// Expose _this_ class to the GUI template
 			$template->setRef( 'parentClass', $this );

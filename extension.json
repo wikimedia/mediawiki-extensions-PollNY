@@ -1,6 +1,6 @@
 {
 	"name": "PollNY",
-	"version": "3.4.0",
+	"version": "3.4.1",
 	"author": [
 		"Aaron Wright",
 		"David Pean",
@@ -52,6 +52,7 @@
 		"ApiPollNY": "includes/api/ApiPollNY.php",
 		"AdminPoll": "includes/specials/SpecialAdminPoll.php",
 		"CreatePoll": "includes/specials/SpecialCreatePoll.php",
+		"CreatePollTemplate": "includes/templates/CreatePoll.template.php",
 		"Poll": "includes/Poll.class.php",
 		"PollAjaxUploadForm": "includes/upload/PollAjaxUploadForm.class.php",
 		"PollNYHooks": "includes/PollNY.hooks.php",
