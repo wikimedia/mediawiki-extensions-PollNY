@@ -182,11 +182,8 @@ class PollNYHooks {
 		if( $poll_name ) {
 			global $wgOut, $wgUser, $wgExtensionAssetsPath, $wgPollDisplay;
 
-			// Load CSS for non-Monaco skins - Monaco's ny.css already contains
-			// PollNY's styles (and more)
-			if ( get_class( $wgOut->getSkin() ) !== 'SkinMonaco' ) {
-				$wgOut->addModuleStyles( 'ext.pollNY.css' );
-			}
+			// Load CSS
+			$wgOut->addModuleStyles( 'ext.pollNY.css' );
 
 			// Disable caching; this is important so that we don't cause subtle
 			// bugs that are a bitch to fix.
