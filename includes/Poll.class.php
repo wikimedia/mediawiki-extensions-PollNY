@@ -118,7 +118,7 @@ class Poll {
 	 * @return Array: poll information, such as question, choices, status, etc.
 	 */
 	public function getPoll( $pageID ) {
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 		$res = $dbr->select(
 			'poll_question',
 			array(
@@ -157,7 +157,7 @@ class Poll {
 	public static function getPollChoices( $poll_id, $poll_vote_count = 0 ) {
 		global $wgLang;
 
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 
 		$res = $dbr->select(
 			'poll_choice',
@@ -194,7 +194,7 @@ class Poll {
 	 * @return Boolean: true if user has voted, otherwise false
 	 */
 	public function userVoted( $user_name, $poll_id ) {
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 		$s = $dbr->selectRow(
 			'poll_user_vote',
 			array( 'pv_id' ),
@@ -215,7 +215,7 @@ class Poll {
 	 * @return Boolean: true if the user owns the poll, else false
 	 */
 	public function doesUserOwnPoll( $userId, $pollId ) {
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 		$s = $dbr->selectRow(
 			'poll_question',
 			array( 'poll_id' ),
@@ -337,7 +337,7 @@ class Poll {
 			$polls = $data;
 		} else {
 			wfDebug( "Got polls list ($count) ordered by {$order} from db\n" );
-			$dbr = wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_REPLICA );
 			$params['LIMIT'] = $count;
 			$params['ORDER BY'] = "{$order} DESC";
 			$res = $dbr->select(

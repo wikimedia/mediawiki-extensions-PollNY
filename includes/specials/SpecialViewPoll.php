@@ -68,7 +68,7 @@ class ViewPoll extends SpecialPage {
 		<div class="view-poll-navigation">
 			<h2>' . $this->msg( 'poll-view-order' )->text() . '</h2>';
 
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 		$where = array();
 
 		$user = $request->getVal( 'user' );
