@@ -105,7 +105,9 @@
 			],
 			"dependencies": [
 				"ext.socialprofile.flash",
-				"ext.socialprofile.LightBox"
+				"ext.socialprofile.LightBox",
+				"oojs-ui-core",
+				"oojs-ui-windows"
 			],
 			"position": "bottom"
 		},
