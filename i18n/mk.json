@@ -35,7 +35,7 @@
 	"poll-create": "Направи анкета",
 	"poll-createpoll-error-nomore": "Нема повеќе анкети!",
 	"poll-create-button": "Направи и играј!",
-	"poll-create-threshold-reason": "Нажалост, не можете да направите анкета пред да имате барем $1",
+	"poll-create-threshold-reason": "За жал, не можете да направите анкета пред да имате барем $1.",
 	"poll-create-threshold-title": "Правење на акета",
 	"poll-create-title": "Правење на акета",
 	"poll-createdago": "Направена пред $1",
