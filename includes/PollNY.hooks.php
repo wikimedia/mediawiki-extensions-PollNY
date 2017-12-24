@@ -108,7 +108,7 @@ class PollNYHooks {
 
 			// We don't want caching here, it'll only cause problems...
 			$wgOut->enableClientCache( false );
-			$wgHooks['ParserLimitReport'][] = 'PollNYHooks::markUncacheable';
+			$wgHooks['ParserLimitReportPrepare'][] = 'PollNYHooks::onParserLimitReportPrepare';
 
 			// Prevents editing of polls
 			if( $wgRequest->getVal( 'action' ) == 'edit' ) {
@@ -138,11 +138,11 @@ class PollNYHooks {
 	/**
 	 * Mark page as uncacheable
 	 *
-	 * @param $parser Parser object
-	 * @param $limitReport String: unused
-	 * @return Boolean: true
+	 * @param Parser $parser
+	 * @param ParserOutput $limitReport
+	 * @return bool true
 	 */
-	public static function markUncacheable( $parser, &$limitReport ) {
+	public static function onParserLimitReportPrepare( $parser, $output ) {
 		$parser->disableCache();
 		return true;
 	}
