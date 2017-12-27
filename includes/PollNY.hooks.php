@@ -309,9 +309,9 @@ class PollNYHooks {
 		$dir = dirname( __FILE__ );
 		$file = "$dir/../sql/poll.sql";
 
-		$updater->addExtensionUpdate( array( 'addTable', 'poll_choice', $file, true ) );
-		$updater->addExtensionUpdate( array( 'addTable', 'poll_question', $file, true ) );
-		$updater->addExtensionUpdate( array( 'addTable', 'poll_user_vote', $file, true ) );
+		$updater->addExtensionTable( 'poll_choice', $file );
+		$updater->addExtensionTable( 'poll_question', $file );
+		$updater->addExtensionTable( 'poll_user_vote', $file );
 
 		return true;
 	}
