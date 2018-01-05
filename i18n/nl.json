@@ -3,7 +3,8 @@
 		"authors": [
 			"Mitchel Corstjens",
 			"Siebrand",
-			"Esketti"
+			"Esketti",
+			"Mar(c)"
 		]
 	},
 	"adminpoll": "Peilingen beheren",
@@ -82,7 +83,7 @@
 	"poll-view-popular": "Populair",
 	"poll-view-answered-times": "{{PLURAL:$1|$1 keer}} beantwoord",
 	"poll-view-all-by": "Alle peilingen van $1 bekijken",
-	"poll-voted-for": "U heeft deelgenomen aan {{PLURAL:$1|$1}} van de <b>{{PLURAL:$2|$2 beschikbare peilingen}}</b> en <span class=\"profile-on\">{{PLURAL:$3|1 punt|$3 punten}}</span> ontvangen.",
+	"poll-voted-for": "U hebt aan {{PLURAL:$1|één|$1}} van de <b>$2</b> beschikbare peilingen deelgenomen, en <span class=\"profile-on\">$3 {{PLURAL:$3|punt|punten}}</span> ontvangen.",
 	"poll-votes": "{{PLURAL:$1|1 stem|$1 stemmen}}",
 	"poll-woops": "Fout",
 	"poll-would-have-earned": "Als u was [[Special:UserLogin/signup|aangemeld]] had u <span class=\"profile-on\">{{PLURAL:$1|1 punt|$1 punten}}</span> verdiend.",
