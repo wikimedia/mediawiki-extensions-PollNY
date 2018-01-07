@@ -143,7 +143,7 @@ class PollNYHooks {
 	 * @return bool true
 	 */
 	public static function onParserLimitReportPrepare( $parser, $output ) {
-		$parser->disableCache();
+		$parser->getOutput()->updateCacheExpiry( 0 );
 		return true;
 	}
 
@@ -188,7 +188,7 @@ class PollNYHooks {
 			// Disable caching; this is important so that we don't cause subtle
 			// bugs that are a bitch to fix.
 			$wgOut->enableClientCache( false );
-			$parser->disableCache();
+			$parser->getOutput()->updateCacheExpiry( 0 );
 
 			$poll_title = Title::newFromText( $poll_name, NS_POLL );
 			$poll_title = PollNYHooks::followPollID( $poll_title );
