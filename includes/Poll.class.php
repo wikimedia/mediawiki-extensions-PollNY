@@ -330,7 +330,7 @@ class Poll {
 
 		$polls = array();
 		// Try cache
-		$key = wfMemcKey( 'polls', 'order', $order, 'count', $count );
+		$key = $wgMemc->makeKey( 'polls', 'order', $order, 'count', $count );
 		$data = $wgMemc->get( $key );
 		if( !empty( $data ) && is_array( $data ) ) {
 			wfDebug( "Got polls list ($count) ordered by {$order} from cache\n" );

@@ -55,7 +55,7 @@ class PollNYHooks {
 			if ( $s !== false ) {
 				// Clear profile cache for user id that created poll
 				global $wgMemc;
-				$key = wfMemcKey( 'user', 'profile', 'polls', $s->poll_user_id );
+				$key = $wgMemc->makeKey( 'user', 'profile', 'polls', $s->poll_user_id );
 				$wgMemc->delete( $key );
 
 				// Delete poll record

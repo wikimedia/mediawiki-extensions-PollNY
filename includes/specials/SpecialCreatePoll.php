@@ -141,7 +141,7 @@ class CreatePoll extends SpecialPage {
 			}
 
 			// Clear poll cache
-			$key = wfMemcKey( 'user', 'profile', 'polls', $user->getID() );
+			$key = $wgMemc->makeKey( 'user', 'profile', 'polls', $user->getId() );
 			$wgMemc->delete( $key );
 
 			// Redirect to new poll page
