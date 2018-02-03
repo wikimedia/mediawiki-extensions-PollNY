@@ -108,12 +108,10 @@
 				"ext.socialprofile.LightBox",
 				"oojs-ui-core",
 				"oojs-ui-windows"
-			],
-			"position": "bottom"
+			]
 		},
 		"ext.pollNY.css": {
-			"styles": "resources/css/Poll.css",
-			"position": "top"
+			"styles": "resources/css/Poll.css"
 		}
 	},
 	"AvailableRights": [
