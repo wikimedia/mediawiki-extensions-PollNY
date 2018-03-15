@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nikosgranturismogt"
+		]
+	},
+	"poll-admin-closed": "Ολοκληρωμένο",
+	"poll-admin-flagged": "Επισημασμένο",
+	"poll-admin-open": "Ανοιχτό",
+	"poll-admin-panel": "Διαχειριστής",
+	"poll-admin-status-nav": "Φιλτράρισμα κατά κατάσταση",
+	"poll-admin-viewall": "Προβολή όλων",
+	"poll-ago": "$1 πριν",
+	"poll-cancel-button": "Ακύρωση",
+	"poll-category": "Δημοσκοπήσεις",
+	"poll-category-user": "Δημοσκοπήσεις από τον χρήστη $1",
+	"poll-choices-label": "Επιλογές απάντησης",
+	"poll-view-order": "Σειρά",
+	"poll-view-newest": "Νεότερο",
+	"poll-view-popular": "δημοφιλές",
+	"poll-woops": "Ουπς!",
+	"poll-time-ago": "$1 πριν",
+	"poll-time-days": "{{PLURAL:$1|μια μέρα|$1 μέρες}}",
+	"poll-time-hours": "{{PLURAL:$1|μια ώρα|$1 ώρες}}",
+	"poll-time-minutes": "{{PLURAL:$1|ένα λεπτό|$1 λεπτά}}",
+	"poll-time-seconds": "{{PLURAL:$1|ένα δευτερόλεπτο|$1 δευτερόλεπτα}}",
+	"specialpages-group-poll": "Δημοσκοπήσεις"
+}
