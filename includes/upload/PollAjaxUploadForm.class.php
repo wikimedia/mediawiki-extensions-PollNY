@@ -69,9 +69,9 @@ class PollAjaxUploadForm extends UploadForm {
 			: 'application/x-www-form-urlencoded';
 		# Attributes
 		$attribs = [
-			'action'  => $this->getTitle()->getFullURL(),
-			'method'  => 'post',
-			'class'   => 'visualClear',
+			'action' => $this->getTitle()->getFullURL(),
+			'method' => 'post',
+			'class' => 'visualClear',
 			'enctype' => $encType,
 			'onsubmit' => 'submitForm()', // added
 			'id' => 'upload', // added

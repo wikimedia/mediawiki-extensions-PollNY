@@ -42,28 +42,28 @@ class SpecialPollAjaxUpload extends SpecialUpload {
 	 */
 	protected function loadRequest() {
 		$this->mRequest = $request = $this->getRequest();
-		$this->mSourceType        = $request->getVal( 'wpSourceType', 'file' );
-		$this->mUpload            = PollUpload::createFromRequest( $request );
-		$this->mUploadClicked     = $request->wasPosted()
+		$this->mSourceType = $request->getVal( 'wpSourceType', 'file' );
+		$this->mUpload = PollUpload::createFromRequest( $request );
+		$this->mUploadClicked = $request->wasPosted()
 			&& ( $request->getCheck( 'wpUpload' )
 				|| $request->getCheck( 'wpUploadIgnoreWarning' ) );
 
 		// Guess the desired name from the filename if not provided
-		$this->mDesiredDestName   = $request->getText( 'wpDestFile' );
+		$this->mDesiredDestName = $request->getText( 'wpDestFile' );
 		if ( !$this->mDesiredDestName && $request->getFileName( 'wpUploadFile' ) !== null ) {
 			$this->mDesiredDestName = $request->getFileName( 'wpUploadFile' );
 		}
-		$this->mComment           = $request->getText( 'wpUploadDescription' );
-		$this->mLicense           = $request->getText( 'wpLicense' );
+		$this->mComment = $request->getText( 'wpUploadDescription' );
+		$this->mLicense = $request->getText( 'wpLicense' );
 
-		$this->mDestWarningAck    = $request->getText( 'wpDestFileWarningAck' );
-		$this->mIgnoreWarning     = true;// $request->getCheck( 'wpIgnoreWarning' ) || $request->getCheck( 'wpUploadIgnoreWarning' );
-		$this->mWatchthis         = $request->getBool( 'wpWatchthis' ) && $this->getUser()->isLoggedIn();
-		$this->mCopyrightStatus   = $request->getText( 'wpUploadCopyStatus' );
-		$this->mCopyrightSource   = $request->getText( 'wpUploadSource' );
+		$this->mDestWarningAck = $request->getText( 'wpDestFileWarningAck' );
+		$this->mIgnoreWarning = true;// $request->getCheck( 'wpIgnoreWarning' ) || $request->getCheck( 'wpUploadIgnoreWarning' );
+		$this->mWatchthis = $request->getBool( 'wpWatchthis' ) && $this->getUser()->isLoggedIn();
+		$this->mCopyrightStatus = $request->getText( 'wpUploadCopyStatus' );
+		$this->mCopyrightSource = $request->getText( 'wpUploadSource' );
 
-		$this->mForReUpload       = $request->getBool( 'wpForReUpload' ); // updating a file
-		$this->mCancelUpload      = $request->getCheck( 'wpCancelUpload' )
+		$this->mForReUpload = $request->getBool( 'wpForReUpload' ); // updating a file
+		$this->mCancelUpload = $request->getCheck( 'wpCancelUpload' )
 		                         || $request->getCheck( 'wpReUpload' ); // b/w compat
 
 		// If it was posted check for the token (no remote POST'ing with user credentials)

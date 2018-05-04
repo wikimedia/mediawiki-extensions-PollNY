@@ -111,7 +111,7 @@ class CreatePoll extends SpecialPage {
 					$localizedCategoryNS . ':' .
 					$this->msg( 'poll-category' )->inContentLanguage()->plain() . "]]\n" .
 				'[[' . $localizedCategoryNS . ':' .
-					$this->msg( 'poll-category-user', $user->getName() )->inContentLanguage()->text()  . "]]\n" .
+					$this->msg( 'poll-category-user', $user->getName() )->inContentLanguage()->text() . "]]\n" .
 				'[[' . $localizedCategoryNS . ":{{subst:CURRENTMONTHNAME}} {{subst:CURRENTDAY}}, {{subst:CURRENTYEAR}}]]\n\n__NOEDITSECTION__",
 				$poll_title
 			);

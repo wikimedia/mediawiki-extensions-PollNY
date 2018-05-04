@@ -83,7 +83,7 @@ class ApiPollNY extends ApiBase {
 				$output = $this->titleExists( $params['pageName'] );
 				break;
 			case 'vote':
-				$output = $this->vote( $pollID, (int) $params['choiceID'] );
+				$output = $this->vote( $pollID, (int)$params['choiceID'] );
 				break;
 			default:
 				break;

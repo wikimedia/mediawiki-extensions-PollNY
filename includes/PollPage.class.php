@@ -226,7 +226,7 @@ class PollPage extends Article {
 				$x = 1;
 
 				foreach ( $poll_info_prev['choices'] as $choice ) {
-					if ( $poll_info_prev['votes']  > 0 ) {
+					if ( $poll_info_prev['votes'] > 0 ) {
 						$percent = round( $choice['votes'] / $poll_info_prev['votes'] * 100 );
 						$bar_width = floor( 360 * ( $choice['votes'] / $poll_info_prev['votes'] ) );
 					} else {
