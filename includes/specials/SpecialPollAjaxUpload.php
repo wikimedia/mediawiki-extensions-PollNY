@@ -64,7 +64,7 @@ class SpecialPollAjaxUpload extends SpecialUpload {
 
 		$this->mForReUpload = $request->getBool( 'wpForReUpload' ); // updating a file
 		$this->mCancelUpload = $request->getCheck( 'wpCancelUpload' )
-		                         || $request->getCheck( 'wpReUpload' ); // b/w compat
+								 || $request->getCheck( 'wpReUpload' ); // b/w compat
 
 		// If it was posted check for the token (no remote POST'ing with user credentials)
 		$token = $request->getVal( 'wpEditToken' );
