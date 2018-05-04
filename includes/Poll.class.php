@@ -10,7 +10,7 @@ class Poll {
 	 * @param $question String: poll question
 	 * @param $image String: name of the poll image, if any
 	 * @param $pageID Integer: page ID, as returned by Article::getID()
-	 * @return Integer: inserted value of an auto-increment row (poll ID)
+	 * @return Integer inserted value of an auto-increment row (poll ID)
 	 */
 	public function addPollQuestion( $question, $image, $pageID ) {
 		global $wgUser;
@@ -115,7 +115,7 @@ class Poll {
 	 * Gets information about a poll.
 	 *
 	 * @param $pageID Integer: page ID number
-	 * @return Array: poll information, such as question, choices, status, etc.
+	 * @return Array poll information, such as question, choices, status, etc.
 	 */
 	public function getPoll( $pageID ) {
 		$dbr = wfGetDB( DB_REPLICA );
@@ -151,7 +151,7 @@ class Poll {
 	 *
 	 * @param $poll_id Integer: poll ID number
 	 * @param $poll_vote_count Integer: 0 by default
-	 * @return Array: poll answer choice info (answer ID, text,
+	 * @return Array poll answer choice info (answer ID, text,
 	 * 					amount of votes and percent of total votes)
 	 */
 	public static function getPollChoices( $poll_id, $poll_vote_count = 0 ) {
@@ -191,7 +191,7 @@ class Poll {
 	 * Checks if the user has voted already to the poll with ID = $poll_id.
 	 * @param $user_name Mixed: current user's username
 	 * @param $poll_id Integer: poll ID number
-	 * @return Boolean: true if user has voted, otherwise false
+	 * @return Boolean true if user has voted, otherwise false
 	 */
 	public function userVoted( $user_name, $poll_id ) {
 		$dbr = wfGetDB( DB_REPLICA );
@@ -212,7 +212,7 @@ class Poll {
 	 *
 	 * @param $userId Integer: user ID of the user
 	 * @param $pollId Integer: poll ID number
-	 * @return Boolean: true if the user owns the poll, else false
+	 * @return Boolean true if the user owns the poll, else false
 	 */
 	public function doesUserOwnPoll( $userId, $pollId ) {
 		$dbr = wfGetDB( DB_REPLICA );
@@ -236,7 +236,7 @@ class Poll {
 	 * namespace and page title).
 	 *
 	 * @param $userName String: current user's username
-	 * @return String: poll namespace name and poll page name or 'error'
+	 * @return String poll namespace name and poll page name or 'error'
 	 */
 	public function getRandomPollURL( $userName ) {
 		$pollID = $this->getRandomPollID( $userName );
@@ -270,7 +270,7 @@ class Poll {
 	 * yet.
 	 *
 	 * @param $user_name Mixed: current user's username
-	 * @return Integer: random poll ID number
+	 * @return Integer random poll ID number
 	 */
 	public function getRandomPollID( $user_name ) {
 		$dbr = wfGetDB( DB_MASTER );

@@ -56,7 +56,7 @@ class PollAjaxUploadForm extends UploadForm {
 	 * either
 	 *
 	 * @param $html String: HTML contents to wrap.
-	 * @return String: wrapped HTML.
+	 * @return String wrapped HTML.
 	 */
 	function wrapForm( $html ) {
 		# Include a <fieldset> wrapper for style, if requested.

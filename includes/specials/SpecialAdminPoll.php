@@ -239,7 +239,7 @@ class AdminPoll extends SpecialPage {
 	 * @param $perPage Integer: how many items to show per page? This is
 	 *                          hardcoded to 20 earlier in this file
 	 * @param $page Integer: number indicating on which page we are
-	 * @return String: HTML
+	 * @return String HTML
 	 */
 	public function buildPagination( $total, $perPage, $page ) {
 		$output = '';

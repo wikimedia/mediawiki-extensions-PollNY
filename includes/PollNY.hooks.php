@@ -18,7 +18,7 @@ class PollNYHooks {
 	 * @param $user Object: User object performing the move [unused]
 	 * @param $oldid Integer: old ID of the page
 	 * @param $newid Integer: new ID of the page [unused]
-	 * @return Boolean: true
+	 * @return Boolean true
 	 */
 	public static function updatePollQuestion( &$title, &$newTitle, $user, $oldid, $newid ) {
 		if( $title->getNamespace() == NS_POLL ) {
@@ -40,7 +40,7 @@ class PollNYHooks {
 	 * @param $article Object: instance of Article class
 	 * @param $user Unused
 	 * @param $reason Mixed: deletion reason (unused)
-	 * @return Boolean: true
+	 * @return Boolean true
 	 */
 	public static function deletePollQuestion( &$article, &$user, $reason ) {
 		if( $article->getTitle()->getNamespace() == NS_POLL ) {
@@ -84,7 +84,7 @@ class PollNYHooks {
 	 * Rendering for the <userpoll> tag.
 	 *
 	 * @param $parser Object: instace of Parser class
-	 * @return Boolean: true
+	 * @return Boolean true
 	 */
 	public static function registerUserPollHook( &$parser ) {
 		$parser->setHook( 'userpoll', [ 'PollNYHooks', 'renderPollNY' ] );
@@ -100,7 +100,7 @@ class PollNYHooks {
 	 *
 	 * @param $title Object: instance of Title class
 	 * @param $article Object: instance of Article class
-	 * @return Boolean: true
+	 * @return Boolean true
 	 */
 	public static function pollFromTitle( &$title, &$article ) {
 		if ( $title->getNamespace() == NS_POLL ) {
@@ -151,7 +151,7 @@ class PollNYHooks {
 	 * Set up the <pollembed> tag for embedding polls on wiki pages.
 	 *
 	 * @param $parser Object: instance of Parser class
-	 * @return Boolean: true
+	 * @return Boolean true
 	 */
 	public static function registerPollEmbedHook( &$parser ) {
 		$parser->setHook( 'pollembed', [ 'PollNYHooks', 'renderEmbedPoll' ] );
@@ -303,7 +303,7 @@ class PollNYHooks {
 	 * maintenance/update.php.
 	 *
 	 * @param $updater DatabaseUpdater
-	 * @return Boolean: true
+	 * @return Boolean true
 	 */
 	public static function addTables( $updater ) {
 		$dir = __DIR__;
@@ -320,7 +320,7 @@ class PollNYHooks {
 	 * For the Renameuser extension
 	 *
 	 * @param $renameUserSQL
-	 * @return Boolean: true
+	 * @return Boolean true
 	 */
 	public static function onUserRename( $renameUserSQL ) {
 		// poll_choice table has no information related to the user
@@ -334,7 +334,7 @@ class PollNYHooks {
 	 *
 	 * @param $list Array: array of namespace numbers with corresponding
 	 *                     canonical names
-	 * @return Boolean: true
+	 * @return Boolean true
 	 */
 	public static function onCanonicalNamespaces( &$list ) {
 		$list[NS_POLL] = 'Poll';
