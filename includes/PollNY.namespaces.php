@@ -5,7 +5,7 @@
  * @file
  */
 
-$namespaceNames = array();
+$namespaceNames = [];
 
 // For wikis where the PollNY extension is not installed.
 if( !defined( 'NS_POLL' ) ) {
@@ -17,19 +17,19 @@ if( !defined( 'NS_POLL_TALK' ) ) {
 }
 
 /** English */
-$namespaceNames['en'] = array(
+$namespaceNames['en'] = [
 	NS_POLL => 'Poll',
 	NS_POLL_TALK => 'Poll_talk',
-);
+];
 
 /** Finnish (Suomi) */
-$namespaceNames['fi'] = array(
+$namespaceNames['fi'] = [
 	NS_POLL => 'Äänestys',
 	NS_POLL_TALK => 'Keskustelu_äänestyksestä',
-);
+];
 
 /** Dutch (Nederlands) */
-$namespaceNames['nl'] = array(
+$namespaceNames['nl'] = [
 	NS_POLL => 'Peiling',
 	NS_POLL_TALK => 'Overleg_peiling',
-);
+];

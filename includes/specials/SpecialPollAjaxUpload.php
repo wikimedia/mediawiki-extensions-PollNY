@@ -144,14 +144,14 @@ class SpecialPollAjaxUpload extends SpecialUpload {
 	 */
 	protected function getUploadForm( $message = '', $sessionKey = '', $hideIgnoreWarning = false ) {
 		# Initialize form
-		$form = new PollAjaxUploadForm( array(
+		$form = new PollAjaxUploadForm( [
 			'watch' => $this->getWatchCheck(),
 			'forreupload' => $this->mForReUpload,
 			'sessionkey' => $sessionKey,
 			'hideignorewarning' => $hideIgnoreWarning,
 			'destwarningack' => (bool)$this->mDestWarningAck,
 			'destfile' => $this->mDesiredDestName,
-		) );
+		] );
 		$form->setTitle( $this->getPageTitle() );
 
 		# Check the token, but only if necessary
@@ -194,7 +194,7 @@ class SpecialPollAjaxUpload extends SpecialUpload {
 	 */
 	protected function showUploadError( $message ) {
 		$message = addslashes( $message );
-		$message = str_replace( array( "\r\n", "\r", "\n" ), ' ', $message );
+		$message = str_replace( [ "\r\n", "\r", "\n" ], ' ', $message );
 		$output = "<script language=\"javascript\">
 			/*<![CDATA[*/
 				window.parent.PollNY.uploadError( '{$message}' );
@@ -284,7 +284,7 @@ class SpecialPollAjaxUpload extends SpecialUpload {
 			);
 		}
 
-		$thumb = $img->transform( array( 'width' => $thumbWidth ) );
+		$thumb = $img->transform( [ 'width' => $thumbWidth ] );
 		$img_tag = $thumb->toHtml();
 		$slashedImgTag = addslashes( $img_tag );
 

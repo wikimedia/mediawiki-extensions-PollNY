@@ -60,11 +60,11 @@ class UpdatePoll extends UnlistedSpecialPage {
 
 					$dbw->update(
 						'poll_choice',
-						array( 'pc_text' => $request->getVal( "poll_answer_{$x}" ) ),
-						array(
+						[ 'pc_text' => $request->getVal( "poll_answer_{$x}" ) ],
+						[
 							'pc_poll_id' => intval( $poll_info['id'] ),
 							'pc_order' => $x
-						),
+						],
 						__METHOD__
 					);
 				}
@@ -76,8 +76,8 @@ class UpdatePoll extends UnlistedSpecialPage {
 
 				$dbw->update(
 					'poll_question',
-					array( 'poll_image' => $request->getVal( 'poll_image_name' ) ),
-					array( 'poll_id' => intval( $poll_info['id'] ) ),
+					[ 'poll_image' => $request->getVal( 'poll_image_name' ) ],
+					[ 'poll_id' => intval( $poll_info['id'] ) ],
 					__METHOD__
 				);
 			}
@@ -163,15 +163,15 @@ class UpdatePoll extends UnlistedSpecialPage {
 		global $wgRightsText;
 		if ( $wgRightsText ) {
 			$copywarnMsg = 'copyrightwarning';
-			$copywarnMsgParams = array(
+			$copywarnMsgParams = [
 				'[[' . $this->msg( 'copyrightpage' )->inContentLanguage()->plain() . ']]',
 				$wgRightsText
-			);
+			];
 		} else {
 			$copywarnMsg = 'copyrightwarning2';
-			$copywarnMsgParams = array(
+			$copywarnMsgParams = [
 				'[[' . $this->msg( 'copyrightpage' )->inContentLanguage()->plain() . ']]'
-			);
+			];
 		}
 
 		$form .= '</form>

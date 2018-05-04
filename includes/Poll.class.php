@@ -17,7 +17,7 @@ class Poll {
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->insert(
 			'poll_question',
-			array(
+			[
 				'poll_page_id' => $pageID,
 				'poll_user_id' => $wgUser->getID(),
 				'poll_user_name' => $wgUser->getName(),
@@ -25,7 +25,7 @@ class Poll {
 				'poll_image' => $image,
 				'poll_date' => date( 'Y-m-d H:i:s' ),
 				'poll_random' => wfRandom()
-			),
+			],
 			__METHOD__
 		);
 		return $dbw->insertId();
@@ -42,11 +42,11 @@ class Poll {
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->insert(
 			'poll_choice',
-			array(
+			[
 				'pc_poll_id' => $pollID,
 				'pc_text' => strip_tags( $choiceText ),
 				'pc_order' => $choiceOrder
-			),
+			],
 			__METHOD__
 		);
 	}
@@ -63,13 +63,13 @@ class Poll {
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->insert(
 			'poll_user_vote',
-			array(
+			[
 				'pv_poll_id' => $pollID,
 				'pv_pc_id' => $choiceID,
 				'pv_user_id' => $wgUser->getID(),
 				'pv_user_name' => $wgUser->getName(),
 				'pv_date' => date( 'Y-m-d H:i:s' )
-			),
+			],
 			__METHOD__
 		);
 		if( $choiceID > 0 ) {
@@ -90,8 +90,8 @@ class Poll {
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->update(
 			'poll_choice',
-			array( 'pc_vote_count=pc_vote_count+1' ),
-			array( 'pc_id' => $choiceID ),
+			[ 'pc_vote_count=pc_vote_count+1' ],
+			[ 'pc_id' => $choiceID ],
 			__METHOD__
 		);
 	}
@@ -105,8 +105,8 @@ class Poll {
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->update(
 			'poll_question',
-			array( 'poll_vote_count=poll_vote_count+1' ),
-			array( 'poll_id' => $pollID ),
+			[ 'poll_vote_count=poll_vote_count+1' ],
+			[ 'poll_id' => $pollID ],
 			__METHOD__
 		);
 	}
@@ -121,17 +121,17 @@ class Poll {
 		$dbr = wfGetDB( DB_REPLICA );
 		$res = $dbr->select(
 			'poll_question',
-			array(
+			[
 				'poll_text', 'poll_vote_count', 'poll_id', 'poll_status',
 				'poll_user_id', 'poll_user_name', 'poll_image',
 				'poll_date'
-			),
-			array( 'poll_page_id' => $pageID ),
+			],
+			[ 'poll_page_id' => $pageID ],
 			__METHOD__,
-			array( 'OFFSET' => 0, 'LIMIT' => 1 )
+			[ 'OFFSET' => 0, 'LIMIT' => 1 ]
 		);
 		$row = $dbr->fetchObject( $res );
-		$poll = array();
+		$poll = [];
 		if( $row ) {
 			$poll['question'] = $row->poll_text;
 			$poll['image'] = $row->poll_image;
@@ -161,13 +161,13 @@ class Poll {
 
 		$res = $dbr->select(
 			'poll_choice',
-			array( 'pc_id', 'pc_text', 'pc_vote_count' ),
-			array( 'pc_poll_id' => $poll_id ),
+			[ 'pc_id', 'pc_text', 'pc_vote_count' ],
+			[ 'pc_poll_id' => $poll_id ],
 			__METHOD__,
-			array( 'ORDER BY' => 'pc_order' )
+			[ 'ORDER BY' => 'pc_order' ]
 		);
 
-		$choices = array();
+		$choices = [];
 		foreach( $res as $row ) {
 			if( $poll_vote_count ) {
 				$percent = str_replace( '.0', '', $wgLang->formatNum( $row->pc_vote_count / $poll_vote_count * 100, 1 ) );
@@ -176,12 +176,12 @@ class Poll {
 			}
 			//$percent = round( $row->pc_vote_count / $poll_vote_count * 100 );
 
-			$choices[] = array(
+			$choices[] = [
 				'id' => $row->pc_id,
 				'choice' => $row->pc_text,
 				'votes' => $row->pc_vote_count,
 				'percent' => $percent
-			);
+			];
 		}
 
 		return $choices;
@@ -197,8 +197,8 @@ class Poll {
 		$dbr = wfGetDB( DB_REPLICA );
 		$s = $dbr->selectRow(
 			'poll_user_vote',
-			array( 'pv_id' ),
-			array( 'pv_poll_id' => $poll_id, 'pv_user_name' => $user_name ),
+			[ 'pv_id' ],
+			[ 'pv_poll_id' => $poll_id, 'pv_user_name' => $user_name ],
 			__METHOD__
 		);
 		if ( $s !== false ) {
@@ -218,11 +218,11 @@ class Poll {
 		$dbr = wfGetDB( DB_REPLICA );
 		$s = $dbr->selectRow(
 			'poll_question',
-			array( 'poll_id' ),
-			array(
+			[ 'poll_id' ],
+			[
 				'poll_id' => intval( $pollId ),
 				'poll_user_id' => intval( $userId )
-			),
+			],
 			__METHOD__
 		);
 		if ( $s !== false ) {
@@ -257,7 +257,7 @@ class Poll {
 	 */
 	public function getRandomPoll( $userName ) {
 		$pollId = $this->getRandomPollID( $userName );
-		$poll = array();
+		$poll = [];
 		if( $pollId ) {
 			$poll = $this->getPoll( $pollId );
 		}
@@ -311,8 +311,8 @@ class Poll {
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->update(
 			'poll_question',
-			array( 'poll_status' => $status ),
-			array( 'poll_id' => (int)$pollId ),
+			[ 'poll_status' => $status ],
+			[ 'poll_id' => (int)$pollId ],
 			__METHOD__
 		);
 	}
@@ -328,7 +328,7 @@ class Poll {
 	public static function getPollList( $count = 3, $order = 'poll_id' ) {
 		global $wgMemc;
 
-		$polls = array();
+		$polls = [];
 		// Try cache
 		$key = $wgMemc->makeKey( 'polls', 'order', $order, 'count', $count );
 		$data = $wgMemc->get( $key );
@@ -341,23 +341,23 @@ class Poll {
 			$params['LIMIT'] = $count;
 			$params['ORDER BY'] = "{$order} DESC";
 			$res = $dbr->select(
-				array( 'poll_question', 'page' ),
-				array(
+				[ 'poll_question', 'page' ],
+				[
 					'page_title', 'poll_id', 'poll_vote_count', 'poll_image',
 					'poll_date'
-				),
-				/* WHERE */array( 'poll_status' => 1 ),
+				],
+				/* WHERE */[ 'poll_status' => 1 ],
 				__METHOD__,
 				$params,
-				array( 'page' => array( 'INNER JOIN', 'page_id = poll_page_id' ) )
+				[ 'page' => [ 'INNER JOIN', 'page_id = poll_page_id' ] ]
 			);
 			foreach( $res as $row ) {
-				$polls[] = array(
+				$polls[] = [
 					'title' => $row->page_title,
 					'timestamp' => wfTimestamp( TS_UNIX, $row->poll_date ),
 					'image' => $row->poll_image,
 					'choices' => self::getPollChoices( $row->poll_id, $row->poll_vote_count )
-				);
+				];
 			}
 			if( !empty( $polls ) ) {
 				$wgMemc->set( $key, $polls, 60 * 10 );

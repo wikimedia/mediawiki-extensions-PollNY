@@ -34,7 +34,7 @@ class ApiPollNY extends ApiBase {
 		// Ensure that the pollID parameter is present for actions that require
 		// it and that it really is numeric
 		if (
-			in_array( $action, array( 'delete', 'updateStatus', 'vote' ) ) &&
+			in_array( $action, [ 'delete', 'updateStatus', 'vote' ] ) &&
 			( !$pollID || $pollID === null || !is_numeric( $pollID ) )
 		)
 		{
@@ -92,7 +92,7 @@ class ApiPollNY extends ApiBase {
 
 		// Top level
 		$this->getResult()->addValue( null, $this->getModuleName(),
-			array( 'result' => $output )
+			[ 'result' => $output ]
 		);
 
 		return true;
@@ -107,27 +107,27 @@ class ApiPollNY extends ApiBase {
 			$dbw = wfGetDB( DB_MASTER );
 			$s = $dbw->selectRow(
 				'poll_question',
-				array( 'poll_page_id' ),
-				array( 'poll_id' => intval( $pollID ) ),
+				[ 'poll_page_id' ],
+				[ 'poll_id' => intval( $pollID ) ],
 				__METHOD__
 			);
 
 			if ( $s !== false ) {
 				$dbw->delete(
 					'poll_user_vote',
-					array( 'pv_poll_id' => intval( $pollID ) ),
+					[ 'pv_poll_id' => intval( $pollID ) ],
 					__METHOD__
 				);
 
 				$dbw->delete(
 					'poll_choice',
-					array( 'pc_poll_id' => intval( $pollID ) ),
+					[ 'pc_poll_id' => intval( $pollID ) ],
 					__METHOD__
 				);
 
 				$dbw->delete(
 					'poll_question',
-					array( 'poll_page_id' => $s->poll_page_id ),
+					[ 'poll_page_id' => $s->poll_page_id ],
 					__METHOD__
 				);
 
@@ -177,8 +177,8 @@ class ApiPollNY extends ApiBase {
 		$dbr = wfGetDB( DB_MASTER );
 		$s = $dbr->selectRow(
 			'page',
-			array( 'page_id' ),
-			array( 'page_title' => $dbKey, 'page_namespace' => NS_POLL ),
+			[ 'page_id' ],
+			[ 'page_title' => $dbKey, 'page_namespace' => NS_POLL ],
 			__METHOD__
 		);
 		if ( $s !== false ) {
@@ -229,62 +229,62 @@ class ApiPollNY extends ApiBase {
 	 * @return Array
 	 */
 	public function getAllowedParams() {
-		return array(
-			'what' => array(
+		return [
+			'what' => [
 				ApiBase::PARAM_TYPE => 'string',
 				ApiBase::PARAM_REQUIRED => true
-			),
-			'choiceID' => array(
+			],
+			'choiceID' => [
 				ApiBase::PARAM_TYPE => 'integer',
-			),
-			'pageName' => array(
+			],
+			'pageName' => [
 				ApiBase::PARAM_TYPE => 'string',
-			),
-			'pollID' => array(
+			],
+			'pollID' => [
 				ApiBase::PARAM_TYPE => 'integer',
-			),
-			'pageID' => array(
+			],
+			'pageID' => [
 				ApiBase::PARAM_TYPE => 'integer',
-			),
-			'status' => array(
+			],
+			'status' => [
 				ApiBase::PARAM_TYPE => 'integer',
-			)
-		);
+			]
+		];
 	}
 
 	/**
 	 * @deprecated since MediaWiki core 1.25
 	 */
 	public function getParamDescription() {
-		return array_merge( parent::getParamDescription(), array(
+		return array_merge( parent::getParamDescription(), [
 			'what' => 'What to do?',
 			'choiceID' => 'Same as clicking the <choiceID>th choice via the GUI; only used when what=vote',
 			'pageName' => 'Title to check for (only used when what=titleExists); should be URL-encoded',
 			'pollID' => 'Poll ID of the poll that is being deleted/updated/voted for',
 			'pageID' => 'Page ID (only used when what=getPollResults)',
 			'status' => 'New status of the poll (when what=updateStatus); possible values are 0 (=closed), 1 and 2 (=flagged)',
-		) );
+		] );
 	}
 
 	/**
 	 * @deprecated since MediaWiki core 1.25
 	 */
 	public function getExamples() {
-		return array(
+		return [
 			'api.php?action=pollny&what=delete&pollID=66' => 'Deletes the poll #66',
 			'api.php?action=pollny&what=getPollResults&pollID=666' => 'Gets the results of the poll #666',
 			'api.php?action=pollny&what=getRandom' => 'Gets a random poll to which the current user hasn\'t answered yet',
 			'api.php?action=pollny&what=titleExists&pageName=Is%20PollNY%20awesome%3F' => 'Checks if there is already a poll with the title "Is PollNY awesome?"',
 			'api.php?action=pollny&what=updateStatus&pollID=47&status=1' => 'Sets the status of the poll #47 to 1 (=open); possible status values are 0 (=closed), 1 and 2 (=flagged)',
 			'api.php?action=pollny&what=vote&pollID=33&choiceID=4' => 'Votes (answers) the poll #33 with the 4th choice',
-		);
+		];
 	}
 
 	/**
 	 * @see ApiBase::getExamplesMessages()
 	 */
 	protected function getExamplesMessages() {
-		return array(
+		return [
 			'action=pollny&what=delete&pollID=66'
 				=> 'apihelp-pollny-example-1',
 			'action=pollny&what=getPollResults&pollID=666'
@@ -297,6 +297,6 @@ class ApiPollNY extends ApiBase {
 				=> 'apihelp-pollny-example-5',
 			'action=pollny&what=vote&pollID=33&choiceID=4'
 				=> 'apihelp-pollny-example-6'
-		);
+		];
 	}
 }

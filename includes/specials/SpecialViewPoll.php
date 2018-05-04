@@ -69,10 +69,10 @@ class ViewPoll extends SpecialPage {
 			<h2>' . $this->msg( 'poll-view-order' )->text() . '</h2>';
 
 		$dbr = wfGetDB( DB_REPLICA );
-		$where = array();
+		$where = [];
 
 		$user = $request->getVal( 'user' );
-		$userLink = array();
+		$userLink = [];
 		if ( $user ) {
 			$where['poll_user_name'] = $user;
 			$userLink['user'] = $user;
@@ -82,8 +82,8 @@ class ViewPoll extends SpecialPage {
 			$output .= '<p>' . $linkRenderer->makeLink(
 				$thisTitle,
 				$this->msg( 'poll-view-popular' )->text(),
-				array(),
-				array( 'type' => 'most' ) + $userLink
+				[],
+				[ 'type' => 'most' ] + $userLink
 			) . '</p><p><b>' .
 				$this->msg( 'poll-view-newest' )->text() . '</b></p>';
 		} else {
@@ -91,8 +91,8 @@ class ViewPoll extends SpecialPage {
 				'</b></p><p>' . $linkRenderer->makeLink(
 					$thisTitle,
 					$this->msg( 'poll-view-newest' )->text(),
-					array(),
-					array( 'type' => 'newest' ) + $userLink
+					[],
+					[ 'type' => 'newest' ] + $userLink
 				) . '</p>';
 		}
 
@@ -105,25 +105,25 @@ class ViewPoll extends SpecialPage {
 		}
 
 		$res = $dbr->select(
-			array( 'poll_question', 'page' ),
-			array(
+			[ 'poll_question', 'page' ],
+			[
 				'poll_user_id', 'poll_date', 'poll_vote_count',
 				'poll_user_name', 'poll_text', 'poll_page_id', 'page_id'
-			),
+			],
 			$where,
 			__METHOD__,
-			array(
+			[
 				'ORDER BY' => "$order DESC",
 				'LIMIT' => $limit,
 				'OFFSET' => $limitvalue
-			),
-			array( 'page' => array( 'INNER JOIN', 'poll_page_id = page_id' ) )
+			],
+			[ 'page' => [ 'INNER JOIN', 'poll_page_id = page_id' ] ]
 		);
 
 		$res_total = $dbr->select(
 			'poll_question',
 			'COUNT(*) AS total_polls',
-			( ( $user ) ? array( 'poll_user_name' => $user ) : array() ),
+			( ( $user ) ? [ 'poll_user_name' => $user ] : [] ),
 			__METHOD__
 		);
 		$row_total = $dbr->fetchObject( $res_total );
@@ -195,11 +195,11 @@ class ViewPoll extends SpecialPage {
 				$output .= $linkRenderer->makeLink(
 					$thisTitle,
 					$this->msg( 'poll-prev' )->text(),
-					array(),
-					array(
+					[],
+					[
 						'type' => 'most',
 						'page' => ( $page - 1 )
-					) + $userLink
+					] + $userLink
 				) . $this->msg( 'word-separator' )->plain();
 			}
 
@@ -220,11 +220,11 @@ class ViewPoll extends SpecialPage {
 					$output .= $linkRenderer->makeLink(
 						$thisTitle,
 						$i,
-						array(),
-						array(
+						[],
+						[
 							'type' => 'most',
 							'page' => $i
-						) + $userLink
+						] + $userLink
 					) . $this->msg( 'word-separator' )->plain();
 				}
 			}
@@ -233,11 +233,11 @@ class ViewPoll extends SpecialPage {
 				$output .= $this->msg( 'word-separator' )->plain() . $linkRenderer->makeLink(
 					$thisTitle,
 					$i,
-					array(),
-					array(
+					[],
+					[
 						'type' => 'most',
 						'page' => ( $page + 1 )
-					) + $userLink
+					] + $userLink
 				);
 			}
 			$output .= '</div>';

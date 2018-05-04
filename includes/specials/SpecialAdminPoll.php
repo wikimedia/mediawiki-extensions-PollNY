@@ -64,12 +64,12 @@ class AdminPoll extends SpecialPage {
 
 		$limit = $per_page;
 
-		$nav = array(
+		$nav = [
 			'all' => $this->msg( 'poll-admin-viewall' )->text(),
 			'open' => $this->msg( 'poll-admin-open' )->text(),
 			'closed' => $this->msg( 'poll-admin-closed' )->text(),
 			'flagged' => $this->msg( 'poll-admin-flagged' )->text()
-		);
+		];
 
 		$output = '<div class="view-poll-top-links">
 			<a href="javascript:history.go(-1);">' . $this->msg( 'poll-take-button' )->text() . '</a>
@@ -115,23 +115,23 @@ class AdminPoll extends SpecialPage {
 				$status_int = 2;
 				break;
 		}
-		$where = array();
+		$where = [];
 		if( $status_int > -1 ) {
 			$where['poll_status'] = $status_int;
 		}
 
 		$dbr = wfGetDB( DB_MASTER );
 		$res = $dbr->select(
-			array( 'poll_question', 'page' ),
-			array(
+			[ 'poll_question', 'page' ],
+			[
 				'poll_id', 'poll_user_id', 'poll_date', 'poll_status',
 				'poll_vote_count', 'poll_user_name', 'poll_text',
 				'poll_page_id', 'page_id'
-			),
+			],
 			$where,
 			__METHOD__,
 			$params,
-			array( 'page' => array( 'INNER JOIN', 'poll_page_id = page_id' ) )
+			[ 'page' => [ 'INNER JOIN', 'poll_page_id = page_id' ] ]
 		);
 
 		if( $status_int > -1 ) {
@@ -140,7 +140,7 @@ class AdminPoll extends SpecialPage {
 
 		$s = $dbr->selectRow(
 			'poll_question',
-			array( 'COUNT(*) AS count' ),
+			[ 'COUNT(*) AS count' ],
 			$where,
 			__METHOD__,
 			$params
@@ -254,11 +254,11 @@ class AdminPoll extends SpecialPage {
 				$output .= $linkRenderer->makeLink(
 					$viewPoll,
 					$this->msg( 'poll-prev' )->text(),
-					array(),
-					array(
+					[],
+					[
 						'type' => 'most',
 						'page' => ( $page - 1 )
-					)
+					]
 				) . $this->msg( 'word-separator' )->plain();
 			}
 
@@ -279,11 +279,11 @@ class AdminPoll extends SpecialPage {
 					$output .= $linkRenderer->makeLink(
 						$viewPoll,
 						$i,
-						array(),
-						array(
+						[],
+						[
 							'type' => 'most',
 							'page' => $i
-						)
+						]
 					) . $this->msg( 'word-separator' )->plain();
 				}
 			}
@@ -293,11 +293,11 @@ class AdminPoll extends SpecialPage {
 					$linkRenderer->makeLink(
 						$viewPoll,
 						$this->msg( 'poll-next' )->text(),
-						array(),
-						array(
+						[],
+						[
 							'type' => 'most',
 							'page' => ( $page + 1 )
-						)
+						]
 					);
 			}
 

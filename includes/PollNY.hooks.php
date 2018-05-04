@@ -25,8 +25,8 @@ class PollNYHooks {
 			$dbw = wfGetDB( DB_MASTER );
 			$dbw->update(
 				'poll_question',
-				array( 'poll_text' => $newTitle->getText() ),
-				array( 'poll_page_id' => intval( $oldid ) ),
+				[ 'poll_text' => $newTitle->getText() ],
+				[ 'poll_page_id' => intval( $oldid ) ],
 				__METHOD__
 			);
 		}
@@ -48,8 +48,8 @@ class PollNYHooks {
 
 			$s = $dbw->selectRow(
 				'poll_question',
-				array( 'poll_user_id', 'poll_id' ),
-				array( 'poll_page_id' => $article->getID() ),
+				[ 'poll_user_id', 'poll_id' ],
+				[ 'poll_page_id' => $article->getID() ],
 				__METHOD__
 			);
 			if ( $s !== false ) {
@@ -61,17 +61,17 @@ class PollNYHooks {
 				// Delete poll record
 				$dbw->delete(
 					'poll_user_vote',
-					array( 'pv_poll_id' => $s->poll_id ),
+					[ 'pv_poll_id' => $s->poll_id ],
 					__METHOD__
 				);
 				$dbw->delete(
 					'poll_choice',
-					array( 'pc_poll_id' => $s->poll_id ),
+					[ 'pc_poll_id' => $s->poll_id ],
 					__METHOD__
 				);
 				$dbw->delete(
 					'poll_question',
-					array( 'poll_page_id' => $article->getID() ),
+					[ 'poll_page_id' => $article->getID() ],
 					__METHOD__
 				);
 			}
@@ -87,7 +87,7 @@ class PollNYHooks {
 	 * @return Boolean: true
 	 */
 	public static function registerUserPollHook( &$parser ) {
-		$parser->setHook( 'userpoll', array( 'PollNYHooks', 'renderPollNY' ) );
+		$parser->setHook( 'userpoll', [ 'PollNYHooks', 'renderPollNY' ] );
 		return true;
 	}
 
@@ -154,7 +154,7 @@ class PollNYHooks {
 	 * @return Boolean: true
 	 */
 	public static function registerPollEmbedHook( &$parser ) {
-		$parser->setHook( 'pollembed', array( 'PollNYHooks', 'renderEmbedPoll' ) );
+		$parser->setHook( 'pollembed', [ 'PollNYHooks', 'renderEmbedPoll' ] );
 		return true;
 	}
 
@@ -324,8 +324,8 @@ class PollNYHooks {
 	 */
 	public static function onUserRename( $renameUserSQL ) {
 		// poll_choice table has no information related to the user
-		$renameUserSQL->tables['poll_question'] = array( 'poll_user_name', 'poll_user_id' );
-		$renameUserSQL->tables['poll_user_vote'] = array( 'pv_user_name', 'pv_user_id' );
+		$renameUserSQL->tables['poll_question'] = [ 'poll_user_name', 'poll_user_id' ];
+		$renameUserSQL->tables['poll_user_vote'] = [ 'pv_user_name', 'pv_user_id' ];
 		return true;
 	}
 

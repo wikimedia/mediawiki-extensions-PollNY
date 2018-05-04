@@ -41,8 +41,8 @@ class PollPage extends Article {
 		$total_polls = 0;
 		$s = $dbr->selectRow(
 			'poll_question',
-			array( 'COUNT(*) AS count' ),
-			array(),
+			[ 'COUNT(*) AS count' ],
+			[],
 			__METHOD__
 		);
 		if ( $s !== false ) {
@@ -142,7 +142,7 @@ class PollPage extends Article {
 
 		$output .= '<div class="poll-links">' . "\n";
 
-		$adminLinks = array();
+		$adminLinks = [];
 		// Poll administrators can access the poll admin panel
 		if( $wgUser->isAllowed( 'polladmin' ) ) {
 			$adminLinks[] = MediaWikiServices::getInstance()->getLinkRenderer()->makeLink(
