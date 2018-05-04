@@ -13,10 +13,7 @@
 		<exclude name="MediaWiki.Commenting.FunctionComment.ParamNameNoMatch" />
 		<exclude name="MediaWiki.Files.ClassMatchesFilename.NotMatch" />
 		<exclude name="MediaWiki.Usage.DbrQueryUsage.DbrQueryFound" />
-		<exclude name="MediaWiki.WhiteSpace.SpaceAfterControlStructure.Incorrect" />
-		<exclude name="MediaWiki.WhiteSpace.SpaceBeforeControlStructureBrace.BraceOnNewLine" />
 		<exclude name="MediaWiki.WhiteSpace.SpaceBeforeSingleLineComment.NewLineComment" />
-		<exclude name="MediaWiki.WhiteSpace.SpaceBeforeSingleLineComment.SingleSpaceBeforeSingleLineComment" />
 		<exclude name="PSR2.Files.EndFileNewline.NoneFound" />
 		<exclude name="Squiz.Classes.SelfMemberReference.NotUsed" />
 		<exclude name="Squiz.Scope.MethodScope.Missing" />

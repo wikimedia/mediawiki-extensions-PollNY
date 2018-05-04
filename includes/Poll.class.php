@@ -72,7 +72,7 @@ class Poll {
 			],
 			__METHOD__
 		);
-		if( $choiceID > 0 ) {
+		if ( $choiceID > 0 ) {
 			$this->incPollVoteCount( $pollID );
 			$this->incChoiceVoteCount( $choiceID );
 			$stats = new UserStatsTrack( $wgUser->getID(), $wgUser->getName() );
@@ -132,7 +132,7 @@ class Poll {
 		);
 		$row = $dbr->fetchObject( $res );
 		$poll = [];
-		if( $row ) {
+		if ( $row ) {
 			$poll['question'] = $row->poll_text;
 			$poll['image'] = $row->poll_image;
 			$poll['user_name'] = $row->poll_user_name;
@@ -168,13 +168,13 @@ class Poll {
 		);
 
 		$choices = [];
-		foreach( $res as $row ) {
-			if( $poll_vote_count ) {
+		foreach ( $res as $row ) {
+			if ( $poll_vote_count ) {
 				$percent = str_replace( '.0', '', $wgLang->formatNum( $row->pc_vote_count / $poll_vote_count * 100, 1 ) );
 			} else {
 				$percent = 0;
 			}
-			//$percent = round( $row->pc_vote_count / $poll_vote_count * 100 );
+			// $percent = round( $row->pc_vote_count / $poll_vote_count * 100 );
 
 			$choices[] = [
 				'id' => $row->pc_id,
@@ -240,7 +240,7 @@ class Poll {
 	 */
 	public function getRandomPollURL( $userName ) {
 		$pollID = $this->getRandomPollID( $userName );
-		if( $pollID ) {
+		if ( $pollID ) {
 			$pollPage = Title::newFromID( $pollID );
 			global $wgContLang;
 		  	return $wgContLang->getNsText( NS_POLL ) . ':'. $pollPage->getDBkey();
@@ -258,7 +258,7 @@ class Poll {
 	public function getRandomPoll( $userName ) {
 		$pollId = $this->getRandomPollID( $userName );
 		$poll = [];
-		if( $pollId ) {
+		if ( $pollId ) {
 			$poll = $this->getPoll( $pollId );
 		}
 		return $poll;
@@ -284,7 +284,7 @@ class Poll {
 		$res = $dbr->query( $sql, __METHOD__ );
 		$row = $dbr->fetchObject( $res );
 		// random fallback
-		if( !$row ) {
+		if ( !$row ) {
 			$sql = "SELECT poll_page_id FROM {$dbr->tableName( 'poll_question' )} {$use_index}
 				INNER JOIN {$dbr->tableName( 'page' )} ON page_id=poll_page_id WHERE poll_id NOT IN
 					(SELECT pv_poll_id FROM {$dbr->tableName( 'poll_user_vote' )} WHERE pv_user_name = {$dbr->addQuotes( $user_name )})
@@ -293,7 +293,7 @@ class Poll {
 			$res = $dbr->query( $sql, __METHOD__ );
 			$row = $dbr->fetchObject( $res );
 		}
-		if( $row ) {
+		if ( $row ) {
 			$poll_page_id = $row->poll_page_id;
 		}
 
@@ -332,7 +332,7 @@ class Poll {
 		// Try cache
 		$key = $wgMemc->makeKey( 'polls', 'order', $order, 'count', $count );
 		$data = $wgMemc->get( $key );
-		if( !empty( $data ) && is_array( $data ) ) {
+		if ( !empty( $data ) && is_array( $data ) ) {
 			wfDebug( "Got polls list ($count) ordered by {$order} from cache\n" );
 			$polls = $data;
 		} else {
@@ -351,7 +351,7 @@ class Poll {
 				$params,
 				[ 'page' => [ 'INNER JOIN', 'page_id = poll_page_id' ] ]
 			);
-			foreach( $res as $row ) {
+			foreach ( $res as $row ) {
 				$polls[] = [
 					'title' => $row->page_title,
 					'timestamp' => wfTimestamp( TS_UNIX, $row->poll_date ),
@@ -359,7 +359,7 @@ class Poll {
 					'choices' => self::getPollChoices( $row->poll_id, $row->poll_vote_count )
 				];
 			}
-			if( !empty( $polls ) ) {
+			if ( !empty( $polls ) ) {
 				$wgMemc->set( $key, $polls, 60 * 10 );
 			}
 		}
@@ -387,12 +387,12 @@ class Poll {
 
 	public static function getTimeOffset( $time, $timeabrv, $timename ) {
 		$timeStr = '';
-		if( $time[$timeabrv] > 0 ) {
+		if ( $time[$timeabrv] > 0 ) {
 			// Give grep a chance to find the usages:
 			// poll-time-days, poll-time-hours, poll-time-minutes, poll-time-seconds
 			$timeStr = wfMessage( "poll-time-{$timename}", $time[$timeabrv] )->parse();
 		}
-		if( $timeStr ) {
+		if ( $timeStr ) {
 			$timeStr .= ' ';
 		}
 		return $timeStr;
@@ -406,14 +406,14 @@ class Poll {
 		$timeStrM = self::getTimeOffset( $timeArray, 'm', 'minutes' );
 		$timeStrS = self::getTimeOffset( $timeArray, 's', 'seconds' );
 		$timeStr = $timeStrD;
-		if( $timeStr < 2 ) {
+		if ( $timeStr < 2 ) {
 			$timeStr .= $timeStrH;
 			$timeStr .= $timeStrM;
-			if( !$timeStr ) {
+			if ( !$timeStr ) {
 				$timeStr .= $timeStrS;
 			}
 		}
-		if( !$timeStr ) {
+		if ( !$timeStr ) {
 			$timeStr = wfMessage( 'poll-time-seconds', 1 )->parse();
 		}
 		return $timeStr;

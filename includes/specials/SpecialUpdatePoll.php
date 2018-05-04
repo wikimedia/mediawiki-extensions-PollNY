@@ -21,7 +21,7 @@ class UpdatePoll extends UnlistedSpecialPage {
 
 		// https://phabricator.wikimedia.org/T155405
 		// Throws error message when SocialProfile extension is not installed
-		if( !class_exists( 'UserStats' ) ) {
+		if ( !class_exists( 'UserStats' ) ) {
 			throw new ErrorPageError( 'poll-error-socialprofile-title', 'poll-error-socialprofile' );
 		}
 
@@ -37,7 +37,7 @@ class UpdatePoll extends UnlistedSpecialPage {
 		 * Redirect Non-logged in users to Login Page
 		 * It will automatically return them to the UpdatePoll page
 		 */
-		if( $user->getID() == 0 ) {
+		if ( $user->getID() == 0 ) {
 			$out->setPageTitle( $this->msg( 'poll-woops' )->plain() );
 			$login = SpecialPage::getTitleFor( 'Userlogin' );
 			$out->redirect( $login->getFullURL( 'returnto=Special:UpdatePoll' ) );
@@ -48,14 +48,14 @@ class UpdatePoll extends UnlistedSpecialPage {
 		$out->addModuleStyles( 'ext.pollNY.css' );
 		$out->addModules( 'ext.pollNY' );
 
-		if( $request->wasPosted() && $_SESSION['alreadysubmitted'] == false ) {
+		if ( $request->wasPosted() && $_SESSION['alreadysubmitted'] == false ) {
 			$_SESSION['alreadysubmitted'] = true;
 			$p = new Poll();
 			$poll_info = $p->getPoll( $request->getInt( 'id' ) );
 
 			// Add Choices
-			for( $x = 1; $x <= 10; $x++ ) {
-				if( $request->getVal( "poll_answer_{$x}" ) ) {
+			for ( $x = 1; $x <= 10; $x++ ) {
+				if ( $request->getVal( "poll_answer_{$x}" ) ) {
 					$dbw = wfGetDB( DB_MASTER );
 
 					$dbw->update(
@@ -71,7 +71,7 @@ class UpdatePoll extends UnlistedSpecialPage {
 			}
 
 			// Update image
-			if( $request->getVal( 'poll_image_name' ) ) {
+			if ( $request->getVal( 'poll_image_name' ) ) {
 				$dbw = wfGetDB( DB_MASTER );
 
 				$dbw->update(
@@ -84,7 +84,7 @@ class UpdatePoll extends UnlistedSpecialPage {
 
 			$prev_qs = '';
 			$poll_page = Title::newFromID( $request->getInt( 'id' ) );
-			if( $request->getInt( 'prev_poll_id' ) ) {
+			if ( $request->getInt( 'prev_poll_id' ) ) {
 				$prev_qs = 'prev_id=' . $request->getInt( 'prev_poll_id' );
 			}
 
@@ -109,7 +109,7 @@ class UpdatePoll extends UnlistedSpecialPage {
 		$p = new Poll();
 		$poll_info = $p->getPoll( $request->getInt( 'id' ) );
 
-		if(
+		if (
 			!$poll_info['id'] ||
 			!( $user->isAllowed( 'polladmin' ) || $user->getID() == $poll_info['user_id'] )
 		) {
@@ -119,7 +119,7 @@ class UpdatePoll extends UnlistedSpecialPage {
 		}
 
 		$poll_image_tag = '';
-		if( $poll_info['image'] ) {
+		if ( $poll_info['image'] ) {
 			$poll_image_width = 150;
 			$poll_image = wfFindFile( $poll_info['image'] );
 			$poll_image_url = $width = '';
@@ -136,7 +136,7 @@ class UpdatePoll extends UnlistedSpecialPage {
 
 		$poll_page = Title::newFromID( $request->getInt( 'id' ) );
 		$prev_qs = '';
-		if( $request->getInt( 'prev_poll_id' ) ) {
+		if ( $request->getInt( 'prev_poll_id' ) ) {
 			$prev_qs = 'prev_id=' . $request->getInt( 'prev_poll_id' );
 		}
 
@@ -151,7 +151,7 @@ class UpdatePoll extends UnlistedSpecialPage {
 			<h1>' . $this->msg( 'poll-edit-answers' )->text() . '</h1>';
 
 		$x = 1;
-		foreach( $poll_info['choices'] as $choice ) {
+		foreach ( $poll_info['choices'] as $choice ) {
 			$form .= "<div class=\"update-poll-answer\">
 					<span class=\"update-poll-answer-number\">{$x}.</span>
 					<input type=\"text\" tabindex=\"{$x}\" id=\"poll_answer_{$x}\" name=\"poll_answer_{$x}\" value=\"" .

@@ -55,7 +55,7 @@ class PollPage extends Article {
 		$p = new Poll();
 		$poll_info = $p->getPoll( $title->getArticleID() );
 
-		if( !isset( $poll_info['id'] ) ) {
+		if ( !isset( $poll_info['id'] ) ) {
 			return '';
 		}
 
@@ -71,7 +71,7 @@ class PollPage extends Article {
 
 		$output = '<div class="poll-right">';
 		// Show the "create a poll" link to registered users
-		if( $wgUser->isLoggedIn() ) {
+		if ( $wgUser->isLoggedIn() ) {
 			$output .= '<div class="create-link">
 				<a href="' . htmlspecialchars( $createPollObj->getFullURL() ) . '">
 					<img src="' . $imgPath . '/addIcon.gif" alt="" />'
@@ -117,7 +117,7 @@ class PollPage extends Article {
 
 		$output .= '<div class="poll-stats">';
 
-		if( $wgUser->isLoggedIn() ) {
+		if ( $wgUser->isLoggedIn() ) {
 			$output .= wfMessage(
 				'poll-voted-for',
 				'<b>' . $stats_current_user['poll_votes'] . '</b>',
@@ -134,7 +134,7 @@ class PollPage extends Article {
 		$toggle_flag_label = ( ( $poll_info['status'] == 1 ) ? wfMessage( 'poll-flag-poll' )->text() : wfMessage( 'poll-unflag-poll' )->text() );
 		$toggle_flag_status = ( ( $poll_info['status'] == 1 ) ? 2 : 1 );
 
-		if( $poll_info['status'] == 1 ) {
+		if ( $poll_info['status'] == 1 ) {
 			// Creator and admins can change the status of a poll
 			$toggle_label = ( ( $poll_info['status'] == 1 ) ? wfMessage( 'poll-close-poll' )->text() : wfMessage( 'poll-open-poll' )->text() );
 			$toggle_status = ( ( $poll_info['status'] == 1 ) ? 0 : 1 );
@@ -144,16 +144,16 @@ class PollPage extends Article {
 
 		$adminLinks = [];
 		// Poll administrators can access the poll admin panel
-		if( $wgUser->isAllowed( 'polladmin' ) ) {
+		if ( $wgUser->isAllowed( 'polladmin' ) ) {
 			$adminLinks[] = MediaWikiServices::getInstance()->getLinkRenderer()->makeLink(
 				SpecialPage::getTitleFor( 'AdminPoll' ),
 				wfMessage( 'poll-admin-panel' )->text()
 			);
 		}
-		if( $poll_info['status'] == 1 && ( $poll_info['user_id'] == $wgUser->getID() || $wgUser->isAllowed( 'polladmin' ) ) ) {
+		if ( $poll_info['status'] == 1 && ( $poll_info['user_id'] == $wgUser->getID() || $wgUser->isAllowed( 'polladmin' ) ) ) {
 			$adminLinks[] = "<a class=\"poll-status-toggle-link\" href=\"javascript:void(0)\" data-status=\"{$toggle_status}\">{$toggle_label}</a>";
 		}
-		if( $poll_info['status'] == 1 || $wgUser->isAllowed( 'polladmin' ) ) {
+		if ( $poll_info['status'] == 1 || $wgUser->isAllowed( 'polladmin' ) ) {
 			$adminLinks[] = "<a class=\"poll-status-toggle-link\" href=\"javascript:void(0)\" data-status=\"{$toggle_flag_status}\">{$toggle_flag_label}</a>";
 		}
 		if ( !empty( $adminLinks ) ) {
@@ -164,7 +164,7 @@ class PollPage extends Article {
 		$output .= '</div>' . "\n"; // .poll-right
 		$output .= '<div class="poll">' . "\n";
 
-		if( $poll_info['image'] ) {
+		if ( $poll_info['image'] ) {
 			$poll_image_width = 150;
 			$poll_image = wfFindFile( $poll_info['image'] );
 			$poll_image_tag = $poll_image_url = $width = '';
@@ -187,13 +187,12 @@ class PollPage extends Article {
 			$wgUser->isAllowed( 'pollny-vote' ) &&
 			!$p->userVoted( $wgUser->getName(), $poll_info['id'] ) &&
 			$poll_info['status'] == 1
-		)
-		{
+		) {
 			$output .= '<div id="loading-poll">' . wfMessage( 'poll-js-loading' )->text() . '</div>' . "\n";
 			$output .= '<div id="poll-display" style="display:none;">' . "\n";
 			$output .= '<form name="poll"><input type="hidden" id="poll_id" name="poll_id" value="' . $poll_info['id'] . '"/>' . "\n";
 
-			foreach( $poll_info['choices'] as $choice ) {
+			foreach ( $poll_info['choices'] as $choice ) {
 				$output .= '<div class="poll-choice">
 					<input type="radio" name="poll_choice" id="poll_choice" value="' . $choice['id'] . '" />'
 						. $choice['choice'] .
@@ -212,7 +211,7 @@ class PollPage extends Article {
 						wfMessage( 'poll-skip' )->text() . '</a>
 				</div>';
 
-			if( $wgRequest->getInt( 'prev_id' ) ) {
+			if ( $wgRequest->getInt( 'prev_id' ) ) {
 				$p = new Poll();
 				$poll_info_prev = $p->getPoll( $wgRequest->getInt( 'prev_id' ) );
 				$poll_title = Title::makeTitle( NS_POLL, $poll_info_prev['question'] );
@@ -226,8 +225,8 @@ class PollPage extends Article {
 
 				$x = 1;
 
-				foreach( $poll_info_prev['choices'] as $choice ) {
-					if( $poll_info_prev['votes']  > 0 ) {
+				foreach ( $poll_info_prev['choices'] as $choice ) {
+					if ( $poll_info_prev['votes']  > 0 ) {
 						$percent = round( $choice['votes'] / $poll_info_prev['votes'] * 100 );
 						$bar_width = floor( 360 * ( $choice['votes'] / $poll_info_prev['votes'] ) );
 					} else {
@@ -258,25 +257,25 @@ class PollPage extends Article {
 		} else {
 			$show_results = true;
 			// Display message if poll has been closed for voting
-			if( $poll_info['status'] == 0 ) {
+			if ( $poll_info['status'] == 0 ) {
 				$output .= '<div class="poll-closed">' .
 					wfMessage( 'poll-closed' )->text() . '</div>';
 			}
 
 			// Display message if poll has been flagged
-			if( $poll_info['status'] == 2 ) {
+			if ( $poll_info['status'] == 2 ) {
 				$output .= '<div class="poll-closed">' .
 					wfMessage( 'poll-flagged' )->text() . '</div>';
-				if( !$wgUser->isAllowed( 'polladmin' ) ) {
+				if ( !$wgUser->isAllowed( 'polladmin' ) ) {
 					$show_results = false;
 				}
 			}
 
-			if( $show_results ) {
+			if ( $show_results ) {
 				$x = 1;
 
-				foreach( $poll_info['choices'] as $choice ) {
-					if( $poll_info['votes'] > 0 ) {
+				foreach ( $poll_info['choices'] as $choice ) {
+					if ( $poll_info['votes'] > 0 ) {
 						$percent = round( $choice['votes'] / $poll_info['votes'] * 100 );
 						$bar_width = floor( 480 * ( $choice['votes'] / $poll_info['votes'] ) );
 					} else {
@@ -342,7 +341,7 @@ class PollPage extends Article {
 		$wgOut->addHTML( $output );
 
 		global $wgPollDisplay;
-		if( $wgPollDisplay['comments'] ) {
+		if ( $wgPollDisplay['comments'] ) {
 			$wgOut->addWikiText( '<comments/>' );
 		}
 	}

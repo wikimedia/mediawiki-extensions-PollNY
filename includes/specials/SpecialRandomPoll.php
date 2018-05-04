@@ -24,7 +24,7 @@ class RandomPoll extends SpecialPage {
 		$p = new Poll();
 
 		$pollPage = $p->getRandomPollURL( $this->getUser()->getName() );
-		if( $pollPage == 'error' ) {
+		if ( $pollPage == 'error' ) {
 			$out->setPageTitle( $this->msg( 'poll-no-more-title' )->plain() );
 			$out->addWikiMsg( 'poll-no-more-message' );
 		} else {

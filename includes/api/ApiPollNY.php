@@ -36,8 +36,7 @@ class ApiPollNY extends ApiBase {
 		if (
 			in_array( $action, [ 'delete', 'updateStatus', 'vote' ] ) &&
 			( !$pollID || $pollID === null || !is_numeric( $pollID ) )
-		)
-		{
+		) {
 			$this->dieUsageMsg( 'missingparam' );
 		}
 
@@ -148,7 +147,7 @@ class ApiPollNY extends ApiBase {
 
 		$output = '';
 		foreach ( $poll_info['choices'] as $choice ) {
-			//$percent = round( $choice['votes'] / $poll_info['votes'] * 100 );
+			// $percent = round( $choice['votes'] / $poll_info['votes'] * 100 );
 			if ( $poll_info['votes'] > 0 ) {
 				$bar_width = floor( 480 * ( $choice['votes'] / $poll_info['votes'] ) );
 			}
@@ -189,12 +188,11 @@ class ApiPollNY extends ApiBase {
 	}
 
 	function updateStatus( $pollID, $status ) {
-		if(
+		if (
 			$status == 2 ||
 			$this->poll->doesUserOwnPoll( $this->getUser()->getID(), $pollID ) ||
 			$this->getUser()->isAllowed( 'polladmin' )
-		)
-		{
+		) {
 			$this->poll->updatePollStatus( $pollID, $status );
 			return 'Status successfully changed';
 		} else {
@@ -210,8 +208,7 @@ class ApiPollNY extends ApiBase {
 		if (
 			!$this->poll->userVoted( $user->getName(), $pollID ) &&
 			$user->isAllowed( 'pollny-vote' )
-		)
-		{
+		) {
 			$this->poll->addPollVote( $pollID, $choiceID );
 		}
 

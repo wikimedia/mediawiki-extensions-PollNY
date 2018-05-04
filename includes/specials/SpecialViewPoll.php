@@ -30,14 +30,14 @@ class ViewPoll extends SpecialPage {
 
 		// Page either most or newest for everyone
 		$type = $request->getVal( 'type' );
-		if( !$type ) {
+		if ( !$type ) {
 			$type = 'most';
 		}
 		// ORDER BY for SQL query
-		if( $type == 'newest' ) {
+		if ( $type == 'newest' ) {
 			$order = 'poll_id';
 		}
-		if( $type == 'most' ) {
+		if ( $type == 'most' ) {
 			$order = 'poll_vote_count';
 		}
 
@@ -152,7 +152,7 @@ class ViewPoll extends SpecialPage {
 			$row_id = "poll-row-{$x}";
 			$title = Title::makeTitle( NS_POLL, $poll_title );
 
-			if( ( $x < $dbr->numRows( $res ) ) && ( $x % $per_page != 0 ) ) {
+			if ( ( $x < $dbr->numRows( $res ) ) && ( $x % $per_page != 0 ) ) {
 				$url = htmlspecialchars( $title->getFullURL() );
 				$output .= "<div class=\"view-poll-row\" id=\"{$row_id}\" onclick=\"window.location='{$url}'\">";
 			} else {
@@ -189,9 +189,9 @@ class ViewPoll extends SpecialPage {
 
 		$numofpages = $total / $per_page;
 
-		if( $numofpages > 1 ) {
+		if ( $numofpages > 1 ) {
 			$output .= '<div class="view-poll-page-nav">';
-			if( $page > 1 ) {
+			if ( $page > 1 ) {
 				$output .= $linkRenderer->makeLink(
 					$thisTitle,
 					$this->msg( 'poll-prev' )->text(),
@@ -203,18 +203,18 @@ class ViewPoll extends SpecialPage {
 				) . $this->msg( 'word-separator' )->plain();
 			}
 
-			if( ( $total % $per_page ) != 0 ) {
+			if ( ( $total % $per_page ) != 0 ) {
 				$numofpages++;
 			}
-			if( $numofpages >= 9 && $page < $total ) {
+			if ( $numofpages >= 9 && $page < $total ) {
 				$numofpages = 9 + $page;
 			}
-			if( $numofpages >= ( $total / $per_page ) ) {
+			if ( $numofpages >= ( $total / $per_page ) ) {
 				$numofpages = ( $total / $per_page ) + 1;
 			}
 
-			for( $i = 1; $i <= $numofpages; $i++ ) {
-				if( $i == $page ) {
+			for ( $i = 1; $i <= $numofpages; $i++ ) {
+				if ( $i == $page ) {
 					$output .= ( $i . ' ' );
 				} else {
 					$output .= $linkRenderer->makeLink(
@@ -229,7 +229,7 @@ class ViewPoll extends SpecialPage {
 				}
 			}
 
-			if( ( $total - ( $per_page * $page ) ) > 0 ) {
+			if ( ( $total - ( $per_page * $page ) ) > 0 ) {
 				$output .= $this->msg( 'word-separator' )->plain() . $linkRenderer->makeLink(
 					$thisTitle,
 					$i,

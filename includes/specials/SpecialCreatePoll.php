@@ -31,12 +31,12 @@ class CreatePoll extends SpecialPage {
 
 		// https://phabricator.wikimedia.org/T155405
 		// Throws error message when SocialProfile extension is not installed
-		if( !class_exists( 'UserStats' ) ) {
+		if ( !class_exists( 'UserStats' ) ) {
 			throw new ErrorPageError( 'poll-error-socialprofile-title', 'poll-error-socialprofile' );
 		}
 
 		// Blocked users cannot create polls
-		if( $user->isBlocked() ) {
+		if ( $user->isBlocked() ) {
 			throw new UserBlockedError( $user->getBlock() );
 		}
 
@@ -47,7 +47,7 @@ class CreatePoll extends SpecialPage {
 		 * Redirect anonymous users to login page
 		 * It will automatically return them to the CreatePoll page
 		 */
-		if( $user->getID() == 0 ) {
+		if ( $user->getID() == 0 ) {
 			$out->setPageTitle( $this->msg( 'poll-woops' )->plain() );
 			$login = SpecialPage::getTitleFor( 'Userlogin' );
 			$out->redirect( $login->getLocalURL( 'returnto=Special:CreatePoll' ) );
@@ -58,21 +58,21 @@ class CreatePoll extends SpecialPage {
 		 * Create Poll Thresholds based on User Stats
 		 */
 		global $wgCreatePollThresholds;
-		if( is_array( $wgCreatePollThresholds ) && count( $wgCreatePollThresholds ) > 0 ) {
+		if ( is_array( $wgCreatePollThresholds ) && count( $wgCreatePollThresholds ) > 0 ) {
 			$canCreate = true;
 
 			$stats = new UserStats( $user->getID(), $user->getName() );
 			$stats_data = $stats->getUserStats();
 
 			$threshold_reason = '';
-			foreach( $wgCreatePollThresholds as $field => $threshold ) {
+			foreach ( $wgCreatePollThresholds as $field => $threshold ) {
 				if ( $stats_data[$field] < $threshold ) {
 					$canCreate = false;
 					$threshold_reason .= ( ( $threshold_reason ) ? ', ' : '' ) . "$threshold $field";
 				}
 			}
 
-			if( $canCreate == false ) {
+			if ( $canCreate == false ) {
 				$out->setPageTitle( $this->msg( 'poll-create-threshold-title' )->plain() );
 				$out->addWikiMsg( 'poll-create-threshold-reason', $threshold_reason );
 				return '';
@@ -84,12 +84,12 @@ class CreatePoll extends SpecialPage {
 		$out->addModules( 'ext.pollNY' );
 
 		// If the request was POSTed, try creating the poll
-		if( $request->wasPosted() && $_SESSION['alreadysubmitted'] == false ) {
+		if ( $request->wasPosted() && $_SESSION['alreadysubmitted'] == false ) {
 			$_SESSION['alreadysubmitted'] = true;
 
 			// Add poll
 			$poll_title = Title::makeTitleSafe( NS_POLL, $request->getVal( 'poll_question' ) );
-			if( is_null( $poll_title ) && !$poll_title instanceof Title ) {
+			if ( is_null( $poll_title ) && !$poll_title instanceof Title ) {
 				$out->setPageTitle( $this->msg( 'poll-create-threshold-title' )->plain() );
 				$out->addWikiMsg( 'poll-create-threshold-reason', $threshold_reason );
 				return '';
@@ -97,8 +97,8 @@ class CreatePoll extends SpecialPage {
 
 			// Put choices in wikitext (so we can track changes)
 			$choices = '';
-			for( $x = 1; $x <= 10; $x++ ) {
-				if( $request->getVal( "answer_{$x}" ) ) {
+			for ( $x = 1; $x <= 10; $x++ ) {
+				if ( $request->getVal( "answer_{$x}" ) ) {
 					$choices .= $request->getVal( "answer_{$x}" ) . "\n";
 				}
 			}
@@ -130,8 +130,8 @@ class CreatePoll extends SpecialPage {
 			);
 
 			// Add choices
-			for( $x = 1; $x <= 10; $x++ ) {
-				if( $request->getVal( "answer_{$x}" ) ) {
+			for ( $x = 1; $x <= 10; $x++ ) {
+				if ( $request->getVal( "answer_{$x}" ) ) {
 					$p->addPollChoice(
 						$poll_id,
 						$request->getVal( "answer_{$x}" ),

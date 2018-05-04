@@ -21,7 +21,7 @@ class PollNYHooks {
 	 * @return Boolean true
 	 */
 	public static function updatePollQuestion( &$title, &$newTitle, $user, $oldid, $newid ) {
-		if( $title->getNamespace() == NS_POLL ) {
+		if ( $title->getNamespace() == NS_POLL ) {
 			$dbw = wfGetDB( DB_MASTER );
 			$dbw->update(
 				'poll_question',
@@ -43,7 +43,7 @@ class PollNYHooks {
 	 * @return Boolean true
 	 */
 	public static function deletePollQuestion( &$article, &$user, $reason ) {
-		if( $article->getTitle()->getNamespace() == NS_POLL ) {
+		if ( $article->getTitle()->getNamespace() == NS_POLL ) {
 			$dbw = wfGetDB( DB_MASTER );
 
 			$s = $dbw->selectRow(
@@ -111,8 +111,8 @@ class PollNYHooks {
 			$wgHooks['ParserLimitReportPrepare'][] = 'PollNYHooks::onParserLimitReportPrepare';
 
 			// Prevents editing of polls
-			if( $wgRequest->getVal( 'action' ) == 'edit' ) {
-				if( $title->getArticleID() == 0 ) {
+			if ( $wgRequest->getVal( 'action' ) == 'edit' ) {
+				if ( $title->getArticleID() == 0 ) {
 					$create = SpecialPage::getTitleFor( 'CreatePoll' );
 					$wgOut->redirect(
 						$create->getFullURL( 'wpDestName=' . $title->getText() )
@@ -161,7 +161,7 @@ class PollNYHooks {
 	public static function followPollID( $pollTitle ) {
 		$pollPage = new WikiPage( $pollTitle );
 
-		if( $pollPage->isRedirect() ) {
+		if ( $pollPage->isRedirect() ) {
 			$pollTitle = $pollPage->followRedirect();
 			return PollNYHooks::followPollID( $pollTitle );
 		} else {
@@ -179,7 +179,7 @@ class PollNYHooks {
 	 */
 	public static function renderEmbedPoll( $input, $args, $parser ) {
 		$poll_name = $args['title'];
-		if( $poll_name ) {
+		if ( $poll_name ) {
 			global $wgOut, $wgUser, $wgExtensionAssetsPath, $wgPollDisplay;
 
 			// Load CSS
@@ -194,14 +194,14 @@ class PollNYHooks {
 			$poll_title = PollNYHooks::followPollID( $poll_title );
 			$poll_page_id = $poll_title->getArticleID();
 
-			if( $poll_page_id > 0 ) {
+			if ( $poll_page_id > 0 ) {
 				$p = new Poll();
 				$poll_info = $p->getPoll( $poll_page_id );
 
 				$output = "\t\t" . '<div class="poll-embed-title">' .
 					$poll_info['question'] .
 				'</div>' . "\n";
-				if( $poll_info['image'] ) {
+				if ( $poll_info['image'] ) {
 					$poll_image_width = 100;
 					$poll_image = wfFindFile( $poll_info['image'] );
 					$width = $poll_image_url = '';
@@ -224,14 +224,13 @@ class PollNYHooks {
 					$wgUser->isAllowed( 'pollny-vote' ) &&
 					!$p->userVoted( $wgUser->getName(), $poll_info['id'] ) &&
 					$poll_info['status'] == 1
-				)
-				{
+				) {
 					$wgOut->addModules( 'ext.pollNY' );
 					$output .= "<div id=\"loading-poll_{$poll_info['id']}\" class=\"poll-loading-msg\">" . wfMessage( 'poll-js-loading' )->text() . '</div>';
 					$output .= "<div id=\"poll-display_{$poll_info['id']}\" style=\"display:none;\">";
 					$output .= "<form name=\"poll_{$poll_info['id']}\"><input type=\"hidden\" id=\"poll_id_{$poll_info['id']}\" name=\"poll_id_{$poll_info['id']}\" value=\"{$poll_info['id']}\"/>";
 
-					foreach( $poll_info['choices'] as $choice ) {
+					foreach ( $poll_info['choices'] as $choice ) {
 						$output .= "<div class=\"poll-choice\">
 						<input type=\"radio\" name=\"poll_choice\" data-poll-id=\"{$poll_info['id']}\" data-poll-page-id=\"{$poll_page_id}\" id=\"poll_choice\" value=\"{$choice['id']}\">{$choice['choice']}
 						</div>";
@@ -241,16 +240,16 @@ class PollNYHooks {
 						</div>';
 				} else {
 					// Display message if poll has been closed for voting
-					if( $poll_info['status'] == 0 ) {
+					if ( $poll_info['status'] == 0 ) {
 						$output .= '<div class="poll-closed">' .
 							wfMessage( 'poll-closed' )->text() . '</div>';
 					}
 
 					$x = 1;
 
-					foreach( $poll_info['choices'] as $choice ) {
-						//$percent = round( $choice['votes'] / $poll_info['votes'] * 100 );
-						if( $poll_info['votes'] > 0 ) {
+					foreach ( $poll_info['choices'] as $choice ) {
+						// $percent = round( $choice['votes'] / $poll_info['votes'] * 100 );
+						if ( $poll_info['votes'] > 0 ) {
 							$bar_width = floor( 480 * ( $choice['votes'] / $poll_info['votes'] ) );
 						}
 						$bar_img = "<img src=\"{$wgExtensionAssetsPath}/SocialProfile/images/vote-bar-{$x}.gif\" border=\"0\" class=\"image-choice-{$x}\" style=\"width:{$choice['percent']}%;height:12px;\" alt=\"\" />";

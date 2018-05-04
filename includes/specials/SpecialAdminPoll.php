@@ -32,12 +32,12 @@ class AdminPoll extends SpecialPage {
 
 		// https://phabricator.wikimedia.org/T155405
 		// Throws error message when SocialProfile extension is not installed
-		if( !class_exists( 'UserStats' ) ) {
+		if ( !class_exists( 'UserStats' ) ) {
 			throw new ErrorPageError( 'poll-error-socialprofile-title', 'poll-error-socialprofile' );
 		}
 
 		// If the user doesn't have the required permission, display an error
-		if( !$user->isAllowed( 'polladmin' ) ) {
+		if ( !$user->isAllowed( 'polladmin' ) ) {
 			throw new PermissionsError( 'polladmin' );
 		}
 
@@ -58,7 +58,7 @@ class AdminPoll extends SpecialPage {
 		$page = $request->getInt( 'page', 1 );
 
 		$current_status = $request->getVal( 'status' );
-		if( !$current_status ) {
+		if ( !$current_status ) {
 			$current_status = 'all';
 		}
 
@@ -78,9 +78,9 @@ class AdminPoll extends SpecialPage {
 		<div class="view-poll-navigation">
 			<h2>' . $this->msg( 'poll-admin-status-nav' )->text() . '</h2>';
 
-		foreach( $nav as $status => $title ) {
+		foreach ( $nav as $status => $title ) {
 			$output .= '<p>';
-			if( $current_status != $status ) {
+			if ( $current_status != $status ) {
 				$output .= '<a href="' . htmlspecialchars( $this->getPageTitle()->getFullURL( "status={$status}" ) ) . "\">{$title}</a>";
 			} else {
 				$output .= "<b>{$title}</b>";
@@ -96,15 +96,15 @@ class AdminPoll extends SpecialPage {
 		$out->setPageTitle( $this->msg( 'poll-admin-title-' . $current_status )->text() );
 
 		$params['ORDER BY'] = 'poll_date DESC';
-		if( $limit > 0 ) {
+		if ( $limit > 0 ) {
 			$params['LIMIT'] = $limit;
 		}
-		if( $page ) {
+		if ( $page ) {
 			$params['OFFSET'] = $page * $limit - ( $limit );
 		}
 
 		$status_int = -1;
-		switch( $current_status ) {
+		switch ( $current_status ) {
 			case 'open':
 				$status_int = 1;
 				break;
@@ -116,7 +116,7 @@ class AdminPoll extends SpecialPage {
 				break;
 		}
 		$where = [];
-		if( $status_int > -1 ) {
+		if ( $status_int > -1 ) {
 			$where['poll_status'] = $status_int;
 		}
 
@@ -134,7 +134,7 @@ class AdminPoll extends SpecialPage {
 			[ 'page' => [ 'INNER JOIN', 'poll_page_id = page_id' ] ]
 		);
 
-		if( $status_int > -1 ) {
+		if ( $status_int > -1 ) {
 			$where['poll_status'] = $status;
 		}
 
@@ -174,7 +174,7 @@ class AdminPoll extends SpecialPage {
 			$p = new Poll();
 			$poll_choices = $p->getPollChoices( $row->poll_id );
 
-			if( ( $x < $dbr->numRows( $res ) ) && ( $x % $per_page != 0 ) ) {
+			if ( ( $x < $dbr->numRows( $res ) ) && ( $x % $per_page != 0 ) ) {
 				$output .= "<div class=\"view-poll-row\" id=\"{$rowId}\">";
 			} else {
 				$output .= "<div class=\"view-poll-row-bottom\" id=\"{$rowId}\">";
@@ -187,7 +187,7 @@ class AdminPoll extends SpecialPage {
 					<div class=\"view-poll-text\">
 					<p><b><a href=\"{$poll_url}\">{$poll_title}</a></b></p>
 					<p>";
-			foreach( $poll_choices as $choice ) {
+			foreach ( $poll_choices as $choice ) {
 				$output .= "{$choice['choice']}<br />";
 			}
 			$output .= '</p>
@@ -202,15 +202,15 @@ class AdminPoll extends SpecialPage {
 								Poll::getTimeAgo( $poll_date )
 							)->parse() . ")</p>
 						<div id=\"poll-{$row->poll_id}-controls\">";
-			if( $row->poll_status == 2 ) {
+			if ( $row->poll_status == 2 ) {
 				$output .= "<a class=\"poll-unflag-link\" href=\"javascript:void(0)\" data-poll-id=\"{$row->poll_id}\">" .
 					$this->msg( 'poll-unflag-poll' )->text() . '</a>';
 			}
-			if( $row->poll_status == 0 ) {
+			if ( $row->poll_status == 0 ) {
 				$output .= " <a class=\"poll-open-link\" href=\"javascript:void(0)\" data-poll-id=\"{$row->poll_id}\">" .
 					$this->msg( 'poll-open-poll' )->text() . '</a>';
 			}
-			if( $row->poll_status == 1 ) {
+			if ( $row->poll_status == 1 ) {
 				$output .= " <a class=\"poll-close-link\" href=\"javascript:void(0)\" data-poll-id=\"{$row->poll_id}\">" .
 					$this->msg( 'poll-close-poll' )->text() . '</a>';
 			}
@@ -247,10 +247,10 @@ class AdminPoll extends SpecialPage {
 		$viewPoll = SpecialPage::getTitleFor( 'ViewPoll' );
 		$linkRenderer = $this->getLinkRenderer();
 
-		if( $numofpages > 1 ) {
+		if ( $numofpages > 1 ) {
 			$output .= '<div class="view-poll-page-nav">';
 
-			if( $page > 1 ) {
+			if ( $page > 1 ) {
 				$output .= $linkRenderer->makeLink(
 					$viewPoll,
 					$this->msg( 'poll-prev' )->text(),
@@ -262,18 +262,18 @@ class AdminPoll extends SpecialPage {
 				) . $this->msg( 'word-separator' )->plain();
 			}
 
-			if( ( $total % $per_page ) != 0 ) {
+			if ( ( $total % $per_page ) != 0 ) {
 				$numofpages++;
 			}
-			if( $numofpages >= 9 && $page < $total ) {
+			if ( $numofpages >= 9 && $page < $total ) {
 				$numofpages = 9 + $page;
 			}
-			if( $numofpages >= ( $total / $per_page ) ) {
+			if ( $numofpages >= ( $total / $per_page ) ) {
 				$numofpages = ( $total / $per_page ) + 1;
 			}
 
-			for( $i = 1; $i <= $numofpages; $i++ ) {
-				if( $i == $page ) {
+			for ( $i = 1; $i <= $numofpages; $i++ ) {
+				if ( $i == $page ) {
 					$output .= ( $i . ' ' );
 				} else {
 					$output .= $linkRenderer->makeLink(
@@ -288,7 +288,7 @@ class AdminPoll extends SpecialPage {
 				}
 			}
 
-			if( ( $total - ( $per_page * $page ) ) > 0 ) {
+			if ( ( $total - ( $per_page * $page ) ) > 0 ) {
 				$output .= $this->msg( 'word-separator' )->plain() .
 					$linkRenderer->makeLink(
 						$viewPoll,
