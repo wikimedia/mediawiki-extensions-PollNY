@@ -163,7 +163,7 @@ class PollNYHooks {
 
 		if ( $pollPage->isRedirect() ) {
 			$pollTitle = $pollPage->followRedirect();
-			return PollNYHooks::followPollID( $pollTitle );
+			return self::followPollID( $pollTitle );
 		} else {
 			return $pollTitle;
 		}
@@ -191,7 +191,7 @@ class PollNYHooks {
 			$parser->getOutput()->updateCacheExpiry( 0 );
 
 			$poll_title = Title::newFromText( $poll_name, NS_POLL );
-			$poll_title = PollNYHooks::followPollID( $poll_title );
+			$poll_title = self::followPollID( $poll_title );
 			$poll_page_id = $poll_title->getArticleID();
 
 			if ( $poll_page_id > 0 ) {
