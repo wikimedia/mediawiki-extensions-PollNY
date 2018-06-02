@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Adam-Yourist"
+		]
+	},
+	"poll-time-days": "{{PLURAL:$1|ди}}"
+}
