@@ -67,7 +67,7 @@ class PollPage extends Article {
 		$avatarID = $avatar->getAvatarImage();
 		$stats = new UserStats( $poll_info['user_id'], $poll_info['user_name'] );
 		$stats_data = $stats->getUserStats();
-		$user_name_short = $lang->truncate( $poll_info['user_name'], 27 );
+		$user_name_short = $lang->truncateForVisual( $poll_info['user_name'], 27 );
 
 		$output = '<div class="poll-right">';
 		// Show the "create a poll" link to registered users
