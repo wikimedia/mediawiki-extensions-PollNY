@@ -7,131 +7,131 @@
  */
 // @codingStandardsIgnoreFile
 
-$specialPageAliases = array();
+$specialPageAliases = [];
 
-/** English (English) */
-$specialPageAliases['en'] = array(
-	'AdminPoll' => array( 'AdminPoll' ),
-	'CreatePoll' => array( 'CreatePoll' ),
-	'PollAjaxUpload' => array( 'PollAjaxUpload' ),
-	'RandomPoll' => array( 'RandomPoll' ),
-	'UpdatePoll' => array( 'UpdatePoll' ),
-	'ViewPoll' => array( 'ViewPoll' ),
-);
+/** English */
+$specialPageAliases['en'] = [
+	'AdminPoll' => [ 'AdminPoll' ],
+	'CreatePoll' => [ 'CreatePoll' ],
+	'PollAjaxUpload' => [ 'PollAjaxUpload' ],
+	'RandomPoll' => [ 'RandomPoll' ],
+	'UpdatePoll' => [ 'UpdatePoll' ],
+	'ViewPoll' => [ 'ViewPoll' ],
+];
 
 /** Arabic (العربية) */
-$specialPageAliases['ar'] = array(
-	'AdminPoll' => array( 'استطلاع_إداري' ),
-	'CreatePoll' => array( 'إنشاء_استطلاع' ),
-	'PollAjaxUpload' => array( 'رفع_أجاكس_لاستطلاع' ),
-	'RandomPoll' => array( 'استطلاع_عشوائي' ),
-	'UpdatePoll' => array( 'تحديث_الاستطلاع' ),
-	'ViewPoll' => array( 'عرض_الاستطلاع' ),
-);
+$specialPageAliases['ar'] = [
+	'AdminPoll' => [ 'استطلاع_إداري' ],
+	'CreatePoll' => [ 'إنشاء_استطلاع' ],
+	'PollAjaxUpload' => [ 'رفع_أجاكس_لاستطلاع' ],
+	'RandomPoll' => [ 'استطلاع_عشوائي' ],
+	'UpdatePoll' => [ 'تحديث_الاستطلاع' ],
+	'ViewPoll' => [ 'عرض_الاستطلاع' ],
+];
 
 /** Egyptian Arabic (مصرى) */
-$specialPageAliases['arz'] = array(
-	'AdminPoll' => array( 'استطلاع_سيسوب' ),
-	'CreatePoll' => array( 'عمل_استطلاع' ),
-	'PollAjaxUpload' => array( 'رفع_اجاكس_لاستطلاع' ),
-	'RandomPoll' => array( 'استطلاع_عشوائى' ),
-	'UpdatePoll' => array( 'تحديث_الاستطلاع' ),
-	'ViewPoll' => array( 'عرض_الاستطلاع' ),
-);
+$specialPageAliases['arz'] = [
+	'AdminPoll' => [ 'استطلاع_سيسوب' ],
+	'CreatePoll' => [ 'عمل_استطلاع' ],
+	'PollAjaxUpload' => [ 'رفع_اجاكس_لاستطلاع' ],
+	'RandomPoll' => [ 'استطلاع_عشوائى' ],
+	'UpdatePoll' => [ 'تحديث_الاستطلاع' ],
+	'ViewPoll' => [ 'عرض_الاستطلاع' ],
+];
 
 /** German (Deutsch) */
-$specialPageAliases['de'] = array(
-	'AdminPoll' => array( 'Abstimmung_verwalten' ),
-	'CreatePoll' => array( 'Abstimmung_erstellen' ),
-	'PollAjaxUpload' => array( 'Abstimmung_hochladen' ),
-	'RandomPoll' => array( 'Zufällige_Abstimmung' ),
-	'UpdatePoll' => array( 'Abstimmung_aktualisieren' ),
-	'ViewPoll' => array( 'Abstimmung_ansehen' ),
-);
+$specialPageAliases['de'] = [
+	'AdminPoll' => [ 'Abstimmung_verwalten' ],
+	'CreatePoll' => [ 'Abstimmung_erstellen' ],
+	'PollAjaxUpload' => [ 'Abstimmung_hochladen' ],
+	'RandomPoll' => [ 'Zufällige_Abstimmung' ],
+	'UpdatePoll' => [ 'Abstimmung_aktualisieren' ],
+	'ViewPoll' => [ 'Abstimmung_ansehen' ],
+];
 
 /** Zazaki (Zazaki) */
-$specialPageAliases['diq'] = array(
-	'AdminPoll' => array( 'AnketAdmin' ),
-	'CreatePoll' => array( 'AnketVıraz' ),
-	'RandomPoll' => array( 'AnketakRaştamé' ),
-	'UpdatePoll' => array( 'AnketerNewek' ),
-	'ViewPoll' => array( 'AketerBıvin' ),
-);
+$specialPageAliases['diq'] = [
+	'AdminPoll' => [ 'AnketAdmin' ],
+	'CreatePoll' => [ 'AnketVıraz' ],
+	'RandomPoll' => [ 'AnketakRaştamé' ],
+	'UpdatePoll' => [ 'AnketerNewek' ],
+	'ViewPoll' => [ 'AketerBıvin' ],
+];
 
 /** Finnish (suomi) */
-$specialPageAliases['fi'] = array(
-	'AdminPoll' => array( 'Hallitse_äänestyksiä' ),
-	'CreatePoll' => array( 'Luo_äänestys' ),
-	'RandomPoll' => array( 'Satunnainen_äänestys' ),
-	'UpdatePoll' => array( 'Päivitä_äänestys' ),
-	'ViewPoll' => array( 'Katso_äänestys' ),
-);
+$specialPageAliases['fi'] = [
+	'AdminPoll' => [ 'Hallitse_äänestyksiä' ],
+	'CreatePoll' => [ 'Luo_äänestys' ],
+	'RandomPoll' => [ 'Satunnainen_äänestys' ],
+	'UpdatePoll' => [ 'Päivitä_äänestys' ],
+	'ViewPoll' => [ 'Katso_äänestys' ],
+];
 
 /** Japanese (日本語) */
-$specialPageAliases['ja'] = array(
-	'AdminPoll' => array( '投票所管理' ),
-	'CreatePoll' => array( '投票所作成' ),
-	'PollAjaxUpload' => array( '投票所Ajaxアップロード', '投票所Ａｊａｘアップロード' ),
-	'RandomPoll' => array( 'おまかせ投票所' ),
-	'UpdatePoll' => array( '投票所更新' ),
-	'ViewPoll' => array( '投票所閲覧' ),
-);
+$specialPageAliases['ja'] = [
+	'AdminPoll' => [ '投票所管理' ],
+	'CreatePoll' => [ '投票所作成' ],
+	'PollAjaxUpload' => [ '投票所Ajaxアップロード', '投票所Ａｊａｘアップロード' ],
+	'RandomPoll' => [ 'おまかせ投票所' ],
+	'UpdatePoll' => [ '投票所更新' ],
+	'ViewPoll' => [ '投票所閲覧' ],
+];
 
 /** Korean (한국어) */
-$specialPageAliases['ko'] = array(
-	'AdminPoll' => array( '설문조사관리' ),
-	'CreatePoll' => array( '설문조사만들기' ),
-	'PollAjaxUpload' => array( '설문조사Ajax올리기' ),
-	'RandomPoll' => array( '임의설문조사' ),
-	'UpdatePoll' => array( '설문조사업데이트' ),
-	'ViewPoll' => array( '설문조사보기' ),
-);
+$specialPageAliases['ko'] = [
+	'AdminPoll' => [ '설문조사관리' ],
+	'CreatePoll' => [ '설문조사만들기' ],
+	'PollAjaxUpload' => [ '설문조사Ajax올리기' ],
+	'RandomPoll' => [ '임의설문조사' ],
+	'UpdatePoll' => [ '설문조사업데이트' ],
+	'ViewPoll' => [ '설문조사보기' ],
+];
 
 /** Luxembourgish (Lëtzebuergesch) */
-$specialPageAliases['lb'] = array(
-	'AdminPoll' => array( 'Ëmfro_geréieren' ),
-	'CreatePoll' => array( 'Ëmfro_uleeën' ),
-	'PollAjaxUpload' => array( 'Ëmfro_eroplueden' ),
-	'RandomPoll' => array( 'Zoufälleg_Ëmfro' ),
-	'UpdatePoll' => array( 'Ëmfro_aktualiséieren' ),
-	'ViewPoll' => array( 'Ëmfro_weisen' ),
-);
+$specialPageAliases['lb'] = [
+	'AdminPoll' => [ 'Ëmfro_geréieren' ],
+	'CreatePoll' => [ 'Ëmfro_uleeën' ],
+	'PollAjaxUpload' => [ 'Ëmfro_eroplueden' ],
+	'RandomPoll' => [ 'Zoufälleg_Ëmfro' ],
+	'UpdatePoll' => [ 'Ëmfro_aktualiséieren' ],
+	'ViewPoll' => [ 'Ëmfro_weisen' ],
+];
 
 /** Macedonian (македонски) */
-$specialPageAliases['mk'] = array(
-	'AdminPoll' => array( 'РаководиАнкета' ),
-	'CreatePoll' => array( 'НаправиАнкета' ),
-	'PollAjaxUpload' => array( 'АнкетаПодигањеAjax' ),
-	'RandomPoll' => array( 'СлучајнаАнкета' ),
-	'UpdatePoll' => array( 'ИзмениАнкета' ),
-	'ViewPoll' => array( 'ПрегледАнкета' ),
-);
+$specialPageAliases['mk'] = [
+	'AdminPoll' => [ 'РаководиАнкета' ],
+	'CreatePoll' => [ 'НаправиАнкета' ],
+	'PollAjaxUpload' => [ 'АнкетаПодигањеAjax' ],
+	'RandomPoll' => [ 'СлучајнаАнкета' ],
+	'UpdatePoll' => [ 'ИзмениАнкета' ],
+	'ViewPoll' => [ 'ПрегледАнкета' ],
+];
 
 /** Dutch (Nederlands) */
-$specialPageAliases['nl'] = array(
-	'AdminPoll' => array( 'PeilingBeheren' ),
-	'CreatePoll' => array( 'PeilingMaken' ),
-	'RandomPoll' => array( 'WillekeurigePeiling' ),
-	'UpdatePoll' => array( 'PeilingBijwerken' ),
-	'ViewPoll' => array( 'PeilingWeergeven' ),
-);
+$specialPageAliases['nl'] = [
+	'AdminPoll' => [ 'PeilingBeheren' ],
+	'CreatePoll' => [ 'PeilingMaken' ],
+	'RandomPoll' => [ 'WillekeurigePeiling' ],
+	'UpdatePoll' => [ 'PeilingBijwerken' ],
+	'ViewPoll' => [ 'PeilingWeergeven' ],
+];
 
 /** Simplified Chinese (中文（简体）‎) */
-$specialPageAliases['zh-hans'] = array(
-	'AdminPoll' => array( '管理员投票' ),
-	'CreatePoll' => array( '创建投票' ),
-	'PollAjaxUpload' => array( '投票Ajax上传' ),
-	'RandomPoll' => array( '随机投票' ),
-	'UpdatePoll' => array( '更新投票' ),
-	'ViewPoll' => array( '查看投票' ),
-);
+$specialPageAliases['zh-hans'] = [
+	'AdminPoll' => [ '管理员投票' ],
+	'CreatePoll' => [ '创建投票' ],
+	'PollAjaxUpload' => [ '投票Ajax上传' ],
+	'RandomPoll' => [ '随机投票' ],
+	'UpdatePoll' => [ '更新投票' ],
+	'ViewPoll' => [ '查看投票' ],
+];
 
 /** Traditional Chinese (中文（繁體）‎) */
-$specialPageAliases['zh-hant'] = array(
-	'AdminPoll' => array( '管理員投票' ),
-	'CreatePoll' => array( '建立投票' ),
-	'PollAjaxUpload' => array( '投票_Ajax_上傳' ),
-	'RandomPoll' => array( '隨機投票' ),
-	'UpdatePoll' => array( '覆寫投票' ),
-	'ViewPoll' => array( '檢視投票' ),
-);
+$specialPageAliases['zh-hant'] = [
+	'AdminPoll' => [ '管理員投票' ],
+	'CreatePoll' => [ '建立投票' ],
+	'PollAjaxUpload' => [ '投票_Ajax_上傳' ],
+	'RandomPoll' => [ '隨機投票' ],
+	'UpdatePoll' => [ '覆寫投票' ],
+	'ViewPoll' => [ '檢視投票' ],
+];
