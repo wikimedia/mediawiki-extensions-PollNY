@@ -33,6 +33,8 @@ class UpdatePoll extends UnlistedSpecialPage {
 			throw new UserBlockedError( $user->getBlock() );
 		}
 
+		$this->setHeaders();
+
 		/**
 		 * Redirect Non-logged in users to Login Page
 		 * It will automatically return them to the UpdatePoll page

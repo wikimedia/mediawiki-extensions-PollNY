@@ -21,6 +21,8 @@ class RandomPoll extends SpecialPage {
 	public function execute( $par ) {
 		$out = $this->getOutput();
 
+		$this->setHeaders();
+
 		$p = new Poll();
 
 		$pollPage = $p->getRandomPollURL( $this->getUser()->getName() );

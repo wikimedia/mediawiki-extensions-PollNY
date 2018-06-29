@@ -49,6 +49,8 @@ class AdminPoll extends SpecialPage {
 			throw new UserBlockedError( $user->getBlock() );
 		}
 
+		$this->setHeaders();
+
 		// Add CSS & JS
 		$out->addModuleStyles( 'ext.pollNY.css' );
 		$out->addModules( 'ext.pollNY' );

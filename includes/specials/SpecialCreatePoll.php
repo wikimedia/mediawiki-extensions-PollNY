@@ -43,6 +43,8 @@ class CreatePoll extends SpecialPage {
 		// Check that the DB isn't locked
 		$this->checkReadOnly();
 
+		$this->setHeaders();
+
 		/**
 		 * Redirect anonymous users to login page
 		 * It will automatically return them to the CreatePoll page
