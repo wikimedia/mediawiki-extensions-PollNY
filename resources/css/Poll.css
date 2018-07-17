@@ -192,8 +192,14 @@
 	width: 60px;
 }
 
-.submitted-by-image img {
-	border: 1px solid #DCDCDC;
+/* Need to specify div to make this more specific than a .poll-right img selector
+ * which sets border: 0; or else that rule will override our border here and we
+ * really _do_ want that border here!
+ */
+div.submitted-by-image img {
+	border: 1px solid #d7dee8;
+	height: 50px;
+	width: 50px;
 }
 
 .submitted-by-user {

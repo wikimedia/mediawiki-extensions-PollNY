@@ -17,7 +17,7 @@ class PollPage extends Article {
 	 * Called on every poll page view.
 	 */
 	public function view() {
-		global $wgUser, $wgOut, $wgRequest, $wgExtensionAssetsPath, $wgUploadPath;
+		global $wgUser, $wgOut, $wgRequest, $wgExtensionAssetsPath;
 
 		// Perform no custom handling if the poll in question has been deleted
 		if ( !$this->getID() ) {
@@ -64,7 +64,6 @@ class PollPage extends Article {
 		// Set up submitter data
 		$user_title = Title::makeTitle( NS_USER, $poll_info['user_name'] );
 		$avatar = new wAvatar( $poll_info['user_id'], 'l' );
-		$avatarID = $avatar->getAvatarImage();
 		$stats = new UserStats( $poll_info['user_id'], $poll_info['user_name'] );
 		$stats_data = $stats->getUserStats();
 		$user_name_short = $lang->truncateForVisual( $poll_info['user_name'], 27 );
@@ -83,12 +82,13 @@ class PollPage extends Article {
 		$formattedVoteCount = $lang->formatNum( $stats_data['votes'] );
 		$formattedEditCount = $lang->formatNum( $stats_data['edits'] );
 		$formattedCommentCount = $lang->formatNum( $stats_data['comments'] );
+		$avatarImage = $avatar->getAvatarURL();
 
 		$output .= '<div class="credit-box">
 					<h1>' . wfMessage( 'poll-submitted-by' )->text() . "</h1>
 					<div class=\"submitted-by-image\">
 						<a href=\"{$user_title->getFullURL()}\">
-							<img src=\"{$wgUploadPath}/avatars/{$avatarID}\" style=\"border:1px solid #d7dee8; width:50px; height:50px;\"/>
+							{$avatarImage}
 						</a>
 					</div>
 					<div class=\"submitted-by-user\">
