@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Cainamarques",
-			"Fúlvio"
+			"Fúlvio",
+			"Eduardo Addad de Oliveira"
 		]
 	},
 	"adminpoll": "Administrar enquetes",
@@ -14,6 +15,8 @@
 	"poll-admin-closed": "Fechados",
 	"poll-admin-flagged": "Marcados",
 	"poll-admin-open": "Abertas",
+	"poll-error-socialprofile": "A [https://www.mediawiki.org/wiki/Extension:SocialProfile extensão SocialProfile] não está instalada. Instale-a e tente novamente, por favor.",
+	"poll-error-socialprofile-title": "A extensão SocialProfile não está instalada.",
 	"poll-admin-panel": "Administrador",
 	"poll-admin-status-nav": "Filtrar por status",
 	"poll-admin-title-all": "Administração da enquete - Ver todas as enquetes",
@@ -91,5 +94,22 @@
 	"poll-time-minutes": "{{PLURAL:$1|um minuto|$1 minutos}}",
 	"poll-time-seconds": "{{PLURAL:$1|um segundo|$1 segundos}}",
 	"specialpages-group-poll": "Enquetes",
-	"right-polladmin": "Administrar enquetes"
+	"action-pollny-vote": "votar em pesquisas",
+	"right-pollny-vote": "Votar em pesquisas",
+	"action-polladmin": "administrar pesquisas",
+	"right-polladmin": "Administrar enquetes",
+	"apihelp-pollny-description": "API PollNY - inclui funções de usuário e de administrador.",
+	"apihelp-pollny-summary": "API PollNY - inclui funções de usuário e de administrador.",
+	"apihelp-pollny-param-what": "O que fazer?",
+	"apihelp-pollny-param-choiceID": "O mesmo que clicar a escolha nº <choiceID> através do GUI; só usado quando what=vote.",
+	"apihelp-pollny-param-pageName": "Título a ser verificado (só usado quando what=titleExists); deve estar codificado para uso nos URL.",
+	"apihelp-pollny-param-pollID": "Identificador da pesquisas que está a ser eliminada, atualizada ou preenchida.",
+	"apihelp-pollny-param-pageID": "Identificador da página (só usado quando what=getPollResults).",
+	"apihelp-pollny-param-status": "Novo estado da sondagem (quando what=updateStatus); os valores possíveis são 0 (fechada), 1 e 2 (marcada).",
+	"apihelp-pollny-example-1": "Elimina a pesquisas nº 66",
+	"apihelp-pollny-example-2": "Obtém os resultados da pesquisas nº 666",
+	"apihelp-pollny-example-3": "Obtém uma pesquisas aleatória à qual o usuário atual ainda não tenha respondido",
+	"apihelp-pollny-example-4": "Verifica se já existe uma pesquisas com o título \"A PollNY é genial?\".",
+	"apihelp-pollny-example-5": "Define o estado da pesquisas nº 47 como 1 (aberta); os valores possíveis de status são 0 (fechada), 1 e 2 (marcada).",
+	"apihelp-pollny-example-6": "Vota (responde) à pesquisas nº 33 escolhendo a 4ª opção"
 }
