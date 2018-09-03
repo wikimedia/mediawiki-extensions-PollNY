@@ -243,7 +243,7 @@ class Poll {
 		if ( $pollID ) {
 			$pollPage = Title::newFromID( $pollID );
 			global $wgContLang;
-			return $wgContLang->getNsText( NS_POLL ) . ':'. $pollPage->getDBkey();
+			return $wgContLang->getNsText( NS_POLL ) . ':' . $pollPage->getDBkey();
 		} else {
 			return 'error';
 		}
