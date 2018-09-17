@@ -5,6 +5,16 @@
 		]
 	},
 	"poll-admin-panel": "အက်ဒမင်",
+	"poll-ago": "$1 အကြာက",
 	"poll-cancel-button": "မလုပ်တော့ပါ",
-	"poll-submitted-by": "ထည့်သွင်းသူ"
+	"poll-js-loading": "ဝန်ဆွဲတင်နေသည်...",
+	"poll-skip": "ကျော်ရန်",
+	"poll-submitted-by": "ထည့်သွင်းသူ",
+	"poll-view-newest": "အသစ်ဆုံး",
+	"poll-view-popular": "လူကြိုက်များ",
+	"poll-time-ago": "$1 အကြာက",
+	"poll-time-days": "{{PLURAL:$1|၁ ရက်|$1 ရက်}}",
+	"poll-time-hours": "{{PLURAL:$1|တစ်နာရီ|$1 နာရီ}}",
+	"poll-time-minutes": "{{PLURAL:$1|တစ်မိနစ်|$1 မိနစ်}}",
+	"poll-time-seconds": "{{PLURAL:$1|တစ်စက္ကန့်|$1 စက္ကန့်}}"
 }
