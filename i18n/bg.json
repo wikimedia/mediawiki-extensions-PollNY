@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"DCLXVI"
+			"DCLXVI",
+			"StanProg"
 		]
 	},
+	"poll-cancel-button": "Отказ",
 	"poll-woops": "Опа!"
 }
