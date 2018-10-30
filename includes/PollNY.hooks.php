@@ -305,12 +305,11 @@ class PollNYHooks {
 	 * @return Boolean true
 	 */
 	public static function addTables( $updater ) {
-		$dir = __DIR__;
-		$file = "$dir/../sql/poll.sql";
+		$sqlDirectory = __DIR__ . '/../sql/';
 
-		$updater->addExtensionTable( 'poll_choice', $file );
-		$updater->addExtensionTable( 'poll_question', $file );
-		$updater->addExtensionTable( 'poll_user_vote', $file );
+		$updater->addExtensionTable( 'poll_choice', $sqlDirectory . 'poll_choice.sql' );
+		$updater->addExtensionTable( 'poll_question', $sqlDirectory . 'poll_question.sql' );
+		$updater->addExtensionTable( 'poll_user_vote', $sqlDirectory . 'poll_user_vote.sql' );
 
 		return true;
 	}
