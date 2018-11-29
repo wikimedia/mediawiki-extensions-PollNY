@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Jack Phoenix"
+			"Jack Phoenix",
+			"Valtlait"
 		]
 	},
 	"adminpoll": "Hallinnoi äänestyksiä",
@@ -52,7 +53,7 @@
 	"poll-flag-poll": "Merkitse äänestys",
 	"poll-hash": "# on merkki, joka ei kelpaa äänestyksen kysymykseen.",
 	"poll-image-label": "Lisää kuva",
-	"poll-instructions": "Kysy kysymys, kirjoita joitakin vastausvaihtoehtoja ja paina \"{{int:poll-create-button}}\" -painiketta. Se on niin helppoa!",
+	"poll-instructions": "Kysy kysymys, kirjoita joitakin vastausvaihtoehtoja ja paina ”{{int:poll-create-button}}” -painiketta. Se on niin helppoa!",
 	"poll-js-action-complete": "Toiminto suoritettu",
 	"poll-js-loading": "Ladataan...",
 	"poll-next": "seur.",
