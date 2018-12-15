@@ -3,7 +3,8 @@
 		"authors": [
 			"Kaganer",
 			"Okras",
-			"Alex Great"
+			"Alex Great",
+			"Nk88"
 		]
 	},
 	"adminpoll": "Администрирование опросов",
@@ -94,5 +95,7 @@
 	"poll-time-minutes": "{{PLURAL:$1|$1 минуту|$1 минуты|$1 минут|1=одну минуту}}",
 	"poll-time-seconds": "{{PLURAL:$1|$1 секунду|$1 секунды|$1 секунд|1=одну секунду}}",
 	"specialpages-group-poll": "Опросы",
+	"action-pollny-vote": "\nголосовать в опросах",
+	"right-pollny-vote": "\nГолосовать в опросах",
 	"right-polladmin": "Администрирование опросов"
 }
