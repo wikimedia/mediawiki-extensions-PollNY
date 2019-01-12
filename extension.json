@@ -1,6 +1,6 @@
 {
 	"name": "PollNY",
-	"version": "3.4.4",
+	"version": "3.4.5",
 	"author": [
 		"Aaron Wright",
 		"David Pean",
@@ -107,6 +107,7 @@
 				"poll-pleasechoose"
 			],
 			"dependencies": [
+				"mediawiki.util",
 				"ext.socialprofile.flash",
 				"ext.socialprofile.LightBox",
 				"oojs-ui-core",

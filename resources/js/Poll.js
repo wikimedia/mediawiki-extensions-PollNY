@@ -349,7 +349,7 @@ var PollNY = {
 
 	resetUpload: function() {
 		var uploadElement = document.getElementById( 'imageUpload-frame' );
-		uploadElement.src = mw.util.wikiGetlink( mw.config.get( 'wgFormattedNamespaces' )[-1] + ':' + 'PollAjaxUpload' ) + '?wpThumbWidth=75';
+		uploadElement.src = mw.util.getUrl( mw.config.get( 'wgFormattedNamespaces' )[-1] + ':' + 'PollAjaxUpload' ) + '?wpThumbWidth=75';
 		uploadElement.style.display = 'block';
 		uploadElement.style.visibility = 'visible';
 	},
