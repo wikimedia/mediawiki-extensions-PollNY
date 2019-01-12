@@ -1,4 +1,7 @@
 <?php
+
+use MediaWiki\MediaWikiServices;
+
 /**
  * A special page for creating new polls.
  * @file
@@ -23,7 +26,7 @@ class CreatePoll extends SpecialPage {
 	 * @param $par Mixed: parameter passed to the page or null
 	 */
 	public function execute( $par ) {
-		global $wgMemc, $wgContLang;
+		global $wgMemc;
 
 		$out = $this->getOutput();
 		$request = $this->getRequest();
@@ -106,7 +109,7 @@ class CreatePoll extends SpecialPage {
 			}
 
 			// Create poll wiki page
-			$localizedCategoryNS = $wgContLang->getNsText( NS_CATEGORY );
+			$localizedCategoryNS = MediaWikiServices::getInstance()->getContentLanguage()->getNsText( NS_CATEGORY );
 			$page = WikiPage::factory( $poll_title );
 			$content = ContentHandler::makeContent(
 				"<userpoll>\n$choices</userpoll>\n\n[[" .

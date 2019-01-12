@@ -4,7 +4,6 @@
  *
  * @file
  * @ingroup API
- * @date 21 July 2013
  * @see http://www.mediawiki.org/wiki/API:Extensions#ApiSampleApiExtension.php
  */
 class ApiPollNY extends ApiBase {
@@ -27,7 +26,7 @@ class ApiPollNY extends ApiBase {
 
 		// If the "what" param isn't present, we don't know what to do!
 		if ( !$action || $action === null ) {
-			$this->dieUsageMsg( 'missingparam' );
+			$this->dieWithError( [ 'apierror-missingparam', 'what' ], 'missingparam' );
 		}
 
 		$pollID = $params['pollID'];
@@ -37,28 +36,28 @@ class ApiPollNY extends ApiBase {
 			in_array( $action, [ 'delete', 'updateStatus', 'vote' ] ) &&
 			( !$pollID || $pollID === null || !is_numeric( $pollID ) )
 		) {
-			$this->dieUsageMsg( 'missingparam' );
+			$this->dieWithError( [ 'apierror-missingparam', 'pollID' ], 'missingparam' );
 		}
 
 		// Action-specific parameter validation stuff
 		if ( $action == 'getPollResults' ) {
 			$pageID = $params['pageID'];
 			if ( !$pageID || $pageID === null || !is_numeric( $pageID ) ) {
-				$this->dieUsageMsg( 'missingparam' );
+				$this->dieWithError( [ 'apierror-missingparam', 'pageID' ], 'missingparam' );
 			}
 		} elseif ( $action == 'updateStatus' ) {
 			$status = $params['status'];
 			if ( !$status || $status === null || !is_numeric( $status ) ) {
-				$this->dieUsageMsg( 'missingparam' );
+				$this->dieWithError( [ 'apierror-missingparam', 'status' ], 'missingparam' );
 			}
 		} elseif ( $action == 'titleExists' ) {
 			if ( !$params['pageName'] || $params['pageName'] === null ) {
-				$this->dieUsageMsg( 'missingparam' );
+				$this->dieWithError( [ 'apierror-missingparam', 'pageName' ], 'missingparam' );
 			}
 		} elseif ( $action == 'vote' ) {
 			$choiceID = $params['choiceID'];
 			if ( !$choiceID || $choiceID === null || !is_numeric( $choiceID ) ) {
-				$this->dieUsageMsg( 'missingparam' );
+				$this->dieWithError( [ 'apierror-missingparam', 'choiceID' ], 'missingparam' );
 			}
 		}
 
