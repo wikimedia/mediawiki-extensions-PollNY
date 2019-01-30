@@ -14,5 +14,7 @@
 	"poll-discuss": "werêne",
 	"poll-skip": "Raver >",
 	"poll-upload-image-button": "Bar ke",
+	"poll-time-days": "{{PLURAL:$1|yew roce|$1 roci}}",
+	"poll-time-hours": "{{PLURAL:$1|yew saete|$1 saeti}}",
 	"specialpages-group-poll": "Anketi"
 }
