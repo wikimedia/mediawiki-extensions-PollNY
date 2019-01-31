@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Mr. Ibrahem",
-			"ديفيد"
+			"ديفيد",
+			"Meno25"
 		]
 	},
 	"adminpoll": "إدارة الاستطلاعات",
@@ -44,7 +45,7 @@
 	"poll-delete-poll": "حذف الاقتراع",
 	"poll-discuss": "ناقش",
 	"poll-edit-answers": "تحرير الإجابات",
-	"poll-edit-button": "احفظ الصفحة",
+	"poll-edit-button": "حفظ الصفحة",
 	"poll-edit-desc": "اقتراع جديد",
 	"poll-edit-image": "تعديل الصورة",
 	"poll-edit-invalid-access": "وصول غير صالح",
