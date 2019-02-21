@@ -98,6 +98,7 @@
 	"action-polladmin": "Abstimmungen zu verwalten",
 	"right-polladmin": "Abstimmungen verwalten",
 	"apihelp-pollny-description": "PollNY-API – schließt sowohl Benutzer- als auch Administratorfunktionen ein.",
+	"apihelp-pollny-summary": "PollNY API – enthält sowohl Benutzer- als auch Administratorfunktionen.",
 	"apihelp-pollny-param-what": "Was ist zu tun?",
 	"apihelp-pollny-param-pollID": "Kennung der Umfrage, die gelöscht, aktualisiert oder für die abgestimmt werden soll.",
 	"apihelp-pollny-param-pageID": "Seitenkennung (wird nur verwendet sofern was=getPollResults).",
