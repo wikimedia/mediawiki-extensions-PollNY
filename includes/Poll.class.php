@@ -1,4 +1,7 @@
 <?php
+
+use MediaWiki\MediaWikiServices;
+
 /**
  * Poll class
  */
@@ -240,13 +243,12 @@ class Poll {
 	 */
 	public function getRandomPollURL( $userName ) {
 		$pollID = $this->getRandomPollID( $userName );
-		if ( $pollID ) {
-			$pollPage = Title::newFromID( $pollID );
-			global $wgContLang;
-			return $wgContLang->getNsText( NS_POLL ) . ':' . $pollPage->getDBkey();
-		} else {
+		if ( !$pollID ) {
 			return 'error';
 		}
+		$pollPage = Title::newFromID( $pollID );
+		$contLang = MediaWikiServices::getInstance()->getContentLanguage();
+		return $contLang->getNsText( NS_POLL ) . ':' . $pollPage->getDBkey();
 	}
 
 	/**
