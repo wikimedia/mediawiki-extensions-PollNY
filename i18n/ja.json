@@ -83,7 +83,7 @@
 	"poll-time-minutes": "{{PLURAL:$1|$1 分}}",
 	"poll-time-seconds": "{{PLURAL:$1|$1 秒}}",
 	"specialpages-group-poll": "投票所",
-	"action-pollny-vote": "ポールで投票",
-	"right-pollny-vote": "ポールで投票",
+	"action-pollny-vote": "投票所での投票",
+	"right-pollny-vote": "投票所で投票",
 	"right-polladmin": "投票所を管理"
 }
