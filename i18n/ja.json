@@ -85,5 +85,6 @@
 	"specialpages-group-poll": "投票所",
 	"action-pollny-vote": "投票所での投票",
 	"right-pollny-vote": "投票所で投票",
+	"action-polladmin": "投票所の管理",
 	"right-polladmin": "投票所を管理"
 }
