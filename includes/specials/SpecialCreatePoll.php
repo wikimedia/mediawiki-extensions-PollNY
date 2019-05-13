@@ -156,7 +156,7 @@ class CreatePoll extends SpecialPage {
 			$_SESSION['alreadysubmitted'] = false;
 			$template = new CreatePollTemplate;
 			// Expose _this_ class to the GUI template
-			$template->setRef( 'parentClass', $this );
+			$template->set( 'parentClass', $this );
 			// And output the template!
 			$out->addTemplate( $template );
 		}
