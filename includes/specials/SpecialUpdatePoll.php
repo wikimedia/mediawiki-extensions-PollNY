@@ -101,7 +101,7 @@ class UpdatePoll extends UnlistedSpecialPage {
 	/**
 	 * Display the form for updating a given poll (via the id parameter in the
 	 * URL).
-	 * @return String HTML
+	 * @return string|false HTML
 	 */
 	function displayForm() {
 		$out = $this->getOutput();

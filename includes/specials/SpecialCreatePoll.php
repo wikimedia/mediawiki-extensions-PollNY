@@ -23,7 +23,8 @@ class CreatePoll extends SpecialPage {
 	/**
 	 * Show the special page
 	 *
-	 * @param $par Mixed: parameter passed to the page or null
+	 * @param mixed $par Parameter passed to the page or null
+	 * @return bool|string
 	 */
 	public function execute( $par ) {
 		global $wgMemc;
@@ -52,7 +53,7 @@ class CreatePoll extends SpecialPage {
 		 * Redirect anonymous users to login page
 		 * It will automatically return them to the CreatePoll page
 		 */
-		if ( $user->getID() == 0 ) {
+		if ( $user->getId() === 0 ) {
 			$out->setPageTitle( $this->msg( 'poll-woops' )->plain() );
 			$login = SpecialPage::getTitleFor( 'Userlogin' );
 			$out->redirect( $login->getLocalURL( 'returnto=Special:CreatePoll' ) );
@@ -66,18 +67,18 @@ class CreatePoll extends SpecialPage {
 		if ( is_array( $wgCreatePollThresholds ) && count( $wgCreatePollThresholds ) > 0 ) {
 			$canCreate = true;
 
-			$stats = new UserStats( $user->getID(), $user->getName() );
+			$stats = new UserStats( $user->getId(), $user->getName() );
 			$stats_data = $stats->getUserStats();
 
 			$threshold_reason = '';
 			foreach ( $wgCreatePollThresholds as $field => $threshold ) {
 				if ( $stats_data[$field] < $threshold ) {
 					$canCreate = false;
-					$threshold_reason .= ( ( $threshold_reason ) ? ', ' : '' ) . "$threshold $field";
+					$threshold_reason .= ( $threshold_reason ? ', ' : '' ) . "$threshold $field";
 				}
 			}
 
-			if ( $canCreate == false ) {
+			if ( $canCreate === false ) {
 				$out->setPageTitle( $this->msg( 'poll-create-threshold-title' )->plain() );
 				$out->addWikiMsg( 'poll-create-threshold-reason', $threshold_reason );
 				return '';
@@ -125,7 +126,7 @@ class CreatePoll extends SpecialPage {
 				$this->msg( 'poll-edit-desc' )->inContentLanguage()->plain()
 			);
 
-			$newPageId = $page->getID();
+			$newPageId = $page->getId();
 
 			$p = new Poll();
 			$poll_id = $p->addPollQuestion(
