@@ -111,8 +111,7 @@ class UpdatePoll extends UnlistedSpecialPage {
 		$p = new Poll();
 		$poll_info = $p->getPoll( $request->getInt( 'id' ) );
 
-		if (
-			!$poll_info['id'] ||
+		if ( !isset( $poll_info['id'] ) ||
 			!( $user->isAllowed( 'polladmin' ) || $user->getID() == $poll_info['user_id'] )
 		) {
 			$out->setPageTitle( $this->msg( 'poll-woops' )->plain() );
