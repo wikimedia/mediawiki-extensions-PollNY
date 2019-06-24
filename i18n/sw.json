@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Yasen igra"
+		]
+	},
+	"poll-ago": "kabla $1",
+	"poll-time-ago": "kabla $1",
+	"poll-time-days": "{{PLURAL:$1|siku moja|siku $1}}",
+	"poll-time-hours": "{{PLURAL:$1|saa moja|masaa $1}}",
+	"poll-time-minutes": "{{PLURAL:$1|dakika moja|dakika $1}}",
+	"poll-time-seconds": "{{PLURAL:$1|sekunde moja|sekunde $1}}"
+}
