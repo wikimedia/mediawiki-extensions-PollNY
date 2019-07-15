@@ -342,7 +342,7 @@ class PollPage extends Article {
 
 		global $wgPollDisplay;
 		if ( $wgPollDisplay['comments'] ) {
-			$wgOut->addWikiText( '<comments/>' );
+			$wgOut->addWikiTextAsInterface( '<comments/>' );
 		}
 	}
 }
