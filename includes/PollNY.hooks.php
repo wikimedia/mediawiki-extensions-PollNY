@@ -311,6 +311,9 @@ class PollNYHooks {
 		$updater->addExtensionTable( 'poll_question', $sqlDirectory . 'poll_question.sql' );
 		$updater->addExtensionTable( 'poll_user_vote', $sqlDirectory . 'poll_user_vote.sql' );
 
+		$updater->modifyExtensionField( 'poll_choice', 'pc_vote_count',
+			$sqlDirectory . 'patches/poll_choice_alter_pc_vote_count.sql' );
+
 		return true;
 	}
 
