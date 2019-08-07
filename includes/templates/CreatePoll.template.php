@@ -8,9 +8,6 @@
  * @file
  * @ingroup Templates
  */
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die();
-}
 
 class CreatePollTemplate extends QuickTemplate {
 
