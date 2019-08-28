@@ -3,7 +3,8 @@
 		"authors": [
 			"Mr. Ibrahem",
 			"ديفيد",
-			"Meno25"
+			"Meno25",
+			"Sonic N800"
 		]
 	},
 	"adminpoll": "إدارة الاستطلاعات",
@@ -40,7 +41,7 @@
 	"poll-create-threshold-reason": "عذرا، لا يمكنك إنشاء استطلاع حتى تحصل على $1 على الأقل.",
 	"poll-create-threshold-title": "أنشئ اقتراعا",
 	"poll-create-title": "أنشئ اقتراعا",
-	"poll-createdago": "تم إنشاؤه منذ $1",
+	"poll-createdago": "أُنشِئَ قبلَ $1",
 	"poll-delete-message": "هل أنت متأكد أنك تريد حذف هذا الاقتراع؟",
 	"poll-delete-poll": "حذف الاقتراع",
 	"poll-discuss": "ناقش",
