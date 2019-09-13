@@ -1,8 +1,34 @@
 {
 	"@metadata": {
 		"authors": [
-			"Conquistador"
+			"Conquistador",
+			"Vlad5250"
 		]
 	},
-	"poll-cancel-button": "Otkaži"
+	"poll-admin-closed": "Završene",
+	"poll-admin-flagged": "Označene",
+	"poll-admin-open": "Tjekovne",
+	"poll-ago": "prije $1",
+	"poll-based-on-votes": "na temelju {{PLURAL:$1|$1 glasa|$1 glasova}}",
+	"poll-cancel-button": "Otkaži",
+	"poll-createdago": "Učinjena prije $1",
+	"poll-delete-message": "Želite li da obrišete ovu anketu?",
+	"poll-discuss": "Razgovor",
+	"poll-edit-answers": "Promijeni odgovore",
+	"poll-edit-button": "Snimi stranicu",
+	"poll-edit-image": "Promijeni sliku",
+	"poll-embed": "Ugradi u wikistranicu",
+	"poll-enterquestion": "Morate unjeti pitanje",
+	"poll-js-loading": "Učitavanje...",
+	"poll-next": "sljed - след",
+	"poll-prev": "preth - претх",
+	"poll-unavailable": "Anketa je nedostupna",
+	"poll-upload-image-button": "Postavi",
+	"poll-view-order": "Poredak",
+	"poll-view-newest": "Najnovije",
+	"poll-view-popular": "Popularne",
+	"action-pollny-vote": "glasajte na enketama",
+	"right-pollny-vote": "Glasajte na anketama",
+	"action-polladmin": "administriranje anketa",
+	"right-polladmin": "Administriranje anketa"
 }
