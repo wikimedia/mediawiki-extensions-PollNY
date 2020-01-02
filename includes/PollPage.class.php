@@ -17,7 +17,7 @@ class PollPage extends Article {
 	 * Called on every poll page view.
 	 */
 	public function view() {
-		global $wgUser, $wgOut, $wgRequest, $wgExtensionAssetsPath;
+		global $wgExtensionAssetsPath;
 
 		// Perform no custom handling if the poll in question has been deleted
 		if ( !$this->getID() ) {
@@ -27,11 +27,14 @@ class PollPage extends Article {
 		// WHAT DOES MARSELLUS WALLACE LOOK LIKE?
 		$what = $this->getContext();
 
+		$out = $what->getOutput();
+		$request = $what->getRequest();
+		$user = $what->getUser();
 		$title = $this->getTitle();
 		$lang = $what->getLanguage();
 
-		$wgOut->setHTMLTitle( $title->getText() );
-		$wgOut->setPageTitle( $title->getText() );
+		$out->setHTMLTitle( $title->getText() );
+		$out->setPageTitle( $title->getText() );
 
 		$createPollObj = SpecialPage::getTitleFor( 'CreatePoll' );
 
@@ -49,7 +52,7 @@ class PollPage extends Article {
 			$total_polls = $lang->formatNum( $s->count );
 		}
 
-		$stats = new UserStats( $wgUser->getID(), $wgUser->getName() );
+		$stats = new UserStats( $user->getId(), $user->getName() );
 		$stats_current_user = $stats->getUserStats();
 
 		$p = new Poll();
@@ -70,7 +73,7 @@ class PollPage extends Article {
 
 		$output = '<div class="poll-right">';
 		// Show the "create a poll" link to registered users
-		if ( $wgUser->isLoggedIn() ) {
+		if ( $user->isLoggedIn() ) {
 			$output .= '<div class="create-link">
 				<a href="' . htmlspecialchars( $createPollObj->getFullURL() ) . '">
 					<img src="' . $imgPath . '/addIcon.gif" alt="" />'
@@ -117,7 +120,7 @@ class PollPage extends Article {
 
 		$output .= '<div class="poll-stats">';
 
-		if ( $wgUser->isLoggedIn() ) {
+		if ( $user->isLoggedIn() ) {
 			$output .= wfMessage(
 				'poll-voted-for',
 				'<b>' . $stats_current_user['poll_votes'] . '</b>',
@@ -144,16 +147,16 @@ class PollPage extends Article {
 
 		$adminLinks = [];
 		// Poll administrators can access the poll admin panel
-		if ( $wgUser->isAllowed( 'polladmin' ) ) {
+		if ( $user->isAllowed( 'polladmin' ) ) {
 			$adminLinks[] = MediaWikiServices::getInstance()->getLinkRenderer()->makeLink(
 				SpecialPage::getTitleFor( 'AdminPoll' ),
 				wfMessage( 'poll-admin-panel' )->text()
 			);
 		}
-		if ( $poll_info['status'] == 1 && ( $poll_info['user_id'] == $wgUser->getID() || $wgUser->isAllowed( 'polladmin' ) ) ) {
+		if ( $poll_info['status'] == 1 && ( $poll_info['user_id'] == $user->getId() || $user->isAllowed( 'polladmin' ) ) ) {
 			$adminLinks[] = "<a class=\"poll-status-toggle-link\" href=\"javascript:void(0)\" data-status=\"{$toggle_status}\">{$toggle_label}</a>";
 		}
-		if ( $poll_info['status'] == 1 || $wgUser->isAllowed( 'polladmin' ) ) {
+		if ( $poll_info['status'] == 1 || $user->isAllowed( 'polladmin' ) ) {
 			$adminLinks[] = "<a class=\"poll-status-toggle-link\" href=\"javascript:void(0)\" data-status=\"{$toggle_flag_status}\">{$toggle_flag_label}</a>";
 		}
 		if ( !empty( $adminLinks ) ) {
@@ -184,8 +187,8 @@ class PollPage extends Article {
 
 		// Display question and let user vote
 		if (
-			$wgUser->isAllowed( 'pollny-vote' ) &&
-			!$p->userVoted( $wgUser->getName(), $poll_info['id'] ) &&
+			$user->isAllowed( 'pollny-vote' ) &&
+			!$p->userVoted( $user->getName(), $poll_info['id'] ) &&
 			$poll_info['status'] == 1
 		) {
 			$output .= '<div id="loading-poll">' . wfMessage( 'poll-js-loading' )->text() . '</div>' . "\n";
@@ -211,9 +214,9 @@ class PollPage extends Article {
 						wfMessage( 'poll-skip' )->text() . '</a>
 				</div>';
 
-			if ( $wgRequest->getInt( 'prev_id' ) ) {
+			if ( $request->getInt( 'prev_id' ) ) {
 				$p = new Poll();
-				$poll_info_prev = $p->getPoll( $wgRequest->getInt( 'prev_id' ) );
+				$poll_info_prev = $p->getPoll( $request->getInt( 'prev_id' ) );
 				$poll_title = Title::makeTitle( NS_POLL, $poll_info_prev['question'] );
 				$output .= '<div class="previous-poll">';
 
@@ -238,7 +241,7 @@ class PollPage extends Article {
 						$choice['votes'] = 0;
 					}
 
-					$bar_img = '<img src="' . $wgExtensionAssetsPath . '/SocialProfile/images/vote-bar-' . $x .
+					$bar_img = '<img src="' . $imgPath . '/vote-bar-' . $x .
 						'.gif" class="image-choice-' . $x .
 						'" style="width:' . $bar_width . 'px;height:11px;"/>';
 					$output .= "<div class=\"previous-poll-choice\">
@@ -266,7 +269,7 @@ class PollPage extends Article {
 			if ( $poll_info['status'] == 2 ) {
 				$output .= '<div class="poll-closed">' .
 					wfMessage( 'poll-flagged' )->text() . '</div>';
-				if ( !$wgUser->isAllowed( 'polladmin' ) ) {
+				if ( !$user->isAllowed( 'polladmin' ) ) {
 					$show_results = false;
 				}
 			}
@@ -289,7 +292,7 @@ class PollPage extends Article {
 					if ( empty( $choice['votes'] ) ) {
 						$choice['votes'] = 0;
 					}
-					$bar_img = "<img src=\"{$wgExtensionAssetsPath}/SocialProfile/images/vote-bar-{$x}.gif\" class=\"image-choice-{$x}\" style=\"width:{$bar_width}px;height:12px;\"/>";
+					$bar_img = "<img src=\"{$imgPath}/vote-bar-{$x}.gif\" class=\"image-choice-{$x}\" style=\"width:{$bar_width}px;height:12px;\"/>";
 
 					$output .= "<div class=\"poll-choice\">
 					<div class=\"poll-choice-left\">{$choice['choice']} ({$percent}%)</div>";
@@ -338,11 +341,11 @@ class PollPage extends Article {
 
 		$output .= '<div class="visualClear"></div>';
 
-		$wgOut->addHTML( $output );
+		$out->addHTML( $output );
 
 		global $wgPollDisplay;
 		if ( $wgPollDisplay['comments'] ) {
-			$wgOut->addWikiTextAsInterface( '<comments/>' );
+			$out->addWikiTextAsInterface( '<comments/>' );
 		}
 	}
 }
