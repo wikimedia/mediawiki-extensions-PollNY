@@ -1,0 +1,1 @@
+ALTER TABLE /*_*/poll_user_vote DROP INDEX /*i*/pv_user_id;

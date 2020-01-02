@@ -73,7 +73,7 @@ class ApiPollNY extends ApiBase {
 				$output = $this->getPollResults( $pageID );
 				break;
 			case 'getRandom':
-				$output = $this->poll->getRandomPollURL( $user->getName() );
+				$output = $this->poll->getRandomPollURL( $user );
 				break;
 			case 'updateStatus':
 				$output = $this->updateStatus( $pollID, $params['status'] );
@@ -189,7 +189,7 @@ class ApiPollNY extends ApiBase {
 	function updateStatus( $pollID, $status ) {
 		if (
 			$status == 2 ||
-			$this->poll->doesUserOwnPoll( $this->getUser()->getID(), $pollID ) ||
+			$this->poll->doesUserOwnPoll( $this->getUser(), $pollID ) ||
 			$this->getUser()->isAllowed( 'polladmin' )
 		) {
 			$this->poll->updatePollStatus( $pollID, $status );
@@ -205,7 +205,7 @@ class ApiPollNY extends ApiBase {
 			return 'error';
 		}
 		if (
-			!$this->poll->userVoted( $user->getName(), $pollID ) &&
+			!$this->poll->userVoted( $user, $pollID ) &&
 			$user->isAllowed( 'pollny-vote' )
 		) {
 			$this->poll->addPollVote( $pollID, $choiceID );

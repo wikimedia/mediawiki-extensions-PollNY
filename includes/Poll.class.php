@@ -22,8 +22,7 @@ class Poll {
 			'poll_question',
 			[
 				'poll_page_id' => $pageID,
-				'poll_user_id' => $wgUser->getID(),
-				'poll_user_name' => $wgUser->getName(),
+				'poll_actor' => $wgUser->getActorId(),
 				'poll_text' => strip_tags( $question ),
 				'poll_image' => $image,
 				'poll_date' => date( 'Y-m-d H:i:s' ),
@@ -69,8 +68,7 @@ class Poll {
 			[
 				'pv_poll_id' => $pollID,
 				'pv_pc_id' => $choiceID,
-				'pv_user_id' => $wgUser->getID(),
-				'pv_user_name' => $wgUser->getName(),
+				'pv_actor' => $wgUser->getActorId(),
 				'pv_date' => date( 'Y-m-d H:i:s' )
 			],
 			__METHOD__
@@ -126,8 +124,7 @@ class Poll {
 			'poll_question',
 			[
 				'poll_text', 'poll_vote_count', 'poll_id', 'poll_status',
-				'poll_user_id', 'poll_user_name', 'poll_image',
-				'poll_date'
+				'poll_actor', 'poll_image', 'poll_date'
 			],
 			[ 'poll_page_id' => $pageID ],
 			__METHOD__,
@@ -138,8 +135,7 @@ class Poll {
 		if ( $row ) {
 			$poll['question'] = $row->poll_text;
 			$poll['image'] = $row->poll_image;
-			$poll['user_name'] = $row->poll_user_name;
-			$poll['user_id'] = $row->poll_user_id;
+			$poll['actor'] = $row->poll_actor;
 			$poll['votes'] = $row->poll_vote_count;
 			$poll['id'] = $row->poll_id;
 			$poll['status'] = $row->poll_status;
@@ -192,16 +188,18 @@ class Poll {
 
 	/**
 	 * Checks if the user has voted already to the poll with ID = $poll_id.
-	 * @param $user_name Mixed: current user's username
-	 * @param $poll_id Integer: poll ID number
-	 * @return Boolean true if user has voted, otherwise false
+	 *
+	 * @param User $user User (object) to check
+	 * @param int $poll_id Poll ID number
+	 * @return bool True if user has voted, otherwise false
 	 */
-	public function userVoted( $user_name, $poll_id ) {
+	public function userVoted( $user, $poll_id ) {
 		$dbr = wfGetDB( DB_REPLICA );
+		$actorId = $user->getActorId();
 		$s = $dbr->selectRow(
 			'poll_user_vote',
 			[ 'pv_id' ],
-			[ 'pv_poll_id' => $poll_id, 'pv_user_name' => $user_name ],
+			[ 'pv_poll_id' => $poll_id, 'pv_actor' => $actorId ],
 			__METHOD__
 		);
 		if ( $s !== false ) {
@@ -213,18 +211,18 @@ class Poll {
 	/**
 	 * Checks if the specified user "owns" the specified poll.
 	 *
-	 * @param $userId Integer: user ID of the user
-	 * @param $pollId Integer: poll ID number
-	 * @return Boolean true if the user owns the poll, else false
+	 * @param User $user User object to check
+	 * @param int $pollId Poll ID number
+	 * @return bool True if the user owns the poll, else false
 	 */
-	public function doesUserOwnPoll( $userId, $pollId ) {
+	public function doesUserOwnPoll( $user, $pollId ) {
 		$dbr = wfGetDB( DB_REPLICA );
 		$s = $dbr->selectRow(
 			'poll_question',
 			[ 'poll_id' ],
 			[
 				'poll_id' => intval( $pollId ),
-				'poll_user_id' => intval( $userId )
+				'poll_actor' => intval( $user->getActorId() )
 			],
 			__METHOD__
 		);
@@ -238,11 +236,11 @@ class Poll {
 	 * Gets the URL of a randomly chosen poll (well, actually just the
 	 * namespace and page title).
 	 *
-	 * @param $userName String: current user's username
-	 * @return String poll namespace name and poll page name or 'error'
+	 * @param User $user
+	 * @return string Poll namespace name and poll page name or 'error'
 	 */
-	public function getRandomPollURL( $userName ) {
-		$pollID = $this->getRandomPollID( $userName );
+	public function getRandomPollURL( $user ) {
+		$pollID = $this->getRandomPollID( $user );
 		if ( !$pollID ) {
 			return 'error';
 		}
@@ -254,11 +252,11 @@ class Poll {
 	/**
 	 * Gets a random poll to which the current user hasn't answered yet.
 	 *
-	 * @param $userName String: current user's username
-	 * @return Array
+	 * @param User $user
+	 * @return array
 	 */
-	public function getRandomPoll( $userName ) {
-		$pollId = $this->getRandomPollID( $userName );
+	public function getRandomPoll( $user ) {
+		$pollId = $this->getRandomPollID( $user );
 		$poll = [];
 		if ( $pollId ) {
 			$poll = $this->getPoll( $pollId );
@@ -271,17 +269,18 @@ class Poll {
 	 * The poll ID will be the ID of a poll to which the user hasn't answered
 	 * yet.
 	 *
-	 * @param $user_name Mixed: current user's username
-	 * @return Integer random poll ID number
+	 * @param User $user User (object) for whom to get a random poll
+	 * @return int Random poll ID number
 	 */
-	public function getRandomPollID( $user_name ) {
+	public function getRandomPollID( $user ) {
 		$dbr = wfGetDB( DB_MASTER );
 		$poll_page_id = 0;
 		$use_index = $dbr->useIndexClause( 'poll_random' );
 		$randstr = wfRandom();
+		$actorId = (int)$user->getActorId();
 		$sql = "SELECT poll_page_id FROM {$dbr->tableName( 'poll_question' )} {$use_index}
 			INNER JOIN {$dbr->tableName( 'page' )} ON page_id=poll_page_id WHERE poll_id NOT IN
-				(SELECT pv_poll_id FROM {$dbr->tableName( 'poll_user_vote' )} WHERE pv_user_name = {$dbr->addQuotes( $user_name )})
+				(SELECT pv_poll_id FROM {$dbr->tableName( 'poll_user_vote' )} WHERE pv_actor = {$actorId})
 				AND poll_status=1 AND poll_random>$randstr ORDER BY poll_random LIMIT 0,1";
 		$res = $dbr->query( $sql, __METHOD__ );
 		$row = $dbr->fetchObject( $res );
@@ -289,7 +288,7 @@ class Poll {
 		if ( !$row ) {
 			$sql = "SELECT poll_page_id FROM {$dbr->tableName( 'poll_question' )} {$use_index}
 				INNER JOIN {$dbr->tableName( 'page' )} ON page_id=poll_page_id WHERE poll_id NOT IN
-					(SELECT pv_poll_id FROM {$dbr->tableName( 'poll_user_vote' )} WHERE pv_user_name = {$dbr->addQuotes( $user_name )})
+					(SELECT pv_poll_id FROM {$dbr->tableName( 'poll_user_vote' )} WHERE pv_actor = {$actorId})
 					AND poll_status=1 AND poll_random<$randstr ORDER BY poll_random LIMIT 0,1";
 			wfDebugLog( 'PollNY', $sql );
 			$res = $dbr->query( $sql, __METHOD__ );

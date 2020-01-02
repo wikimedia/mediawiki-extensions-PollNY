@@ -75,8 +75,12 @@ class ViewPoll extends SpecialPage {
 
 		$user = $request->getVal( 'user' );
 		$userLink = [];
+		$actor = null;
 		if ( $user ) {
-			$where['poll_user_name'] = $user;
+			$actor = User::newFromName( $user );
+			if ( $actor ) {
+				$where['poll_actor'] = $actor->getActorId();
+			}
 			$userLink['user'] = $user;
 		}
 
@@ -109,8 +113,8 @@ class ViewPoll extends SpecialPage {
 		$res = $dbr->select(
 			[ 'poll_question', 'page' ],
 			[
-				'poll_user_id', 'poll_date', 'poll_vote_count',
-				'poll_user_name', 'poll_text', 'poll_page_id', 'page_id'
+				'poll_actor', 'poll_date', 'poll_vote_count', 'poll_text', 'poll_page_id',
+				'page_id'
 			],
 			$where,
 			__METHOD__,
@@ -125,7 +129,7 @@ class ViewPoll extends SpecialPage {
 		$res_total = $dbr->select(
 			'poll_question',
 			'COUNT(*) AS total_polls',
-			( ( $user ) ? [ 'poll_user_name' => $user ] : [] ),
+			( ( $user && $actor ) ? [ 'poll_actor' => $actor->getActorId() ] : [] ),
 			__METHOD__
 		);
 		$row_total = $dbr->fetchObject( $res_total );
@@ -145,9 +149,9 @@ class ViewPoll extends SpecialPage {
 		$x = ( ( $page - 1 ) * $per_page ) + 1;
 
 		foreach ( $res as $row ) {
-			$user_create = $row->poll_user_name;
-			$user_id = $row->poll_user_id;
-			$avatar = new wAvatar( $user_id, 'm' );
+			$creatorUser = User::newFromActorId( $row->poll_actor );
+			$user_create = htmlspecialchars( $creatorUser->getName(), ENT_QUOTES );
+			$avatar = new wAvatar( $creatorUser->getId(), 'm' );
 			$poll_title = $row->poll_text;
 			$poll_date = wfTimestamp( TS_UNIX, $row->poll_date );
 			$poll_answers = $row->poll_vote_count;

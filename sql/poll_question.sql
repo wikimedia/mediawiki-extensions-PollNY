@@ -1,8 +1,7 @@
 CREATE TABLE /*_*/poll_question (
   poll_id int(11) NOT NULL PRIMARY KEY auto_increment,
   poll_page_id int(11) NOT NULL default 0,
-  poll_user_id int(11) NOT NULL default 0,
-  poll_user_name varchar(255) NOT NULL default '',
+  poll_actor bigint unsigned NOT NULL,
   poll_text text NOT NULL,
   poll_image varchar(255) NOT NULL default '',
   poll_status int(5) default 1,
@@ -14,5 +13,5 @@ CREATE TABLE /*_*/poll_question (
   poll_random double unsigned default 0
 ) /*$wgDBTableOptions*/;
 
-CREATE INDEX /*i*/poll_user_id ON /*_*/poll_question (poll_user_id);
+CREATE INDEX /*i*/poll_actor ON /*_*/poll_question (poll_actor);
 CREATE INDEX /*i*/poll_random ON /*_*/poll_question (poll_random);

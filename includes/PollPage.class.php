@@ -65,11 +65,14 @@ class PollPage extends Article {
 		$imgPath = $wgExtensionAssetsPath . '/SocialProfile/images';
 
 		// Set up submitter data
-		$user_title = Title::makeTitle( NS_USER, $poll_info['user_name'] );
-		$avatar = new wAvatar( $poll_info['user_id'], 'l' );
-		$stats = new UserStats( $poll_info['user_id'], $poll_info['user_name'] );
+		$creatorUser = User::newFromActorId( $poll_info['actor'] );
+		$creatorUserName = $creatorUser->getName();
+		$creatorUserId = $creatorUser->getId();
+		$user_title = $creatorUser->getUserPage();
+		$avatar = new wAvatar( $creatorUserId, 'l' );
+		$stats = new UserStats( $creatorUserId, $creatorUserName );
 		$stats_data = $stats->getUserStats();
-		$user_name_short = $lang->truncateForVisual( $poll_info['user_name'], 27 );
+		$user_name_short = $lang->truncateForVisual( $creatorUserName, 27 );
 
 		$output = '<div class="poll-right">';
 		// Show the "create a poll" link to registered users
@@ -113,9 +116,8 @@ class PollPage extends Article {
 					</div>
 					<div class=\"visualClear\"></div>
 
-					<a href=\"" . htmlspecialchars( SpecialPage::getTitleFor( 'ViewPoll' )->getFullURL( 'user=' . $poll_info['user_name'] ) ) . '">'
-						. wfMessage( 'poll-view-all-by', $user_name_short, $poll_info['user_name'] )->parse() . '</a>
-
+					<a href=\"" . htmlspecialchars( SpecialPage::getTitleFor( 'ViewPoll' )->getFullURL( 'user=' . $creatorUserName ) ) . '">'
+						. wfMessage( 'poll-view-all-by', $user_name_short, $creatorUserName )->parse() . '</a>
 				</div>';
 
 		$output .= '<div class="poll-stats">';
@@ -153,7 +155,7 @@ class PollPage extends Article {
 				wfMessage( 'poll-admin-panel' )->text()
 			);
 		}
-		if ( $poll_info['status'] == 1 && ( $poll_info['user_id'] == $user->getId() || $user->isAllowed( 'polladmin' ) ) ) {
+		if ( $poll_info['status'] == 1 && ( $poll_info['actor'] == $user->getActorId() || $user->isAllowed( 'polladmin' ) ) ) {
 			$adminLinks[] = "<a class=\"poll-status-toggle-link\" href=\"javascript:void(0)\" data-status=\"{$toggle_status}\">{$toggle_label}</a>";
 		}
 		if ( $poll_info['status'] == 1 || $user->isAllowed( 'polladmin' ) ) {
@@ -188,7 +190,7 @@ class PollPage extends Article {
 		// Display question and let user vote
 		if (
 			$user->isAllowed( 'pollny-vote' ) &&
-			!$p->userVoted( $user->getName(), $poll_info['id'] ) &&
+			!$p->userVoted( $user, $poll_info['id'] ) &&
 			$poll_info['status'] == 1
 		) {
 			$output .= '<div id="loading-poll">' . wfMessage( 'poll-js-loading' )->text() . '</div>' . "\n";

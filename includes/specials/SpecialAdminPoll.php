@@ -124,9 +124,8 @@ class AdminPoll extends SpecialPage {
 		$res = $dbr->select(
 			[ 'poll_question', 'page' ],
 			[
-				'poll_id', 'poll_user_id', 'poll_date', 'poll_status',
-				'poll_vote_count', 'poll_user_name', 'poll_text',
-				'poll_page_id', 'page_id'
+				'poll_id', 'poll_actor', 'poll_date', 'poll_status',
+				'poll_vote_count', 'poll_text', 'poll_page_id', 'page_id'
 			],
 			$where,
 			__METHOD__,
@@ -162,9 +161,9 @@ class AdminPoll extends SpecialPage {
 		}
 
 		foreach ( $res as $row ) {
-			$user_create = $row->poll_user_name;
-			$user_id = $row->poll_user_id;
-			$avatar = new wAvatar( $user_id, 'm' );
+			$creatorUser = User::newFromActorId( $row->poll_actor );
+			$user_create = htmlspecialchars( $creatorUser->getName(), ENT_QUOTES );
+			$avatar = new wAvatar( $creatorUser->getId(), 'm' );
 			$poll_title = $row->poll_text;
 			$poll_date = wfTimestamp( TS_UNIX, $row->poll_date );
 			$poll_answers = $row->poll_vote_count;

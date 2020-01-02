@@ -1,6 +1,7 @@
 <?php
 /**
  * A special page to redirect the user to a randomly-chosen poll.
+ *
  * @file
  * @ingroup Extensions
  */
@@ -16,7 +17,7 @@ class RandomPoll extends SpecialPage {
 	/**
 	 * Show the special page
 	 *
-	 * @param $par Mixed: parameter passed to the page or null
+	 * @param string|null $par Parameter passed to the page, if any [unused]
 	 */
 	public function execute( $par ) {
 		$out = $this->getOutput();
@@ -25,7 +26,7 @@ class RandomPoll extends SpecialPage {
 
 		$p = new Poll();
 
-		$pollPage = $p->getRandomPollURL( $this->getUser()->getName() );
+		$pollPage = $p->getRandomPollURL( $this->getUser() );
 		if ( $pollPage == 'error' ) {
 			$out->setPageTitle( $this->msg( 'poll-no-more-title' )->plain() );
 			$out->addWikiMsg( 'poll-no-more-message' );

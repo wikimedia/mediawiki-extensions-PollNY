@@ -1,0 +1,1 @@
+CREATE INDEX /*i*/pv_actor ON /*_*/poll_user_vote (pv_actor);
