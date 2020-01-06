@@ -4,5 +4,9 @@
 			"BaRaN6161 TURK"
 		]
 	},
-	"poll-cancel-button": "İptal"
+	"poll-ago": "$1 önce",
+	"poll-cancel-button": "İptal",
+	"poll-js-loading": "Yükleniyor...",
+	"poll-time-ago": "$1 önce",
+	"poll-time-days": "{{PLURAL:$1|bir gün|$1 gün}}"
 }
