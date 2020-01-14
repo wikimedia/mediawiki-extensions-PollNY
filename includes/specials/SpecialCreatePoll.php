@@ -95,7 +95,7 @@ class CreatePoll extends SpecialPage {
 
 			// Add poll
 			$poll_title = Title::makeTitleSafe( NS_POLL, $request->getVal( 'poll_question' ) );
-			if ( is_null( $poll_title ) && !$poll_title instanceof Title ) {
+			if ( $poll_title === null && !$poll_title instanceof Title ) {
 				$out->setPageTitle( $this->msg( 'poll-create-threshold-title' )->plain() );
 				$out->addWikiMsg( 'poll-create-threshold-reason', $threshold_reason );
 				return '';
