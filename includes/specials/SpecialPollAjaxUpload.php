@@ -214,7 +214,7 @@ class SpecialPollAjaxUpload extends SpecialUpload {
 		// Fetch the file if required
 		$status = $this->mUpload->fetchFile();
 		if ( !$status->isOK() ) {
-			$this->showUploadError( $this->getOutput()->parse( $status->getWikiText() ) );
+			$this->showUploadError( $this->getOutput()->parseAsInterface( $status->getWikiText() ) );
 			return;
 		}
 
@@ -257,7 +257,7 @@ class SpecialPollAjaxUpload extends SpecialUpload {
 		);
 
 		if ( !$status->isGood() ) {
-			$this->showUploadError( $this->getOutput()->parse( $status->getWikiText() ) );
+			$this->showUploadError( $this->getOutput()->parseAsInterface( $status->getWikiText() ) );
 			return;
 		}
 
