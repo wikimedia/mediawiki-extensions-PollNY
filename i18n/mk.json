@@ -85,7 +85,7 @@
 	"poll-voted-for": "Имате гласано на $1 {{PLURAL:$1|анкета|анкети}} од вкупно <b>$2</b> и добивте <span class=\"profile-on\">$3 бода</span>",
 	"poll-votes": "{{PLURAL:$1|еден глас|$1 гласа}}",
 	"poll-woops": "Упс!",
-	"poll-would-have-earned": "Ќе добиевте <span class=\"profile-on\">$1 бода</span> ако  [[Special:UserLogin/signup|се регистриравте]]",
+	"poll-would-have-earned": "Ќе добиевте <span class=\"profile-on\">$1 бода</span> ако бевте [[Special:UserLogin/signup|зачленети]]",
 	"poll-time-ago": "пред $1",
 	"poll-time-days": "{{PLURAL:$1|еден ден|$1 дена}}",
 	"poll-time-hours": "{{PLURAL:$1|еден час|$1 часа}}",
