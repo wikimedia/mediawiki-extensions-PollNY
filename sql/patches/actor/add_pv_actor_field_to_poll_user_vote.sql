@@ -1,0 +1,1 @@
+ALTER TABLE /*_*/poll_user_vote ADD COLUMN pv_actor bigint unsigned NOT NULL AFTER pv_pc_id;

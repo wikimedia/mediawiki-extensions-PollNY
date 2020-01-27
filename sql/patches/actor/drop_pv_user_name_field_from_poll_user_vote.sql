@@ -1,0 +1,1 @@
+ALTER TABLE /*_*/poll_user_vote DROP COLUMN pv_user_name;

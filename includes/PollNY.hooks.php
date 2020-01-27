@@ -48,14 +48,15 @@ class PollNYHooks {
 
 			$s = $dbw->selectRow(
 				'poll_question',
-				[ 'poll_user_id', 'poll_id' ],
+				[ 'poll_actor', 'poll_id' ],
 				[ 'poll_page_id' => $article->getID() ],
 				__METHOD__
 			);
 			if ( $s !== false ) {
 				// Clear profile cache for user id that created poll
 				global $wgMemc;
-				$key = $wgMemc->makeKey( 'user', 'profile', 'polls', $s->poll_user_id );
+				$userId = User::newFromActorId( $s->poll_actor )->getId();
+				$key = $wgMemc->makeKey( 'user', 'profile', 'polls', $userId );
 				$wgMemc->delete( $key );
 
 				// Delete poll record
@@ -222,7 +223,7 @@ class PollNYHooks {
 				// and let the user vote
 				if (
 					$wgUser->isAllowed( 'pollny-vote' ) &&
-					!$p->userVoted( $wgUser->getName(), $poll_info['id'] ) &&
+					!$p->userVoted( $wgUser, $poll_info['id'] ) &&
 					$poll_info['status'] == 1
 				) {
 					$wgOut->addModules( 'ext.pollNY' );
@@ -299,12 +300,12 @@ class PollNYHooks {
 
 	/**
 	 * Adds the three new tables to the database when the user runs
-	 * maintenance/update.php.
+	 * maintenance/update.php and perform other necessary upgrades for users
+	 * upgrading from an older version of the extension.
 	 *
-	 * @param $updater DatabaseUpdater
-	 * @return Boolean true
+	 * @param DatabaseUpdater $updater
 	 */
-	public static function addTables( $updater ) {
+	public static function onLoadExtensionSchemaUpdates( $updater ) {
 		$sqlDirectory = __DIR__ . '/../sql/';
 
 		$updater->addExtensionTable( 'poll_choice', $sqlDirectory . 'poll_choice.sql' );
@@ -314,20 +315,50 @@ class PollNYHooks {
 		$updater->modifyExtensionField( 'poll_choice', 'pc_vote_count',
 			$sqlDirectory . 'patches/poll_choice_alter_pc_vote_count.sql' );
 
-		return true;
-	}
+		$db = $updater->getDB();
 
-	/**
-	 * For the Renameuser extension
-	 *
-	 * @param $renameUserSQL
-	 * @return Boolean true
-	 */
-	public static function onUserRename( $renameUserSQL ) {
-		// poll_choice table has no information related to the user
-		$renameUserSQL->tables['poll_question'] = [ 'poll_user_name', 'poll_user_id' ];
-		$renameUserSQL->tables['poll_user_vote'] = [ 'pv_user_name', 'pv_user_id' ];
-		return true;
+		// Actor support
+		$pollQuestionTableHasActorField = $db->fieldExists( 'poll_question', 'poll_actor', __METHOD__ );
+		$pollUserVoteTableHasActorField = $db->fieldExists( 'poll_user_vote', 'pv_actor', __METHOD__ );
+
+		if ( !$pollQuestionTableHasActorField ) {
+			// 1) add new actor column
+			$updater->addExtensionField( 'poll_question', 'poll_actor', $sqlDirectory . 'patches/actor/add_poll_actor_field_to_poll_question.sql' );
+			// 2) add the corresponding index
+			$updater->addExtensionIndex( 'poll_question', 'poll_actor', $sqlDirectory . 'patches/actor/add_poll_actor_index_to_poll_question.sql' );
+		}
+
+		if ( !$pollUserVoteTableHasActorField ) {
+			// 1) add new actor column
+			$updater->addExtensionField( 'poll_user_vote', 'pv_actor', $sqlDirectory . 'patches/actor/add_pv_actor_field_to_poll_user_vote.sql' );
+			// 2) add the corresponding index
+			$updater->addExtensionIndex( 'poll_user_vote', 'pv_actor', $sqlDirectory . 'patches/actor/add_pv_actor_index_to_poll_user_vote.sql' );
+		}
+
+		if (
+			$db->fieldExists( 'poll_question', 'poll_actor', __METHOD__ ) &&
+			$db->fieldExists( 'poll_question', 'poll_user_name', __METHOD__ )
+		) {
+			// 3) populate the columns with correct values
+			// PITFALL WARNING! Do NOT change this to $updater->runMaintenance,
+			// THEY ARE NOT THE SAME THING and this MUST be using addExtensionUpdate
+			// instead for the code to work as desired!
+			// HT Skizzerz
+			$updater->addExtensionUpdate( [
+				'runMaintenance',
+				'MigrateOldPollNYUserColumnsToActor',
+				'../maintenance/migrateOldPollNYUserColumnsToActor.php'
+			] );
+
+			// 4) drop old columns + indexes
+			$updater->dropExtensionField( 'poll_question', 'poll_user_name', $sqlDirectory . 'patches/actor/drop_poll_user_name_field_from_poll_question.sql' );
+			$updater->dropExtensionField( 'poll_question', 'poll_user_id', $sqlDirectory . 'patches/actor/drop_poll_user_id_field_from_poll_question.sql' );
+			$updater->dropExtensionIndex( 'poll_question', 'poll_user_id', $sqlDirectory . 'patches/actor/drop_poll_user_id_index_from_poll_question.sql' );
+
+			$updater->dropExtensionField( 'poll_user_vote', 'pv_user_name', $sqlDirectory . 'patches/actor/drop_pv_user_name_field_from_poll_user_vote.sql' );
+			$updater->dropExtensionField( 'poll_user_vote', 'pv_user_id', $sqlDirectory . 'patches/actor/drop_pv_user_id_field_from_poll_user_vote.sql' );
+			$updater->dropExtensionIndex( 'poll_user_vote', 'pv_user_id', $sqlDirectory . 'patches/actor/drop_pv_user_id_index_from_poll_user_vote.sql' );
+		}
 	}
 
 	/**

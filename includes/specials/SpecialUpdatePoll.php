@@ -112,7 +112,7 @@ class UpdatePoll extends UnlistedSpecialPage {
 		$poll_info = $p->getPoll( $request->getInt( 'id' ) );
 
 		if ( !isset( $poll_info['id'] ) ||
-			!( $user->isAllowed( 'polladmin' ) || $user->getID() == $poll_info['user_id'] )
+			!( $user->isAllowed( 'polladmin' ) || $user->getActorId() == $poll_info['actor'] )
 		) {
 			$out->setPageTitle( $this->msg( 'poll-woops' )->plain() );
 			$out->addHTML( $this->msg( 'poll-edit-invalid-access' )->text() );
