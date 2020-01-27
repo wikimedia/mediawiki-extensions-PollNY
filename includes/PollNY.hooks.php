@@ -310,14 +310,19 @@ class PollNYHooks {
 	public static function onLoadExtensionSchemaUpdates( $updater ) {
 		$sqlDirectory = __DIR__ . '/../sql/';
 
+		$db = $updater->getDB();
+		if ( $db->getType() === 'postgres' ) {
+			$sqlDirectory = $sqlDirectory . 'postgres/';
+		}
+
 		$updater->addExtensionTable( 'poll_choice', $sqlDirectory . 'poll_choice.sql' );
 		$updater->addExtensionTable( 'poll_question', $sqlDirectory . 'poll_question.sql' );
 		$updater->addExtensionTable( 'poll_user_vote', $sqlDirectory . 'poll_user_vote.sql' );
 
-		$updater->modifyExtensionField( 'poll_choice', 'pc_vote_count',
-			$sqlDirectory . 'patches/poll_choice_alter_pc_vote_count.sql' );
-
-		$db = $updater->getDB();
+		if ( $db->getType() !== 'postgres' ) {
+			$updater->modifyExtensionField( 'poll_choice', 'pc_vote_count',
+				$sqlDirectory . 'patches/poll_choice_alter_pc_vote_count.sql' );
+		}
 
 		// Actor support
 		$pollQuestionTableHasActorField = $db->fieldExists( 'poll_question', 'poll_actor', __METHOD__ );
