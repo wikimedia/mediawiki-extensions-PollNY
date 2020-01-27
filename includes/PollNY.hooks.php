@@ -181,7 +181,9 @@ class PollNYHooks {
 	public static function renderEmbedPoll( $input, $args, $parser ) {
 		$poll_name = $args['title'];
 		if ( $poll_name ) {
-			global $wgOut, $wgUser, $wgExtensionAssetsPath, $wgPollDisplay;
+			global $wgOut, $wgExtensionAssetsPath, $wgPollDisplay;
+
+			$user = $parser->getUser();
 
 			// Load CSS
 			$wgOut->addModuleStyles( 'ext.pollNY.css' );
@@ -222,8 +224,8 @@ class PollNYHooks {
 				// to do so and the poll is open for votes, display the question
 				// and let the user vote
 				if (
-					$wgUser->isAllowed( 'pollny-vote' ) &&
-					!$p->userVoted( $wgUser, $poll_info['id'] ) &&
+					$user->isAllowed( 'pollny-vote' ) &&
+					!$p->userVoted( $user, $poll_info['id'] ) &&
 					$poll_info['status'] == 1
 				) {
 					$wgOut->addModules( 'ext.pollNY' );

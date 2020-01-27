@@ -13,16 +13,16 @@ class Poll {
 	 * @param $question String: poll question
 	 * @param $image String: name of the poll image, if any
 	 * @param $pageID Integer: page ID, as returned by Article::getID()
+	 * @param User $user relevant user
 	 * @return Integer inserted value of an auto-increment row (poll ID)
 	 */
-	public function addPollQuestion( $question, $image, $pageID ) {
-		global $wgUser;
+	public function addPollQuestion( $question, $image, $pageID, User $user ) {
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->insert(
 			'poll_question',
 			[
 				'poll_page_id' => $pageID,
-				'poll_actor' => $wgUser->getActorId(),
+				'poll_actor' => $user->getActorId(),
 				'poll_text' => strip_tags( $question ),
 				'poll_image' => $image,
 				'poll_date' => date( 'Y-m-d H:i:s' ),
@@ -59,16 +59,16 @@ class Poll {
 	 *
 	 * @param $pollID Integer: ID number of the poll
 	 * @param $choiceID Integer: number of the choice
+	 * @param $user relevant user
 	 */
-	public function addPollVote( $pollID, $choiceID ) {
-		global $wgUser;
+	public function addPollVote( $pollID, $choiceID, User $user ) {
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->insert(
 			'poll_user_vote',
 			[
 				'pv_poll_id' => $pollID,
 				'pv_pc_id' => $choiceID,
-				'pv_actor' => $wgUser->getActorId(),
+				'pv_actor' => $user->getActorId(),
 				'pv_date' => date( 'Y-m-d H:i:s' )
 			],
 			__METHOD__
@@ -76,7 +76,7 @@ class Poll {
 		if ( $choiceID > 0 ) {
 			$this->incPollVoteCount( $pollID );
 			$this->incChoiceVoteCount( $choiceID );
-			$stats = new UserStatsTrack( $wgUser->getID(), $wgUser->getName() );
+			$stats = new UserStatsTrack( $user->getID(), $user->getName() );
 			$stats->incStatField( 'poll_vote' );
 		}
 	}

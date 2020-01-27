@@ -132,7 +132,8 @@ class CreatePoll extends SpecialPage {
 			$poll_id = $p->addPollQuestion(
 				$request->getVal( 'poll_question' ),
 				$request->getVal( 'poll_image_name' ),
-				$newPageId
+				$newPageId,
+				$user
 			);
 
 			// Add choices
