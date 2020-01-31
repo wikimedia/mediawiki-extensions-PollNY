@@ -21,7 +21,7 @@
 	"poll-admin-title-closed": "Anket yöneticisi - Kapalı anketleri görüntüle",
 	"poll-admin-title-flagged": "Anket yöneticisi - İşaretli anketleri görüntüle",
 	"poll-admin-title-open": "Anket yöneticisi - açık anketleri görüntüle",
-	"poll-admin-viewall": "Hepsini görüntüle",
+	"poll-admin-viewall": "Hepsini göster",
 	"poll-ago": "$1 önce",
 	"poll-atleast": "En az iki cevap seçeneğiniz olmalıdır.",
 	"poll-based-on-votes": "{{PLURAL:$1|bir oylamaya|$1 oylamaya}} göre",
