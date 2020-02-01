@@ -222,7 +222,7 @@ class ApiPollNY extends ApiBase {
 	}
 
 	/**
-	 * @return Array
+	 * @inheritDoc
 	 */
 	public function getAllowedParams() {
 		return [
@@ -277,7 +277,7 @@ class ApiPollNY extends ApiBase {
 	}
 
 	/**
-	 * @see ApiBase::getExamplesMessages()
+	 * @inheritDoc
 	 */
 	protected function getExamplesMessages() {
 		return [

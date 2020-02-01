@@ -68,25 +68,15 @@
 		"ViewPoll": "includes/specials/SpecialViewPoll.php"
 	},
 	"Hooks": {
-		"TitleMoveComplete": [
-			"PollNYHooks::updatePollQuestion"
-		],
-		"ArticleDelete": [
-			"PollNYHooks::deletePollQuestion"
-		],
-		"ArticleFromTitle": [
-			"PollNYHooks::pollFromTitle"
-		],
+		"TitleMoveComplete": "PollNYHooks::updatePollQuestion",
+		"ArticleDelete": "PollNYHooks::deletePollQuestion",
+		"ArticleFromTitle": "PollNYHooks::pollFromTitle",
 		"ParserFirstCallInit": [
 			"PollNYHooks::registerUserPollHook",
 			"PollNYHooks::registerPollEmbedHook"
 		],
-		"LoadExtensionSchemaUpdates": [
-			"PollNYHooks::onLoadExtensionSchemaUpdates"
-		],
-		"CanonicalNamespaces": [
-			"PollNYHooks::onCanonicalNamespaces"
-		]
+		"LoadExtensionSchemaUpdates": "PollNYHooks::onLoadExtensionSchemaUpdates",
+		"CanonicalNamespaces": "PollNYHooks::onCanonicalNamespaces"
 	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "",

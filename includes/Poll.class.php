@@ -116,7 +116,7 @@ class Poll {
 	 * Gets information about a poll.
 	 *
 	 * @param $pageID Integer: page ID number
-	 * @return Array poll information, such as question, choices, status, etc.
+	 * @return array Poll information, such as question, choices, status, etc.
 	 */
 	public function getPoll( $pageID ) {
 		$dbr = wfGetDB( DB_REPLICA );
@@ -150,7 +150,7 @@ class Poll {
 	 *
 	 * @param $poll_id Integer: poll ID number
 	 * @param $poll_vote_count Integer: 0 by default
-	 * @return Array poll answer choice info (answer ID, text,
+	 * @return array[] Poll answer choice info (answer ID, text,
 	 * 					amount of votes and percent of total votes)
 	 */
 	public static function getPollChoices( $poll_id, $poll_vote_count = 0 ) {
@@ -253,7 +253,7 @@ class Poll {
 	 * Gets a random poll to which the current user hasn't answered yet.
 	 *
 	 * @param User $user
-	 * @return array
+	 * @return array[]
 	 */
 	public function getRandomPoll( $user ) {
 		$pollId = $this->getRandomPollID( $user );

@@ -84,10 +84,10 @@ class PollNYHooks {
 	/**
 	 * Rendering for the <userpoll> tag.
 	 *
-	 * @param $parser Object: instace of Parser class
+	 * @param Parser $parser
 	 * @return Boolean true
 	 */
-	public static function registerUserPollHook( &$parser ) {
+	public static function registerUserPollHook( Parser $parser ) {
 		$parser->setHook( 'userpoll', [ 'PollNYHooks', 'renderPollNY' ] );
 		return true;
 	}
@@ -151,10 +151,10 @@ class PollNYHooks {
 	/**
 	 * Set up the <pollembed> tag for embedding polls on wiki pages.
 	 *
-	 * @param $parser Object: instance of Parser class
+	 * @param Parser $parser
 	 * @return Boolean true
 	 */
-	public static function registerPollEmbedHook( &$parser ) {
+	public static function registerPollEmbedHook( Parser $parser ) {
 		$parser->setHook( 'pollembed', [ 'PollNYHooks', 'renderEmbedPoll' ] );
 		return true;
 	}

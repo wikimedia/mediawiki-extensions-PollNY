@@ -1,4 +1,5 @@
 <?php
+
 class PollAjaxUploadForm extends UploadForm {
 	protected $mWatch;
 	protected $mForReUpload;
