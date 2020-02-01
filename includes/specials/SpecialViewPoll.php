@@ -6,9 +6,6 @@
  */
 class ViewPoll extends SpecialPage {
 
-	/**
-	 * Constructor -- set up the new special page
-	 */
 	public function __construct() {
 		parent::__construct( 'ViewPoll' );
 	}
@@ -42,9 +39,6 @@ class ViewPoll extends SpecialPage {
 		if ( $type == 'most' ) {
 			$order = 'poll_vote_count';
 		}
-
-		// Display only a user's most or newest
-		$user_link = '';
 
 		// Pagination
 		$per_page = 20;

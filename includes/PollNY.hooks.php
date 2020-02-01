@@ -21,7 +21,6 @@ class PollNYHooks {
 	 * @param $user Object: User object performing the move [unused]
 	 * @param $oldid Integer: old ID of the page
 	 * @param $newid Integer: new ID of the page [unused]
-	 * @return Boolean true
 	 */
 	public static function updatePollQuestion( &$title, &$newTitle, $user, $oldid, $newid ) {
 		if ( $title->getNamespace() == NS_POLL ) {
@@ -33,7 +32,6 @@ class PollNYHooks {
 				__METHOD__
 			);
 		}
-		return true;
 	}
 
 	/**
@@ -43,7 +41,6 @@ class PollNYHooks {
 	 * @param $article Object: instance of Article class
 	 * @param $user Unused
 	 * @param $reason Mixed: deletion reason (unused)
-	 * @return Boolean true
 	 */
 	public static function deletePollQuestion( &$article, &$user, $reason ) {
 		if ( $article->getTitle()->getNamespace() == NS_POLL ) {
@@ -80,19 +77,15 @@ class PollNYHooks {
 				);
 			}
 		}
-
-		return true;
 	}
 
 	/**
 	 * Rendering for the <userpoll> tag.
 	 *
 	 * @param Parser $parser
-	 * @return Boolean true
 	 */
 	public static function registerUserPollHook( Parser $parser ) {
 		$parser->setHook( 'userpoll', [ 'PollNYHooks', 'renderPollNY' ] );
-		return true;
 	}
 
 	public static function renderPollNY( $input, $args, $parser ) {
@@ -104,7 +97,6 @@ class PollNYHooks {
 	 *
 	 * @param $title Object: instance of Title class
 	 * @param $article Object: instance of Article class
-	 * @return Boolean true
 	 */
 	public static function pollFromTitle( &$title, &$article ) {
 		if ( $title->getNamespace() == NS_POLL ) {
@@ -135,8 +127,6 @@ class PollNYHooks {
 
 			$article = new PollPage( $title );
 		}
-
-		return true;
 	}
 
 	/**
@@ -144,22 +134,18 @@ class PollNYHooks {
 	 *
 	 * @param Parser $parser
 	 * @param ParserOutput $limitReport
-	 * @return bool true
 	 */
 	public static function onParserLimitReportPrepare( $parser, $output ) {
 		$parser->getOutput()->updateCacheExpiry( 0 );
-		return true;
 	}
 
 	/**
 	 * Set up the <pollembed> tag for embedding polls on wiki pages.
 	 *
 	 * @param Parser $parser
-	 * @return Boolean true
 	 */
 	public static function registerPollEmbedHook( Parser $parser ) {
 		$parser->setHook( 'pollembed', [ 'PollNYHooks', 'renderEmbedPoll' ] );
-		return true;
 	}
 
 	public static function followPollID( $pollTitle ) {
@@ -376,11 +362,9 @@ class PollNYHooks {
 	 *
 	 * @param $list Array: array of namespace numbers with corresponding
 	 *                     canonical names
-	 * @return Boolean true
 	 */
 	public static function onCanonicalNamespaces( &$list ) {
 		$list[NS_POLL] = 'Poll';
 		$list[NS_POLL_TALK] = 'Poll_talk';
-		return true;
 	}
 }

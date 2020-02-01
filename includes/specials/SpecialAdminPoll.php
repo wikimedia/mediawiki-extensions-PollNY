@@ -7,9 +7,6 @@
  */
 class AdminPoll extends SpecialPage {
 
-	/**
-	 * Constructor -- set up the new special page
-	 */
 	public function __construct() {
 		parent::__construct( 'AdminPoll', 'polladmin' );
 	}

@@ -265,21 +265,6 @@ class Poll {
 	}
 
 	/**
-	 * Gets a random poll to which the current user hasn't answered yet.
-	 *
-	 * @param User $user
-	 * @return array[]
-	 */
-	public function getRandomPoll( $user ) {
-		$pollId = $this->getRandomPollID( $user );
-		$poll = [];
-		if ( $pollId ) {
-			$poll = $this->getPoll( $pollId );
-		}
-		return $poll;
-	}
-
-	/**
 	 * Gets a random poll ID from the database.
 	 * The poll ID will be the ID of a poll to which the user hasn't answered
 	 * yet.
@@ -415,7 +400,6 @@ class Poll {
 
 	public static function getTimeAgo( $time ) {
 		$timeArray = self::dateDiff( time(), $time );
-		$timeStr = '';
 		$timeStrD = self::getTimeOffset( $timeArray, 'd', 'days' );
 		$timeStrH = self::getTimeOffset( $timeArray, 'h', 'hours' );
 		$timeStrM = self::getTimeOffset( $timeArray, 'm', 'minutes' );
