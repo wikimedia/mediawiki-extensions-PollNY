@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Robby"
+			"Robby",
+			"Soued031"
 		]
 	},
 	"createpoll": "eng Ëmfro uleeën",
@@ -55,7 +56,7 @@
 	"poll-next-poll": "Nächst Ëmfro",
 	"poll-no-more-title": "Keng Ëmfroe méi!",
 	"poll-open-message": "Sidd Dir sécher datt Dir dës Ëmfro opmaache wëllt?",
-	"poll-pleasechoose": "Sicht w.e.g. en aneren Numm fir d'Ëmfro.",
+	"poll-pleasechoose": "Sicht wgl. en aneren Numm fir d'Ëmfro.",
 	"poll-prev": "vireg",
 	"poll-previous-poll": "Vireg Ëmfro",
 	"poll-question-label": "Fro vun der Ëmfro",
