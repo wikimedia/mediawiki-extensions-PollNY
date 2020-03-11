@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\MediaWikiServices;
+
 class UpdatePoll extends UnlistedSpecialPage {
 
 	/**
@@ -122,7 +124,7 @@ class UpdatePoll extends UnlistedSpecialPage {
 		$poll_image_tag = '';
 		if ( $poll_info['image'] ) {
 			$poll_image_width = 150;
-			$poll_image = wfFindFile( $poll_info['image'] );
+			$poll_image = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $poll_info['image'] );
 			$poll_image_url = $width = '';
 			if ( is_object( $poll_image ) ) {
 				$poll_image_url = $poll_image->createThumb( $poll_image_width );

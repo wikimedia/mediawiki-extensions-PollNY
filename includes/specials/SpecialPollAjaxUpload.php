@@ -272,7 +272,7 @@ class SpecialPollAjaxUpload extends SpecialUpload {
 		// The old version below, which initially used $this->mDesiredDestName
 		// instead of that getTitle() caused plenty o' fatals...the new version
 		// seems to be OK...I think.
-		// $img = wfFindFile( $this->mUpload->getTitle() );
+		// $img = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $this->mUpload->getTitle() );
 		$img = $this->mLocalFile;
 
 		if ( !$img ) {
@@ -300,7 +300,7 @@ class SpecialPollAjaxUpload extends SpecialUpload {
 		// <s>will end</s> used to end up with fatals that are pretty damn
 		// tricky to fix.
 		// This is no longer true since I've added the is_object() checks to
-		// all social extensions (IIRC) that call wfFindFile somewhere.
+		// all social extensions (IIRC) that call RepoGroup::findFile somewhere.
 		$imgName = $img->getTitle()->getDBkey();
 		echo "<script language=\"javascript\">
 			/*<![CDATA[*/

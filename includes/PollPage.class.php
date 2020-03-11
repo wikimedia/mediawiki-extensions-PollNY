@@ -172,7 +172,7 @@ class PollPage extends Article {
 
 		if ( $poll_info['image'] ) {
 			$poll_image_width = 150;
-			$poll_image = wfFindFile( $poll_info['image'] );
+			$poll_image = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $poll_info['image'] );
 			$poll_image_tag = $poll_image_url = $width = '';
 			if ( is_object( $poll_image ) ) {
 				$poll_image_url = $poll_image->createThumb( $poll_image_width );

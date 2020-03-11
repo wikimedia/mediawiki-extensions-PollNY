@@ -6,6 +6,9 @@
  * @file
  * @ingroup Extensions
  */
+
+use MediaWiki\MediaWikiServices;
+
 class PollNYHooks {
 
 	/**
@@ -206,7 +209,7 @@ class PollNYHooks {
 				'</div>' . "\n";
 				if ( $poll_info['image'] ) {
 					$poll_image_width = 100;
-					$poll_image = wfFindFile( $poll_info['image'] );
+					$poll_image = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $poll_info['image'] );
 					$width = $poll_image_url = '';
 					if ( is_object( $poll_image ) ) {
 						$poll_image_url = $poll_image->createThumb( $poll_image_width );
