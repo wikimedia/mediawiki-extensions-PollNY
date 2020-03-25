@@ -130,8 +130,16 @@ class ApiPollNY extends ApiBase {
 				);
 
 				$pollTitle = Title::newFromId( $s->poll_page_id );
-				$article = new Article( $pollTitle );
-				$article->doDeleteArticle( 'delete poll' );
+				$wikipage = WikiPage::factory( $pollTitle );
+				if ( version_compare( MW_VERSION, '1.35', '<' ) ) {
+					$wikipage->doDeleteArticleReal( 'delete poll' );
+				} else {
+					// Different signature in 1.35 and above
+					$wikipage->doDeleteArticleReal(
+						'delete poll',
+						$this->getUser()
+					);
+				}
 			}
 		}
 
