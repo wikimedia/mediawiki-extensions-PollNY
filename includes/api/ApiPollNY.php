@@ -50,10 +50,6 @@ class ApiPollNY extends ApiBase {
 			if ( !$status || $status === null || !is_numeric( $status ) ) {
 				$this->dieWithError( [ 'apierror-missingparam', 'status' ], 'missingparam' );
 			}
-		} elseif ( $action == 'titleExists' ) {
-			if ( !$params['pageName'] || $params['pageName'] === null ) {
-				$this->dieWithError( [ 'apierror-missingparam', 'pageName' ], 'missingparam' );
-			}
 		} elseif ( $action == 'vote' ) {
 			$choiceID = $params['choiceID'];
 			if ( !$choiceID || $choiceID === null || !is_numeric( $choiceID ) ) {
@@ -77,9 +73,6 @@ class ApiPollNY extends ApiBase {
 				break;
 			case 'updateStatus':
 				$output = $this->updateStatus( $pollID, $params['status'] );
-				break;
-			case 'titleExists':
-				$output = $this->titleExists( $params['pageName'] );
 				break;
 			case 'vote':
 				$output = $this->vote( $pollID, (int)$params['choiceID'] );
@@ -174,26 +167,6 @@ class ApiPollNY extends ApiBase {
 		return $output;
 	}
 
-	function titleExists( $pageName ) {
-		// Construct page title object to convert to database key
-		$pageTitle = Title::makeTitle( NS_MAIN, urldecode( $pageName ) );
-		$dbKey = $pageTitle->getDBKey();
-
-		// Database key would be in page_title if the page already exists
-		$dbr = wfGetDB( DB_MASTER );
-		$s = $dbr->selectRow(
-			'page',
-			[ 'page_id' ],
-			[ 'page_title' => $dbKey, 'page_namespace' => NS_POLL ],
-			__METHOD__
-		);
-		if ( $s !== false ) {
-			return 'Page exists';
-		} else {
-			return 'OK';
-		}
-	}
-
 	function updateStatus( $pollID, $status ) {
 		if (
 			$status == 2 ||
@@ -241,9 +214,6 @@ class ApiPollNY extends ApiBase {
 			'choiceID' => [
 				ApiBase::PARAM_TYPE => 'integer',
 			],
-			'pageName' => [
-				ApiBase::PARAM_TYPE => 'string',
-			],
 			'pollID' => [
 				ApiBase::PARAM_TYPE => 'integer',
 			],
@@ -263,7 +233,6 @@ class ApiPollNY extends ApiBase {
 		return array_merge( parent::getParamDescription(), [
 			'what' => 'What to do?',
 			'choiceID' => 'Same as clicking the <choiceID>th choice via the GUI; only used when what=vote',
-			'pageName' => 'Title to check for (only used when what=titleExists); should be URL-encoded',
 			'pollID' => 'Poll ID of the poll that is being deleted/updated/voted for',
 			'pageID' => 'Page ID (only used when what=getPollResults)',
 			'status' => 'New status of the poll (when what=updateStatus); possible values are 0 (=closed), 1 and 2 (=flagged)',
@@ -278,7 +247,6 @@ class ApiPollNY extends ApiBase {
 			'api.php?action=pollny&what=delete&pollID=66' => 'Deletes the poll #66',
 			'api.php?action=pollny&what=getPollResults&pollID=666' => 'Gets the results of the poll #666',
 			'api.php?action=pollny&what=getRandom' => 'Gets a random poll to which the current user hasn\'t answered yet',
-			'api.php?action=pollny&what=titleExists&pageName=Is%20PollNY%20awesome%3F' => 'Checks if there is already a poll with the title "Is PollNY awesome?"',
 			'api.php?action=pollny&what=updateStatus&pollID=47&status=1' => 'Sets the status of the poll #47 to 1 (=open); possible status values are 0 (=closed), 1 and 2 (=flagged)',
 			'api.php?action=pollny&what=vote&pollID=33&choiceID=4' => 'Votes (answers) the poll #33 with the 4th choice',
 		];
@@ -295,8 +263,6 @@ class ApiPollNY extends ApiBase {
 				=> 'apihelp-pollny-example-2',
 			'action=pollny&what=getRandom'
 				=> 'apihelp-pollny-example-3',
-			'action=pollny&what=titleExists&pageName=Is%20PollNY%20awesome%3F'
-				=> 'apihelp-pollny-example-4',
 			'action=pollny&what=updateStatus&pollID=47&status=1'
 				=> 'apihelp-pollny-example-5',
 			'action=pollny&what=vote&pollID=33&choiceID=4'
