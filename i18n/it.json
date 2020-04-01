@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Beta16"
+			"Beta16",
+			"Sakretsu"
 		]
 	},
 	"adminpoll": "Amministra sondaggi",
@@ -29,6 +30,7 @@
 	"poll-createdago": "Creato $1 fa",
 	"poll-delete-message": "Sei sicuro di voler cancellare questo sondaggio?",
 	"poll-delete-poll": "Cancella sondaggio",
+	"poll-discuss": "Discuti",
 	"poll-edit-answers": "Modifica risposte",
 	"poll-edit-button": "Salva la pagina",
 	"poll-edit-desc": "nuovo sondaggio",
