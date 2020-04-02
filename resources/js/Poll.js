@@ -403,24 +403,24 @@ var PollNY = {
 	 */
 	create: function() {
 		var answers = 0;
-		for( var x = 1; x <= 9; x++ ) {
-			if( document.getElementById( 'answer_' + x ).value ) {
+		for ( var x = 1; x <= 9; x++ ) {
+			if ( document.getElementById( 'answer_' + x ).value ) {
 				answers++;
 			}
 		}
 
-		if( answers < 2 ) {
+		if ( answers < 2 ) {
 			OO.ui.alert( mw.msg( 'poll-atleast' ) );
 			return '';
 		}
 
 		var val = document.getElementById( 'poll_question' ).value;
-		if( !val ) {
+		if ( !val ) {
 			OO.ui.alert( mw.msg( 'poll-enterquestion' ) );
 			return '';
 		}
 
-		if( val.indexOf( '#' ) > -1 ) {
+		if ( val.indexOf( '#' ) > -1 ) {
 			OO.ui.alert( mw.msg( 'poll-hash' ) );
 			return '';
 		}
@@ -430,19 +430,17 @@ var PollNY = {
 
 		// Check that the title doesn't exist already; if it does, alert the
 		// user about this problem; otherwise submit the form
-		jQuery.ajax({
-			type: 'POST',
-			url: mw.util.wikiScript( 'api' ),
-			data: {
-				action: 'pollny',
-				what: 'titleExists',
-				pageName: escape( val ),
-				format: 'json'
-			}
-		} ).done( function( data ) {
-			if ( data.pollny.result == 'OK' ) {
+		( new mw.Api() ).get( {
+			action: 'query',
+			titles: mw.config.get( 'wgFormattedNamespaces' )[300] + ':' + val,
+			format: 'json',
+			formatversion: 2
+		} ).done( function ( data ) {
+			// Missing page means that we can create it, obviously!
+			if ( data.query.pages[0] && data.query.pages[0].missing === true ) {
 				document.form1.submit();
 			} else {
+				// could also show data.query.pages[0].invalidreason to the user here instead
 				OO.ui.alert( mw.msg( 'poll-pleasechoose' ) );
 			}
 		} );
