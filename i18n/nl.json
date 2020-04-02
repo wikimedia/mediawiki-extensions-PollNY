@@ -104,7 +104,6 @@
 	"apihelp-pollny-example-1": "Verwijdert de poll #66",
 	"apihelp-pollny-example-2": "Krijgt de resultaten van de poll #666",
 	"apihelp-pollny-example-3": "Krijgt een willekeurige peiling die de huidige gebruiker heeft nog niet geantwoord",
-	"apihelp-pollny-example-4": "Controleert of er al een poll met de titel \"Is PollNY geweldig?\"",
 	"apihelp-pollny-example-5": "Hiermee stelt u de status van de poll #47 tot en met 1 (=open); mogelijke status waarden zijn 0 (=gesloten), 1 en 2 (=gemarkeerd)",
 	"apihelp-pollny-example-6": "Stemmen (antwoorden) van de poll #33 met de 4e keuze"
 }

@@ -107,7 +107,6 @@
 	"apihelp-pollny-example-1": "Sletter avstemning #66",
 	"apihelp-pollny-example-2": "Henter resultater for avstemning #666",
 	"apihelp-pollny-example-3": "Henter en tilfeldig avstemning brukeren ikke har besvart ennå",
-	"apihelp-pollny-example-4": "Sjekker om det allerede finnes en avstemning med tittelen «Is PollNY awesome?»",
 	"apihelp-pollny-example-5": "Setter statusen til avstemning #47 til 1 (=åpen); mulige statusverdier er 0 (=lukket), 1 og 2 (=flagget)",
 	"apihelp-pollny-example-6": "Besvarer avstemning #33 med det fjerde valget"
 }

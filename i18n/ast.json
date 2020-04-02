@@ -107,7 +107,6 @@
 	"apihelp-pollny-example-1": "Desanicia la encuesta #66",
 	"apihelp-pollny-example-2": "Recibe los resultaos de la encuesta #666",
 	"apihelp-pollny-example-3": "Recibe una encuesta al debalu a la qu'inda nun contestó l'usuariu actual",
-	"apihelp-pollny-example-4": "Comprueba si yá hai una encuesta col títulu \"Is PollNY awesome?\"",
 	"apihelp-pollny-example-5": "Conseña l'estáu de la encuesta #47 a 1 (=abierta); los valores posibles del estáu son 0 (=zarrada), 1 y 2 (=marcada)",
 	"apihelp-pollny-example-6": "Vota (respuende) a la encuesta #33 cola cuarta opción"
 }

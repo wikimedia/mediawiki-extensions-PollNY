@@ -109,7 +109,6 @@
 	"apihelp-pollny-example-1": "Elimina a enquisa #66",
 	"apihelp-pollny-example-2": "Obtén os resultados da consulta #666",
 	"apihelp-pollny-example-3": "Devolve unha enquisa aleatoria á que o usuario actual aínda non respondeu",
-	"apihelp-pollny-example-4": "Consulta se xa hai unha enquisa co título \"Is PollNY awesome?\"",
 	"apihelp-pollny-example-5": "Asigna o estado da enquisa #47 a 1 (=aberta); os valores posibles son 0 (=pechada), 1 e 2 (=etiquetada)",
 	"apihelp-pollny-example-6": "Vota (responde) a enquisa #33 coa cuarta escolla"
 }

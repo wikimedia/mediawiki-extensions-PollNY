@@ -105,7 +105,6 @@
 	"apihelp-pollny-example-1": "Löscht die Umfrage Nummer 66",
 	"apihelp-pollny-example-2": "Ruft die Ergebnisse der Abstimmung 666 ab",
 	"apihelp-pollny-example-3": "Ruft eine zufällige Umfrage ab, die der aktuelle Benutzer noch nicht beantwortet hat",
-	"apihelp-pollny-example-4": "Überprüft, ob es bereits eine Umfrage mit dem Titel „Ist PollNY schön?“ gibt",
 	"apihelp-pollny-example-5": "Legt den Status der Umfrage 47 zu 1 (=offen) fest; mögliche Statuswerte sind 0 (=geschlossen), 1 und 2 (=markiert)",
 	"apihelp-pollny-example-6": "Stimmt bei der Umfrage 33 mit der 4. Auswahl ab"
 }

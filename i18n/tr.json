@@ -107,7 +107,6 @@
 	"apihelp-pollny-example-1": "Anket #66'yı siler",
 	"apihelp-pollny-example-2": "Anket sonuçlarını alır #666",
 	"apihelp-pollny-example-3": "Mevcut kullanıcının henüz cevaplamadığı rastgele bir anket alır",
-	"apihelp-pollny-example-4": "\"PollNY harika mı?\" Başlıklı bir anket olup olmadığını kontrol eder.",
 	"apihelp-pollny-example-5": "Anket # 47'nin durumunu 1'e ayarlar (=açık); olası durum değerleri 0 (=kapalı), 1 ve 2'dir (=işaretli)",
 	"apihelp-pollny-example-6": "4. seçim ile 33 numaralı anketi oylar (cevaplar)"
 }

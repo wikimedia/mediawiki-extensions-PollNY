@@ -110,7 +110,6 @@
 	"apihelp-pollny-example-1": "Elimina a sondagem nº 66",
 	"apihelp-pollny-example-2": "Obtém os resultados da sondagem nº 666",
 	"apihelp-pollny-example-3": "Obtém uma sondagem aleatória à qual o utilizador atual ainda não tenha respondido",
-	"apihelp-pollny-example-4": "Verifica se já existe uma sondagem com o título \"A PollNY é genial?\".",
 	"apihelp-pollny-example-5": "Define o estado da sondagem nº 47 como 1 (aberta); os valores possíveis de estado são 0 (fechada), 1 e 2 (marcada).",
 	"apihelp-pollny-example-6": "Vota (responde) à sondagem nº 33 escolhendo a 4ª opção"
 }

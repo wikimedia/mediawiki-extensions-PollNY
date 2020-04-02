@@ -110,7 +110,6 @@
 	"apihelp-pollny-example-1": "刪除調查 #66",
 	"apihelp-pollny-example-2": "取得調查 #666 的結果",
 	"apihelp-pollny-example-3": "隨機取得目前使用者尚未回答的調查",
-	"apihelp-pollny-example-4": "檢查是否已存在帶有標題「Is PollNY awesome?」的調查？",
 	"apihelp-pollny-example-5": "設定調查 #47 的狀態為 1（=open），可能的狀態值為 0（=closed）、1 和 2（=flagged）",
 	"apihelp-pollny-example-6": "對調查 #33 以第 4 選項投票（回答）"
 }

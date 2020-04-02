@@ -109,7 +109,6 @@
 	"apihelp-pollny-example-1": "Elimina a pesquisas nº 66",
 	"apihelp-pollny-example-2": "Obtém os resultados da pesquisas nº 666",
 	"apihelp-pollny-example-3": "Obtém uma pesquisas aleatória à qual o usuário atual ainda não tenha respondido",
-	"apihelp-pollny-example-4": "Verifica se já existe uma pesquisas com o título \"A PollNY é genial?\".",
 	"apihelp-pollny-example-5": "Define o estado da pesquisas nº 47 como 1 (aberta); os valores possíveis de status são 0 (fechada), 1 e 2 (marcada).",
 	"apihelp-pollny-example-6": "Vota (responde) à pesquisas nº 33 escolhendo a 4ª opção"
 }

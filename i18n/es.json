@@ -107,7 +107,6 @@
 	"apihelp-pollny-example-1": "Elimina la encuesta #66",
 	"apihelp-pollny-example-2": "Obtiene los resultados de la encuesta #666",
 	"apihelp-pollny-example-3": "Obtiene una encuesta aleatoria a la que el usuario actual no ha respondido aún",
-	"apihelp-pollny-example-4": "Comprueba si ya hay una encuesta con el título \"¿Es PollNY impresionante?\"",
 	"apihelp-pollny-example-5": "Establece el estado de la encuesta #47 a 1 (=abierta). Los valores posibles de estado son 0 (=cerrada), 1 y 2 (=marcada)",
 	"apihelp-pollny-example-6": "Vota (responde) la encuesta #33 con la opción 4"
 }
