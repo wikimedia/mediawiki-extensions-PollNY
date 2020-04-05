@@ -181,7 +181,7 @@ class UpdatePoll extends UnlistedSpecialPage {
 			</div><!-- .update-poll-left -->
 
 			<div class="update-poll-right">
-			<h1>' . $this->msg( 'poll-edit-image' )->plain() . "</h1>
+			<h1>' . $this->msg( 'poll-edit-image' )->escaped() . "</h1>
 			<div id=\"poll_image\" class=\"update-poll-image\">{$poll_image_tag}</div>
 
 			<!--
@@ -203,8 +203,8 @@ class UpdatePoll extends UnlistedSpecialPage {
 		<div class="visualClear"></div>
 		<div class="update-poll-warning">' . $this->msg( $copywarnMsg, $copywarnMsgParams )->parse() . "</div>
 		<div class=\"update-poll-buttons\">
-			<input type=\"button\" class=\"site-button\" value=\"" . $this->msg( 'poll-edit-button' )->plain() . "\" size=\"20\" onclick=\"document.form1.submit()\" />
-			<input type=\"button\" class=\"site-button\" value=\"" . $this->msg( 'poll-cancel-button' )->plain() . "\" size=\"20\" onclick=\"window.location='" . $poll_page->getFullURL( $prev_qs ) . "'\" />
+			<input type=\"button\" class=\"site-button\" value=\"" . $this->msg( 'poll-edit-button' )->escaped() . "\" size=\"20\" onclick=\"document.form1.submit()\" />
+			<input type=\"button\" class=\"site-button\" value=\"" . $this->msg( 'poll-cancel-button' )->escaped() . "\" size=\"20\" onclick=\"window.location='" . $poll_page->getFullURL( $prev_qs ) . "'\" />
 		</div>";
 		return $form;
 	}

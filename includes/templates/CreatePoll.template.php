@@ -26,13 +26,13 @@ class CreatePollTemplate extends QuickTemplate {
 		<form action="" method="post" enctype="multipart/form-data" name="form1">
 			<input type="hidden" name="poll_image_name" id="poll_image_name" />
 
-			<h1><?php echo $parentClass->msg( 'poll-question-label' )->text() ?></h1>
+			<h1><?php echo $parentClass->msg( 'poll-question-label' )->escaped() ?></h1>
 			<div class="create-poll-question">
 				<input type="text" id="poll_question" name="poll_question" class="createbox" style="width: 450px" value="<?php echo htmlspecialchars( $parentClass->getRequest()->getVal( 'wpDestName' ), ENT_QUOTES ) ?>" />
 			</div>
 
 			<div class="create-poll-answers">
-				<h1><?php echo $parentClass->msg( 'poll-choices-label' )->text() ?></h1>
+				<h1><?php echo $parentClass->msg( 'poll-choices-label' )->escaped() ?></h1>
 				<div class="create-poll-answer" id="poll_answer_1"><span class="create-poll-answer-number">1.</span><input type="text" id="answer_1" name="answer_1" /></div>
 				<div class="create-poll-answer" id="poll_answer_2"><span class="create-poll-answer-number">2.</span><input type="text" id="answer_2" name="answer_2" /></div>
 				<div class="create-poll-answer" id="poll_answer_3" style="display: none;"><span class="create-poll-answer-number">3.</span><input type="text" id="answer_3" name="answer_3" /></div>
@@ -48,7 +48,7 @@ class CreatePollTemplate extends QuickTemplate {
 	</div>
 
 	<div class="create-poll-image">
-		<h1><?php echo $parentClass->msg( 'poll-image-label' )->text() ?></h1>
+		<h1><?php echo $parentClass->msg( 'poll-image-label' )->escaped() ?></h1>
 		<div id="poll_image"></div>
 
 		<div id="real-form">
@@ -57,8 +57,8 @@ class CreatePollTemplate extends QuickTemplate {
 	</div>
 
 	<div class="create-poll-buttons">
-		<input type="button" class="site-button" id="poll-create-button" value="<?php echo $parentClass->msg( 'poll-create-button' )->plain() ?>" size="20" />
-		<input type="button" class="site-button" value="<?php echo $parentClass->msg( 'poll-cancel-button' )->plain() ?>" size="20" onclick="history.go(-1)" />
+		<input type="button" class="site-button" id="poll-create-button" value="<?php echo $parentClass->msg( 'poll-create-button' )->escaped() ?>" size="20" />
+		<input type="button" class="site-button" value="<?php echo $parentClass->msg( 'poll-cancel-button' )->escaped() ?>" size="20" onclick="history.go(-1)" />
 	</div>
 <?php
 	}

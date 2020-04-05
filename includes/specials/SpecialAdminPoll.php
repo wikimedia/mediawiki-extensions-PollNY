@@ -203,18 +203,18 @@ class AdminPoll extends SpecialPage {
 						<div id=\"poll-{$row->poll_id}-controls\">";
 			if ( $row->poll_status == Poll::STATUS_FLAGGED ) {
 				$output .= "<a class=\"poll-unflag-link\" href=\"javascript:void(0)\" data-poll-id=\"{$row->poll_id}\">" .
-					$this->msg( 'poll-unflag-poll' )->text() . '</a>';
+					$this->msg( 'poll-unflag-poll' )->escaped() . '</a>';
 			}
 			if ( $row->poll_status == Poll::STATUS_CLOSED ) {
 				$output .= " <a class=\"poll-open-link\" href=\"javascript:void(0)\" data-poll-id=\"{$row->poll_id}\">" .
-					$this->msg( 'poll-open-poll' )->text() . '</a>';
+					$this->msg( 'poll-open-poll' )->escaped() . '</a>';
 			}
 			if ( $row->poll_status == Poll::STATUS_OPEN ) {
 				$output .= " <a class=\"poll-close-link\" href=\"javascript:void(0)\" data-poll-id=\"{$row->poll_id}\">" .
-					$this->msg( 'poll-close-poll' )->text() . '</a>';
+					$this->msg( 'poll-close-poll' )->escaped() . '</a>';
 			}
 			$output .= " <a class=\"poll-delete-link\" href=\"javascript:void(0)\" data-poll-id=\"{$row->poll_id}\">" .
-				$this->msg( 'poll-delete-poll' )->text() . '</a>
+				$this->msg( 'poll-delete-poll' )->escaped() . '</a>
 						</div>
 					</div>
 					<div class="visualClear"></div>

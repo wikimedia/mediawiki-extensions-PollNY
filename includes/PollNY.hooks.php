@@ -232,7 +232,7 @@ class PollNYHooks {
 					$poll_info['status'] == Poll::STATUS_OPEN
 				) {
 					$wgOut->addModules( 'ext.pollNY' );
-					$output .= "<div id=\"loading-poll_{$poll_info['id']}\" class=\"poll-loading-msg\">" . wfMessage( 'poll-js-loading' )->text() . '</div>';
+					$output .= "<div id=\"loading-poll_{$poll_info['id']}\" class=\"poll-loading-msg\">" . wfMessage( 'poll-js-loading' )->escaped() . '</div>';
 					$output .= "<div id=\"poll-display_{$poll_info['id']}\" style=\"display:none;\">";
 					$output .= "<form name=\"poll_{$poll_info['id']}\"><input type=\"hidden\" id=\"poll_id_{$poll_info['id']}\" name=\"poll_id_{$poll_info['id']}\" value=\"{$poll_info['id']}\"/>";
 
@@ -248,7 +248,7 @@ class PollNYHooks {
 					// Display message if poll has been closed for voting
 					if ( $poll_info['status'] == Poll::STATUS_CLOSED ) {
 						$output .= '<div class="poll-closed">' .
-							wfMessage( 'poll-closed' )->text() . '</div>';
+							wfMessage( 'poll-closed' )->escaped() . '</div>';
 					}
 
 					$x = 1;
@@ -258,7 +258,13 @@ class PollNYHooks {
 						if ( $poll_info['votes'] > 0 ) {
 							$bar_width = floor( 480 * ( $choice['votes'] / $poll_info['votes'] ) );
 						}
-						$bar_img = "<img src=\"{$wgExtensionAssetsPath}/SocialProfile/images/vote-bar-{$x}.gif\" border=\"0\" class=\"image-choice-{$x}\" style=\"width:{$choice['percent']}%;height:12px;\" alt=\"\" />";
+						$bar_img = Html::element( 'img', [
+							'src' => $wgExtensionAssetsPath . "/SocialProfile/images/vote-bar-{$x}.gif",
+							'border' => '0',
+							'class' => "image-choice-{$x}",
+							'style' => "width:{$choice['percent']}%;height:12px;",
+							'alt' => ''
+						] );
 
 						$output .= "<div class=\"poll-choice\">
 						<div class=\"poll-choice-left\">{$choice['choice']} ({$choice['percent']}%)</div>";
@@ -284,7 +290,7 @@ class PollNYHooks {
 						)->parse() . ')</div>';
 					if ( isset( $wgPollDisplay['comments'] ) && $wgPollDisplay['comments'] ) {
 						$output .= '<div><a href="' . htmlspecialchars( $poll_title->getFullURL() ) . '">' .
-							wfMessage( 'poll-discuss' )->text() . '</a></div>';
+							wfMessage( 'poll-discuss' )->escaped() . '</a></div>';
 					}
 					$output .= '<div class="poll-timestamp">' .
 						wfMessage( 'poll-createdago', Poll::getTimeAgo( $poll_info['timestamp'] ) )->parse() .
@@ -295,7 +301,7 @@ class PollNYHooks {
 			} else {
 				// Poll doesn't exist or is unavailable for some other reason
 				$output = '<div class="poll-embed-title">' .
-					wfMessage( 'poll-unavailable' )->text() . '</div>';
+					wfMessage( 'poll-unavailable' )->escaped() . '</div>';
 				return $output;
 			}
 		}

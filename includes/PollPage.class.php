@@ -81,7 +81,7 @@ class PollPage extends Article {
 			$output .= '<div class="create-link">
 				<a href="' . htmlspecialchars( $createPollObj->getFullURL() ) . '">
 					<img src="' . $imgPath . '/addIcon.gif" alt="" />'
-					. wfMessage( 'poll-create' )->text() .
+					. wfMessage( 'poll-create' )->escaped() .
 				'</a>
 			</div>';
 		}
@@ -92,7 +92,7 @@ class PollPage extends Article {
 		$avatarImage = $avatar->getAvatarURL();
 
 		$output .= '<div class="credit-box">
-					<h1>' . wfMessage( 'poll-submitted-by' )->text() . "</h1>
+					<h1>' . wfMessage( 'poll-submitted-by' )->escaped() . "</h1>
 					<div class=\"submitted-by-image\">
 						<a href=\"{$user_title->getFullURL()}\">
 							{$avatarImage}
@@ -203,7 +203,7 @@ class PollPage extends Article {
 			!$p->userVoted( $user, $poll_info['id'] ) &&
 			$poll_info['status'] == Poll::STATUS_OPEN
 		) {
-			$output .= '<div id="loading-poll">' . wfMessage( 'poll-js-loading' )->text() . '</div>' . "\n";
+			$output .= '<div id="loading-poll">' . wfMessage( 'poll-js-loading' )->escaped() . '</div>' . "\n";
 			$output .= '<div id="poll-display" style="display:none;">' . "\n";
 			$output .= '<form name="poll"><input type="hidden" id="poll_id" name="poll_id" value="' . $poll_info['id'] . '"/>' . "\n";
 
@@ -223,7 +223,7 @@ class PollPage extends Article {
 
 			$output .= "\t\t\t\t\t" . '<div class="poll-button">
 					<a class="poll-skip-link" href="javascript:void(0);">' .
-						wfMessage( 'poll-skip' )->text() . '</a>
+						wfMessage( 'poll-skip' )->escaped() . '</a>
 				</div>';
 
 			if ( $request->getInt( 'prev_id' ) ) {
@@ -232,7 +232,7 @@ class PollPage extends Article {
 				$poll_title = Title::makeTitle( NS_POLL, $poll_info_prev['question'] );
 				$output .= '<div class="previous-poll">';
 
-				$output .= '<div class="previous-poll-title">' . wfMessage( 'poll-previous-poll' )->text() .
+				$output .= '<div class="previous-poll-title">' . wfMessage( 'poll-previous-poll' )->escaped() .
 					" - <a href=\"{$poll_title->getFullURL()}\">{$poll_info_prev['question']}</a></div>
 					<div class=\"previous-sub-title\">"
 						. wfMessage( 'poll-view-answered-times', $poll_info_prev['votes'] )->parse() .
@@ -253,9 +253,11 @@ class PollPage extends Article {
 						$choice['votes'] = 0;
 					}
 
-					$bar_img = '<img src="' . $imgPath . '/vote-bar-' . $x .
-						'.gif" class="image-choice-' . $x .
-						'" style="width:' . $bar_width . 'px;height:11px;"/>';
+					$bar_img = Html::element( 'img', [
+						'src' => $imgPath . '/vote-bar-' . $x . '.gif',
+						'class' => 'image-choice-' . $x,
+						'style' => 'width:' . $bar_width . 'px;height:11px;'
+					] );
 					$output .= "<div class=\"previous-poll-choice\">
 								<div class=\"previous-poll-choice-left\">{$choice['choice']} ({$percent}%)</div>";
 
@@ -274,13 +276,13 @@ class PollPage extends Article {
 			// Display message if poll has been closed for voting
 			if ( $poll_info['status'] == Poll::STATUS_CLOSED ) {
 				$output .= '<div class="poll-closed">' .
-					wfMessage( 'poll-closed' )->text() . '</div>';
+					wfMessage( 'poll-closed' )->escaped() . '</div>';
 			}
 
 			// Display message if poll has been flagged
 			if ( $poll_info['status'] == Poll::STATUS_FLAGGED ) {
 				$output .= '<div class="poll-closed">' .
-					wfMessage( 'poll-flagged' )->text() . '</div>';
+					wfMessage( 'poll-flagged' )->escaped() . '</div>';
 				if ( !$user->isAllowed( 'polladmin' ) ) {
 					$show_results = false;
 				}
@@ -329,7 +331,7 @@ class PollPage extends Article {
 			<div class="poll-button">
 				<input type="hidden" id="poll_id" name="poll_id" value="' . $poll_info['id'] . '" />
 				<a class="poll-next-poll-link" href="javascript:void(0);">' .
-					wfMessage( 'poll-next-poll' )->text() . '</a>
+					wfMessage( 'poll-next-poll' )->escaped() . '</a>
 			</div>';
 		}
 
@@ -339,7 +341,7 @@ class PollPage extends Article {
 			<table cellpadding="0" cellspacing="2" border="0">
 				<tr>
 					<td>
-						<b>' . wfMessage( 'poll-embed' )->plain() . "</b>
+						<b>' . wfMessage( 'poll-embed' )->escaped() . "</b>
 					</td>
 					<td>
 						<form name=\"embed_poll\">
