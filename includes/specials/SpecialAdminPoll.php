@@ -201,15 +201,15 @@ class AdminPoll extends SpecialPage {
 								Poll::getTimeAgo( $poll_date )
 							)->parse() . ")</p>
 						<div id=\"poll-{$row->poll_id}-controls\">";
-			if ( $row->poll_status == 2 ) {
+			if ( $row->poll_status == Poll::STATUS_FLAGGED ) {
 				$output .= "<a class=\"poll-unflag-link\" href=\"javascript:void(0)\" data-poll-id=\"{$row->poll_id}\">" .
 					$this->msg( 'poll-unflag-poll' )->text() . '</a>';
 			}
-			if ( $row->poll_status == 0 ) {
+			if ( $row->poll_status == Poll::STATUS_CLOSED ) {
 				$output .= " <a class=\"poll-open-link\" href=\"javascript:void(0)\" data-poll-id=\"{$row->poll_id}\">" .
 					$this->msg( 'poll-open-poll' )->text() . '</a>';
 			}
-			if ( $row->poll_status == 1 ) {
+			if ( $row->poll_status == Poll::STATUS_OPEN ) {
 				$output .= " <a class=\"poll-close-link\" href=\"javascript:void(0)\" data-poll-id=\"{$row->poll_id}\">" .
 					$this->msg( 'poll-close-poll' )->text() . '</a>';
 			}
@@ -234,11 +234,11 @@ class AdminPoll extends SpecialPage {
 	/**
 	 * Build the pagination links.
 	 *
-	 * @param $total Integer: amount of all polls in the database
-	 * @param $perPage Integer: how many items to show per page? This is
+	 * @param int $total Amount of all polls in the database
+	 * @param int $perPage How many items to show per page? This is
 	 *                          hardcoded to 20 earlier in this file
-	 * @param $page Integer: number indicating on which page we are
-	 * @return String HTML
+	 * @param int $page Number indicating on which page we are
+	 * @return string HTML
 	 */
 	public function buildPagination( $total, $perPage, $page ) {
 		$output = '';

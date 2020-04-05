@@ -6,6 +6,21 @@ use MediaWiki\MediaWikiServices;
  * Poll class
  */
 class Poll {
+	// Constants for the poll_question.poll_status field; because nobody likes magic numbers and memorizing them.
+	/**
+	 * @var int Closed polls cannot be voted on
+	 */
+	public const STATUS_CLOSED = 0;
+
+	/**
+	 * @var int The default status; open means that a poll is available for users
+	 */
+	public const STATUS_OPEN = 1;
+
+	/**
+	 * @var int Flagged means "removed from circulation until an admin has reviewed the poll and taken appropriate action"
+	 */
+	public const STATUS_FLAGGED = 2;
 
 	/**
 	 * Adds a poll question to the database.
@@ -302,11 +317,10 @@ class Poll {
 	}
 
 	/**
-	 * Updates the status of the poll with the ID $poll_id to $status and
-	 * commits the changes.
+	 * Updates the status of the poll with the ID $poll_id to $status.
 	 *
-	 * @param $pollId Integer: poll ID number
-	 * @param $status Integer: 0 (close), 1 (open) or 2 (flag)
+	 * @param int $pollId Poll ID number
+	 * @param int $status 0 (close), 1 (open) or 2 (flag)
 	 */
 	public function updatePollStatus( $pollId, $status ) {
 		$dbw = wfGetDB( DB_MASTER );
@@ -323,8 +337,8 @@ class Poll {
 	 * polls, ordered by $order and stores the list in cache
 	 * (if fetched from DB).
 	 *
-	 * @param $count Integer: how many polls to fetch? Default is 3.
-	 * @param $order String: ORDER BY for SQL query, default being 'poll_id'.
+	 * @param int $count How many polls to fetch? Default is 3.
+	 * @param string $order ORDER BY for SQL query, default being 'poll_id'.
 	 */
 	public static function getPollList( $count = 3, $order = 'poll_id' ) {
 		global $wgMemc;

@@ -229,7 +229,7 @@ class PollNYHooks {
 				if (
 					$user->isAllowed( 'pollny-vote' ) &&
 					!$p->userVoted( $user, $poll_info['id'] ) &&
-					$poll_info['status'] == 1
+					$poll_info['status'] == Poll::STATUS_OPEN
 				) {
 					$wgOut->addModules( 'ext.pollNY' );
 					$output .= "<div id=\"loading-poll_{$poll_info['id']}\" class=\"poll-loading-msg\">" . wfMessage( 'poll-js-loading' )->text() . '</div>';
@@ -246,7 +246,7 @@ class PollNYHooks {
 						</div>';
 				} else {
 					// Display message if poll has been closed for voting
-					if ( $poll_info['status'] == 0 ) {
+					if ( $poll_info['status'] == Poll::STATUS_CLOSED ) {
 						$output .= '<div class="poll-closed">' .
 							wfMessage( 'poll-closed' )->text() . '</div>';
 					}

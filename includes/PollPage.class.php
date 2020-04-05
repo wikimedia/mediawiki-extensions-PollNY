@@ -137,13 +137,22 @@ class PollPage extends Article {
 
 		$output .= '</div>' . "\n";
 
-		$toggle_flag_label = ( ( $poll_info['status'] == 1 ) ? wfMessage( 'poll-flag-poll' )->text() : wfMessage( 'poll-unflag-poll' )->text() );
-		$toggle_flag_status = ( ( $poll_info['status'] == 1 ) ? 2 : 1 );
+		$pollIsOpen = ( $poll_info['status'] == Poll::STATUS_OPEN );
 
-		if ( $poll_info['status'] == 1 ) {
-			// Creator and admins can change the status of a poll
-			$toggle_label = ( ( $poll_info['status'] == 1 ) ? wfMessage( 'poll-close-poll' )->text() : wfMessage( 'poll-open-poll' )->text() );
-			$toggle_status = ( ( $poll_info['status'] == 1 ) ? 0 : 1 );
+		if ( $pollIsOpen ) {
+			$toggle_flag_label = wfMessage( 'poll-flag-poll' )->escaped();
+			$toggle_flag_status = Poll::STATUS_FLAGGED;
+			$flagAction = 'flag';
+			$toggle_label = wfMessage( 'poll-close-poll' )->escaped();
+			$toggle_status = Poll::STATUS_CLOSED;
+			$toggleAction = 'close';
+		} else {
+			$toggle_flag_label = wfMessage( 'poll-unflag-poll' )->escaped();
+			$toggle_flag_status = Poll::STATUS_OPEN;
+			$flagAction = 'unflag';
+			$toggle_label = wfMessage( 'poll-open-poll' )->escaped();
+			$toggle_status = Poll::STATUS_OPEN;
+			$toggleAction = 'open';
 		}
 
 		$output .= '<div class="poll-links">' . "\n";
@@ -156,10 +165,10 @@ class PollPage extends Article {
 				wfMessage( 'poll-admin-panel' )->text()
 			);
 		}
-		if ( $poll_info['status'] == 1 && ( $poll_info['actor'] == $user->getActorId() || $user->isAllowed( 'polladmin' ) ) ) {
+		if ( $pollIsOpen && ( $poll_info['actor'] == $user->getActorId() || $user->isAllowed( 'polladmin' ) ) ) {
 			$adminLinks[] = "<a class=\"poll-status-toggle-link\" href=\"javascript:void(0)\" data-status=\"{$toggle_status}\">{$toggle_label}</a>";
 		}
-		if ( $poll_info['status'] == 1 || $user->isAllowed( 'polladmin' ) ) {
+		if ( $pollIsOpen || $user->isAllowed( 'polladmin' ) ) {
 			$adminLinks[] = "<a class=\"poll-status-toggle-link\" href=\"javascript:void(0)\" data-status=\"{$toggle_flag_status}\">{$toggle_flag_label}</a>";
 		}
 		if ( !empty( $adminLinks ) ) {
@@ -192,7 +201,7 @@ class PollPage extends Article {
 		if (
 			$user->isAllowed( 'pollny-vote' ) &&
 			!$p->userVoted( $user, $poll_info['id'] ) &&
-			$poll_info['status'] == 1
+			$poll_info['status'] == Poll::STATUS_OPEN
 		) {
 			$output .= '<div id="loading-poll">' . wfMessage( 'poll-js-loading' )->text() . '</div>' . "\n";
 			$output .= '<div id="poll-display" style="display:none;">' . "\n";
@@ -263,13 +272,13 @@ class PollPage extends Article {
 		} else {
 			$show_results = true;
 			// Display message if poll has been closed for voting
-			if ( $poll_info['status'] == 0 ) {
+			if ( $poll_info['status'] == Poll::STATUS_CLOSED ) {
 				$output .= '<div class="poll-closed">' .
 					wfMessage( 'poll-closed' )->text() . '</div>';
 			}
 
 			// Display message if poll has been flagged
-			if ( $poll_info['status'] == 2 ) {
+			if ( $poll_info['status'] == Poll::STATUS_FLAGGED ) {
 				$output .= '<div class="poll-closed">' .
 					wfMessage( 'poll-flagged' )->text() . '</div>';
 				if ( !$user->isAllowed( 'polladmin' ) ) {
