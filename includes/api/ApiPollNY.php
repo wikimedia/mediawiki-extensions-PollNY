@@ -90,51 +90,12 @@ class ApiPollNY extends ApiBase {
 	}
 
 	function delete( $pollID ) {
-		if ( !$this->getUser()->isAllowed( 'polladmin' ) ) {
+		$user = $this->getUser();
+		if ( !$user->isAllowed( 'polladmin' ) ) {
 			return '';
 		}
 
-		if ( $pollID > 0 ) {
-			$dbw = wfGetDB( DB_MASTER );
-			$s = $dbw->selectRow(
-				'poll_question',
-				[ 'poll_page_id' ],
-				[ 'poll_id' => intval( $pollID ) ],
-				__METHOD__
-			);
-
-			if ( $s !== false ) {
-				$dbw->delete(
-					'poll_user_vote',
-					[ 'pv_poll_id' => intval( $pollID ) ],
-					__METHOD__
-				);
-
-				$dbw->delete(
-					'poll_choice',
-					[ 'pc_poll_id' => intval( $pollID ) ],
-					__METHOD__
-				);
-
-				$dbw->delete(
-					'poll_question',
-					[ 'poll_page_id' => $s->poll_page_id ],
-					__METHOD__
-				);
-
-				$pollTitle = Title::newFromId( $s->poll_page_id );
-				$wikipage = WikiPage::factory( $pollTitle );
-				if ( version_compare( MW_VERSION, '1.35', '<' ) ) {
-					$wikipage->doDeleteArticleReal( 'delete poll' );
-				} else {
-					// Different signature in 1.35 and above
-					$wikipage->doDeleteArticleReal(
-						'delete poll',
-						$this->getUser()
-					);
-				}
-			}
-		}
+		AdminPoll::deletePoll( $pollID, $user );
 
 		return 'OK';
 	}

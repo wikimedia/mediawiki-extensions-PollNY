@@ -306,6 +306,58 @@ class AdminPoll extends SpecialPage {
 		return $output;
 	}
 
+	/**
+	 * Delete a poll from the database and delete the associated Poll: page as well.
+	 *
+	 * @param int $pollID ID number of the poll to delete
+	 * @param User $user The user (object) performing the deletion
+	 * @return bool True if the entries were deleted, otherwise false
+	 */
+	public static function deletePoll( $pollID, User $user ) {
+		$retVal = false;
+
+		if ( $pollID > 0 ) {
+			$dbw = wfGetDB( DB_MASTER );
+			$s = $dbw->selectRow(
+				'poll_question',
+				[ 'poll_page_id' ],
+				[ 'poll_id' => intval( $pollID ) ],
+				__METHOD__
+			);
+
+			if ( $s !== false ) {
+				$dbw->delete(
+					'poll_user_vote',
+					[ 'pv_poll_id' => intval( $pollID ) ],
+					__METHOD__
+				);
+
+				$dbw->delete(
+					'poll_choice',
+					[ 'pc_poll_id' => intval( $pollID ) ],
+					__METHOD__
+				);
+
+				$dbw->delete(
+					'poll_question',
+					[ 'poll_page_id' => $s->poll_page_id ],
+					__METHOD__
+				);
+
+				$pollTitle = Title::newFromId( $s->poll_page_id );
+				$wikipage = WikiPage::factory( $pollTitle );
+				if ( version_compare( MW_VERSION, '1.35', '<' ) ) {
+					$wikipage->doDeleteArticleReal( 'delete poll' );
+				} else {
+					// Different signature in 1.35 and above
+					$wikipage->doDeleteArticleReal( 'delete poll', $user );
+				}
+			}
+		}
+
+		return $retVal;
+	}
+
 	protected function getGroupName() {
 		return 'poll';
 	}
