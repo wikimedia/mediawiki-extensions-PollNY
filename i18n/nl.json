@@ -1,10 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mitchel Corstjens",
-			"Siebrand",
 			"Esketti",
-			"Mar(c)"
+			"Mar(c)",
+			"Mitchel Corstjens",
+			"Siebrand"
 		]
 	},
 	"adminpoll": "Peilingen beheren",

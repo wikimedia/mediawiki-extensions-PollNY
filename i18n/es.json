@@ -1,10 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ovruni",
 			"Fitoschido",
-			"Ryo567",
-			"Macofe"
+			"Macofe",
+			"Ovruni",
+			"Ryo567"
 		]
 	},
 	"adminpoll": "Gestionar encuestas",

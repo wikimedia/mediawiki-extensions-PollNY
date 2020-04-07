@@ -1,15 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
+			"Benjozork",
 			"Constant Depièreux",
 			"Gomoko",
-			"Wyz",
-			"Y-M D",
-			"Benjozork",
 			"Hercule",
-			"Wladek92",
 			"Macofe",
-			"Urhixidur"
+			"Urhixidur",
+			"Wladek92",
+			"Wyz",
+			"Y-M D"
 		]
 	},
 	"adminpoll": "Administration des sondages",

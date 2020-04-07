@@ -1,12 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"Beta16",
+			"Liuxinyu970226",
 			"Nemo bis",
 			"Shirayuki",
 			"Siebrand",
-			"Liuxinyu970226",
-			"Umherirrender",
-			"Beta16"
+			"Umherirrender"
 		]
 	},
 	"adminpoll": "{{doc-special|AdminPoll}}\nThe special page to administrate polls.",
