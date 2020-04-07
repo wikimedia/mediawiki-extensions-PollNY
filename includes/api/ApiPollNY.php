@@ -108,10 +108,6 @@ class ApiPollNY extends ApiBase {
 
 		$output = '';
 		foreach ( $poll_info['choices'] as $choice ) {
-			// $percent = round( $choice['votes'] / $poll_info['votes'] * 100 );
-			if ( $poll_info['votes'] > 0 ) {
-				$bar_width = floor( 480 * ( $choice['votes'] / $poll_info['votes'] ) );
-			}
 			$bar_img = "<img src=\"{$wgExtensionAssetsPath}/SocialProfile/images/vote-bar-{$x}.gif\" border=\"0\" class=\"image-choice-{$x}\" style=\"width:{$choice['percent']}%;height:12px;\"/>";
 
 			$output .= "<div class=\"poll-choice\">
@@ -157,13 +153,6 @@ class ApiPollNY extends ApiBase {
 	}
 
 	/**
-	 * @deprecated since MediaWiki core 1.25
-	 */
-	public function getDescription() {
-		return 'PollNY API - includes both user and admin functions';
-	}
-
-	/**
 	 * @inheritDoc
 	 */
 	public function getAllowedParams() {
@@ -184,32 +173,6 @@ class ApiPollNY extends ApiBase {
 			'status' => [
 				ApiBase::PARAM_TYPE => 'integer',
 			]
-		];
-	}
-
-	/**
-	 * @deprecated since MediaWiki core 1.25
-	 */
-	public function getParamDescription() {
-		return array_merge( parent::getParamDescription(), [
-			'what' => 'What to do?',
-			'choiceID' => 'Same as clicking the <choiceID>th choice via the GUI; only used when what=vote',
-			'pollID' => 'Poll ID of the poll that is being deleted/updated/voted for',
-			'pageID' => 'Page ID (only used when what=getPollResults)',
-			'status' => 'New status of the poll (when what=updateStatus); possible values are 0 (=closed), 1 and 2 (=flagged)',
-		] );
-	}
-
-	/**
-	 * @deprecated since MediaWiki core 1.25
-	 */
-	public function getExamples() {
-		return [
-			'api.php?action=pollny&what=delete&pollID=66' => 'Deletes the poll #66',
-			'api.php?action=pollny&what=getPollResults&pollID=666' => 'Gets the results of the poll #666',
-			'api.php?action=pollny&what=getRandom' => 'Gets a random poll to which the current user hasn\'t answered yet',
-			'api.php?action=pollny&what=updateStatus&pollID=47&status=1' => 'Sets the status of the poll #47 to 1 (=open); possible status values are 0 (=closed), 1 and 2 (=flagged)',
-			'api.php?action=pollny&what=vote&pollID=33&choiceID=4' => 'Votes (answers) the poll #33 with the 4th choice',
 		];
 	}
 

@@ -17,12 +17,7 @@
  * @see http://bugzilla.shoutwiki.com/show_bug.cgi?id=22
  */
 class SpecialPollAjaxUpload extends SpecialUpload {
-	/**
-	 * Constructor: initialise object
-	 * Get data POSTed through the form and assign them to the object
-	 *
-	 * @param $request WebRequest: Data posted.
-	 */
+
 	public function __construct() {
 		SpecialPage::__construct( 'PollAjaxUpload', 'upload', false );
 	}
