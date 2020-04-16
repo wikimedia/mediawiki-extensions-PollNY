@@ -16,7 +16,7 @@
 	"poll-admin-closed": "已關閉",
 	"poll-admin-flagged": "已標記",
 	"poll-admin-open": "開啟",
-	"poll-error-socialprofile": "[https://www.mediawiki.org/wiki/Extension:SocialProfile SocialProfile 擴充功能]尚未安裝。請安裝此擴充後在重試一次。",
+	"poll-error-socialprofile": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:SocialProfile SocialProfile 擴充功能]尚未安裝。請安裝此擴充後在重試一次。",
 	"poll-error-socialprofile-title": "未安裝 SocialProfile 擴充功能。",
 	"poll-admin-panel": "管理員",
 	"poll-admin-status-nav": "按狀態篩選",
