@@ -4,7 +4,7 @@
 			"Chrumps"
 		]
 	},
-	"poll-error-socialprofile": "[https://www.mediawiki.org/wiki/Extension:SocialProfile Rozszerzenie SocialProfile] nie jest zainstalowane. Zainstaluj je i spróbuj ponownie.",
+	"poll-error-socialprofile": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:SocialProfile Rozszerzenie SocialProfile] nie jest zainstalowane. Zainstaluj je i spróbuj ponownie.",
 	"poll-error-socialprofile-title": "Rozszerzenie SocialProfile nie jest zainstalowane.",
 	"poll-admin-panel": "Administrator",
 	"poll-ago": "$1 temu",

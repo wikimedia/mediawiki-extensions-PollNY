@@ -3,6 +3,7 @@
 		"authors": [
 			"Andriykopanytsia",
 			"Dars",
+			"Movses",
 			"Piramidion",
 			"Ата"
 		]
@@ -16,7 +17,7 @@
 	"poll-admin-closed": "Закриті",
 	"poll-admin-flagged": "Позначені",
 	"poll-admin-open": "Відкриті",
-	"poll-error-socialprofile": "[https://www.mediawiki.org/wiki/Extension:SocialProfile Розширення SocialProfile] не встановлено. Будь ласка, встановіть це розширення і спробуйте ще раз.",
+	"poll-error-socialprofile": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:SocialProfile Розширення SocialProfile] не встановлено. Будь ласка, встановіть це розширення і спробуйте ще раз.",
 	"poll-error-socialprofile-title": "Розширення SocialProfile не встановлено.",
 	"poll-admin-panel": "Адміністрування",
 	"poll-admin-status-nav": "Фільтр за станом",
