@@ -15,7 +15,7 @@
 	"poll-admin-closed": "Fechados",
 	"poll-admin-flagged": "Marcados",
 	"poll-admin-open": "Abertas",
-	"poll-error-socialprofile": "A [https://www.mediawiki.org/wiki/Extension:SocialProfile extensão SocialProfile] não está instalada. Instale-a e tente novamente, por favor.",
+	"poll-error-socialprofile": "A [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:SocialProfile extensão SocialProfile] não está instalada. Instale-a e tente novamente, por favor.",
 	"poll-error-socialprofile-title": "A extensão SocialProfile não está instalada.",
 	"poll-admin-panel": "Administrador",
 	"poll-admin-status-nav": "Filtrar por status",
