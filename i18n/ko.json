@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Nuevo Paso",
 			"Priviet",
 			"Revi",
 			"Ykhwong",
@@ -9,7 +10,7 @@
 	},
 	"adminpoll": "설문 조사 관리",
 	"createpoll": "설문 조사 만들기",
-	"randompoll": "임의 설문 조사",
+	"randompoll": "무작위 설문조사",
 	"viewpoll": "설문 조사 보기",
 	"poll-desc": "특수 문서를 사용하고 위키 문서에 설문 조사를 넣을 수 있는 고급 설문 조사 시스템",
 	"poll-admin-no-polls": "설문 조사가 없습니다. [[Special:CreatePoll|설문 조사를 만드세요!]]",
