@@ -1,6 +1,7 @@
 <?php
 /**
  * A special page to view all available polls.
+ *
  * @file
  * @ingroup Extensions
  */
@@ -13,7 +14,7 @@ class ViewPoll extends SpecialPage {
 	/**
 	 * Show the special page
 	 *
-	 * @param $par Mixed: parameter passed to the page or null
+	 * @param string|int|null $par Parameter passed to the page, if any
 	 */
 	public function execute( $par ) {
 		$out = $this->getOutput();
@@ -144,29 +145,33 @@ class ViewPoll extends SpecialPage {
 
 		foreach ( $res as $row ) {
 			$creatorUser = User::newFromActorId( $row->poll_actor );
-			$user_create = htmlspecialchars( $creatorUser->getName(), ENT_QUOTES );
+			$creatorUserPage = $linkRenderer->makeKnownLink(
+				$creatorUser->getUserPage(),
+				$creatorUser->getName()
+			);
 			$avatar = new wAvatar( $creatorUser->getId(), 'm' );
 			$poll_title = $row->poll_text;
 			$poll_date = wfTimestamp( TS_UNIX, $row->poll_date );
 			$poll_answers = $row->poll_vote_count;
 			$row_id = "poll-row-{$x}";
 			$title = Title::makeTitle( NS_POLL, $poll_title );
+			$url = htmlspecialchars( $title->getFullURL() );
 
 			if ( ( $x < $dbr->numRows( $res ) ) && ( $x % $per_page != 0 ) ) {
-				$url = htmlspecialchars( $title->getFullURL() );
-				$output .= "<div class=\"view-poll-row\" id=\"{$row_id}\" onclick=\"window.location='{$url}'\">";
+				$cssClass = 'view-poll-row';
 			} else {
-				$url = htmlspecialchars( $title->getFullURL() );
-				$output .= "<div class=\"view-poll-row-bottom\" id=\"{$row_id}\" onclick=\"window.location='{$url}'\">";
+				$cssClass = 'view-poll-row-bottom';
 			}
+
+			$output .= "<div class=\"{$cssClass}\" id=\"{$row_id}\" onclick=\"window.location='{$url}'\">";
 
 			$output .= "<div class=\"view-poll-number\">{$x}.</div>
 					<div class=\"view-poll-user-image\">
 						{$avatar->getAvatarURL()}
 					</div>
-					<div class=\"view-poll-user-name\">{$user_create}</div>
+					<div class=\"view-poll-user-name\">{$creatorUserPage}</div>
 					<div class=\"view-poll-text\">
-						<p><b><u>{$poll_title}</u></b></p>
+						<a href=\"{$url}\">{$poll_title}</a>
 						<p class=\"view-poll-num-answers\">" .
 							$this->msg(
 								'poll-view-answered-times',

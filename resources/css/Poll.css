@@ -76,6 +76,11 @@
 	overflow: hidden;
 }
 
+/* For users with JS enabled, don't show boxes 3-10 by default */
+.client-js .create-poll-answer.initially-hidden {
+	display: none;
+}
+
 /* Poll Window */
 .previous-poll {
 	margin: 20px 0px 0px 0px;
@@ -149,6 +154,25 @@
 
 #edit-image-frame {
 	margin: -10px 0px 0px 0px;
+}
+
+/* In these three rules, the "begins with" rules are used for the <pollembed>
+ * tag whereas the other rules are for the Poll: NS pages
+ */
+.client-nojs #loading-poll,
+.client-nojs div[id^="loading-poll_"] {
+	display: none;
+}
+
+.client-nojs #poll-display,
+.client-nojs div[id^="poll-display_"] {
+	display: block;
+}
+
+.client-js #poll-display,
+.client-js div[id^="poll-display_"],
+.client-js .poll-vote-btn-nojs {
+	display: none;
 }
 
 .poll h1.pagetitle {
@@ -314,6 +338,17 @@ div.submitted-by-image img {
 
 .poll-button {
 	margin: 15px 0px 0px 0px;
+}
+
+/* On Poll: pages, hide the no-JS "Skip" button for JS users, and for no-JS
+ * users, hide the "Skip" link which requires JS
+ */
+.client-js .poll-button-nojs {
+	display: none;
+}
+
+.client-nojs .poll-button-js {
+	display: none;
 }
 
 .poll-button a {
@@ -501,9 +536,12 @@ div.submitted-by-image img {
 	float: left;
 	width: 70px;
 	font-size: 14px;
-	color: #002BB8;
 	font-weight: bold;
 	margin: 0px 65px 0px 0px;
+}
+
+.view-poll-user-name a {
+	color: #002bb8;
 }
 
 .view-poll-text {
@@ -525,8 +563,17 @@ div.submitted-by-image img {
 	font-weight: normal !important;
 }
 
+.view-poll-text a {
+	/* color seems to be inherited from a rather than .view-poll-text, so
+	 * need to redeclare it here
+	 */
+	color: #002bb8;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
 .view-poll-text p {
-	margin: 0px 0px 3px 0px !important;
+	margin: 0 0 3px 0 !important;
 }
 
 .view-poll-user-image img {

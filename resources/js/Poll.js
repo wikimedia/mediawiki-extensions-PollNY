@@ -66,17 +66,13 @@ var PollNY = {
 	 */
 	skip: function() {
 		PollNY.loadingLightBox();
-		jQuery.ajax({
-			type: 'POST',
-			url: mw.util.wikiScript( 'api' ),
-			data: {
-				action: 'pollny',
-				what: 'vote',
-				pollID: document.getElementById( 'poll_id' ).value,
-				choiceID: -1,
-				format: 'json'
-			}
-		} ).done( function() {
+		( new mw.Api() ).postWithToken( 'csrf', {
+			action: 'pollny',
+			format: 'json',
+			what: 'vote',
+			pollID: document.getElementById( 'poll_id' ).value,
+			choiceID: -1
+		} ).done( function () {
 			PollNY.goToNewPoll();
 		} );
 	},
@@ -85,7 +81,7 @@ var PollNY = {
 	 * Vote for a poll and move to the next poll.
 	 */
 	vote: function() {
-		if( PollNY.voted == 1 ) {
+		if ( PollNY.voted == 1 ) {
 			return 0;
 		}
 
@@ -93,25 +89,21 @@ var PollNY = {
 
 		PollNY.loadingLightBox();
 		var choice_id = 0;
-		for( var i = 0; i < document.poll.poll_choice.length; i++ ) {
-			if( document.poll.poll_choice[i].checked ) {
+		for ( var i = 0; i < document.poll.poll_choice.length; i++ ) {
+			if ( document.poll.poll_choice[i].checked ) {
 				choice_id = document.poll.poll_choice[i].value;
 			}
 		}
 
-		if( choice_id ) {
+		if ( choice_id ) {
 			// cast vote
-			jQuery.ajax({
-				type: 'POST',
-				url: mw.util.wikiScript( 'api' ),
-				data: {
-					action: 'pollny',
-					what: 'vote',
-					pollID: document.getElementById( 'poll_id' ).value,
-					choiceID: choice_id,
-					format: 'json'
-				}
-			} ).done( function() {
+			( new mw.Api() ).postWithToken( 'csrf', {
+				action: 'pollny',
+				format: 'json',
+				what: 'vote',
+				pollID: document.getElementById( 'poll_id' ).value,
+				choiceID: choice_id
+			} ).done( function () {
 				PollNY.goToNewPoll();
 			} );
 		}
@@ -124,9 +116,7 @@ var PollNY = {
 	 * they're on Special:CreatePoll.
 	 */
 	goToNewPoll: function() {
-		// cast vote
-
-		jQuery.ajax({
+		jQuery.ajax( {
 			type: 'POST',
 			url: mw.util.wikiScript( 'api' ),
 			data: {
@@ -136,7 +126,6 @@ var PollNY = {
 			}
 		} ).done( function( data ) {
 			// redirect to next poll they haven't voted for
-			// old code: if( req.responseText.indexOf( 'error' ) == -1 ) {
 			if ( data.pollny.result !== 'error' ) {
 				window.location = mw.config.get( 'wgServer' ) +
 					mw.config.get( 'wgScriptPath' ) +
@@ -171,29 +160,25 @@ var PollNY = {
 		var msg;
 		switch ( status ) {
 			case 0:
-        			msg = mw.msg( 'poll-close-message' );
-        			break;
+				msg = mw.msg( 'poll-close-message' );
+				break;
 			case 1:
 				msg = mw.msg( 'poll-open-message' );
 				break;
 			case 2:
 				msg = mw.msg( 'poll-flagged-message' );
 				break;
-        	}
+		}
 
 		OO.ui.confirm( msg ).done( function ( confirmed ) {
 			if ( confirmed ) {
-				jQuery.ajax({
-					type: 'POST',
-					url: mw.util.wikiScript( 'api' ),
-					data: {
-						action: 'pollny',
-						what: 'updateStatus',
-						pollID: document.getElementById( 'poll_id' ).value,
-						status: status,
-						format: 'json'
-					}
-				} ).done( function() {
+				( new mw.Api() ).postWithToken( 'csrf', {
+					action: 'pollny',
+					format: 'json',
+					what: 'updateStatus',
+					pollID: document.getElementById( 'poll_id' ).value,
+					status: status
+				} ).done( function () {
 					window.location.reload();
 				} );
 			}
@@ -229,19 +214,15 @@ var PollNY = {
 			}
 		}
 
-		if( choice_id ) {
+		if ( choice_id ) {
 			// Cast vote
-			jQuery.ajax({
-				type: 'POST',
-				url: mw.util.wikiScript( 'api' ),
-				data: {
-					action: 'pollny',
-					what: 'vote',
-					pollID: id,
-					choiceID: choice_id,
-					format: 'json'
-				}
-			} ).done( function() {
+			( new mw.Api() ).postWithToken( 'csrf', {
+				action: 'pollny',
+				format: 'json',
+				what: 'vote',
+				pollID: id,
+				choiceID: choice_id,
+			} ).done( function () {
 				PollNY.showResults( id, pageId );
 			} );
 		}
@@ -292,17 +273,13 @@ var PollNY = {
 
 		OO.ui.confirm( msg ).done( function ( confirmed ) {
 			if ( confirmed ) {
-				jQuery.ajax({
-					type: 'POST',
-					url: mw.util.wikiScript( 'api' ),
-					data: {
-						action: 'pollny',
-						what: 'updateStatus',
-						pollID: id,
-						status: status,
-						format: 'json'
-					}
-				} ).done( function() {
+				( new mw.Api() ).postWithToken( 'csrf', {
+					action: 'pollny',
+					format: 'json',
+					what: 'updateStatus',
+					pollID: id,
+					status: status
+				} ).done( function () {
 					jQuery( '#poll-' + id + '-controls' ).html( mw.msg( 'poll-js-action-complete' ) );
 				} );
 			}
@@ -319,16 +296,12 @@ var PollNY = {
 
 		OO.ui.confirm( msg ).done( function ( confirmed ) {
 			if ( confirmed ) {
-				jQuery.ajax({
-					type: 'POST',
-					url: mw.util.wikiScript( 'api' ),
-					data: {
-						action: 'pollny',
-						what: 'delete',
-						pollID: id,
-						format: 'json'
-					}
-				} ).done( function() {
+				( new mw.Api() ).postWithToken( 'csrf', {
+					action: 'pollny',
+					format: 'json',
+					what: 'delete',
+					pollID: id
+				} ).done( function () {
 					jQuery( '#poll-' + id + '-controls' ).html( mw.msg( 'poll-js-action-complete' ) );
 				} );
 			}
@@ -338,8 +311,8 @@ var PollNY = {
 	// from Special:CreatePoll UI template
 	updateAnswerBoxes: function() {
 		var elem;
-		for( var x = 1; x <= 9; x++ ) {
-			if( document.getElementById( 'answer_' + x ).value ) {
+		for ( var x = 1; x <= 9; x++ ) {
+			if ( document.getElementById( 'answer_' + x ).value ) {
 				elem = document.getElementById( 'poll_answer_' + ( x + 1 ) );
 				elem.style.display = 'block';
 				elem.style.visibility = 'visible';
@@ -457,7 +430,8 @@ jQuery( function() {
 		} );
 		PollNY.show();
 
-		jQuery( 'a.poll-status-toggle-link' ).on( 'click', function() {
+		jQuery( 'a.poll-status-toggle-link' ).on( 'click', function( e ) {
+			e.preventDefault();
 			PollNY.toggleStatus( jQuery( this ).data( 'status' ) );
 		} );
 
@@ -469,7 +443,8 @@ jQuery( function() {
 			PollNY.skip();
 		} );
 
-		jQuery( 'a.poll-next-poll-link' ).on( 'click', function() {
+		jQuery( 'a.poll-next-poll-link' ).on( 'click', function( e ) {
+			e.preventDefault();
 			PollNY.loadingLightBox();
 			PollNY.goToNewPoll();
 		} );
@@ -492,15 +467,18 @@ jQuery( function() {
 	}
 
 	// Unflag/Open/Close/Delete poll links on Special:AdminPoll
-	jQuery( 'a.poll-unflag-link, a.poll-open-link' ).on( 'click', function() {
+	jQuery( 'a.poll-unflag-link, a.poll-open-link' ).on( 'click', function( e ) {
+		e.preventDefault();
 		PollNY.poll_admin_status( jQuery( this ).data( 'poll-id' ), 1 );
 	} );
 
-	jQuery( 'a.poll-close-link' ).on( 'click', function() {
+	jQuery( 'a.poll-close-link' ).on( 'click', function( e ) {
+		e.preventDefault();
 		PollNY.poll_admin_status( jQuery( this ).data( 'poll-id' ), 0 );
 	} );
 
-	jQuery( 'a.poll-delete-link' ).on( 'click', function() {
+	jQuery( 'a.poll-delete-link' ).on( 'click', function( e ) {
+		e.preventDefault();
 		PollNY.poll_delete( jQuery( this ).data( 'poll-id' ) );
 	} );
 
@@ -526,7 +504,8 @@ jQuery( function() {
 			} );
 		}
 
-		jQuery( 'input#poll-create-button' ).on( 'click', function() {
+		jQuery( 'input#poll-create-button' ).on( 'click', function( e ) {
+			e.preventDefault();
 			PollNY.create();
 		} );
 	}

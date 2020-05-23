@@ -219,8 +219,15 @@ class PollNYHooks {
 				) {
 					$wgOut->addModules( 'ext.pollNY' );
 					$output .= "<div id=\"loading-poll_{$poll_info['id']}\" class=\"poll-loading-msg\">" . wfMessage( 'poll-js-loading' )->escaped() . '</div>';
-					$output .= "<div id=\"poll-display_{$poll_info['id']}\" style=\"display:none;\">";
-					$output .= "<form name=\"poll_{$poll_info['id']}\"><input type=\"hidden\" id=\"poll_id_{$poll_info['id']}\" name=\"poll_id_{$poll_info['id']}\" value=\"{$poll_info['id']}\"/>";
+					$output .= "<div id=\"poll-display_{$poll_info['id']}\">";
+					$output .= Html::openElement( 'form', [
+						'name' => "poll_{$poll_info['id']}",
+						'method' => 'post',
+						'action' => $poll_title->getFullURL()
+					] );
+					$output .= "<input type=\"hidden\" id=\"poll_id_{$poll_info['id']}\" name=\"poll_id_{$poll_info['id']}\" value=\"{$poll_info['id']}\"/>";
+					$output .= Html::hidden( 'poll_id', $poll_info['id'] );
+					$output .= Html::hidden( 'wpEditToken', $user->getEditToken() );
 
 					foreach ( $poll_info['choices'] as $choice ) {
 						$output .= "<div class=\"poll-choice\">
@@ -228,6 +235,7 @@ class PollNYHooks {
 						</div>";
 					}
 
+					$output .= Html::submitButton( wfMessage( 'poll-submit-btn' )->escaped(), [ 'class' => 'poll-vote-btn-nojs' ] );
 					$output .= '</form>
 						</div>';
 				} else {
@@ -360,6 +368,33 @@ class PollNYHooks {
 			$updater->dropExtensionField( 'poll_user_vote', 'pv_user_name', $sqlDirectory . 'patches/actor/drop_pv_user_name_field_from_poll_user_vote.sql' );
 			$updater->dropExtensionField( 'poll_user_vote', 'pv_user_id', $sqlDirectory . 'patches/actor/drop_pv_user_id_field_from_poll_user_vote.sql' );
 			$updater->dropExtensionIndex( 'poll_user_vote', 'pv_user_id', $sqlDirectory . 'patches/actor/drop_pv_user_id_index_from_poll_user_vote.sql' );
+		}
+	}
+
+	/**
+	 * Dumb hack to make ApiPollNY conditionally recognize 'token' as a valid parameter.
+	 * Normally this is done in ApiBase#getFinalParams but normal API modules also
+	 * implement token as a true bool (either a module requires a token or doesn't),
+	 * whereas ours is more of a...tri-state boolean, if you will. (ApiPollNY supports
+	 * 5 different actions of which 3 require a token and 2 don't.)
+	 *
+	 * @param ApiBase &$apiModule ApiBase subclass (we only care about ApiPollNY)
+	 * @param array &$params URL parameters recognized by the API module
+	 * @param int $flags
+	 */
+	public static function onAPIGetAllowedParams( &$apiModule, &$params, $flags ) {
+		if ( get_class( $apiModule ) === 'ApiPollNY' ) {
+			if ( $apiModule->shouldRequireToken ) {
+				$params['token'] = [
+					ApiBase::PARAM_TYPE => 'string',
+					ApiBase::PARAM_REQUIRED => true,
+					ApiBase::PARAM_SENSITIVE => true,
+					ApiBase::PARAM_HELP_MSG => [
+						'api-help-param-token',
+						'csrf',
+					],
+				] + ( $params['token'] ?? [] );
+			}
 		}
 	}
 

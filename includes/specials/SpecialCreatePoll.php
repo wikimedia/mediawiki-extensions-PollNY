@@ -87,7 +87,11 @@ class CreatePoll extends SpecialPage {
 		$out->addModules( 'ext.pollNY' );
 
 		// If the request was POSTed, try creating the poll
-		if ( $request->wasPosted() && $_SESSION['alreadysubmitted'] == false ) {
+		if (
+			$request->wasPosted() &&
+			$user->matchEditToken( $request->getVal( 'wpEditToken' ) ) &&
+			$_SESSION['alreadysubmitted'] == false
+		) {
 			$_SESSION['alreadysubmitted'] = true;
 
 			// Add poll

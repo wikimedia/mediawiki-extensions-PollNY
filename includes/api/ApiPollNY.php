@@ -14,6 +14,13 @@ class ApiPollNY extends ApiBase {
 	private $poll;
 
 	/**
+	 * @var bool Should a CSRF token be required for the requested action to be
+	 *  permitted? True when 'what' is one of the following: delete, updateStatus, vote
+	 * @note Needs to be public for the API hook handler (a.k.a dumb hack) in the hooks file.
+	 */
+	public $shouldRequireToken;
+
+	/**
 	 * Main entry point.
 	 */
 	public function execute() {
@@ -28,6 +35,8 @@ class ApiPollNY extends ApiBase {
 		if ( !$action || $action === null ) {
 			$this->dieWithError( [ 'apierror-missingparam', 'what' ], 'missingparam' );
 		}
+
+		$this->shouldRequireToken = in_array( $action, [ 'delete', 'updateStatus', 'vote' ] );
 
 		$pollID = $params['pollID'];
 		// Ensure that the pollID parameter is present for actions that require
@@ -47,7 +56,8 @@ class ApiPollNY extends ApiBase {
 			}
 		} elseif ( $action == 'updateStatus' ) {
 			$status = $params['status'];
-			if ( !$status || $status === null || !is_numeric( $status ) ) {
+			// Don't...0 is a valid status code for us.
+			if ( /*!$status ||*/ $status === null || !is_numeric( $status ) ) {
 				$this->dieWithError( [ 'apierror-missingparam', 'status' ], 'missingparam' );
 			}
 		} elseif ( $action == 'vote' ) {
@@ -107,6 +117,10 @@ class ApiPollNY extends ApiBase {
 		$x = 1;
 
 		$output = '';
+		// commented-out experimental, currently unused, more programmatical
+		// way of returning the desired data so that HTML could be assembled
+		// client-side via JS instead of the API having to return HTML
+		// $retVal = [];
 		foreach ( $poll_info['choices'] as $choice ) {
 			$bar_img = "<img src=\"{$wgExtensionAssetsPath}/SocialProfile/images/vote-bar-{$x}.gif\" border=\"0\" class=\"image-choice-{$x}\" style=\"width:{$choice['percent']}%;height:12px;\"/>";
 
@@ -118,9 +132,18 @@ class ApiPollNY extends ApiBase {
 				'</span></div>';
 			$output .= '</div>';
 
+			/*
+			$retVal[$x] = [
+				'x' => $x,
+				'percent' => $choice['percent'],
+				'choice' => $choice['choice'],
+				'votes' => $choice['votes']
+			];
+			*/
 			$x++;
 		}
 
+		// return $retVal;
 		return $output;
 	}
 
@@ -150,6 +173,22 @@ class ApiPollNY extends ApiBase {
 		}
 
 		return 'OK';
+	}
+
+	public function needsToken() {
+		// @note This...quite doesn't work as intended?
+		// @see PollNY.hooks.php, function onAPIGetAllowedParams()
+		if ( $this->shouldRequireToken ) {
+			return 'csrf';
+		}
+		return false;
+	}
+
+	public function isWriteMode() {
+		if ( $this->shouldRequireToken ) {
+			return true;
+		}
+		return false;
 	}
 
 	/**

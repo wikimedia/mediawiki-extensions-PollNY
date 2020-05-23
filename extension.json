@@ -75,6 +75,7 @@
 			"PollNYHooks::registerUserPollHook",
 			"PollNYHooks::registerPollEmbedHook"
 		],
+		"APIGetAllowedParams": "PollNYHooks::onAPIGetAllowedParams",
 		"LoadExtensionSchemaUpdates": "PollNYHooks::onLoadExtensionSchemaUpdates",
 		"CanonicalNamespaces": "PollNYHooks::onCanonicalNamespaces"
 	},

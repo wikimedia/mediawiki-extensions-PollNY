@@ -8,10 +8,14 @@ class UpdatePoll extends UnlistedSpecialPage {
 		parent::__construct( 'UpdatePoll' );
 	}
 
+	public function doesWrites() {
+		return true;
+	}
+
 	/**
 	 * Show the special page
 	 *
-	 * @param $par Mixed: parameter passed to the page or null
+	 * @param string|int|null $par Parameter passed to the page, if any
 	 */
 	public function execute( $par ) {
 		$out = $this->getOutput();
@@ -38,7 +42,7 @@ class UpdatePoll extends UnlistedSpecialPage {
 		 * Redirect Non-logged in users to Login Page
 		 * It will automatically return them to the UpdatePoll page
 		 */
-		if ( $user->getID() == 0 ) {
+		if ( $user->getId() == 0 ) {
 			$out->setPageTitle( $this->msg( 'poll-woops' )->plain() );
 			$login = SpecialPage::getTitleFor( 'Userlogin' );
 			$out->redirect( $login->getFullURL( 'returnto=Special:UpdatePoll' ) );
@@ -49,8 +53,13 @@ class UpdatePoll extends UnlistedSpecialPage {
 		$out->addModuleStyles( 'ext.pollNY.css' );
 		$out->addModules( 'ext.pollNY' );
 
-		if ( $request->wasPosted() && $_SESSION['alreadysubmitted'] == false ) {
+		if (
+			$request->wasPosted() &&
+			$user->matchEditToken( $request->getVal( 'wpEditToken' ) ) &&
+			$_SESSION['alreadysubmitted'] == false
+		) {
 			$_SESSION['alreadysubmitted'] = true;
+
 			$p = new Poll();
 			$poll_info = $p->getPoll( $request->getInt( 'id' ) );
 
@@ -100,7 +109,8 @@ class UpdatePoll extends UnlistedSpecialPage {
 	/**
 	 * Display the form for updating a given poll (via the id parameter in the
 	 * URL).
-	 * @return string|false HTML
+	 *
+	 * @return string|false HTML string or bool false if the user can't edit the requested poll
 	 */
 	function displayForm() {
 		$out = $this->getOutput();
@@ -174,8 +184,7 @@ class UpdatePoll extends UnlistedSpecialPage {
 			];
 		}
 
-		$form .= '</form>
-			</div><!-- .update-poll-left -->
+		$form .= '</div><!-- .update-poll-left -->
 
 			<div class="update-poll-right">
 			<h1>' . $this->msg( 'poll-edit-image' )->escaped() . "</h1>
@@ -198,11 +207,15 @@ class UpdatePoll extends UnlistedSpecialPage {
 
 		</div>
 		<div class="visualClear"></div>
-		<div class="update-poll-warning">' . $this->msg( $copywarnMsg, $copywarnMsgParams )->parse() . "</div>
-		<div class=\"update-poll-buttons\">
-			<input type=\"button\" class=\"site-button\" value=\"" . $this->msg( 'poll-edit-button' )->escaped() . "\" size=\"20\" onclick=\"document.form1.submit()\" />
+		<div class="update-poll-warning">' . $this->msg( $copywarnMsg, $copywarnMsgParams )->parse() . '</div>
+		<div class="update-poll-buttons">' .
+			Html::hidden( 'wpEditToken', $user->getEditToken() ) .
+				"<input type=\"submit\" class=\"site-button\" value=\"" . $this->msg( 'poll-edit-button' )->escaped() . "\" size=\"20\" onclick=\"document.form1.submit()\" />
 			<input type=\"button\" class=\"site-button\" value=\"" . $this->msg( 'poll-cancel-button' )->escaped() . "\" size=\"20\" onclick=\"window.location='" . $poll_page->getFullURL( $prev_qs ) . "'\" />
-		</div>";
+		</div>
+		</form>";
+
 		return $form;
 	}
+
 }

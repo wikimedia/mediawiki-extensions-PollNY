@@ -2,13 +2,14 @@
 /**
  * A special page to administer existing polls (i.e. examine flagged ones,
  * delete them and so on).
+ *
  * @file
  * @ingroup Extensions
  */
 class AdminPoll extends SpecialPage {
 
 	public function __construct() {
-		parent::__construct( 'AdminPoll', 'polladmin' );
+		parent::__construct( 'AdminPoll' );
 	}
 
 	public function doesWrites() {
@@ -18,7 +19,7 @@ class AdminPoll extends SpecialPage {
 	/**
 	 * Show the special page
 	 *
-	 * @param $par Mixed: parameter passed to the page or null
+	 * @param string|int|null $par Parameter passed to the page, if any
 	 */
 	public function execute( $par ) {
 		$out = $this->getOutput();
@@ -31,10 +32,10 @@ class AdminPoll extends SpecialPage {
 			throw new ErrorPageError( 'poll-error-socialprofile-title', 'poll-error-socialprofile' );
 		}
 
-		// If the user doesn't have the required permission, display an error
-		if ( !$user->isAllowed( 'polladmin' ) ) {
-			throw new PermissionsError( 'polladmin' );
-		}
+		// Permissions checks are done a bit further because we allow partial non-polladmin
+		// access to this page to serve no-JS users
+		// @todo Should we do this?
+		// $this->requireLogin();
 
 		// Show a message if the database is in read-only mode
 		$this->checkReadOnly();
@@ -49,6 +50,58 @@ class AdminPoll extends SpecialPage {
 		// Add CSS & JS
 		$out->addModuleStyles( 'ext.pollNY.css' );
 		$out->addModules( 'ext.pollNY' );
+
+		$p = new Poll();
+
+		$output = '';
+
+		$action = $request->getVal( 'action' );
+		$pollId = $request->getInt( 'poll_id' );
+		$newStatus = $request->getInt( 'new_status' );
+
+		if (
+			in_array( $action, [ 'delete', 'flag', 'open', 'close', 'unflag' ] ) &&
+			( $p->doesUserOwnPoll( $user, $pollId ) || $user->isAllowed( 'polladmin' ) )
+		) {
+			$output .= $this->showConfirmationForm( $action, $pollId );
+			$out->addHTML( $output );
+			return;
+		}
+
+		// This loop handles POST actions made against this special page, primarily/only
+		// by users who have JavaScript disabled; for users with JS enabled, the JS POSTs
+		// requests against the API module instead
+		if ( $request->wasPosted() && $user->matchEditToken( $request->getVal( 'wpEditToken' ) ) ) {
+			switch ( $action ) {
+				case 'delete':
+					if ( $user->isAllowed( 'polladmin' ) ) {
+						$success = self::deletePoll( $pollId, $user );
+						if ( $success ) {
+							$output .= Html::successBox( $this->msg( 'poll-js-action-complete' )->escaped() );
+						} else {
+							$output .= Html::errorBox( $this->msg( 'error' )->escaped() );
+						}
+					}
+					break;
+				default:
+				// case 'flag':
+				// case 'close':
+				// case 'unflag':
+				// case 'open':
+					// everybody can flag, creators and poll admins can close
+					if (
+						$newStatus == Poll::STATUS_FLAGGED ||
+						$p->doesUserOwnPoll( $user, $pollId ) ||
+						$user->isAllowed( 'polladmin' )
+					) {
+						$p->updatePollStatus( $pollId, $newStatus );
+						$output .= Html::successBox( $this->msg( 'poll-js-action-complete' )->escaped() );
+					} else {
+						$output .= Html::errorBox( $this->msg( 'error' )->escaped() );
+					}
+					break;
+			}
+		}
 
 		// Pagination
 		$per_page = 20;
@@ -68,8 +121,20 @@ class AdminPoll extends SpecialPage {
 			'flagged' => $this->msg( 'poll-admin-flagged' )->text()
 		];
 
-		$output = '<div class="view-poll-top-links">
-			<a href="javascript:history.go(-1);">' . $this->msg( 'poll-take-button' )->text() . '</a>
+		$thisPage = $this->getPageTitle();
+
+		$viewPollURL = htmlspecialchars( SpecialPage::getTitleFor( 'ViewPoll' )->getFullURL(), ENT_QUOTES );
+
+		// @todo FIXME: This is not ideal. The second condition should be like
+		// $user->isAllowed( 'createpoll' ) except we currently don't have such a user
+		// right...so this basically assumes that "anons cannot create polls" right now;
+		// that assumption may or may not be correct.
+		if ( !$user->isAllowed( 'polladmin' ) && $user->isLoggedIn() ) {
+			$output .= $this->msg( 'poll-admin-nonadmin-note' )->escaped();
+			$output .= '<br />';
+		}
+		$output .= '<div class="view-poll-top-links">
+			<a href="' . $viewPollURL . '">' . $this->msg( 'poll-take-button' )->text() . '</a>
 		</div>
 
 		<div class="view-poll-navigation">
@@ -78,7 +143,7 @@ class AdminPoll extends SpecialPage {
 		foreach ( $nav as $status => $title ) {
 			$output .= '<p>';
 			if ( $current_status != $status ) {
-				$output .= '<a href="' . htmlspecialchars( $this->getPageTitle()->getFullURL( "status={$status}" ) ) . "\">{$title}</a>";
+				$output .= '<a href="' . htmlspecialchars( $thisPage->getFullURL( "status={$status}" ) ) . "\">{$title}</a>";
 			} else {
 				$output .= "<b>{$title}</b>";
 			}
@@ -115,6 +180,10 @@ class AdminPoll extends SpecialPage {
 		$where = [];
 		if ( $status_int > -1 ) {
 			$where['poll_status'] = $status_int;
+		}
+		// NoJS: only show non-polladmins their own polls
+		if ( !$user->isAllowed( 'polladmin' ) ) {
+			$where['poll_actor'] = $user->getActorId();
 		}
 
 		$dbr = wfGetDB( DB_MASTER );
@@ -154,12 +223,19 @@ class AdminPoll extends SpecialPage {
 		// For example, there are no flagged polls or closed polls. This msg
 		// gets shown even then.
 		if ( !$dbr->numRows( $res ) ) {
+			// @todo FIXME: should take 'status' URL param into account better, for
+			// "there are no _flagged_ polls" is way different from "there are no polls
+			// at all"
 			$out->addWikiMsg( 'poll-admin-no-polls' );
 		}
 
+		$linkRenderer = $this->getLinkRenderer();
 		foreach ( $res as $row ) {
 			$creatorUser = User::newFromActorId( $row->poll_actor );
-			$user_create = htmlspecialchars( $creatorUser->getName(), ENT_QUOTES );
+			$creatorUserPage = $linkRenderer->makeKnownLink(
+				$creatorUser->getUserPage(),
+				$creatorUser->getName()
+			);
 			$avatar = new wAvatar( $creatorUser->getId(), 'm' );
 			$poll_title = $row->poll_text;
 			$poll_date = wfTimestamp( TS_UNIX, $row->poll_date );
@@ -167,7 +243,6 @@ class AdminPoll extends SpecialPage {
 			$rowId = "poll-row-{$x}";
 			$title = Title::makeTitle( NS_POLL, $poll_title );
 
-			$p = new Poll();
 			$poll_choices = $p->getPollChoices( $row->poll_id );
 
 			if ( ( $x < $dbr->numRows( $res ) ) && ( $x % $per_page != 0 ) ) {
@@ -179,9 +254,9 @@ class AdminPoll extends SpecialPage {
 			$poll_url = htmlspecialchars( $title->getFullURL() );
 			$output .= "<div class=\"view-poll-number\">{$x}.</div>
 					<div class=\"view-poll-user-image\">{$avatar->getAvatarURL()}</div>
-					<div class=\"view-poll-user-name\">{$user_create}</div>
+					<div class=\"view-poll-user-name\">{$creatorUserPage}</div>
 					<div class=\"view-poll-text\">
-					<p><b><a href=\"{$poll_url}\">{$poll_title}</a></b></p>
+					<a href=\"{$poll_url}\">{$poll_title}</a>
 					<p>";
 			foreach ( $poll_choices as $choice ) {
 				$output .= "{$choice['choice']}<br />";
@@ -199,18 +274,48 @@ class AdminPoll extends SpecialPage {
 							)->parse() . ")</p>
 						<div id=\"poll-{$row->poll_id}-controls\">";
 			if ( $row->poll_status == Poll::STATUS_FLAGGED ) {
-				$output .= "<a class=\"poll-unflag-link\" href=\"javascript:void(0)\" data-poll-id=\"{$row->poll_id}\">" .
+				$unflagLink = htmlspecialchars(
+					$thisPage->getFullURL( [
+						'action' => 'unflag',
+						'poll_id' => $row->poll_id
+					] ),
+					ENT_QUOTES
+				);
+				$output .= "<a class=\"poll-unflag-link\" href=\"{$unflagLink}\" data-poll-id=\"{$row->poll_id}\">" .
 					$this->msg( 'poll-unflag-poll' )->escaped() . '</a>';
 			}
 			if ( $row->poll_status == Poll::STATUS_CLOSED ) {
-				$output .= " <a class=\"poll-open-link\" href=\"javascript:void(0)\" data-poll-id=\"{$row->poll_id}\">" .
+				$openLink = htmlspecialchars(
+					$thisPage->getFullURL( [
+						'action' => 'open',
+						'poll_id' => $row->poll_id
+					] ),
+					ENT_QUOTES
+				);
+				$output .= " <a class=\"poll-open-link\" href=\"{$openLink}\" data-poll-id=\"{$row->poll_id}\">" .
 					$this->msg( 'poll-open-poll' )->escaped() . '</a>';
 			}
 			if ( $row->poll_status == Poll::STATUS_OPEN ) {
-				$output .= " <a class=\"poll-close-link\" href=\"javascript:void(0)\" data-poll-id=\"{$row->poll_id}\">" .
+				$closeLink = htmlspecialchars(
+					$thisPage->getFullURL( [
+						'action' => 'close',
+						'poll_id' => $row->poll_id
+					] ),
+					ENT_QUOTES
+				);
+				$output .= " <a class=\"poll-close-link\" href=\"{$closeLink}\" data-poll-id=\"{$row->poll_id}\">" .
 					$this->msg( 'poll-close-poll' )->escaped() . '</a>';
 			}
-			$output .= " <a class=\"poll-delete-link\" href=\"javascript:void(0)\" data-poll-id=\"{$row->poll_id}\">" .
+
+			$deleteLink = htmlspecialchars(
+				$thisPage->getFullURL( [
+					'action' => 'delete',
+					'poll_id' => $row->poll_id
+				] ),
+				ENT_QUOTES
+			);
+
+			$output .= " <a class=\"poll-delete-link\" href=\"{$deleteLink}\" data-poll-id=\"{$row->poll_id}\">" .
 				$this->msg( 'poll-delete-poll' )->escaped() . '</a>
 						</div>
 					</div>
@@ -353,6 +458,59 @@ class AdminPoll extends SpecialPage {
 		}
 
 		return $retVal;
+	}
+
+	/**
+	 * Render the confirmation form for confirming an action.
+	 *
+	 * Mainly used as the no-JS fallback; for users with JavaScript enabled,
+	 * the JS handles the anti-CSRF stuff and does everything somewhat more
+	 * smoothly.
+	 *
+	 * @param string $action close, open, flag, unflag or delete
+	 * @param int $id ID of the poll that $action is going to impact
+	 * @return string HTML
+	 */
+	private function showConfirmationForm( $action, $id ) {
+		$form = '';
+		$user = $this->getUser();
+		$newStatus = $this->getRequest()->getInt( 'new_status' );
+
+		$form .= '<form method="post" name="poll-action-confirm" action="">';
+		switch ( $action ) {
+			case 'close':
+				$msgKey = 'poll-close-message';
+				break;
+			case 'delete':
+				$msgKey = 'poll-delete-message';
+				break;
+			case 'flag':
+				$msgKey = 'poll-flagged-message';
+				break;
+			case 'open':
+				$msgKey = 'poll-open-message';
+				break;
+			case 'unflag':
+				$msgKey = 'poll-unflag-message';
+				break;
+			default:
+				break;
+		}
+		// Could pass in $id as ->numParams() but that'd be useless as the messages
+		// don't currently use it
+		$form .= $this->msg( $msgKey )->parseAsBlock();
+		$form .= '<br />';
+
+		$form .= Html::hidden( 'wpEditToken', $user->getEditToken() );
+		$form .= Html::hidden( 'poll_id', $id );
+		$form .= Html::hidden( 'action', $action );
+		if ( $newStatus ) {
+			$form .= Html::hidden( 'new_status', $newStatus );
+		}
+		$form .= Html::submitButton( $this->msg( 'poll-submit-btn' )->escaped(), [ 'name' => 'wpSubmit', 'class' => 'site-button' ] );
+		$form .= '</form>';
+
+		return $form;
 	}
 
 	protected function getGroupName() {
