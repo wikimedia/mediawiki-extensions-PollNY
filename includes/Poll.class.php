@@ -275,24 +275,60 @@ class Poll {
 	public function getRandomPollID( $user ) {
 		$dbr = wfGetDB( DB_MASTER );
 		$poll_page_id = 0;
-		$use_index = $dbr->useIndexClause( 'poll_random' );
 		$randstr = wfRandom();
-		$actorId = (int)$user->getActorId();
-		$sql = "SELECT poll_page_id FROM {$dbr->tableName( 'poll_question' )} {$use_index}
-			INNER JOIN {$dbr->tableName( 'page' )} ON page_id=poll_page_id WHERE poll_id NOT IN
-				(SELECT pv_poll_id FROM {$dbr->tableName( 'poll_user_vote' )} WHERE pv_actor = {$actorId})
-				AND poll_status=1 AND poll_random>$randstr ORDER BY poll_random LIMIT 0,1";
-		$res = $dbr->query( $sql, __METHOD__ );
-		$row = $dbr->fetchObject( $res );
+
+		$excludedIds = [];
+		$res = $dbr->select(
+			'poll_user_vote',
+			'pv_poll_id',
+			[ 'pv_actor' => (int)$user->getActorId() ],
+			__METHOD__
+		);
+		foreach ( $res as $row ) {
+			$excludedIds[] = $row->pv_poll_id;
+		}
+
+		if ( empty( $excludedIds ) ) {
+			// Avoid generating invalid SQL in the "NOT IN" clause below
+			// and just fall through to the "random fallback" below
+			$row = false;
+		} else {
+			$row = $dbr->selectRow(
+				'poll_question',
+				'poll_page_id',
+				[
+					'poll_id NOT IN (' . $dbr->makeList( $excludedIds ) . ')',
+					'poll_status' => self::STATUS_OPEN,
+					'poll_random > ' . $randstr
+				],
+				__METHOD__,
+				[
+					'ORDER BY' => 'poll_random',
+					'LIMIT' => 1
+				],
+				[ 'page' => [ 'INNER JOIN', 'page_id = poll_page_id' ] ]
+			);
+		}
+
 		// random fallback
 		if ( !$row ) {
-			$sql = "SELECT poll_page_id FROM {$dbr->tableName( 'poll_question' )} {$use_index}
-				INNER JOIN {$dbr->tableName( 'page' )} ON page_id=poll_page_id WHERE poll_id NOT IN
-					(SELECT pv_poll_id FROM {$dbr->tableName( 'poll_user_vote' )} WHERE pv_actor = {$actorId})
-					AND poll_status=1 AND poll_random<$randstr ORDER BY poll_random LIMIT 0,1";
-			wfDebugLog( 'PollNY', $sql );
-			$res = $dbr->query( $sql, __METHOD__ );
-			$row = $dbr->fetchObject( $res );
+			$row = $dbr->selectRow(
+				'poll_question',
+				'poll_page_id',
+				[
+					'poll_id NOT IN (' . $dbr->makeList( $excludedIds ) . ')',
+					'poll_status' => self::STATUS_OPEN,
+					'poll_random < ' . $randstr
+				],
+				__METHOD__,
+				[
+					'ORDER BY' => 'poll_random',
+					'LIMIT' => 1
+				],
+				[
+					'page' => [ 'INNER JOIN', 'page_id = poll_page_id' ]
+				]
+			);
 		}
 		if ( $row ) {
 			$poll_page_id = $row->poll_page_id;
