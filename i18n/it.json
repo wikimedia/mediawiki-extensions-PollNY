@@ -41,6 +41,7 @@
 	"poll-flagged-message": "Sei sicuro di voler contrassegnare questo sondaggio?",
 	"poll-flag-poll": "Contrassegna sondaggio",
 	"poll-image-label": "Aggiungi un'immagine",
+	"poll-submit-btn": "Invia",
 	"poll-votes": "{{PLURAL:$1|un voto|$1 voti}}",
 	"poll-woops": "Oops!",
 	"poll-time-ago": "$1 fa",

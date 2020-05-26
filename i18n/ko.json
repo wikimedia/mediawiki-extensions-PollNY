@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Codenstory",
 			"Nuevo Paso",
 			"Priviet",
 			"Revi",
@@ -18,6 +19,7 @@
 	"poll-admin-flagged": "플래그됨",
 	"poll-admin-open": "열기",
 	"poll-error-socialprofile-title": "SocialProfile 확장 기능이 설치되어 있지 않습니다.",
+	"poll-admin-nonadmin-note": "당신은 선거 관리자가 아니기 때문에 당신이 개설한 투표만 볼 수 있습니다.",
 	"poll-admin-panel": "관리",
 	"poll-admin-status-nav": "상태별 필터",
 	"poll-admin-title-all": "설문 조사 관리 - 모든 설문 조사 보기",
@@ -73,6 +75,7 @@
 	"poll-previous-poll": "이전 설문 조사",
 	"poll-question-label": "설문 조사 질문",
 	"poll-skip": "건너뛰기 >",
+	"poll-submit-btn": "제출",
 	"poll-submitted-by": "제출자",
 	"poll-take-button": "< 설문 조사로 돌아가기",
 	"poll-unavailable": "이 설문 조사는 사용할 수 없습니다",
