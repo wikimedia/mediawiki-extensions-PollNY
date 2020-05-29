@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Alex Great",
+			"Diman Russkov",
 			"Kaganer",
 			"Nk88",
 			"Okras"
@@ -73,6 +74,7 @@
 	"poll-previous-poll": "Предыдущий опрос",
 	"poll-question-label": "Вопрос",
 	"poll-skip": "Пропустить >",
+	"poll-submit-btn": "Отправить",
 	"poll-submitted-by": "Добавлен участником",
 	"poll-take-button": "< Обратно в опросы",
 	"poll-unavailable": "Этот опрос недоступен",
