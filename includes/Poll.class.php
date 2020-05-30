@@ -29,7 +29,7 @@ class Poll {
 	 * @param $image String: name of the poll image, if any
 	 * @param $pageID Integer: page ID, as returned by Article::getID()
 	 * @param User $user relevant user
-	 * @return Integer inserted value of an auto-increment row (poll ID)
+	 * @return int inserted value of an auto-increment row (poll ID)
 	 */
 	public function addPollQuestion( $question, $image, $pageID, User $user ) {
 		$dbw = wfGetDB( DB_MASTER );

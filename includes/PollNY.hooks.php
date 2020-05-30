@@ -15,8 +15,8 @@ class PollNYHooks {
 	 * Updates the poll_question table to point to the new title when a page in
 	 * the NS_POLL namespace is moved.
 	 *
-	 * @param $title Object: Title object referring to the old title
-	 * @param $newTitle Object: Title object referring to the new (current)
+	 * @param &$title Object: Title object referring to the old title
+	 * @param &$newTitle Object: Title object referring to the new (current)
 	 *                          title
 	 * @param $user Object: User object performing the move [unused]
 	 * @param $oldid Integer: old ID of the page
@@ -38,8 +38,8 @@ class PollNYHooks {
 	 * Called when deleting a poll page to make sure that the appropriate poll
 	 * database tables will be updated accordingly & memcached will be purged.
 	 *
-	 * @param $article Object: instance of Article class
-	 * @param $user Unused
+	 * @param &$article Object: instance of Article class
+	 * @param &$user Unused
 	 * @param $reason Mixed: deletion reason (unused)
 	 */
 	public static function deletePollQuestion( &$article, &$user, $reason ) {
@@ -95,8 +95,8 @@ class PollNYHooks {
 	/**
 	 * Handles the viewing of pages in the poll namespace.
 	 *
-	 * @param $title Object: instance of Title class
-	 * @param $article Object: instance of Article class
+	 * @param &$title Object: instance of Title class
+	 * @param &$article Object: instance of Article class
 	 */
 	public static function pollFromTitle( &$title, &$article ) {
 		if ( $title->getNamespace() == NS_POLL ) {
@@ -401,7 +401,7 @@ class PollNYHooks {
 	/**
 	 * Register the canonical names for our namespace and its talkspace.
 	 *
-	 * @param $list Array: array of namespace numbers with corresponding
+	 * @param &$list Array: array of namespace numbers with corresponding
 	 *                     canonical names
 	 */
 	public static function onCanonicalNamespaces( &$list ) {
