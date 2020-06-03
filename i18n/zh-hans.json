@@ -3,6 +3,7 @@
 		"authors": [
 			"Liuxinyu970226",
 			"Qiyue2001",
+			"SomeyaMako",
 			"Yfdyh000"
 		]
 	},
@@ -72,6 +73,7 @@
 	"poll-previous-poll": "前一个调查",
 	"poll-question-label": "调查的问题",
 	"poll-skip": "跳过 >",
+	"poll-submit-btn": "提交",
 	"poll-submitted-by": "提交者",
 	"poll-take-button": "< 返回调查",
 	"poll-unavailable": "此调查不可用",
