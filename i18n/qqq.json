@@ -4,6 +4,7 @@
 			"Beta16",
 			"Liuxinyu970226",
 			"Nemo bis",
+			"Robby",
 			"Shirayuki",
 			"Siebrand",
 			"Umherirrender"
@@ -76,7 +77,7 @@
 	"poll-previous-poll": "Link title; shown on Poll: pages if there is a previous poll available.\n\nSee also:\n* {{msg-mw|Poll-next-poll}}",
 	"poll-question-label": "Shown on [[Special:CreatePoll]].\n\nUsed as label for the input box entering the question.",
 	"poll-skip": "Link title; shown on the bottom of each Poll: page. Clicking on this link allows the user to skip voting in the current poll and bring up a new poll.\n{{Identical|Skip}}",
-	"poll-submit-btn": "Submit button text; this button will be displayed on Poll: pages for users who do not have JavaScript enabled, thus allowing them to vote on polls as well",
+	"poll-submit-btn": "Submit button text; this button will be displayed on Poll: pages for users who do not have JavaScript enabled, thus allowing them to vote on polls as well\n{{identical|Submit}}",
 	"poll-submitted-by": "Title of the box shown on each Poll: page that contains the poll author's username, avatar, some statistics about the poll author and a link to all the polls created by that user.",
 	"poll-take-button": "Link title, shown on both [[Special:AdminPoll]] and [[Special:ViewPoll]]; on the latter page, clicking on this link takes the user to a random poll via [[Special:RandomPoll]].",
 	"poll-unavailable": "Message displayed when a poll embedded to a page with the <code><nowiki><pollembed></nowiki></code> tag cannot be rendered (the poll page's page ID is zero or less)",
