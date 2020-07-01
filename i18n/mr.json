@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"V.narsikar"
+			"V.narsikar",
+			"ज्ञानदा गद्रे-फडके"
 		]
 	},
 	"viewpoll": "मतदान बघा",
@@ -26,7 +27,7 @@
 	"poll-edit-invalid-access": "अवैध पोहोच",
 	"poll-enterquestion": "आपण एखादा प्रश्न टाकावयास हवा",
 	"poll-finished": "<b>आता मतदान करायचे बाकी नाही. येथे जोडा आपले <a href=\"$1\">स्वतःचे! </a></b> किंवा<a href=\"$2\">या मतदानाचा निकाल बघा</a>.",
-	"poll-flagged-message": "हे नक्की आहे काय कि आपणास या मतदानास खूणपताका लावायची आहे?",
+	"poll-flagged-message": "आपणास या मतदानास नक्की खूणपताका लावायची आहे का?",
 	"poll-flag-poll": "मतदानास खूणपताका लावा",
 	"poll-image-label": "चित्र जोडा",
 	"poll-js-action-complete": "क्रिया पूर्ण झाली.",
