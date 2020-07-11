@@ -25,9 +25,9 @@ class Poll {
 	/**
 	 * Adds a poll question to the database.
 	 *
-	 * @param $question String: poll question
-	 * @param $image String: name of the poll image, if any
-	 * @param $pageID Integer: page ID, as returned by Article::getID()
+	 * @param string $question poll question
+	 * @param string $image name of the poll image, if any
+	 * @param int $pageID page ID, as returned by Article::getID()
 	 * @param User $user relevant user
 	 * @return int inserted value of an auto-increment row (poll ID)
 	 */
@@ -51,9 +51,9 @@ class Poll {
 	/**
 	 * Adds an individual poll answer choice to the database.
 	 *
-	 * @param $pollID Integer: poll ID number
-	 * @param $choiceText String: user-supplied answer choice text
-	 * @param $choiceOrder Integer: a value between 1 and 10
+	 * @param int $pollID poll ID number
+	 * @param string $choiceText user-supplied answer choice text
+	 * @param int $choiceOrder a value between 1 and 10
 	 */
 	public function addPollChoice( $pollID, $choiceText, $choiceOrder ) {
 		$dbw = wfGetDB( DB_MASTER );
@@ -72,9 +72,9 @@ class Poll {
 	 * Adds a record to the poll_user_vote table to signify that the user has
 	 * already voted.
 	 *
-	 * @param $pollID Integer: ID number of the poll
-	 * @param $choiceID Integer: number of the choice
-	 * @param $user relevant user
+	 * @param int $pollID ID number of the poll
+	 * @param int $choiceID number of the choice
+	 * @param User $user relevant user
 	 */
 	public function addPollVote( $pollID, $choiceID, User $user ) {
 		$dbw = wfGetDB( DB_MASTER );
@@ -100,7 +100,7 @@ class Poll {
 	 * Increases the total amount of votes an answer choice has by one and
 	 * commits to DB.
 	 *
-	 * @param $choiceID Integer: answer choice ID number between 1 and 10
+	 * @param int $choiceID answer choice ID number between 1 and 10
 	 */
 	public function incChoiceVoteCount( $choiceID ) {
 		$dbw = wfGetDB( DB_MASTER );
@@ -115,7 +115,7 @@ class Poll {
 	/**
 	 * Increases the total amount of votes a poll has by one and commits to DB.
 	 *
-	 * @param $pollID Integer: poll ID number
+	 * @param int $pollID poll ID number
 	 */
 	public function incPollVoteCount( $pollID ) {
 		$dbw = wfGetDB( DB_MASTER );
@@ -130,7 +130,7 @@ class Poll {
 	/**
 	 * Gets information about a poll.
 	 *
-	 * @param $pageID Integer: page ID number
+	 * @param int $pageID page ID number
 	 * @return array Poll information, such as question, choices, status, etc.
 	 */
 	public function getPoll( $pageID ) {
@@ -163,8 +163,8 @@ class Poll {
 	/**
 	 * Gets the answer choices for the poll with ID = $poll_id.
 	 *
-	 * @param $poll_id Integer: poll ID number
-	 * @param $poll_vote_count Integer: 0 by default
+	 * @param int $poll_id poll ID number
+	 * @param int $poll_vote_count 0 by default
 	 * @return array[] Poll answer choice info (answer ID, text,
 	 * 					amount of votes and percent of total votes)
 	 */
@@ -324,6 +324,7 @@ class Poll {
 	 *
 	 * @param int $count How many polls to fetch? Default is 3.
 	 * @param string $order ORDER BY for SQL query, default being 'poll_id'.
+	 * @return array
 	 */
 	public static function getPollList( $count = 3, $order = 'poll_id' ) {
 		global $wgMemc;
@@ -370,6 +371,9 @@ class Poll {
 	/**
 	 * The following three functions are borrowed
 	 * from includes/wikia/GlobalFunctionsNY.php
+	 * @param int $date1
+	 * @param int $date2
+	 * @return array
 	 */
 	public static function dateDiff( $date1, $date2 ) {
 		$dtDiff = $date1 - $date2;

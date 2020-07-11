@@ -95,8 +95,6 @@ class ApiPollNY extends ApiBase {
 		$this->getResult()->addValue( null, $this->getModuleName(),
 			[ 'result' => $output ]
 		);
-
-		return true;
 	}
 
 	function delete( $pollID ) {

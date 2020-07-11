@@ -56,8 +56,8 @@ class PollAjaxUploadForm extends UploadForm {
 	 * $wgOut->addInlineScript in that addUploadJS() function doesn't work,
 	 * either
 	 *
-	 * @param $html String: HTML contents to wrap.
-	 * @return String wrapped HTML.
+	 * @param string $html HTML contents to wrap.
+	 * @return string wrapped HTML.
 	 */
 	function wrapForm( $html ) {
 		# Include a <fieldset> wrapper for style, if requested.

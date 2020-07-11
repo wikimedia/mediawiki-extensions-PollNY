@@ -31,8 +31,6 @@ class RandomPoll extends SpecialPage {
 			$pollTitle = Title::newFromText( $pollPage );
 			$out->redirect( $pollTitle->getFullURL() );
 		}
-
-		return $pollPage;
 	}
 
 	protected function getGroupName() {

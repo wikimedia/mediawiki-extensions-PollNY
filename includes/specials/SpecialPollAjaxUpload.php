@@ -32,8 +32,6 @@ class SpecialPollAjaxUpload extends SpecialUpload {
 	 *
 	 * What was changed here: $this->mIgnoreWarning is now unconditionally true
 	 * and mUpload uses PollUpload instead of UploadBase
-	 *
-	 * @param $request WebRequest: The request to extract variables from
 	 */
 	protected function loadRequest() {
 		$this->mRequest = $request = $this->getRequest();
@@ -78,6 +76,7 @@ class SpecialPollAjaxUpload extends SpecialUpload {
 	 *
 	 * What was changed here: the setArticleBodyOnly() line below was added,
 	 * and some bits of code were entirely removed.
+	 * @param string|null $par
 	 */
 	public function execute( $par ) {
 		// Disable the skin etc.
@@ -133,8 +132,9 @@ class SpecialPollAjaxUpload extends SpecialUpload {
 	/**
 	 * Get a PollAjaxUploadForm instance with title and text properly set.
 	 *
-	 * @param $message String: HTML string to add to the form
-	 * @param $sessionKey String: session key in case this is a stashed upload
+	 * @param string $message HTML string to add to the form
+	 * @param string $sessionKey session key in case this is a stashed upload
+	 * @param bool $hideIgnoreWarning
 	 * @return PollAjaxUploadForm
 	 */
 	protected function getUploadForm( $message = '', $sessionKey = '', $hideIgnoreWarning = false ) {
@@ -170,7 +170,7 @@ class SpecialPollAjaxUpload extends SpecialUpload {
 	 * essentially means that UploadBase::VERIFICATION_ERROR and
 	 * UploadBase::EMPTY_FILE should not be passed here.
 	 *
-	 * @param $message String: HTML message to be passed to mainUploadForm
+	 * @param string $message HTML message to be passed to mainUploadForm
 	 */
 	protected function showRecoverableUploadError( $message ) {
 		$sessionKey = $this->mUpload->stashSession();
@@ -185,7 +185,7 @@ class SpecialPollAjaxUpload extends SpecialUpload {
 	/**
 	 * Show the upload form with error message, but do not stash the file.
 	 *
-	 * @param $message String: error message to show
+	 * @param string $message error message to show
 	 */
 	protected function showUploadError( $message ) {
 		$message = addslashes( $message );

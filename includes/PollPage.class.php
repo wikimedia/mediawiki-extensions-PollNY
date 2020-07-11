@@ -8,7 +8,7 @@ class PollPage extends Article {
 
 	/**
 	 * Constructor and clear the article
-	 * @param $title Object: reference to a Title object.
+	 * @param Title $title
 	 */
 	public function __construct( Title $title ) {
 		parent::__construct( $title );
@@ -60,7 +60,7 @@ class PollPage extends Article {
 		$poll_info = $p->getPoll( $title->getArticleID() );
 
 		if ( !isset( $poll_info['id'] ) ) {
-			return '';
+			return;
 		}
 
 		$imgPath = $wgExtensionAssetsPath . '/SocialProfile/images';

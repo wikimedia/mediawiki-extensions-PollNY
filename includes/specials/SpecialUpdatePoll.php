@@ -15,7 +15,7 @@ class UpdatePoll extends UnlistedSpecialPage {
 	/**
 	 * Show the special page
 	 *
-	 * @param string|int|null $par Parameter passed to the page, if any
+	 * @param string|null $par Parameter passed to the page, if any
 	 */
 	public function execute( $par ) {
 		$out = $this->getOutput();
@@ -46,7 +46,7 @@ class UpdatePoll extends UnlistedSpecialPage {
 			$out->setPageTitle( $this->msg( 'poll-woops' )->plain() );
 			$login = SpecialPage::getTitleFor( 'Userlogin' );
 			$out->redirect( $login->getFullURL( 'returnto=Special:UpdatePoll' ) );
-			return false;
+			return;
 		}
 
 		// Add CSS & JS

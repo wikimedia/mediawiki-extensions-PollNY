@@ -15,12 +15,11 @@ class PollNYHooks {
 	 * Updates the poll_question table to point to the new title when a page in
 	 * the NS_POLL namespace is moved.
 	 *
-	 * @param &$title Object: Title object referring to the old title
-	 * @param &$newTitle Object: Title object referring to the new (current)
-	 *                          title
-	 * @param $user Object: User object performing the move [unused]
-	 * @param $oldid Integer: old ID of the page
-	 * @param $newid Integer: new ID of the page [unused]
+	 * @param Title &$title Title object referring to the old title
+	 * @param Title &$newTitle Title object referring to the new (current) title
+	 * @param User $user User object performing the move [unused]
+	 * @param int $oldid old ID of the page
+	 * @param int $newid new ID of the page [unused]
 	 */
 	public static function updatePollQuestion( &$title, &$newTitle, $user, $oldid, $newid ) {
 		if ( $title->getNamespace() == NS_POLL ) {
@@ -38,9 +37,9 @@ class PollNYHooks {
 	 * Called when deleting a poll page to make sure that the appropriate poll
 	 * database tables will be updated accordingly & memcached will be purged.
 	 *
-	 * @param &$article Object: instance of Article class
-	 * @param &$user Unused
-	 * @param $reason Mixed: deletion reason (unused)
+	 * @param WikiPage &$article instance of WikiPage class
+	 * @param User &$user Unused
+	 * @param string $reason deletion reason (unused)
 	 */
 	public static function deletePollQuestion( &$article, &$user, $reason ) {
 		if ( $article->getTitle()->getNamespace() == NS_POLL ) {
@@ -95,8 +94,8 @@ class PollNYHooks {
 	/**
 	 * Handles the viewing of pages in the poll namespace.
 	 *
-	 * @param &$title Object: instance of Title class
-	 * @param &$article Object: instance of Article class
+	 * @param Title &$title
+	 * @param Article &$article
 	 */
 	public static function pollFromTitle( &$title, &$article ) {
 		if ( $title->getNamespace() == NS_POLL ) {
@@ -133,7 +132,7 @@ class PollNYHooks {
 	 * Mark page as uncacheable
 	 *
 	 * @param Parser $parser
-	 * @param ParserOutput $limitReport
+	 * @param ParserOutput $output
 	 */
 	public static function onParserLimitReportPrepare( $parser, $output ) {
 		$parser->getOutput()->updateCacheExpiry( 0 );
@@ -162,10 +161,10 @@ class PollNYHooks {
 	/**
 	 * Callback function for the <pollembed> tag.
 	 *
-	 * @param $input Mixed: user input
-	 * @param $args Array: arguments supplied to the pollembed tag
-	 * @param $parser Object: instance of Parser class
-	 * @return HTML or nothing
+	 * @param string $input user input
+	 * @param array $args arguments supplied to the pollembed tag
+	 * @param Parser $parser
+	 * @return string HTML or nothing
 	 */
 	public static function renderEmbedPoll( $input, $args, $parser ) {
 		$poll_name = $args['title'];
@@ -401,8 +400,7 @@ class PollNYHooks {
 	/**
 	 * Register the canonical names for our namespace and its talkspace.
 	 *
-	 * @param &$list Array: array of namespace numbers with corresponding
-	 *                     canonical names
+	 * @param array &$list array of namespace numbers with corresponding canonical names
 	 */
 	public static function onCanonicalNamespaces( &$list ) {
 		$list[NS_POLL] = 'Poll';
