@@ -13,7 +13,7 @@
 	"poll-admin-closed": "Lukket",
 	"poll-admin-flagged": "Flagget",
 	"poll-admin-open": "Åpen",
-	"poll-error-socialprofile": "Utvidelsen [https://www.mediawiki.org/wiki/Extension:SocialProfile SocialProfile] er ikke installert. Installer denne utvidelsen og prøv igjen.",
+	"poll-error-socialprofile": "Utvidelsen [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:SocialProfile SocialProfile] er ikke installert. Installer denne utvidelsen og prøv igjen.",
 	"poll-error-socialprofile-title": "Utvidelsen SocialProfile er ikke installert.",
 	"poll-admin-panel": "Administrator",
 	"poll-admin-status-nav": "Filtrer etter status",
