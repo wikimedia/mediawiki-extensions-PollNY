@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"BaRaN6161 TURK"
+			"BaRaN6161 TURK",
+			"MuratTheTurkish"
 		]
 	},
 	"adminpoll": "Anketleri yönetin",
@@ -95,7 +96,7 @@
 	"poll-time-minutes": "{{PLURAL:$1|bir dakika|$1 dakika}}",
 	"poll-time-seconds": "{{PLURAL:$1|bir saniye|$1 saniye}}",
 	"specialpages-group-poll": "Anketler",
-	"action-pollny-vote": "anketlerde oy kullanma",
+	"action-pollny-vote": "anketlerde oy verin",
 	"right-pollny-vote": "Anketlerde oy verin",
 	"action-polladmin": "anketleri yönet",
 	"right-polladmin": "Anketleri yönet",
@@ -110,6 +111,6 @@
 	"apihelp-pollny-example-1": "Anket #66'yı siler",
 	"apihelp-pollny-example-2": "Anket sonuçlarını alır #666",
 	"apihelp-pollny-example-3": "Mevcut kullanıcının henüz cevaplamadığı rastgele bir anket alır",
-	"apihelp-pollny-example-5": "Anket # 47'nin durumunu 1'e ayarlar (=açık); olası durum değerleri 0 (=kapalı), 1 ve 2'dir (=işaretli)",
+	"apihelp-pollny-example-5": "Anket #47'nin durumunu 1'e ayarlar (=open); olası durum değerleri 0 (=closed), 1 ve 2'dir (=flagged)",
 	"apihelp-pollny-example-6": "4. seçim ile 33 numaralı anketi oylar (cevaplar)"
 }
