@@ -40,7 +40,7 @@ class Poll {
 				'poll_actor' => $user->getActorId(),
 				'poll_text' => strip_tags( $question ),
 				'poll_image' => $image,
-				'poll_date' => date( 'Y-m-d H:i:s' ),
+				'poll_date' => $dbw->timestamp( date( 'Y-m-d H:i:s' ) ),
 				'poll_random' => wfRandom()
 			],
 			__METHOD__
@@ -84,7 +84,7 @@ class Poll {
 				'pv_poll_id' => $pollID,
 				'pv_pc_id' => $choiceID,
 				'pv_actor' => $user->getActorId(),
-				'pv_date' => date( 'Y-m-d H:i:s' )
+				'pv_date' => $dbw->timestamp( date( 'Y-m-d H:i:s' ) )
 			],
 			__METHOD__
 		);
