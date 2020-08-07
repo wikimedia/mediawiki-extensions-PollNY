@@ -83,7 +83,6 @@
 	"poll-unavailable": "Message displayed when a poll embedded to a page with the <code><nowiki><pollembed></nowiki></code> tag cannot be rendered (the poll page's page ID is zero or less)",
 	"poll-unflag-message": "Confirmation message shown on Special:AdminPoll for users without JavaScript when they are about to unflag a poll, which makes the poll votable and viewable by regular users once again.",
 	"poll-unflag-poll": "Link text; unflagging a poll allows the poll to be shown to users so that they can participate in it",
-	"poll-upload-image-button": "Button text.\n{{Identical|Upload}}",
 	"poll-upload-new-image": "Link title.\n\nThis link is shown on [[Special:CreatePoll]] after the user has uploaded an image with that special page's built-in upload form.",
 	"poll-view-title": "This message can be the title of [[Special:ViewPoll]] when viewing the polls of a certain user (as opposed to viewing all available polls, in which case that special page's title is {{msg-mw|Viewpoll}}).\n\nParameters:\n* $1 - a username (<nowiki>{{GENDER}}</nowiki> can be used for this for languages that need it)",
 	"poll-view-order": "Heading of the right-hand navigation menu on [[Special:ViewPoll]]; \"order\" refers to the sort order.\n\nFollowed by the following link texts:\n* {{msg-mw|Poll-view-popular}}\n* {{msg-mw|Poll-view-newest}}\n{{Identical|Order}}",

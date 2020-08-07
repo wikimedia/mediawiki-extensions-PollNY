@@ -78,7 +78,6 @@
 	"poll-unavailable": "This poll is unavailable",
 	"poll-unflag-message": "Are you sure you want to unflag this poll? Unflagging returns the poll to circulation, allowing users to view it and vote on it.",
 	"poll-unflag-poll": "Unflag poll",
-	"poll-upload-image-button": "Upload",
 	"poll-upload-new-image": "Upload new image",
 	"poll-view-title": "View $1's polls",
 	"poll-view-order": "Order",
