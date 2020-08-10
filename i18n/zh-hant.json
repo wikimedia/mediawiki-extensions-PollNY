@@ -80,7 +80,6 @@
 	"poll-unavailable": "此調查不可用",
 	"poll-unflag-message": "您確定要取消標記此調查？取消標記會讓調查恢復運行，允許使用者對此檢視與投票。",
 	"poll-unflag-poll": "取消標記調查",
-	"poll-upload-image-button": "上傳",
 	"poll-upload-new-image": "上載新圖像",
 	"poll-view-title": "檢視$1調查",
 	"poll-view-order": "排序",

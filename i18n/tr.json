@@ -78,7 +78,6 @@
 	"poll-unavailable": "Bu anket mevcut değil",
 	"poll-unflag-message": "Bu anketin işaretini kaldırmak istediğinizden emin misiniz? İşaretlememek, anketi dolaşıma geri döndürerek kullanıcıların görmesini ve oy vermesini sağlar.",
 	"poll-unflag-poll": "Anketi kaldır",
-	"poll-upload-image-button": "Yükle",
 	"poll-upload-new-image": "Yeni resim yükle",
 	"poll-view-title": "$1 kullanıcısını anketleri görüntüle",
 	"poll-view-order": "Sıra",

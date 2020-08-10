@@ -86,7 +86,6 @@
 	"poll-unavailable": "Ce sondage est indisponible",
 	"poll-unflag-message": "Êtes-vous sûr de vouloir enlever le marquage de ce sondage ? Enlever le marquage remet le sondage en circulation, permettant aux utilisateurs de le voir et de voter.",
 	"poll-unflag-poll": "Démarquez ce sondage",
-	"poll-upload-image-button": "Importer",
 	"poll-upload-new-image": "Importer une nouvelle image",
 	"poll-view-title": "Voir les sondage de $1",
 	"poll-view-order": "Ordre",

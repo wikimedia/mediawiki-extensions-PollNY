@@ -77,7 +77,6 @@
 	"poll-unavailable": "Denne avstemningen er utilgjengelig",
 	"poll-unflag-message": "Er du sikker på at du vil fjerne flaggingen av denne avstemningen? Fjerning av flagging gjør at avstemningen går tilbake i rotasjon, og lar brukere vise den og avkaste stemmer.",
 	"poll-unflag-poll": "Fjern flagging av avstemning",
-	"poll-upload-image-button": "Last opp",
 	"poll-upload-new-image": "Last opp nytt bilde",
 	"poll-view-title": "Vis {{GRAMMAR:genitive|$1}} avstemninger",
 	"poll-view-order": "Rekkefølge",

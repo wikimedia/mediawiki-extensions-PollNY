@@ -10,7 +10,6 @@
 	"poll-createdago": "Кхоьллина $1 хьалха",
 	"poll-edit-answers": "Хийца жоьпаш",
 	"poll-next-poll": "РогӀера хаттарш",
-	"poll-upload-image-button": "Чуяккха",
 	"poll-time-ago": "$1 хьалха",
 	"poll-time-days": "{{PLURAL:$1|де}}",
 	"poll-time-hours": "{{PLURAL:$1|$1 сахьт|1=цхьа сахьт}}",
