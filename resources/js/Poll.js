@@ -13,16 +13,16 @@ var PollNY = {
 	/**
 	 * @return Boolean: true if the browser is Firefox under Mac
 	 */
-	detectMacXFF: function() {
+	detectMacXFF: function () {
 		var userAgent = navigator.userAgent.toLowerCase();
-		if( userAgent.indexOf( 'mac' ) != -1 && userAgent.indexOf( 'firefox' ) != -1 ) {
+		if ( userAgent.indexOf( 'mac' ) != -1 && userAgent.indexOf( 'firefox' ) != -1 ) {
 			return true;
 		}
 	},
 
-	show: function() {
-		var loadingElement = document.getElementById( 'loading-poll' );
-		var displayElement = document.getElementById( 'poll-display' );
+	show: function () {
+		var loadingElement = document.getElementById( 'loading-poll' ),
+			displayElement = document.getElementById( 'poll-display' );
 		if ( loadingElement ) {
 			loadingElement.style.display = 'none';
 			loadingElement.style.visibility = 'hidden';
@@ -37,7 +37,7 @@ var PollNY = {
 	 * Show the "Loading..." text in the lightbox; Firefox on Mac gets only
 	 * that whereas all other User-Agents get the pretty animation.
 	 */
-	loadingLightBox: function() {
+	loadingLightBox: function () {
 		// pop up the lightbox
 		var objLink = {};
 		objLink.href = '';
@@ -64,7 +64,7 @@ var PollNY = {
 	/**
 	 * Skip the current poll and pick a new, random one.
 	 */
-	skip: function() {
+	skip: function () {
 		PollNY.loadingLightBox();
 		( new mw.Api() ).postWithToken( 'csrf', {
 			action: 'pollny',
@@ -80,7 +80,7 @@ var PollNY = {
 	/**
 	 * Vote for a poll and move to the next poll.
 	 */
-	vote: function() {
+	vote: function () {
 		if ( PollNY.voted == 1 ) {
 			return 0;
 		}
@@ -90,8 +90,8 @@ var PollNY = {
 		PollNY.loadingLightBox();
 		var choice_id = 0;
 		for ( var i = 0; i < document.poll.poll_choice.length; i++ ) {
-			if ( document.poll.poll_choice[i].checked ) {
-				choice_id = document.poll.poll_choice[i].value;
+			if ( document.poll.poll_choice[ i ].checked ) {
+				choice_id = document.poll.poll_choice[ i ].value;
 			}
 		}
 
@@ -115,7 +115,7 @@ var PollNY = {
 	 * If there are no more polls, prompt the user to create one, unless
 	 * they're on Special:CreatePoll.
 	 */
-	goToNewPoll: function() {
+	goToNewPoll: function () {
 		jQuery.ajax( {
 			type: 'POST',
 			url: mw.util.wikiScript( 'api' ),
@@ -124,7 +124,7 @@ var PollNY = {
 				what: 'getRandom',
 				format: 'json'
 			}
-		} ).done( function( data ) {
+		} ).done( function ( data ) {
 			// redirect to next poll they haven't voted for
 			if ( data.pollny.result !== 'error' ) {
 				window.location = mw.config.get( 'wgServer' ) +
@@ -134,15 +134,14 @@ var PollNY = {
 			} else {
 				if (
 					mw.config.get( 'wgCanonicalSpecialPageName' ) == 'CreatePoll'
-				)
-				{
+				) {
 					OO.ui.alert( mw.msg( 'poll-createpoll-error-nomore' ) );
 				} else {
 					// We have run out of polls to show
 					// Show a lightbox prompting the user to create more polls
 					window.LightBox.setText( mw.msg(
 						'poll-finished',
-						mw.util.getUrl( mw.config.get( 'wgFormattedNamespaces' )[-1] + ':' + 'CreatePoll' ),
+						mw.util.getUrl( mw.config.get( 'wgFormattedNamespaces' )[ -1 ] + ':' + 'CreatePoll' ),
 						window.location
 					) );
 				}
@@ -156,7 +155,7 @@ var PollNY = {
 	 *
 	 * @param status Integer: 0 = closed, 1 = open, 2 = flagged
 	 */
-	toggleStatus: function( status ) {
+	toggleStatus: function ( status ) {
 		var msg;
 		switch ( status ) {
 			case 0:
@@ -186,9 +185,9 @@ var PollNY = {
 	},
 
 	// Embed poll stuff
-	showEmbedPoll: function( id ) {
-		var loadingElement = document.getElementById( 'loading-poll_' + id );
-		var displayElement = document.getElementById( 'poll-display_' + id );
+	showEmbedPoll: function ( id ) {
+		var loadingElement = document.getElementById( 'loading-poll_' + id ),
+			displayElement = document.getElementById( 'poll-display_' + id );
 		if ( loadingElement ) {
 			loadingElement.style.display = 'none';
 			loadingElement.style.visibility = 'hidden';
@@ -203,14 +202,13 @@ var PollNY = {
 	 * @param id Integer: poll ID number
 	 * @param pageId Integer:
 	 */
-	pollEmbedVote: function( id, pageId ) {
-		var choice_id = 0;
-		/* jshint evil:true */
-		var poll_form = eval( 'document.poll_'	+ id + '.poll_choice' );
+	pollEmbedVote: function ( id, pageId ) {
+		var choice_id = 0,
+			poll_form = eval( 'document.poll_' + id + '.poll_choice' );
 
 		for ( var i = 0; i < poll_form.length; i++ ) {
-			if ( poll_form[i].checked ) {
-				choice_id = poll_form[i].value;
+			if ( poll_form[ i ].checked ) {
+				choice_id = poll_form[ i ].value;
 			}
 		}
 
@@ -221,7 +219,7 @@ var PollNY = {
 				format: 'json',
 				what: 'vote',
 				pollID: id,
-				choiceID: choice_id,
+				choiceID: choice_id
 			} ).done( function () {
 				PollNY.showResults( id, pageId );
 			} );
@@ -234,8 +232,8 @@ var PollNY = {
 	 * @param id Integer: poll ID number
 	 * @param pageId Integer:
 	 */
-	showResults: function( id, pageId ) {
-		jQuery.ajax({
+	showResults: function ( id, pageId ) {
+		jQuery.ajax( {
 			type: 'POST',
 			url: mw.util.wikiScript( 'api' ),
 			data: {
@@ -244,20 +242,22 @@ var PollNY = {
 				pageID: pageId,
 				format: 'json'
 			}
-		} ).done( function( data ) {
+		} ).done( function ( data ) {
 			jQuery( '#poll-display_' + id ).html( data.pollny.result );
 		} );
 	},
 
 	// The next two functions are from SpecialAdminPoll.php
 	/**
+	 * @param id
+	 * @param status
 	 * @todo FIXME: would be nice if we could somehow merge this function with
 	 * toggleStatus()...the major differences here are the id argument (which
 	 * is present only here) and what's done after the AJAX function has been
 	 * called; this function shows the text "action complete" on a given
 	 * element, while toggleStatus() reloads the page
 	 */
-	poll_admin_status: function( id, status ) {
+	poll_admin_status: function ( id, status ) {
 		var msg;
 		switch ( status ) {
 			case 0:
@@ -291,7 +291,7 @@ var PollNY = {
 	 *
 	 * @param id Integer: ID number of the poll that we're about to delete
 	 */
-	poll_delete: function( id ) {
+	poll_delete: function ( id ) {
 		var msg = mw.msg( 'poll-delete-message' );
 
 		OO.ui.confirm( msg ).done( function ( confirmed ) {
@@ -309,7 +309,7 @@ var PollNY = {
 	},
 
 	// from Special:CreatePoll UI template
-	updateAnswerBoxes: function() {
+	updateAnswerBoxes: function () {
 		var elem;
 		for ( var x = 1; x <= 9; x++ ) {
 			if ( document.getElementById( 'answer_' + x ).value ) {
@@ -320,20 +320,20 @@ var PollNY = {
 		}
 	},
 
-	resetUpload: function() {
+	resetUpload: function () {
 		var uploadElement = document.getElementById( 'imageUpload-frame' );
-		uploadElement.src = mw.util.getUrl( mw.config.get( 'wgFormattedNamespaces' )[-1] + ':' + 'PollAjaxUpload' ) + '?wpThumbWidth=75';
+		uploadElement.src = mw.util.getUrl( mw.config.get( 'wgFormattedNamespaces' )[ -1 ] + ':' + 'PollAjaxUpload' ) + '?wpThumbWidth=75';
 		uploadElement.style.display = 'block';
 		uploadElement.style.visibility = 'visible';
 	},
 
-	completeImageUpload: function() {
+	completeImageUpload: function () {
 		document.getElementById( 'poll_image' ).innerHTML =
 			'<div style="margin:0px 0px 10px 0px;"><img height="75" width="75" src="' +
 			mw.config.get( 'wgExtensionAssetsPath' ) + '/PollNY/images/ajax-loader-white.gif"></div>';
 	},
 
-	uploadError: function( error ) {
+	uploadError: function ( error ) {
 		document.getElementById( 'poll_image' ).innerHTML = error + '<p>';
 		PollNY.resetUpload();
 	},
@@ -347,13 +347,16 @@ var PollNY = {
 	 * This insane logic is used by other social tools (like QuizGame, etc.)
 	 * and if memory serves me correct, I wrote a lengthier explanation on one
 	 * of those extension's files.
+	 *
+	 * @param img_tag
+	 * @param img_name
 	 */
-	uploadComplete: function( img_tag, img_name ) {
+	uploadComplete: function ( img_tag, img_name ) {
 		jQuery( '#poll_image' ).html( img_tag );
 		jQuery( '#poll_image' ).append(
 			jQuery( '<a>' )
 				.attr( 'href', '#' )
-				.on( 'click', function() { PollNY.resetUpload(); } )
+				.on( 'click', function () { PollNY.resetUpload(); } )
 				.text( mw.msg( 'poll-upload-new-image' ) )
 				// Words of wisdom:
 				// <Vulpix> oh, yeah, I know what's happening. Since you're appending the element created with $('<a>'), it appends only it, not the wrapped one... You may need to add a .parent() at the end to get the <p> also...
@@ -374,7 +377,7 @@ var PollNY = {
 	 * contain the hash character and finally, that there isn't already a poll
 	 * with the exact same title.
 	 */
-	create: function() {
+	create: function () {
 		var answers = 0;
 		for ( var x = 1; x <= 9; x++ ) {
 			if ( document.getElementById( 'answer_' + x ).value ) {
@@ -405,12 +408,12 @@ var PollNY = {
 		// user about this problem; otherwise submit the form
 		( new mw.Api() ).get( {
 			action: 'query',
-			titles: mw.config.get( 'wgFormattedNamespaces' )[300] + ':' + val,
+			titles: mw.config.get( 'wgFormattedNamespaces' )[ 300 ] + ':' + val,
 			format: 'json',
 			formatversion: 2
 		} ).done( function ( data ) {
 			// Missing page means that we can create it, obviously!
-			if ( data.query.pages[0] && data.query.pages[0].missing === true ) {
+			if ( data.query.pages[ 0 ] && data.query.pages[ 0 ].missing === true ) {
 				document.form1.submit();
 			} else {
 				// could also show data.query.pages[0].invalidreason to the user here instead
@@ -420,30 +423,30 @@ var PollNY = {
 	}
 };
 
-jQuery( function() {
+jQuery( function () {
 	// This is assuming that NS_POLL == 300 and no-one ever touches
 	// Poll.namespaces.php in order to change that...
 	if ( jQuery( 'body' ).hasClass( 'ns-300' ) ) {
 		// If LightBox is not yet loaded, well, load it!
-		mw.loader.using( 'ext.socialprofile.LightBox', function() {
+		mw.loader.using( 'ext.socialprofile.LightBox', function () {
 			LightBox.init();
 		} );
 		PollNY.show();
 
-		jQuery( 'a.poll-status-toggle-link' ).on( 'click', function( e ) {
+		jQuery( 'a.poll-status-toggle-link' ).on( 'click', function ( e ) {
 			e.preventDefault();
 			PollNY.toggleStatus( jQuery( this ).data( 'status' ) );
 		} );
 
-		jQuery( 'div.poll-choice input[type="radio"]' ).on( 'click', function() {
+		jQuery( 'div.poll-choice input[type="radio"]' ).on( 'click', function () {
 			PollNY.vote();
 		} );
 
-		jQuery( 'a.poll-skip-link' ).on( 'click', function() {
+		jQuery( 'a.poll-skip-link' ).on( 'click', function () {
 			PollNY.skip();
 		} );
 
-		jQuery( 'a.poll-next-poll-link' ).on( 'click', function( e ) {
+		jQuery( 'a.poll-next-poll-link' ).on( 'click', function ( e ) {
 			e.preventDefault();
 			PollNY.loadingLightBox();
 			PollNY.goToNewPoll();
@@ -453,12 +456,12 @@ jQuery( function() {
 	// Polls embedded via the <pollembed> tag
 	if ( jQuery( '.poll-embed-title' ).length > 0 ) {
 		// This is somewhat of a hack, because I'm lazy
-		var id = jQuery( 'div.poll-loading-msg' ).attr( 'id' );
-		var pollID = id.replace( /loading-poll_/, '' );
+		var id = jQuery( 'div.poll-loading-msg' ).attr( 'id' ),
+			pollID = id.replace( /loading-poll_/, '' );
 		PollNY.showEmbedPoll( pollID );
 
 		// Handle clicks on the options
-		jQuery( 'div.poll-choice input[type="radio"]' ).on( 'click', function() {
+		jQuery( 'div.poll-choice input[type="radio"]' ).on( 'click', function () {
 			PollNY.pollEmbedVote(
 				jQuery( this ).data( 'poll-id' ),
 				jQuery( this ).data( 'poll-page-id' )
@@ -467,44 +470,43 @@ jQuery( function() {
 	}
 
 	// Unflag/Open/Close/Delete poll links on Special:AdminPoll
-	jQuery( 'a.poll-unflag-link, a.poll-open-link' ).on( 'click', function( e ) {
+	jQuery( 'a.poll-unflag-link, a.poll-open-link' ).on( 'click', function ( e ) {
 		e.preventDefault();
 		PollNY.poll_admin_status( jQuery( this ).data( 'poll-id' ), 1 );
 	} );
 
-	jQuery( 'a.poll-close-link' ).on( 'click', function( e ) {
+	jQuery( 'a.poll-close-link' ).on( 'click', function ( e ) {
 		e.preventDefault();
 		PollNY.poll_admin_status( jQuery( this ).data( 'poll-id' ), 0 );
 	} );
 
-	jQuery( 'a.poll-delete-link' ).on( 'click', function( e ) {
+	jQuery( 'a.poll-delete-link' ).on( 'click', function ( e ) {
 		e.preventDefault();
 		PollNY.poll_delete( jQuery( this ).data( 'poll-id' ) );
 	} );
 
 	// Code specific to Special:CreatePoll
 	if ( mw.config.get( 'wgCanonicalSpecialPageName' ) == 'CreatePoll' ) {
-		jQuery( 'div.create-poll-top input[type="button"]' ).on( 'click', function() {
+		jQuery( 'div.create-poll-top input[type="button"]' ).on( 'click', function () {
 			PollNY.goToNewPoll();
 		} );
 
 		// Register PollNY.updateAnswerBoxes() as the handler for elements that
 		// have an ID ranging from answer_2 to answer_9
 		for ( var x = 1; x <= 9; x++ ) {
-			/* jshint loopfunc:true */
-			jQuery( 'input#answer_' + x ).on( 'keyup', function() {
+			jQuery( 'input#answer_' + x ).on( 'keyup', function () {
 				PollNY.updateAnswerBoxes();
 			} );
 			// Mobile (Android) support
 			// @see https://mathiasbynens.be/notes/oninput
 			// @todo FIXME: jumpy, but better than not showing the boxes 3-10 at all
-			jQuery( 'input#answer_' + x ).on( 'input', function() {
+			jQuery( 'input#answer_' + x ).on( 'input', function () {
 				jQuery( this ).off( 'keyup' );
 				PollNY.updateAnswerBoxes();
 			} );
 		}
 
-		jQuery( 'input#poll-create-button' ).on( 'click', function( e ) {
+		jQuery( 'input#poll-create-button' ).on( 'click', function ( e ) {
 			e.preventDefault();
 			PollNY.create();
 		} );
