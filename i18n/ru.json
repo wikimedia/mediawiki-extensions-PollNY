@@ -17,7 +17,7 @@
 	"poll-admin-closed": "Закрытые",
 	"poll-admin-flagged": "Отмеченные",
 	"poll-admin-open": "Открытые",
-	"poll-error-socialprofile": "[https://www.mediawiki.org/wiki/Extension:SocialProfile Расширение «SocialProfile»] не установлено. Пожалуйста, установите это расширение и попробуйте снова.",
+	"poll-error-socialprofile": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:SocialProfile Расширение «SocialProfile»] не установлено. Пожалуйста, установите это расширение и попробуйте снова.",
 	"poll-error-socialprofile-title": "Расширение «SocialProfile» не установлено.",
 	"poll-admin-panel": "Администрирование",
 	"poll-admin-status-nav": "Фильтровать по статусу",
