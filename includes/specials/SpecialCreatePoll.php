@@ -24,8 +24,6 @@ class CreatePoll extends SpecialPage {
 	 * @return bool|string
 	 */
 	public function execute( $par ) {
-		global $wgMemc;
-
 		$out = $this->getOutput();
 		$request = $this->getRequest();
 		$user = $this->getUser();
@@ -110,8 +108,10 @@ class CreatePoll extends SpecialPage {
 				}
 			}
 
+			$services = MediaWikiServices::getInstance();
+
 			// Create poll wiki page
-			$localizedCategoryNS = MediaWikiServices::getInstance()->getContentLanguage()->getNsText( NS_CATEGORY );
+			$localizedCategoryNS = $services->getContentLanguage()->getNsText( NS_CATEGORY );
 			$page = WikiPage::factory( $poll_title );
 			$content = ContentHandler::makeContent(
 				"<userpoll>\n$choices</userpoll>\n\n[[" .
@@ -149,8 +149,9 @@ class CreatePoll extends SpecialPage {
 			}
 
 			// Clear poll cache
-			$key = $wgMemc->makeKey( 'user', 'profile', 'polls', $user->getId() );
-			$wgMemc->delete( $key );
+			$cache = $services->getMainWANObjectCache();
+			$key = $cache->makeKey( 'user', 'profile', 'polls', $user->getId() );
+			$cache->delete( $key );
 
 			// Redirect to new poll page
 			$out->redirect( $poll_title->getFullURL() );

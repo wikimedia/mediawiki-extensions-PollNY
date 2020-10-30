@@ -53,10 +53,10 @@ class PollNYHooks {
 			);
 			if ( $s !== false ) {
 				// Clear profile cache for user id that created poll
-				global $wgMemc;
 				$userId = User::newFromActorId( $s->poll_actor )->getId();
-				$key = $wgMemc->makeKey( 'user', 'profile', 'polls', $userId );
-				$wgMemc->delete( $key );
+				$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
+				$key = $cache->makeKey( 'user', 'profile', 'polls', $userId );
+				$cache->delete( $key );
 
 				// Delete poll record
 				$dbw->delete(

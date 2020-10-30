@@ -363,12 +363,11 @@ class Poll {
 	 * @return array
 	 */
 	public static function getPollList( $count = 3, $order = 'poll_id' ) {
-		global $wgMemc;
-
 		$polls = [];
 		// Try cache
-		$key = $wgMemc->makeKey( 'polls', 'order', $order, 'count', $count );
-		$data = $wgMemc->get( $key );
+		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
+		$key = $cache->makeKey( 'polls', 'order', $order, 'count', $count );
+		$data = $cache->get( $key );
 		if ( !empty( $data ) && is_array( $data ) ) {
 			wfDebug( "Got polls list ($count) ordered by {$order} from cache\n" );
 			$polls = $data;
@@ -397,7 +396,7 @@ class Poll {
 				];
 			}
 			if ( !empty( $polls ) ) {
-				$wgMemc->set( $key, $polls, 60 * 10 );
+				$cache->set( $key, $polls, 60 * 10 );
 			}
 		}
 
