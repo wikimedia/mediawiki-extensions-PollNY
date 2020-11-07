@@ -45,7 +45,18 @@ class UpdatePoll extends UnlistedSpecialPage {
 		if ( $user->getId() == 0 ) {
 			$out->setPageTitle( $this->msg( 'poll-woops' )->plain() );
 			$login = SpecialPage::getTitleFor( 'Userlogin' );
-			$out->redirect( $login->getFullURL( 'returnto=Special:UpdatePoll' ) );
+			// If we want to edit a certain poll (as we probably do, given that
+			// accessing this special page *without* the id URL query param results in
+			// an "Invalid access" error), take care to preserve the "id" query param
+			// so that the user is correctly redirected to Special:UpdatePoll?id=<poll ID>
+			// upon login (T266612)
+			$urlParams = [
+				'returnto' => 'Special:UpdatePoll'
+			];
+			if ( $request->getInt( 'id' ) > 0 ) {
+				$urlParams['returntoquery'] = wfArrayToCgi( [ 'id' => $request->getInt( 'id' ) ] );
+			}
+			$out->redirect( $login->getFullURL( $urlParams ) );
 			return;
 		}
 
