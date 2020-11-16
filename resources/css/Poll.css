@@ -161,12 +161,12 @@
  */
 .client-nojs #loading-poll,
 .client-nojs div[id^="loading-poll_"] {
-	display: none;
+	display: none !important;
 }
 
 .client-nojs #poll-display,
 .client-nojs div[id^="poll-display_"] {
-	display: block;
+	display: block !important;
 }
 
 .client-js #poll-display,

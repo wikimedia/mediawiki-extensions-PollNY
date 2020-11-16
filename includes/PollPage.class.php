@@ -37,6 +37,30 @@ class PollPage extends Article {
 		$out->setHTMLTitle( $title->getText() );
 		$out->setPageTitle( $title->getText() );
 
+		$p = new Poll();
+
+		// NoJS POST handler for no-JS votes
+		// JS equivalent is calling ApiPollNY.php with what=vote and other appropriate params
+		$pollID = $request->getInt( 'poll_id' );
+		$choiceID = $request->getInt( 'poll_choice' );
+		if (
+			$user->isAllowed( 'pollny-vote' ) &&
+			$request->wasPosted() &&
+			$user->matchEditToken( $request->getVal( 'wpEditToken' ) ) &&
+			!$p->userVoted( $user, $pollID )
+		) {
+			$p->addPollVote( $pollID, $choiceID, $user );
+			// Maybe redirect to a random, different poll after voting (just as the JS version does)
+			$randomURL = $p->getRandomPollURL( $user );
+			if ( $randomURL !== 'error' ) {
+				$out->redirect( Title::newFromText( $randomURL )->getFullURL( [
+					'prev_id' => $this->getID()
+				] ) );
+			}
+			$show_results = true;
+			// @todo FIXME: display a CTA of some kind in case of 'error', like in the JS function goToNewPoll()
+		}
+
 		$createPollObj = SpecialPage::getTitleFor( 'CreatePoll' );
 
 		// Get total polls count so we can tell the user how many they have
@@ -56,7 +80,6 @@ class PollPage extends Article {
 		$stats = new UserStats( $user->getId(), $user->getName() );
 		$stats_current_user = $stats->getUserStats();
 
-		$p = new Poll();
 		$poll_info = $p->getPoll( $title->getArticleID() );
 
 		if ( !isset( $poll_info['id'] ) ) {
@@ -205,15 +228,18 @@ class PollPage extends Article {
 		) {
 			$output .= '<div id="loading-poll">' . wfMessage( 'poll-js-loading' )->escaped() . '</div>' . "\n";
 			$output .= '<div id="poll-display" style="display:none;">' . "\n";
-			$output .= '<form name="poll"><input type="hidden" id="poll_id" name="poll_id" value="' . $poll_info['id'] . '"/>' . "\n";
+			$output .= '<form name="poll" method="post" action="">';
+			$output .= '<input type="hidden" id="poll_id" name="poll_id" value="' . (int)$poll_info['id'] . '"/>' . "\n";
+			$output .= Html::hidden( 'wpEditToken', $user->getEditToken() );
 
 			foreach ( $poll_info['choices'] as $choice ) {
 				$output .= '<div class="poll-choice">
-					<input type="radio" name="poll_choice" id="poll_choice" value="' . $choice['id'] . '" />'
-						. $choice['choice'] .
+					<input type="radio" name="poll_choice" id="poll_choice" value="' . (int)$choice['id'] . '" />'
+						. htmlspecialchars( $choice['choice'], ENT_QUOTES ) .
 				'</div>';
 			}
 
+			$output .= Html::submitButton( wfMessage( 'poll-submit-btn' )->escaped(), [ 'class' => 'poll-vote-btn-nojs' ] );
 			$output .= '</form>
 					</div>' . "\n";
 
@@ -233,7 +259,9 @@ class PollPage extends Article {
 				$output .= '<div class="previous-poll">';
 
 				$output .= '<div class="previous-poll-title">' . wfMessage( 'poll-previous-poll' )->escaped() .
-					" - <a href=\"{$poll_title->getFullURL()}\">{$poll_info_prev['question']}</a></div>
+					' - <a href="' . htmlspecialchars( $poll_title->getFullURL(), ENT_QUOTES ) . '">' .
+						htmlspecialchars( $poll_info_prev['question'], ENT_QUOTES ) .
+					"</a></div>
 					<div class=\"previous-sub-title\">"
 						. wfMessage( 'poll-view-answered-times', $poll_info_prev['votes'] )->parse() .
 					'</div>';
@@ -258,8 +286,9 @@ class PollPage extends Article {
 						'class' => 'image-choice-' . $x,
 						'style' => 'width:' . $bar_width . 'px;height:11px;'
 					] );
+					$safeChoice = htmlspecialchars( $choice['choice'], ENT_QUOTES );
 					$output .= "<div class=\"previous-poll-choice\">
-								<div class=\"previous-poll-choice-left\">{$choice['choice']} ({$percent}%)</div>";
+								<div class=\"previous-poll-choice-left\">{$safeChoice} ({$percent}%)</div>";
 
 					$output .= "<div class=\"previous-poll-choice-right\">{$bar_img} <span class=\"previous-poll-choice-votes\">" .
 							wfMessage( 'poll-votes', $choice['votes'] )->parse() .
@@ -308,8 +337,9 @@ class PollPage extends Article {
 					}
 					$bar_img = "<img src=\"{$imgPath}/vote-bar-{$x}.gif\" class=\"image-choice-{$x}\" style=\"width:{$bar_width}px;height:12px;\"/>";
 
+					$safeChoice = htmlspecialchars( $choice['choice'], ENT_QUOTES );
 					$output .= "<div class=\"poll-choice\">
-					<div class=\"poll-choice-left\">{$choice['choice']} ({$percent}%)</div>";
+					<div class=\"poll-choice-left\">{$safeChoice} ({$percent}%)</div>";
 
 					$output .= "<div class=\"poll-choice-right\">{$bar_img} <span class=\"poll-choice-votes\">"
 						. wfMessage( 'poll-votes', $choice['votes'] )->parse() .
@@ -318,6 +348,15 @@ class PollPage extends Article {
 
 					$x++;
 				}
+			}
+
+			// @todo FIXME: actually, does this work as intended when we've run out of polls? CHECKME!
+			$nextPollLink = '';
+			$randomURL = $p->getRandomPollURL( $user );
+			if ( $randomURL !== 'error' ) {
+				$nextPollURL = Title::newFromText( $randomURL )->getFullURL( [ 'prev_id' => $this->getID() ] );
+				$nextPollLink = '<a class="poll-next-poll-link" href="' . htmlspecialchars( $nextPollURL, ENT_QUOTES ) . '">' .
+					wfMessage( 'poll-next-poll' )->escaped() . '</a>';
 			}
 
 			$output .= '<div class="poll-total-votes">(' .
@@ -329,10 +368,9 @@ class PollPage extends Article {
 
 
 			<div class="poll-button">
-				<input type="hidden" id="poll_id" name="poll_id" value="' . $poll_info['id'] . '" />
-				<a class="poll-next-poll-link" href="javascript:void(0);">' .
-					wfMessage( 'poll-next-poll' )->escaped() . '</a>
-			</div>';
+				<input type="hidden" id="poll_id" name="poll_id" value="' . (int)$poll_info['id'] . '" />' .
+				$nextPollLink .
+			'</div>';
 		}
 
 		// "Embed this on a wiki page" feature
