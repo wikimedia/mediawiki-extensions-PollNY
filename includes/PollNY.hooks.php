@@ -183,14 +183,15 @@ class PollNYHooks {
 
 			$poll_title = Title::newFromText( $poll_name, NS_POLL );
 			$poll_title = self::followPollID( $poll_title );
-			$poll_page_id = $poll_title->getArticleID();
+			$poll_page_id = (int)$poll_title->getArticleID();
 
 			if ( $poll_page_id > 0 ) {
 				$p = new Poll();
 				$poll_info = $p->getPoll( $poll_page_id );
+				$poll_info['id'] = (int)$poll_info['id']; // paranoia
 
 				$output = "\t\t" . '<div class="poll-embed-title">' .
-					$poll_info['question'] .
+					htmlspecialchars( $poll_info['question'], ENT_QUOTES ) .
 				'</div>' . "\n";
 				if ( $poll_info['image'] ) {
 					$poll_image_width = 100;
@@ -229,9 +230,11 @@ class PollNYHooks {
 					$output .= Html::hidden( 'wpEditToken', $user->getEditToken() );
 
 					foreach ( $poll_info['choices'] as $choice ) {
+						$choice['id'] = (int)$choice['id'];
 						$output .= "<div class=\"poll-choice\">
-						<input type=\"radio\" name=\"poll_choice\" data-poll-id=\"{$poll_info['id']}\" data-poll-page-id=\"{$poll_page_id}\" id=\"poll_choice\" value=\"{$choice['id']}\">{$choice['choice']}
-						</div>";
+						<input type=\"radio\" name=\"poll_choice\" data-poll-id=\"{$poll_info['id']}\" data-poll-page-id=\"{$poll_page_id}\" id=\"poll_choice\" value=\"{$choice['id']}\">";
+						$output .= htmlspecialchars( $choice['choice'], ENT_QUOTES );
+						$output .= '</div>';
 					}
 
 					$output .= Html::submitButton( wfMessage( 'poll-submit-btn' )->escaped(), [ 'class' => 'poll-vote-btn-nojs' ] );
@@ -248,6 +251,7 @@ class PollNYHooks {
 
 					foreach ( $poll_info['choices'] as $choice ) {
 						// $percent = round( $choice['votes'] / $poll_info['votes'] * 100 );
+						$percent = (int)$choice['percent'];
 						if ( $poll_info['votes'] > 0 ) {
 							$bar_width = floor( 480 * ( $choice['votes'] / $poll_info['votes'] ) );
 						}
@@ -255,12 +259,13 @@ class PollNYHooks {
 							'src' => $wgExtensionAssetsPath . "/SocialProfile/images/vote-bar-{$x}.gif",
 							'border' => '0',
 							'class' => "image-choice-{$x}",
-							'style' => "width:{$choice['percent']}%;height:12px;",
+							'style' => "width:{$percent}%;height:12px;",
 							'alt' => ''
 						] );
 
+						$safeChoice = htmlspecialchars( $choice['choice'], ENT_QUOTES );
 						$output .= "<div class=\"poll-choice\">
-						<div class=\"poll-choice-left\">{$choice['choice']} ({$choice['percent']}%)</div>";
+						<div class=\"poll-choice-left\">{$safeChoice} ({$percent}%)</div>";
 
 						// If the amount of votes is not set, set it to 0
 						// This fixes an odd bug where "votes" would be shown
