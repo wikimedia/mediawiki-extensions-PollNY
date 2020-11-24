@@ -19,7 +19,12 @@
 class SpecialPollAjaxUpload extends SpecialUpload {
 
 	public function __construct() {
-		SpecialPage::__construct( 'PollAjaxUpload', 'upload', false );
+		parent::__construct();
+		$this->mName = 'PollAjaxUpload';
+	}
+
+	public function isListed() {
+		return false;
 	}
 
 	/**
