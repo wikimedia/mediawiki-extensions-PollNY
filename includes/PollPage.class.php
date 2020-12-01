@@ -4,8 +4,6 @@ use MediaWiki\MediaWikiServices;
 
 class PollPage extends Article {
 
-	public $title = null;
-
 	/**
 	 * Constructor and clear the article
 	 * @param Title $title

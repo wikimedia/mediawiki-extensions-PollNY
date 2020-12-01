@@ -251,6 +251,9 @@ class ViewPoll extends SpecialPage {
 		$out->addHTML( $output );
 	}
 
+	/**
+	 * @inheritDoc
+	 */
 	protected function getGroupName() {
 		return 'poll';
 	}

@@ -109,7 +109,7 @@ class ApiPollNY extends ApiBase {
 	}
 
 	function getPollResults( $pageID ) {
-		global $wgExtensionAssetsPath;
+		$assetsPath = $this->getConfig()->get( 'ExtensionAssetsPath' );
 
 		$poll_info = $this->poll->getPoll( $pageID );
 		$x = 1;
@@ -120,13 +120,13 @@ class ApiPollNY extends ApiBase {
 		// client-side via JS instead of the API having to return HTML
 		// $retVal = [];
 		foreach ( $poll_info['choices'] as $choice ) {
-			$bar_img = "<img src=\"{$wgExtensionAssetsPath}/SocialProfile/images/vote-bar-{$x}.gif\" border=\"0\" class=\"image-choice-{$x}\" style=\"width:{$choice['percent']}%;height:12px;\"/>";
+			$bar_img = "<img src=\"{$assetsPath}/SocialProfile/images/vote-bar-{$x}.gif\" border=\"0\" class=\"image-choice-{$x}\" style=\"width:{$choice['percent']}%;height:12px;\"/>";
 
 			$output .= "<div class=\"poll-choice\">
 		<div class=\"poll-choice-left\">{$choice['choice']} ({$choice['percent']}%)</div>";
 
 			$output .= "<div class=\"poll-choice-right\">{$bar_img} <span class=\"poll-choice-votes\">" .
-				wfMessage( 'poll-votes', $choice['votes'] )->parse() .
+				$this->msg( 'poll-votes', $choice['votes'] )->parse() .
 				'</span></div>';
 			$output .= '</div>';
 

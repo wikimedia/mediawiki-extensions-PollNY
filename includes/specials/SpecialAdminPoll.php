@@ -513,6 +513,9 @@ class AdminPoll extends SpecialPage {
 		return $form;
 	}
 
+	/**
+	 * @inheritDoc
+	 */
 	protected function getGroupName() {
 		return 'poll';
 	}

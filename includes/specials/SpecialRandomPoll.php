@@ -33,6 +33,9 @@ class RandomPoll extends SpecialPage {
 		}
 	}
 
+	/**
+	 * @inheritDoc
+	 */
 	protected function getGroupName() {
 		return 'poll';
 	}

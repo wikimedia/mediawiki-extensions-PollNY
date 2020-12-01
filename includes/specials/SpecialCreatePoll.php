@@ -58,15 +58,15 @@ class CreatePoll extends SpecialPage {
 		/**
 		 * Create Poll Thresholds based on User Stats
 		 */
-		global $wgCreatePollThresholds;
-		if ( is_array( $wgCreatePollThresholds ) && count( $wgCreatePollThresholds ) > 0 ) {
+		$createThresholds = $this->getConfig()->get( 'CreatePollThresholds' );
+		if ( is_array( $createThresholds ) && count( $createThresholds ) > 0 ) {
 			$canCreate = true;
 
 			$stats = new UserStats( $user->getId(), $user->getName() );
 			$stats_data = $stats->getUserStats();
 
 			$threshold_reason = '';
-			foreach ( $wgCreatePollThresholds as $field => $threshold ) {
+			foreach ( $createThresholds as $field => $threshold ) {
 				if ( $stats_data[$field] < $threshold ) {
 					$canCreate = false;
 					$threshold_reason .= ( $threshold_reason ? ', ' : '' ) . "$threshold $field";
@@ -165,6 +165,9 @@ class CreatePoll extends SpecialPage {
 		}
 	}
 
+	/**
+	 * @inheritDoc
+	 */
 	protected function getGroupName() {
 		return 'poll';
 	}

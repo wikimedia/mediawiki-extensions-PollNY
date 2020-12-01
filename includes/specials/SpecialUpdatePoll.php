@@ -181,12 +181,12 @@ class UpdatePoll extends UnlistedSpecialPage {
 			$x++;
 		}
 
-		global $wgRightsText;
-		if ( $wgRightsText ) {
+		$rightsText = $this->getConfig()->get( 'RightsText' );
+		if ( $rightsText ) {
 			$copywarnMsg = 'copyrightwarning';
 			$copywarnMsgParams = [
 				'[[' . $this->msg( 'copyrightpage' )->inContentLanguage()->plain() . ']]',
-				$wgRightsText
+				$rightsText
 			];
 		} else {
 			$copywarnMsg = 'copyrightwarning2';
