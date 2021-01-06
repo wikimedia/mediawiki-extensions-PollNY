@@ -99,7 +99,7 @@ class PollNYHooks {
 	 */
 	public static function pollFromTitle( &$title, &$article ) {
 		if ( $title->getNamespace() == NS_POLL ) {
-			global $wgRequest, $wgOut;
+			global $wgRequest, $wgOut, $wgHooks;
 
 			// We don't want caching here, it'll only cause problems...
 			$wgOut->enableClientCache( false );
