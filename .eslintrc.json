@@ -19,6 +19,7 @@
 		"no-useless-concat": "warn",
 		"no-implicit-globals": "warn",
 		"no-jquery/no-class-state": "warn",
-		"no-jquery/no-global-selector": "warn"
+		"no-jquery/no-global-selector": "warn",
+		"compat/compat": "warn"
 	}
 }
