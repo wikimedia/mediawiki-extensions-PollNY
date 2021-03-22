@@ -76,8 +76,7 @@
 			"PollNYHooks::registerPollEmbedHook"
 		],
 		"APIGetAllowedParams": "PollNYHooks::onAPIGetAllowedParams",
-		"LoadExtensionSchemaUpdates": "PollNYHooks::onLoadExtensionSchemaUpdates",
-		"CanonicalNamespaces": "PollNYHooks::onCanonicalNamespaces"
+		"LoadExtensionSchemaUpdates": "PollNYHooks::onLoadExtensionSchemaUpdates"
 	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "",

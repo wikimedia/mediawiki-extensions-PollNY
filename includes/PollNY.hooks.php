@@ -401,14 +401,4 @@ class PollNYHooks {
 			}
 		}
 	}
-
-	/**
-	 * Register the canonical names for our namespace and its talkspace.
-	 *
-	 * @param array &$list array of namespace numbers with corresponding canonical names
-	 */
-	public static function onCanonicalNamespaces( &$list ) {
-		$list[NS_POLL] = 'Poll';
-		$list[NS_POLL_TALK] = 'Poll_talk';
-	}
 }
