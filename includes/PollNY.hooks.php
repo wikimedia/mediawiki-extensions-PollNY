@@ -15,18 +15,28 @@ class PollNYHooks {
 	 * Updates the poll_question table to point to the new title when a page in
 	 * the NS_POLL namespace is moved.
 	 *
-	 * @param Title &$title Title object referring to the old title
-	 * @param Title &$newTitle Title object referring to the new (current) title
-	 * @param User $user User object performing the move [unused]
-	 * @param int $oldid old ID of the page
-	 * @param int $newid new ID of the page [unused]
+	 * @param MediaWiki\Linker\LinkTarget $old Object referring to the old title
+	 * @param MediaWiki\Linker\LinkTarget $new Object referring to the new (current) title
+	 * @param MediaWiki\User\UserIdentity $userIdentity User performing the move [unused]
+	 * @param int $oldid Old ID of the page
+	 * @param int $newid New ID of the page [unused]
+	 * @param string $reason User-supplied reason for moving the page
+	 * @param MediaWiki\Revision\RevisionRecord $revision
 	 */
-	public static function updatePollQuestion( &$title, &$newTitle, $user, $oldid, $newid ) {
-		if ( $title->getNamespace() == NS_POLL ) {
+	public static function updatePollQuestion(
+		MediaWiki\Linker\LinkTarget $old,
+		MediaWiki\Linker\LinkTarget $new,
+		MediaWiki\User\UserIdentity $userIdentity,
+		int $oldid,
+		int $newid,
+		string $reason,
+		MediaWiki\Revision\RevisionRecord $revision
+	) {
+		if ( $old->getNamespace() == NS_POLL ) {
 			$dbw = wfGetDB( DB_MASTER );
 			$dbw->update(
 				'poll_question',
-				[ 'poll_text' => $newTitle->getText() ],
+				[ 'poll_text' => $new->getText() ],
 				[ 'poll_page_id' => intval( $oldid ) ],
 				__METHOD__
 			);
