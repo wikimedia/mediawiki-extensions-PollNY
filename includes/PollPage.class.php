@@ -98,7 +98,7 @@ class PollPage extends Article {
 
 		$output = '<div class="poll-right">';
 		// Show the "create a poll" link to registered users
-		if ( $user->isLoggedIn() ) {
+		if ( $user->isRegistered() ) {
 			$output .= '<div class="create-link">
 				<a href="' . htmlspecialchars( $createPollObj->getFullURL() ) . '">
 					<img src="' . $imgPath . '/addIcon.gif" alt="" />'
@@ -144,7 +144,7 @@ class PollPage extends Article {
 
 		$output .= '<div class="poll-stats">';
 
-		if ( $user->isLoggedIn() ) {
+		if ( $user->isRegistered() ) {
 			$output .= wfMessage(
 				'poll-voted-for',
 				'<b>' . $stats_current_user['poll_votes'] . '</b>',

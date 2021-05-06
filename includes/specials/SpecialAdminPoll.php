@@ -129,7 +129,7 @@ class AdminPoll extends SpecialPage {
 		// $user->isAllowed( 'createpoll' ) except we currently don't have such a user
 		// right...so this basically assumes that "anons cannot create polls" right now;
 		// that assumption may or may not be correct.
-		if ( !$user->isAllowed( 'polladmin' ) && $user->isLoggedIn() ) {
+		if ( !$user->isAllowed( 'polladmin' ) && $user->isRegistered() ) {
 			$output .= $this->msg( 'poll-admin-nonadmin-note' )->escaped();
 			$output .= '<br />';
 		}
