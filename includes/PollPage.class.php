@@ -19,7 +19,7 @@ class PollPage extends Article {
 		global $wgExtensionAssetsPath;
 
 		// Perform no custom handling if the poll in question has been deleted
-		if ( !$this->getID() ) {
+		if ( !$this->getPage()->getId() ) {
 			parent::view();
 		}
 
@@ -52,7 +52,7 @@ class PollPage extends Article {
 			$randomURL = $p->getRandomPollURL( $user );
 			if ( $randomURL !== 'error' ) {
 				$out->redirect( Title::newFromText( $randomURL )->getFullURL( [
-					'prev_id' => $this->getID()
+					'prev_id' => $this->getPage()->getId()
 				] ) );
 			}
 			$show_results = true;
@@ -94,7 +94,8 @@ class PollPage extends Article {
 		$avatar = new wAvatar( $creatorUserId, 'l' );
 		$stats = new UserStats( $creatorUserId, $creatorUserName );
 		$stats_data = $stats->getUserStats();
-		$user_name_short = $lang->truncateForVisual( $creatorUserName, 27 );
+		$user_name_short = htmlspecialchars( $lang->truncateForVisual( $creatorUserName, 27 ), ENT_QUOTES );
+		$safeUserPageURL = htmlspecialchars( $user_title->getFullURL(), ENT_QUOTES );
 
 		$output = '<div class="poll-right">';
 		// Show the "create a poll" link to registered users
@@ -107,20 +108,20 @@ class PollPage extends Article {
 			</div>';
 		}
 
-		$formattedVoteCount = $lang->formatNum( $stats_data['votes'] );
-		$formattedEditCount = $lang->formatNum( $stats_data['edits'] );
-		$formattedCommentCount = $lang->formatNum( $stats_data['comments'] );
+		$formattedVoteCount = htmlspecialchars( $lang->formatNum( $stats_data['votes'] ), ENT_QUOTES );
+		$formattedEditCount = htmlspecialchars( $lang->formatNum( $stats_data['edits'] ), ENT_QUOTES );
+		$formattedCommentCount = htmlspecialchars( $lang->formatNum( $stats_data['comments'] ), ENT_QUOTES );
 		$avatarImage = $avatar->getAvatarURL();
 
 		$output .= '<div class="credit-box">
 					<h1>' . wfMessage( 'poll-submitted-by' )->escaped() . "</h1>
 					<div class=\"submitted-by-image\">
-						<a href=\"{$user_title->getFullURL()}\">
+						<a href=\"{$safeUserPageURL}\">
 							{$avatarImage}
 						</a>
 					</div>
 					<div class=\"submitted-by-user\">
-						<a href=\"{$user_title->getFullURL()}\">{$user_name_short}</a>
+						<a href=\"{$safeUserPageURL}\">{$user_name_short}</a>
 						<ul>
 							<li>
 								<img src=\"{$imgPath}/voteIcon.gif\" alt=\"\" />
@@ -237,12 +238,12 @@ class PollPage extends Article {
 				'</div>';
 			}
 
-			$output .= Html::submitButton( wfMessage( 'poll-submit-btn' )->escaped(), [ 'class' => 'poll-vote-btn-nojs' ] );
+			$output .= Html::submitButton( wfMessage( 'poll-submit-btn' )->text(), [ 'class' => 'poll-vote-btn-nojs' ] );
 			$output .= '</form>
 					</div>' . "\n";
 
 			$output .= '<div class="poll-timestamp">' .
-					wfMessage( 'poll-createdago', Poll::getTimeAgo( $poll_info['timestamp'] ) )->text() .
+					wfMessage( 'poll-createdago', Poll::getTimeAgo( $poll_info['timestamp'] ) )->parse() .
 				'</div>' . "\n";
 
 			$output .= "\t\t\t\t\t" . '<div class="poll-button">
@@ -284,6 +285,7 @@ class PollPage extends Article {
 						'class' => 'image-choice-' . $x,
 						'style' => 'width:' . $bar_width . 'px;height:11px;'
 					] );
+					// @phan-suppress-next-line PhanTypeMismatchArgumentInternal
 					$safeChoice = htmlspecialchars( $choice['choice'], ENT_QUOTES );
 					$output .= "<div class=\"previous-poll-choice\">
 								<div class=\"previous-poll-choice-left\">{$safeChoice} ({$percent}%)</div>";
@@ -335,6 +337,7 @@ class PollPage extends Article {
 					}
 					$bar_img = "<img src=\"{$imgPath}/vote-bar-{$x}.gif\" class=\"image-choice-{$x}\" style=\"width:{$bar_width}px;height:12px;\"/>";
 
+					// @phan-suppress-next-line PhanTypeMismatchArgumentInternal
 					$safeChoice = htmlspecialchars( $choice['choice'], ENT_QUOTES );
 					$output .= "<div class=\"poll-choice\">
 					<div class=\"poll-choice-left\">{$safeChoice} ({$percent}%)</div>";
@@ -352,7 +355,7 @@ class PollPage extends Article {
 			$nextPollLink = '';
 			$randomURL = $p->getRandomPollURL( $user );
 			if ( $randomURL !== 'error' ) {
-				$nextPollURL = Title::newFromText( $randomURL )->getFullURL( [ 'prev_id' => $this->getID() ] );
+				$nextPollURL = Title::newFromText( $randomURL )->getFullURL( [ 'prev_id' => $this->getPage()->getId() ] );
 				$nextPollLink = '<a class="poll-next-poll-link" href="' . htmlspecialchars( $nextPollURL, ENT_QUOTES ) . '">' .
 					wfMessage( 'poll-next-poll' )->escaped() . '</a>';
 			}

@@ -184,7 +184,7 @@ class Poll {
 		$choices = [];
 		foreach ( $res as $row ) {
 			if ( $poll_vote_count ) {
-				$percent = str_replace( '.0', '', $wgLang->formatNum( (int)$row->pc_vote_count / $poll_vote_count * 100, 1 ) );
+				$percent = str_replace( '.0', '', $wgLang->formatNum( (int)$row->pc_vote_count / $poll_vote_count * 100, true ) );
 			} else {
 				$percent = 0;
 			}
@@ -237,7 +237,7 @@ class Poll {
 			[ 'poll_id' ],
 			[
 				'poll_id' => intval( $pollId ),
-				'poll_actor' => intval( $user->getActorId() )
+				'poll_actor' => $user->getActorId()
 			],
 			__METHOD__
 		);
@@ -281,7 +281,7 @@ class Poll {
 		$res = $dbr->select(
 			'poll_user_vote',
 			'pv_poll_id',
-			[ 'pv_actor' => (int)$user->getActorId() ],
+			[ 'pv_actor' => $user->getActorId() ],
 			__METHOD__
 		);
 		foreach ( $res as $row ) {
@@ -374,6 +374,7 @@ class Poll {
 		} else {
 			wfDebug( "Got polls list ($count) ordered by {$order} from db\n" );
 			$dbr = wfGetDB( DB_REPLICA );
+			$params = [];
 			$params['LIMIT'] = $count;
 			$params['ORDER BY'] = "{$order} DESC";
 			$res = $dbr->select(
@@ -415,6 +416,7 @@ class Poll {
 
 		$totalDays = intval( $dtDiff / ( 24 * 60 * 60 ) );
 		$totalSecs = $dtDiff - ( $totalDays * 24 * 60 * 60 );
+		$dif = [];
 		$dif['w'] = intval( $totalDays / 7 );
 		$dif['d'] = $totalDays;
 		$dif['h'] = $h = intval( $totalSecs / ( 60 * 60 ) );
@@ -437,6 +439,10 @@ class Poll {
 		return $timeStr;
 	}
 
+	/**
+	 * @param int $time poll_timestamp field from the DB
+	 * @return string
+	 */
 	public static function getTimeAgo( $time ) {
 		$timeArray = self::dateDiff( time(), $time );
 		$timeStrD = self::getTimeOffset( $timeArray, 'd', 'days' );

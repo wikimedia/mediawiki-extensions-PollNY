@@ -22,6 +22,9 @@ class ApiPollNY extends ApiBase {
 
 	/**
 	 * Main entry point.
+	 *
+	 * @suppress PhanImpossibleTypeComparison
+	 * @suppress PhanPossiblyUndeclaredVariable
 	 */
 	public function execute() {
 		$user = $this->getUser();
@@ -108,6 +111,10 @@ class ApiPollNY extends ApiBase {
 		return 'OK';
 	}
 
+	/**
+	 * @param int $pageID Poll ID
+	 * @return string HTML
+	 */
 	function getPollResults( $pageID ) {
 		$assetsPath = $this->getConfig()->get( 'ExtensionAssetsPath' );
 

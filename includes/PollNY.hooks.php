@@ -37,7 +37,7 @@ class PollNYHooks {
 			$dbw->update(
 				'poll_question',
 				[ 'poll_text' => $new->getText() ],
-				[ 'poll_page_id' => intval( $oldid ) ],
+				[ 'poll_page_id' => $oldid ],
 				__METHOD__
 			);
 		}
@@ -243,11 +243,12 @@ class PollNYHooks {
 						$choice['id'] = (int)$choice['id'];
 						$output .= "<div class=\"poll-choice\">
 						<input type=\"radio\" name=\"poll_choice\" data-poll-id=\"{$poll_info['id']}\" data-poll-page-id=\"{$poll_page_id}\" id=\"poll_choice\" value=\"{$choice['id']}\">";
+						// @phan-suppress-next-line PhanTypeMismatchArgumentInternal
 						$output .= htmlspecialchars( $choice['choice'], ENT_QUOTES );
 						$output .= '</div>';
 					}
 
-					$output .= Html::submitButton( wfMessage( 'poll-submit-btn' )->escaped(), [ 'class' => 'poll-vote-btn-nojs' ] );
+					$output .= Html::submitButton( wfMessage( 'poll-submit-btn' )->text(), [ 'class' => 'poll-vote-btn-nojs' ] );
 					$output .= '</form>
 						</div>';
 				} else {
@@ -329,7 +330,7 @@ class PollNYHooks {
 
 		$db = $updater->getDB();
 		if ( $db->getType() === 'postgres' ) {
-			$sqlDirectory = $sqlDirectory . 'postgres/';
+			$sqlDirectory .= 'postgres/';
 		}
 
 		$updater->addExtensionTable( 'poll_choice', $sqlDirectory . 'poll_choice.sql' );

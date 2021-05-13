@@ -135,7 +135,7 @@ class UpdatePoll extends UnlistedSpecialPage {
 			!( $user->isAllowed( 'polladmin' ) || $user->getActorId() == $poll_info['actor'] )
 		) {
 			$out->setPageTitle( $this->msg( 'poll-woops' )->plain() );
-			$out->addHTML( $this->msg( 'poll-edit-invalid-access' )->text() );
+			$out->addHTML( $this->msg( 'poll-edit-invalid-access' )->escaped() );
 			return false;
 		}
 
@@ -163,13 +163,14 @@ class UpdatePoll extends UnlistedSpecialPage {
 
 		$out->setPageTitle( $this->msg( 'poll-edit-title', $poll_info['question'] )->plain() );
 
+		$pollId = (int)$poll_info['id'];
 		$form = "<div class=\"update-poll-left\">
 			<form action=\"\" method=\"post\" enctype=\"multipart/form-data\" name=\"form1\">
-			<input type=\"hidden\" name=\"poll_id\" value=\"{$poll_info['id']}\" />
+			<input type=\"hidden\" name=\"poll_id\" value=\"{$pollId}\" />
 			<input type=\"hidden\" name=\"prev_poll_id\" value=\"" . $request->getInt( 'prev_id' ) . '" />
 			<input type="hidden" name="poll_image_name" id="poll_image_name" />
 
-			<h1>' . $this->msg( 'poll-edit-answers' )->text() . '</h1>';
+			<h1>' . $this->msg( 'poll-edit-answers' )->escaped() . '</h1>';
 
 		$x = 1;
 		foreach ( $poll_info['choices'] as $choice ) {

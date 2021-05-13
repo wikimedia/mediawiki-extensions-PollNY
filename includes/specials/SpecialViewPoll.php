@@ -48,6 +48,7 @@ class ViewPoll extends SpecialPage {
 		$limit = $per_page;
 
 		$limitvalue = 0;
+		// @phan-suppress-next-line PhanSuspiciousValueComparison
 		if ( $limit > 0 && $page ) {
 			$limitvalue = $page * $limit - ( $limit );
 		}
@@ -58,12 +59,12 @@ class ViewPoll extends SpecialPage {
 		$output = '
 		<div class="view-poll-top-links">
 			<a href="' . htmlspecialchars( $random_poll_link->getFullURL() ) . '">' .
-				$this->msg( 'poll-take-button' )->text() .
+				$this->msg( 'poll-take-button' )->escaped() .
 			'</a>
 		</div>
 
 		<div class="view-poll-navigation">
-			<h2>' . $this->msg( 'poll-view-order' )->text() . '</h2>';
+			<h2>' . $this->msg( 'poll-view-order' )->escaped() . '</h2>';
 
 		$dbr = wfGetDB( DB_REPLICA );
 		$where = [];
@@ -86,9 +87,9 @@ class ViewPoll extends SpecialPage {
 				[],
 				[ 'type' => 'most' ] + $userLink
 			) . '</p><p><b>' .
-				$this->msg( 'poll-view-newest' )->text() . '</b></p>';
+				$this->msg( 'poll-view-newest' )->escaped() . '</b></p>';
 		} else {
-			$output .= '<p><b>' . $this->msg( 'poll-view-popular' )->text() .
+			$output .= '<p><b>' . $this->msg( 'poll-view-popular' )->escaped() .
 				'</b></p><p>' . $linkRenderer->makeLink(
 					$thisTitle,
 					$this->msg( 'poll-view-newest' )->text(),
@@ -114,6 +115,7 @@ class ViewPoll extends SpecialPage {
 			$where,
 			__METHOD__,
 			[
+				// @phan-suppress-next-line PhanPossiblyUndeclaredVariable
 				'ORDER BY' => "$order DESC",
 				'LIMIT' => $limit,
 				'OFFSET' => $limitvalue
@@ -156,6 +158,7 @@ class ViewPoll extends SpecialPage {
 			$row_id = "poll-row-{$x}";
 			$title = Title::makeTitle( NS_POLL, $poll_title );
 			$url = htmlspecialchars( $title->getFullURL() );
+			$safePollTitle = htmlspecialchars( $poll_title, ENT_QUOTES );
 
 			if ( ( $x < $dbr->numRows( $res ) ) && ( $x % $per_page != 0 ) ) {
 				$cssClass = 'view-poll-row';
@@ -171,7 +174,7 @@ class ViewPoll extends SpecialPage {
 					</div>
 					<div class=\"view-poll-user-name\">{$creatorUserPage}</div>
 					<div class=\"view-poll-text\">
-						<a href=\"{$url}\">{$poll_title}</a>
+						<a href=\"{$url}\">{$safePollTitle}</a>
 						<p class=\"view-poll-num-answers\">" .
 							$this->msg(
 								'poll-view-answered-times',
@@ -205,7 +208,7 @@ class ViewPoll extends SpecialPage {
 						'type' => 'most',
 						'page' => ( $page - 1 )
 					] + $userLink
-				) . $this->msg( 'word-separator' )->plain();
+				) . $this->msg( 'word-separator' )->escaped();
 			}
 
 			if ( ( $total % $per_page ) != 0 ) {
@@ -224,20 +227,20 @@ class ViewPoll extends SpecialPage {
 				} else {
 					$output .= $linkRenderer->makeLink(
 						$thisTitle,
-						$i,
+						(string)$i,
 						[],
 						[
 							'type' => 'most',
 							'page' => $i
 						] + $userLink
-					) . $this->msg( 'word-separator' )->plain();
+					) . $this->msg( 'word-separator' )->escaped();
 				}
 			}
 
 			if ( ( $total - ( $per_page * $page ) ) > 0 ) {
-				$output .= $this->msg( 'word-separator' )->plain() . $linkRenderer->makeLink(
+				$output .= $this->msg( 'word-separator' )->escaped() . $linkRenderer->makeLink(
 					$thisTitle,
-					$i,
+					(string)$i,
 					[],
 					[
 						'type' => 'most',

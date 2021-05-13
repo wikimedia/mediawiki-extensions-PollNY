@@ -15,6 +15,7 @@
  * @date 21 July 2013
  * @note Based on 1.16 core SpecialUpload.php (GPL-licensed) by Bryan et al.
  * @see http://bugzilla.shoutwiki.com/show_bug.cgi?id=22
+ * @property PollUpload $mUpload
  */
 class SpecialPollAjaxUpload extends SpecialUpload {
 
@@ -66,14 +67,7 @@ class SpecialPollAjaxUpload extends SpecialUpload {
 
 		// If it was posted check for the token (no remote POST'ing with user credentials)
 		$token = $request->getVal( 'wpEditToken' );
-		if ( $this->mSourceType == 'file' && $token == null ) {
-			// Skip token check for file uploads as that can't be faked via JS...
-			// Some client-side tools don't expect to need to send wpEditToken
-			// with their submissions, as that's new in 1.16.
-			$this->mTokenOk = true;
-		} else {
-			$this->mTokenOk = $this->getUser()->matchEditToken( $token );
-		}
+		$this->mTokenOk = $this->getUser()->matchEditToken( $token );
 	}
 
 	/**
@@ -151,7 +145,7 @@ class SpecialPollAjaxUpload extends SpecialUpload {
 			'hideignorewarning' => $hideIgnoreWarning,
 			'destwarningack' => (bool)$this->mDestWarningAck,
 			'destfile' => $this->mDesiredDestName,
-		] );
+		], $this->getContext() );
 		$form->setTitle( $this->getPageTitle() );
 
 		# Check the token, but only if necessary
@@ -178,7 +172,7 @@ class SpecialPollAjaxUpload extends SpecialUpload {
 	 * @param string $message HTML message to be passed to mainUploadForm
 	 */
 	protected function showRecoverableUploadError( $message ) {
-		$sessionKey = $this->mUpload->stashSession();
+		$sessionKey = $this->mUpload->doStashFile()->getFileKey();
 		$message = '<h2>' . $this->msg( 'uploaderror' )->escaped() . "</h2>\n" .
 			'<div class="error">' . $message . "</div>\n";
 

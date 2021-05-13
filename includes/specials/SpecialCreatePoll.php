@@ -58,6 +58,7 @@ class CreatePoll extends SpecialPage {
 		/**
 		 * Create Poll Thresholds based on User Stats
 		 */
+		$threshold_reason = '';
 		$createThresholds = $this->getConfig()->get( 'CreatePollThresholds' );
 		if ( is_array( $createThresholds ) && count( $createThresholds ) > 0 ) {
 			$canCreate = true;
@@ -65,7 +66,6 @@ class CreatePoll extends SpecialPage {
 			$stats = new UserStats( $user->getId(), $user->getName() );
 			$stats_data = $stats->getUserStats();
 
-			$threshold_reason = '';
 			foreach ( $createThresholds as $field => $threshold ) {
 				if ( $stats_data[$field] < $threshold ) {
 					$canCreate = false;
@@ -94,6 +94,7 @@ class CreatePoll extends SpecialPage {
 
 			// Add poll
 			$poll_title = Title::makeTitleSafe( NS_POLL, $request->getVal( 'poll_question' ) );
+			// @phan-suppress-next-line PhanImpossibleCondition
 			if ( $poll_title === null && !$poll_title instanceof Title ) {
 				$out->setPageTitle( $this->msg( 'poll-create-threshold-title' )->plain() );
 				$out->addWikiMsg( 'poll-create-threshold-reason', $threshold_reason );

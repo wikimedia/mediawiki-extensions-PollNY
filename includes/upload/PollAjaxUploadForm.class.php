@@ -10,7 +10,11 @@ class PollAjaxUploadForm extends UploadForm {
 
 	protected $mSourceIds;
 
-	public function __construct( $options = [] ) {
+	public function __construct( array $options = [], IContextSource $context = null ) {
+		if ( $context instanceof IContextSource ) {
+			$this->setContext( $context );
+		}
+
 		$this->mWatch = !empty( $options['watch'] );
 		$this->mForReUpload = !empty( $options['forreupload'] );
 		$this->mSessionKey = isset( $options['sessionkey'] )
@@ -25,7 +29,7 @@ class PollAjaxUploadForm extends UploadForm {
 			+ $this->getDescriptionSection()
 			+ $this->getOptionsSection();
 
-		HTMLForm::__construct( $descriptor, 'upload' );
+		HTMLForm::__construct( $descriptor, $context, 'upload' );
 
 		# Set some form properties
 		$this->setSubmitText( $this->msg( 'uploadbtn' )->text() );
@@ -214,9 +218,11 @@ class PollAjaxUploadForm extends UploadForm {
 
 	/**
 	 * Add the upload JS and show the form.
+	 *
+	 * @return Status|bool
 	 */
 	public function show() {
-		HTMLForm::show();
+		return HTMLForm::show();
 	}
 
 	/**

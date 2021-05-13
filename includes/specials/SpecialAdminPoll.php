@@ -60,8 +60,9 @@ class AdminPoll extends SpecialPage {
 		$newStatus = $request->getInt( 'new_status' );
 
 		if (
-			in_array( $action, [ 'delete', 'flag', 'open', 'close', 'unflag' ] ) &&
-			( $p->doesUserOwnPoll( $user, $pollId ) || $user->isAllowed( 'polladmin' ) )
+			in_array( $action, [ 'delete', 'open', 'close', 'unflag' ] ) &&
+			( $p->doesUserOwnPoll( $user, $pollId ) || $user->isAllowed( 'polladmin' ) ) ||
+			$action === 'flag'
 		) {
 			$output .= $this->showConfirmationForm( $action, $pollId );
 			$out->addHTML( $output );
@@ -115,10 +116,10 @@ class AdminPoll extends SpecialPage {
 		$limit = $per_page;
 
 		$nav = [
-			'all' => $this->msg( 'poll-admin-viewall' )->text(),
-			'open' => $this->msg( 'poll-admin-open' )->text(),
-			'closed' => $this->msg( 'poll-admin-closed' )->text(),
-			'flagged' => $this->msg( 'poll-admin-flagged' )->text()
+			'all' => $this->msg( 'poll-admin-viewall' )->escaped(),
+			'open' => $this->msg( 'poll-admin-open' )->escaped(),
+			'closed' => $this->msg( 'poll-admin-closed' )->escaped(),
+			'flagged' => $this->msg( 'poll-admin-flagged' )->escaped()
 		];
 
 		$thisPage = $this->getPageTitle();
@@ -134,11 +135,11 @@ class AdminPoll extends SpecialPage {
 			$output .= '<br />';
 		}
 		$output .= '<div class="view-poll-top-links">
-			<a href="' . $viewPollURL . '">' . $this->msg( 'poll-take-button' )->text() . '</a>
+			<a href="' . $viewPollURL . '">' . $this->msg( 'poll-take-button' )->escaped() . '</a>
 		</div>
 
 		<div class="view-poll-navigation">
-			<h2>' . $this->msg( 'poll-admin-status-nav' )->text() . '</h2>';
+			<h2>' . $this->msg( 'poll-admin-status-nav' )->escaped() . '</h2>';
 
 		foreach ( $nav as $status => $title ) {
 			$output .= '<p>';
@@ -157,7 +158,9 @@ class AdminPoll extends SpecialPage {
 		// poll-admin-title-all, poll-admin-title-closed, poll-admin-title-flagged, poll-admin-title-open
 		$out->setPageTitle( $this->msg( 'poll-admin-title-' . $current_status )->text() );
 
+		$params = [];
 		$params['ORDER BY'] = 'poll_date DESC';
+		// @phan-suppress-next-line PhanSuspiciousValueComparison
 		if ( $limit > 0 ) {
 			$params['LIMIT'] = $limit;
 		}
@@ -200,7 +203,7 @@ class AdminPoll extends SpecialPage {
 		);
 
 		if ( $status_int > -1 ) {
-			$where['poll_status'] = $status;
+			$where['poll_status'] = $status_int;
 		}
 
 		$s = $dbr->selectRow(
@@ -243,6 +246,9 @@ class AdminPoll extends SpecialPage {
 			$rowId = "poll-row-{$x}";
 			$title = Title::makeTitle( NS_POLL, $poll_title );
 
+			// cast it to an int even though it already is one, but phan doesn't know that...
+			$pollId = (int)$row->poll_id;
+
 			$poll_choices = $p->getPollChoices( $row->poll_id );
 
 			if ( ( $x < $dbr->numRows( $res ) ) && ( $x % $per_page != 0 ) ) {
@@ -252,14 +258,15 @@ class AdminPoll extends SpecialPage {
 			}
 
 			$poll_url = htmlspecialchars( $title->getFullURL() );
+			$safePollTitle = htmlspecialchars( $poll_title, ENT_QUOTES );
 			$output .= "<div class=\"view-poll-number\">{$x}.</div>
 					<div class=\"view-poll-user-image\">{$avatar->getAvatarURL()}</div>
 					<div class=\"view-poll-user-name\">{$creatorUserPage}</div>
 					<div class=\"view-poll-text\">
-					<a href=\"{$poll_url}\">{$poll_title}</a>
+					<a href=\"{$poll_url}\">{$safePollTitle}</a>
 					<p>";
 			foreach ( $poll_choices as $choice ) {
-				$output .= "{$choice['choice']}<br />";
+				$output .= htmlspecialchars( $choice['choice'], ENT_QUOTES ) . '<br />';
 			}
 			$output .= '</p>
 						<p class="view-poll-num-answers">' .
@@ -272,7 +279,7 @@ class AdminPoll extends SpecialPage {
 								'poll-ago',
 								Poll::getTimeAgo( $poll_date )
 							)->parse() . ")</p>
-						<div id=\"poll-{$row->poll_id}-controls\">";
+						<div id=\"poll-{$pollId}-controls\">";
 			if ( $row->poll_status == Poll::STATUS_FLAGGED ) {
 				$unflagLink = htmlspecialchars(
 					$thisPage->getFullURL( [
@@ -281,7 +288,7 @@ class AdminPoll extends SpecialPage {
 					] ),
 					ENT_QUOTES
 				);
-				$output .= "<a class=\"poll-unflag-link\" href=\"{$unflagLink}\" data-poll-id=\"{$row->poll_id}\">" .
+				$output .= "<a class=\"poll-unflag-link\" href=\"{$unflagLink}\" data-poll-id=\"{$pollId}\">" .
 					$this->msg( 'poll-unflag-poll' )->escaped() . '</a>';
 			}
 			if ( $row->poll_status == Poll::STATUS_CLOSED ) {
@@ -292,7 +299,7 @@ class AdminPoll extends SpecialPage {
 					] ),
 					ENT_QUOTES
 				);
-				$output .= " <a class=\"poll-open-link\" href=\"{$openLink}\" data-poll-id=\"{$row->poll_id}\">" .
+				$output .= " <a class=\"poll-open-link\" href=\"{$openLink}\" data-poll-id=\"{$pollId}\">" .
 					$this->msg( 'poll-open-poll' )->escaped() . '</a>';
 			}
 			if ( $row->poll_status == Poll::STATUS_OPEN ) {
@@ -303,7 +310,7 @@ class AdminPoll extends SpecialPage {
 					] ),
 					ENT_QUOTES
 				);
-				$output .= " <a class=\"poll-close-link\" href=\"{$closeLink}\" data-poll-id=\"{$row->poll_id}\">" .
+				$output .= " <a class=\"poll-close-link\" href=\"{$closeLink}\" data-poll-id=\"{$pollId}\">" .
 					$this->msg( 'poll-close-poll' )->escaped() . '</a>';
 			}
 
@@ -314,8 +321,7 @@ class AdminPoll extends SpecialPage {
 				] ),
 				ENT_QUOTES
 			);
-
-			$output .= " <a class=\"poll-delete-link\" href=\"{$deleteLink}\" data-poll-id=\"{$row->poll_id}\">" .
+			$output .= " <a class=\"poll-delete-link\" href=\"{$deleteLink}\" data-poll-id=\"{$pollId}\">" .
 				$this->msg( 'poll-delete-poll' )->escaped() . '</a>
 						</div>
 					</div>
@@ -360,17 +366,17 @@ class AdminPoll extends SpecialPage {
 						'type' => 'most',
 						'page' => ( $page - 1 )
 					]
-				) . $this->msg( 'word-separator' )->plain();
+				) . $this->msg( 'word-separator' )->escaped();
 			}
 
-			if ( ( $total % $per_page ) != 0 ) {
+			if ( ( $total % $perPage ) != 0 ) {
 				$numofpages++;
 			}
 			if ( $numofpages >= 9 && $page < $total ) {
 				$numofpages = 9 + $page;
 			}
-			if ( $numofpages >= ( $total / $per_page ) ) {
-				$numofpages = ( $total / $per_page ) + 1;
+			if ( $numofpages >= ( $total / $perPage ) ) {
+				$numofpages = ( $total / $perPage ) + 1;
 			}
 
 			for ( $i = 1; $i <= $numofpages; $i++ ) {
@@ -379,18 +385,18 @@ class AdminPoll extends SpecialPage {
 				} else {
 					$output .= $linkRenderer->makeLink(
 						$viewPoll,
-						$i,
+						(string)$i,
 						[],
 						[
 							'type' => 'most',
 							'page' => $i
 						]
-					) . $this->msg( 'word-separator' )->plain();
+					) . $this->msg( 'word-separator' )->escaped();
 				}
 			}
 
-			if ( ( $total - ( $per_page * $page ) ) > 0 ) {
-				$output .= $this->msg( 'word-separator' )->plain() .
+			if ( ( $total - ( $perPage * $page ) ) > 0 ) {
+				$output .= $this->msg( 'word-separator' )->escaped() .
 					$linkRenderer->makeLink(
 						$viewPoll,
 						$this->msg( 'poll-next' )->text(),
@@ -448,12 +454,7 @@ class AdminPoll extends SpecialPage {
 
 				$pollTitle = Title::newFromId( $s->poll_page_id );
 				$wikipage = WikiPage::factory( $pollTitle );
-				if ( version_compare( MW_VERSION, '1.35', '<' ) ) {
-					$wikipage->doDeleteArticleReal( 'delete poll' );
-				} else {
-					// Different signature in 1.35 and above
-					$wikipage->doDeleteArticleReal( 'delete poll', $user );
-				}
+				$wikipage->doDeleteArticleReal( 'delete poll', $user );
 			}
 		}
 
@@ -466,6 +467,8 @@ class AdminPoll extends SpecialPage {
 	 * Mainly used as the no-JS fallback; for users with JavaScript enabled,
 	 * the JS handles the anti-CSRF stuff and does everything somewhat more
 	 * smoothly.
+	 *
+	 * @suppress PhanPossiblyUndeclaredVariable
 	 *
 	 * @param string $action close, open, flag, unflag or delete
 	 * @param int $id ID of the poll that $action is going to impact
@@ -500,6 +503,7 @@ class AdminPoll extends SpecialPage {
 		// don't currently use it
 		$form .= $this->msg( $msgKey )->parseAsBlock();
 		$form .= '<br />';
+		// @todo FIXME: render the poll here when $action === 'flag' (and/or some other actions?)
 
 		$form .= Html::hidden( 'wpEditToken', $user->getEditToken() );
 		$form .= Html::hidden( 'poll_id', $id );
@@ -507,7 +511,7 @@ class AdminPoll extends SpecialPage {
 		if ( $newStatus ) {
 			$form .= Html::hidden( 'new_status', $newStatus );
 		}
-		$form .= Html::submitButton( $this->msg( 'poll-submit-btn' )->escaped(), [ 'name' => 'wpSubmit', 'class' => 'site-button' ] );
+		$form .= Html::submitButton( $this->msg( 'poll-submit-btn' )->text(), [ 'name' => 'wpSubmit', 'class' => 'site-button' ] );
 		$form .= '</form>';
 
 		return $form;
