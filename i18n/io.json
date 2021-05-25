@@ -5,6 +5,7 @@
 		]
 	},
 	"poll-ago": "$1 ante nun",
+	"poll-js-loading": "Karganta...",
 	"poll-time-ago": "$1 ante nun",
 	"poll-time-days": "{{PLURAL:$1|1 dio|$1 dii}}",
 	"poll-time-hours": "{{PLURAL:$1|1 horo|$1 hori}}",
