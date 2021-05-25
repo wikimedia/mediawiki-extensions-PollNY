@@ -169,8 +169,6 @@ class Poll {
 	 * 					amount of votes and percent of total votes)
 	 */
 	public static function getPollChoices( $poll_id, $poll_vote_count = 0 ) {
-		global $wgLang;
-
 		$dbr = wfGetDB( DB_REPLICA );
 
 		$res = $dbr->select(
@@ -182,9 +180,11 @@ class Poll {
 		);
 
 		$choices = [];
+		$lang = RequestContext::getMain()->getLanguage();
 		foreach ( $res as $row ) {
 			if ( $poll_vote_count ) {
-				$percent = str_replace( '.0', '', $wgLang->formatNum( (int)$row->pc_vote_count / $poll_vote_count * 100, true ) );
+				$percent = str_replace( '.0', '', $lang->formatNum(
+					(int)$row->pc_vote_count / $poll_vote_count * 100, true ) );
 			} else {
 				$percent = 0;
 			}
