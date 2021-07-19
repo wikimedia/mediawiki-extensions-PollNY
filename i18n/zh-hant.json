@@ -4,7 +4,8 @@
 			"Cwlin0416",
 			"Kly",
 			"LNDDYL",
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Winston Sung"
 		]
 	},
 	"adminpoll": "管理調查",
@@ -17,7 +18,7 @@
 	"poll-admin-flagged": "已標記",
 	"poll-admin-open": "開啟",
 	"poll-error-socialprofile": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:SocialProfile SocialProfile 擴充功能]尚未安裝。請安裝此擴充後在重試一次。",
-	"poll-error-socialprofile-title": "未安裝 SocialProfile 擴充功能。",
+	"poll-error-socialprofile-title": "未安裝SocialProfile擴充功能。",
 	"poll-admin-nonadmin-note": "因為您不是調查管理員，您只能查看您自己建立的調查。",
 	"poll-admin-panel": "管理員",
 	"poll-admin-status-nav": "按狀態篩選",
