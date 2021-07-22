@@ -4,5 +4,6 @@
 			"Ajeje Brazorf"
 		]
 	},
+	"poll-cancel-button": "Annulla",
 	"poll-time-days": "{{PLURAL:$1|nu jornu|$1 jorna}}"
 }
