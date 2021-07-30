@@ -9,7 +9,6 @@
 		"jQuery": false
 	},
 	"rules": {
-		"vars-on-top": "warn",
 		"eqeqeq": "warn",
 		"camelcase": "warn",
 		"no-loop-func": "warn",
