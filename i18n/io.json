@@ -5,6 +5,7 @@
 		]
 	},
 	"poll-ago": "$1 ante nun",
+	"poll-cancel-button": "Nuligar",
 	"poll-js-loading": "Karganta...",
 	"poll-time-ago": "$1 ante nun",
 	"poll-time-days": "{{PLURAL:$1|1 dio|$1 dii}}",
