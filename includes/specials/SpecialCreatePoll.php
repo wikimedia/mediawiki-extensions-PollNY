@@ -73,7 +73,7 @@ class CreatePoll extends SpecialPage {
 				}
 			}
 
-			if ( $canCreate === false ) {
+			if ( !$canCreate ) {
 				$out->setPageTitle( $this->msg( 'poll-create-threshold-title' )->plain() );
 				$out->addWikiMsg( 'poll-create-threshold-reason', $threshold_reason );
 				return '';
