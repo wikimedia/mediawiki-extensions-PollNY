@@ -189,7 +189,7 @@ class AdminPoll extends SpecialPage {
 			$where['poll_actor'] = $user->getActorId();
 		}
 
-		$dbr = wfGetDB( DB_MASTER );
+		$dbr = wfGetDB( DB_PRIMARY );
 		$res = $dbr->select(
 			[ 'poll_question', 'page' ],
 			[
@@ -425,7 +425,7 @@ class AdminPoll extends SpecialPage {
 		$retVal = false;
 
 		if ( $pollID > 0 ) {
-			$dbw = wfGetDB( DB_MASTER );
+			$dbw = wfGetDB( DB_PRIMARY );
 			$s = $dbw->selectRow(
 				'poll_question',
 				[ 'poll_page_id' ],

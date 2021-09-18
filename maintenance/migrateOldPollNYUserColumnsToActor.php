@@ -44,7 +44,7 @@ class MigrateOldPollNYUserColumnsToActor extends LoggedUpdateMaintenance {
 	 * @return bool True to log the update as done
 	 */
 	protected function doDBUpdates() {
-		$dbw = $this->getDB( DB_MASTER );
+		$dbw = $this->getDB( DB_PRIMARY );
 		$dbw->query(
 			"UPDATE {$dbw->tableName( 'poll_question' )} SET poll_actor=(SELECT actor_id FROM {$dbw->tableName( 'actor' )} WHERE actor_user=poll_user_id AND actor_name=poll_user_name)",
 			__METHOD__

@@ -63,7 +63,7 @@ class PollPage extends Article {
 
 		// Get total polls count so we can tell the user how many they have
 		// voted for out of total
-		$dbr = wfGetDB( DB_MASTER );
+		$dbr = wfGetDB( DB_PRIMARY );
 		$total_polls = 0;
 		$s = $dbr->selectRow(
 			'poll_question',

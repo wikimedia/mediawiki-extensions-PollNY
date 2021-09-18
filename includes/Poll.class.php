@@ -32,7 +32,7 @@ class Poll {
 	 * @return int inserted value of an auto-increment row (poll ID)
 	 */
 	public function addPollQuestion( $question, $image, $pageID, User $user ) {
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_PRIMARY );
 		$dbw->insert(
 			'poll_question',
 			[
@@ -56,7 +56,7 @@ class Poll {
 	 * @param int $choiceOrder a value between 1 and 10
 	 */
 	public function addPollChoice( $pollID, $choiceText, $choiceOrder ) {
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_PRIMARY );
 		$dbw->insert(
 			'poll_choice',
 			[
@@ -77,7 +77,7 @@ class Poll {
 	 * @param User $user relevant user
 	 */
 	public function addPollVote( $pollID, $choiceID, User $user ) {
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_PRIMARY );
 		$dbw->insert(
 			'poll_user_vote',
 			[
@@ -103,7 +103,7 @@ class Poll {
 	 * @param int $choiceID answer choice ID number between 1 and 10
 	 */
 	public function incChoiceVoteCount( $choiceID ) {
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_PRIMARY );
 		$dbw->update(
 			'poll_choice',
 			[ 'pc_vote_count=pc_vote_count+1' ],
@@ -118,7 +118,7 @@ class Poll {
 	 * @param int $pollID poll ID number
 	 */
 	public function incPollVoteCount( $pollID ) {
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_PRIMARY );
 		$dbw->update(
 			'poll_question',
 			[ 'poll_vote_count=poll_vote_count+1' ],
@@ -273,7 +273,7 @@ class Poll {
 	 * @return int Random poll ID number
 	 */
 	public function getRandomPollID( $user ) {
-		$dbr = wfGetDB( DB_MASTER );
+		$dbr = wfGetDB( DB_PRIMARY );
 		$poll_page_id = 0;
 		$randstr = wfRandom();
 
@@ -344,7 +344,7 @@ class Poll {
 	 * @param int $status 0 (close), 1 (open) or 2 (flag)
 	 */
 	public function updatePollStatus( $pollId, $status ) {
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_PRIMARY );
 		$dbw->update(
 			'poll_question',
 			[ 'poll_status' => $status ],

@@ -77,7 +77,7 @@ class UpdatePoll extends UnlistedSpecialPage {
 			// Add Choices
 			for ( $x = 1; $x <= 10; $x++ ) {
 				if ( $request->getVal( "poll_answer_{$x}" ) ) {
-					$dbw = wfGetDB( DB_MASTER );
+					$dbw = wfGetDB( DB_PRIMARY );
 
 					$dbw->update(
 						'poll_choice',
@@ -93,7 +93,7 @@ class UpdatePoll extends UnlistedSpecialPage {
 
 			// Update image
 			if ( $request->getVal( 'poll_image_name' ) ) {
-				$dbw = wfGetDB( DB_MASTER );
+				$dbw = wfGetDB( DB_PRIMARY );
 
 				$dbw->update(
 					'poll_question',

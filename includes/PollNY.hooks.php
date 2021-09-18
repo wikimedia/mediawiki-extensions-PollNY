@@ -33,7 +33,7 @@ class PollNYHooks {
 		MediaWiki\Revision\RevisionRecord $revision
 	) {
 		if ( $old->getNamespace() == NS_POLL ) {
-			$dbw = wfGetDB( DB_MASTER );
+			$dbw = wfGetDB( DB_PRIMARY );
 			$dbw->update(
 				'poll_question',
 				[ 'poll_text' => $new->getText() ],
@@ -53,7 +53,7 @@ class PollNYHooks {
 	 */
 	public static function deletePollQuestion( &$article, &$user, $reason ) {
 		if ( $article->getTitle()->getNamespace() == NS_POLL ) {
-			$dbw = wfGetDB( DB_MASTER );
+			$dbw = wfGetDB( DB_PRIMARY );
 
 			$s = $dbw->selectRow(
 				'poll_question',
