@@ -181,8 +181,13 @@ class PollNYHooks {
 		if ( $poll_name ) {
 			global $wgOut, $wgExtensionAssetsPath, $wgPollDisplay;
 
-			$user = $parser->getUser();
-
+			if ( method_exists( $parser, 'getUserIdentity' ) ) {
+				// MW 1.36+
+				$user = MediaWikiServices::getInstance()->getUserFactory()->newFromUserIdentity( $parser->getUserIdentity() );
+			} else {
+				// @phan-suppress-next-line PhanUndeclaredMethod
+				$user = $parser->getUser();
+			}
 			// Load CSS
 			$wgOut->addModuleStyles( 'ext.pollNY.css' );
 
