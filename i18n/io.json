@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"JSantos",
 			"Joao Xavier"
 		]
 	},
+	"poll-admin-closed": "Klozita",
 	"poll-admin-panel": "Administrero",
 	"poll-ago": "$1 ante nun",
 	"poll-cancel-button": "Nuligar",
