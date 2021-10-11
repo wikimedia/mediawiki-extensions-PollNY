@@ -85,7 +85,7 @@
 	"poll-view-popular": "Popular",
 	"poll-view-answered-times": "Answered {{PLURAL:$1|one time|$1 times}}",
 	"poll-view-all-by": "View all polls by $1",
-	"poll-voted-for": "You have voted for $1 {{PLURAL:$1|poll|polls}} out of <b>$2</b> total polls and received <span class=\"profile-on\">$3 points</span>.",
+	"poll-voted-for": "You have voted for '''$1''' {{PLURAL:$1|poll|polls}} out of '''$2''' total polls and received <span class=\"profile-on\">$3 points</span>.",
 	"poll-votes": "{{PLURAL:$1|one vote|$1 votes}}",
 	"poll-woops": "Woops!",
 	"poll-would-have-earned": "You would have earned <span class=\"profile-on\">$1 points</span> had you [[Special:UserLogin/signup|signed up]].",

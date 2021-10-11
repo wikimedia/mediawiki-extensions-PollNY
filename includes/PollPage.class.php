@@ -148,7 +148,7 @@ class PollPage extends Article {
 		if ( $user->isRegistered() ) {
 			$output .= wfMessage(
 				'poll-voted-for',
-				'<b>' . $stats_current_user['poll_votes'] . '</b>',
+				$stats_current_user['poll_votes'],
 				$total_polls,
 				$lang->formatNum( $stats_current_user['poll_votes'] * 5 )
 			)->parse();
