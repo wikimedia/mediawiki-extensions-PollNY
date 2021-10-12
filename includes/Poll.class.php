@@ -275,6 +275,8 @@ class Poll {
 	public function getRandomPollID( $user ) {
 		$dbr = wfGetDB( DB_PRIMARY );
 		$poll_page_id = 0;
+		// Note that this is directly embedded as-is into the SQL query below,
+		// so be *very* careful when touching this variable!
 		$randstr = wfRandom();
 
 		$excludedIds = [];
@@ -288,48 +290,24 @@ class Poll {
 			$excludedIds[] = $row->pv_poll_id;
 		}
 
-		if ( empty( $excludedIds ) ) {
-			// Avoid generating invalid SQL in the "NOT IN" clause below
-			// and just fall through to the "random fallback" below
-			$row = false;
-		} else {
-			$row = $dbr->selectRow(
-				'poll_question',
-				'poll_page_id',
-				[
-					'poll_id NOT IN (' . $dbr->makeList( $excludedIds ) . ')',
-					'poll_status' => self::STATUS_OPEN,
-					'poll_random > ' . $randstr
-				],
-				__METHOD__,
-				[
-					'ORDER BY' => 'poll_random',
-					'LIMIT' => 1
-				],
-				[ 'page' => [ 'INNER JOIN', 'page_id = poll_page_id' ] ]
-			);
+		$whereConds = [];
+		if ( !empty( $excludedIds ) ) {
+			$whereConds[] = 'poll_id NOT IN (' . $dbr->makeList( $excludedIds ) . ')';
 		}
+		$whereConds['poll_status'] = self::STATUS_OPEN;
 
-		// random fallback
-		if ( !$row ) {
-			$row = $dbr->selectRow(
-				'poll_question',
-				'poll_page_id',
-				[
-					'poll_id NOT IN (' . $dbr->makeList( $excludedIds ) . ')',
-					'poll_status' => self::STATUS_OPEN,
-					'poll_random < ' . $randstr
-				],
-				__METHOD__,
-				[
-					'ORDER BY' => 'poll_random',
-					'LIMIT' => 1
-				],
-				[
-					'page' => [ 'INNER JOIN', 'page_id = poll_page_id' ]
-				]
-			);
-		}
+		$row = $dbr->selectRow(
+			'poll_question',
+			'poll_page_id',
+			$whereConds,
+			__METHOD__,
+			[
+				'ORDER BY' => "ABS(poll_random - $randstr)",
+				'LIMIT' => 1
+			],
+			[ 'page' => [ 'INNER JOIN', 'page_id = poll_page_id' ] ]
+		);
+
 		if ( $row ) {
 			$poll_page_id = $row->poll_page_id;
 		}
