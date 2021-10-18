@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Em-em"
+		]
+	},
+	"poll-voted-for": "Kun kada kuri'a na '''$1''' {{PLURAL:$1|poll|polls}} bayan '''$2''' tattara sakamako da aka samu <span class=\"profile-on\">$3 points</span>."
+}

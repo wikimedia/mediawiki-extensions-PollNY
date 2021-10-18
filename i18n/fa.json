@@ -3,6 +3,7 @@
 		"authors": [
 			"Alirezaaa",
 			"Ebraminio",
+			"Jeeputer",
 			"Omidh"
 		]
 	},
@@ -81,7 +82,7 @@
 	"poll-view-popular": "محبوب",
 	"poll-view-answered-times": "{{PLURAL:$1|یک بار|$1 بار}} جواب‌داده شده‌است",
 	"poll-view-all-by": "مشاهدهٔ همهٔ نظرسنجی‌ها توسط $1",
-	"poll-voted-for": "شما به $1 {{PLURAL:$1|نظرسنجی}} از <b>$2</b> رأی داده‌اید و <span class=\"profile-on\">$3 points</span> دریافت کردید.",
+	"poll-voted-for": "شما به '''$1''' {{PLURAL:$1|نظرسنجی}} از '''$2''' نظرسنجی رأی داده‌اید و <span class=\"profile-on\">$3 امتیاز</span> دریافت کردید.",
 	"poll-votes": "{{PLURAL:$1|یک رأی|$1 رأی}}",
 	"poll-woops": "اوه!",
 	"poll-would-have-earned": "در صورتی که [[Special:UserLogin/signup|عضو]] بودید مقدار <span class=\"profile-on\">$1 امتیاز</span> را دریافت می‌کردید!",

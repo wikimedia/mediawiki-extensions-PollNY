@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Andriykopanytsia",
+			"DDPAT",
 			"Dars",
 			"Movses",
 			"Piramidion",
@@ -88,7 +89,7 @@
 	"poll-view-popular": "Популярні",
 	"poll-view-answered-times": "Відповіли {{PLURAL:$1|один раз|$1 рази|$1 разів}}",
 	"poll-view-all-by": "Переглянути усі опитування від $1",
-	"poll-voted-for": "Ви вже проголосували на $1 {{PLURAL:$1|1=опитуванні|опитуваннях}} з усіх <b>$2</b> опитувань та отримали <span class=\"profile-on\">$3 балів</span>.",
+	"poll-voted-for": "Ви вже проголосували на '''$1''' {{PLURAL:$1|1=опитуванні|опитуваннях}} з усіх '''$2''' опитувань та отримали <span class=\"profile-on\">$3 балів</span>.",
 	"poll-votes": "{{PLURAL:$1|один голос|$1 голоси|$1 голосів}}",
 	"poll-woops": "Йой!",
 	"poll-would-have-earned": "Ви б отримали <span class=\"profile-on\">$1 балів</span>, якби ви вже були [[Special:UserLogin/signup|зареєстровані]].",
