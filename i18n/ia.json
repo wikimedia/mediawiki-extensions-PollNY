@@ -79,7 +79,7 @@
 	"poll-view-popular": "Popular",
 	"poll-view-answered-times": "Respondite {{PLURAL:$1|un vice|$1 vices}}",
 	"poll-view-all-by": "Vider tote le sondages per $1",
-	"poll-voted-for": "Tu ha votate pro $1 {{PLURAL:$1|sondage|sondages}} de <b>$2</b> sondages in total e recipite <span class=\"profile-on\">$3 punctos</span>.",
+	"poll-voted-for": "Tu ha votate pro '''$1''' {{PLURAL:$1|sondage|sondages}} de '''$2''' sondages in total e recipite <span class=\"profile-on\">$3 punctos</span>.",
 	"poll-votes": "{{PLURAL:$1|un voto|$1 votos}}",
 	"poll-woops": "Ups!",
 	"poll-would-have-earned": "Tu haberea ganiate <span class=\"profile-on\">$1 punctos</span> si tu habeva [[Special:UserLogin/signup|create un conto]].",

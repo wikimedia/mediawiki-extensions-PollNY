@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"poll-voted-for": "Je hebt aan '''{{PLURAL:$1|één|$1}}''' van de '''$2''' beschikbare peilingen deelgenomen, en <span class=\"profile-on\">$3 {{PLURAL:$3|punt|punten}}</span> ontvangen."
+}

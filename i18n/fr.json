@@ -94,7 +94,7 @@
 	"poll-view-popular": "Populaire",
 	"poll-view-answered-times": "Répondu {{PLURAL:$1|une fois|$1 fois}}",
 	"poll-view-all-by": "Voir tous les sondages proposés par $1",
-	"poll-voted-for": "Vous avez voté pour $1 {{PLURAL:$1|sondage|sondages}} parmi <b>$2</b> sondages possibles et obtenu <span class=\"profile-on\">$3 {{PLURAL:$3|point|points}}</span>",
+	"poll-voted-for": "Vous avez voté pour '''$1''' {{PLURAL:$1|sondage|sondages}} parmi '''$2''' sondages possibles et obtenu <span class=\"profile-on\">$3 {{PLURAL:$3|point|points}}</span>",
 	"poll-votes": "{{PLURAL:$1|un vote|$1 votes}}",
 	"poll-woops": "Oups !",
 	"poll-would-have-earned": "Vous avez gagné <span class=\"profile-on\">$1 {{PLURAL:$1|point|points}}</span> si vous vous êtes [[Special:UserLogin/signup|identifié]]",
