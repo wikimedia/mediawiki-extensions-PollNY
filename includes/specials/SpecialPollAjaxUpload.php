@@ -98,7 +98,7 @@ class SpecialPollAjaxUpload extends SpecialUpload {
 		}
 
 		# Check blocks
-		if ( $user->isBlocked() ) {
+		if ( $user->getBlock() ) {
 			throw new UserBlockedError( $user->getBlock() );
 		}
 

@@ -35,7 +35,7 @@ class CreatePoll extends SpecialPage {
 		}
 
 		// Blocked users cannot create polls
-		if ( $user->isBlocked() ) {
+		if ( $user->getBlock() ) {
 			throw new UserBlockedError( $user->getBlock() );
 		}
 
