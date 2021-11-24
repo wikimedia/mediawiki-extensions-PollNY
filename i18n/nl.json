@@ -5,7 +5,8 @@
 			"Mar(c)",
 			"McDutchie",
 			"Mitchel Corstjens",
-			"Siebrand"
+			"Siebrand",
+			"Rots61"
 		]
 	},
 	"adminpoll": "Peilingen beheren",
@@ -17,6 +18,7 @@
 	"poll-admin-closed": "Gesloten",
 	"poll-admin-flagged": "Gemarkeerd",
 	"poll-admin-open": "Openen",
+	"poll-error-socialprofile-title": "De uitbreiding SocialProfile is niet geïnstalleerd.",
 	"poll-admin-panel": "Beheren",
 	"poll-admin-status-nav": "Filter op status",
 	"poll-admin-title-all": "Peilingenbeheer - Alle peilingen bekijken",
@@ -72,6 +74,7 @@
 	"poll-previous-poll": "Vorige peiling",
 	"poll-question-label": "Vraag",
 	"poll-skip": "Overslaan >",
+	"poll-submit-btn": "Verzenden",
 	"poll-submitted-by": "Aangemaakt door",
 	"poll-take-button": "< Terug naar peilingen",
 	"poll-unavailable": "Deze peiling is niet beschikbaar",
