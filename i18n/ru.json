@@ -5,7 +5,8 @@
 			"Diman Russkov",
 			"Kaganer",
 			"Nk88",
-			"Okras"
+			"Okras",
+			"Pacha Tchernof"
 		]
 	},
 	"adminpoll": "Администрирование опросов",
@@ -86,7 +87,7 @@
 	"poll-view-popular": "Популярные",
 	"poll-view-answered-times": "Ответили {{PLURAL:$1|$1 раз|$1 раза|$1 раз|1=один раз}}",
 	"poll-view-all-by": "Посмотреть все опросы участника $1",
-	"poll-voted-for": "Вы проголосовали в $1 {{PLURAL:$1|1=опросе|опросах}} из <b>$2</b> и получили <span class=\"profile-on\">$3 {{PLURAL:$3|очко|очков|очка}}</span>.",
+	"poll-voted-for": "Вы проголосовали в '''$1''' {{PLURAL:$1|1=опросе|опросах}} из '''$2''' и получили <span class=\"profile-on\">$3 {{PLURAL:$3|очко|очка|очков}}</span>.",
 	"poll-votes": "{{PLURAL:$1|$1 голос|$1 голоса|$1 голосов|1=один голос}}",
 	"poll-woops": "Ой-ойǃ",
 	"poll-would-have-earned": "Вы бы заработали <span class=\"profile-on\">$1 очков</span>, если бы [[Special:UserLogin/signup|зарегистрировались]].",
