@@ -10,7 +10,8 @@
 			"Urhixidur",
 			"Wladek92",
 			"Wyz",
-			"Y-M D"
+			"Y-M D",
+			"McDutchie"
 		]
 	},
 	"adminpoll": "Administration des sondages",
@@ -114,7 +115,7 @@
 	"apihelp-pollny-param-pageName": "Titre à vérifier (uniquement utilisé si what=titleExists); doit être encodé au format URL.",
 	"apihelp-pollny-param-pollID": "Identifiant du sondage en cours de suppression/mise à jour/participation",
 	"apihelp-pollny-param-pageID": "Identifiant de page (utilisé uniquement si what=getPollResults).",
-	"apihelp-pollny-param-status": "Nouveau statut du sondage (quand what=updateStatus); les valeurs possibles sont 0 (=fermé), 1 et 2 (=marqués).",
+	"apihelp-pollny-param-status": "Nouveau statut du sondage (quand what=updateStatus); les valeurs possibles sont 0 (=fermé), 1 et 2 (=marqué).",
 	"apihelp-pollny-example-1": "Supprime le sondage n ° 66",
 	"apihelp-pollny-example-2": "Obtient les résultats du sondage n ° 666",
 	"apihelp-pollny-example-3": "Obtient un sondage aléatoire auquel l'utilisateur actuel n'a pas encore répondu",

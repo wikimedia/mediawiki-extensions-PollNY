@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"NikosLikomitros",
-			"Nikosgranturismogt"
+			"Nikosgranturismogt",
+			"Giannaras99"
 		]
 	},
 	"adminpoll": "Διαχείριση ψηφοφοριών",
@@ -14,7 +15,7 @@
 	"poll-admin-closed": "Ολοκληρωμένο",
 	"poll-admin-flagged": "Επισημασμένο",
 	"poll-admin-open": "Ανοιχτό",
-	"poll-error-socialprofile": "Η [https://www.mediawiki.org/wiki/Extension:SocialProfile επέκταση SocialProfile] δεν είναι εγκατεστημένη. Παρακαλώ εγκαταστήστε την επέκταση και προσπαθήστε ξανά.",
+	"poll-error-socialprofile": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:SocialProfile SocialProfile extension] δεν έχει εγκατασταθεί. Εγκαταστήστε αυτήν την επέκταση και δοκιμάστε ξανά.",
 	"poll-error-socialprofile-title": "Η επέκταση SocialProfile δεν είναι εγκατεστημένη.",
 	"poll-admin-panel": "Διαχειριστής",
 	"poll-admin-status-nav": "Φιλτράρισμα κατά κατάσταση",

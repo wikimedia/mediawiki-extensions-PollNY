@@ -1,10 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Joao Xavier"
+			"Joao Xavier",
+			"JSantos"
 		]
 	},
+	"poll-admin-closed": "Klozita",
+	"poll-admin-panel": "Administrero",
 	"poll-ago": "$1 ante nun",
+	"poll-cancel-button": "Nuligar",
+	"poll-js-loading": "Karganta...",
 	"poll-time-ago": "$1 ante nun",
 	"poll-time-days": "{{PLURAL:$1|1 dio|$1 dii}}",
 	"poll-time-hours": "{{PLURAL:$1|1 horo|$1 hori}}",
