@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"DDPAT",
 			"Fitoschido",
 			"Macofe",
 			"Ovruni",
@@ -88,7 +89,7 @@
 	"poll-view-popular": "Más populares",
 	"poll-view-answered-times": "Respondida {{PLURAL:$1|una vez|$1 veces}}",
 	"poll-view-all-by": "Ver todas las encuestas de $1",
-	"poll-voted-for": "Has votado en $1 {{PLURAL:$1|encuesta|encuestas}} de un total de <b>$2</b> encuestas y has recibido <span class=\"profile-on\">$3 puntos</span>.",
+	"poll-voted-for": "Has votado en '''$1''' {{PLURAL:$1|encuesta|encuestas}} de un total de '''$2''' encuestas y has recibido <span class=\"profile-on\">$3 puntos</span>.",
 	"poll-votes": "{{PLURAL:$1|un voto|$1 votos}}",
 	"poll-woops": "¡Vaya!",
 	"poll-would-have-earned": "Habrías ganado <span class=\"profile-on\">$1 puntos</span> si te hubieras [[Special:UserLogin/signup|registrado]].",
