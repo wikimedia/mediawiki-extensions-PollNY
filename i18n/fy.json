@@ -3,7 +3,8 @@
 		"authors": [
 			"Kening Aldgilles",
 			"Robin van der Vliet",
-			"Robin0van0der0vliet"
+			"Robin0van0der0vliet",
+			"PiefPafPier"
 		]
 	},
 	"poll-admin-viewall": "Alles sjen litte",
@@ -16,7 +17,7 @@
 	"poll-view-popular": "Populêr",
 	"poll-time-ago": "$1 lyn",
 	"poll-time-days": "{{PLURAL:$1|ien dei|$1 dagen}}",
-	"poll-time-hours": "{{PLURAL:$1|ien oere|$1 oere}}",
+	"poll-time-hours": "{{PLURAL:$1|ien oere|$1 oeren}}",
 	"poll-time-minutes": "{{PLURAL:$1|ien minút|$1 minuten}}",
 	"poll-time-seconds": "{{PLURAL:$1|ien sekonde|$1 sekonden}}"
 }

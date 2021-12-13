@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Abbas dhothar"
+		]
+	},
+	"poll-cancel-button": "منسوخ کرو",
+	"poll-time-days": "{{PLURAL:$1|اک دن|$1 دناں}}",
+	"poll-time-seconds": "{{PLURAL:$1|$1 سکنٹ}}"
+}

@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Kghbln",
-			"Metalhead64"
+			"Metalhead64",
+			"Gebu"
 		]
 	},
 	"adminpoll": "Abstimmungen verwalten",
@@ -71,6 +72,7 @@
 	"poll-previous-poll": "Vorherige Abstimmung",
 	"poll-question-label": "Abstimmungsfrage",
 	"poll-skip": "Überspringen >",
+	"poll-submit-btn": "Senden",
 	"poll-submitted-by": "Erstellt von",
 	"poll-take-button": "< Zurück zu den Abstimmungen",
 	"poll-unavailable": "Diese Abstimmung ist nicht verfügbar",

@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Artsiom91"
+			"Artsiom91",
+			"Kareyac"
 		]
 	},
+	"poll-admin-panel": "Адміністратар",
 	"poll-discuss": "Абмеркаваць"
 }

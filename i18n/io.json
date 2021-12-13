@@ -1,8 +1,19 @@
 {
 	"@metadata": {
 		"authors": [
-			"Joao Xavier"
+			"Joao Xavier",
+			"JSantos"
 		]
 	},
-	"poll-upload-image-button": "Kargar"
+	"poll-admin-closed": "Klozita",
+	"poll-admin-panel": "Administrero",
+	"poll-ago": "$1 ante nun",
+	"poll-cancel-button": "Nuligar",
+	"poll-js-loading": "Karganta...",
+	"poll-upload-image-button": "Kargar",
+	"poll-time-ago": "$1 ante nun",
+	"poll-time-days": "{{PLURAL:$1|1 dio|$1 dii}}",
+	"poll-time-hours": "{{PLURAL:$1|1 horo|$1 hori}}",
+	"poll-time-minutes": "{{PLURAL:$1|un minuto|$1 minuti}}",
+	"poll-time-seconds": "{{PLURAL:$1|un sekundo|$1 sekundi}}"
 }

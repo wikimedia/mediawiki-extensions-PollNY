@@ -4,7 +4,9 @@
 			"Liuxinyu970226",
 			"Qiyue2001",
 			"SomeyaMako",
-			"Yfdyh000"
+			"Yfdyh000",
+			"GuoPC",
+			"Lakejason0"
 		]
 	},
 	"adminpoll": "管理调查",
@@ -16,7 +18,7 @@
 	"poll-admin-closed": "已关闭",
 	"poll-admin-flagged": "已标记",
 	"poll-admin-open": "开放",
-	"poll-error-socialprofile": "未安装[https://www.mediawiki.org/wiki/Extension:SocialProfile SocialProfile扩展]。请安装该扩展并重试。",
+	"poll-error-socialprofile": "未安装[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:SocialProfile SocialProfile扩展]。请安装该扩展并重试。",
 	"poll-error-socialprofile-title": "未安装SocialProfile扩展。",
 	"poll-admin-panel": "管理",
 	"poll-admin-status-nav": "按状态筛选",

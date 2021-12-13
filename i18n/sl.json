@@ -4,5 +4,9 @@
 			"Eleassar"
 		]
 	},
-	"poll-edit-button": "Shrani stran"
+	"poll-cancel-button": "Prekliči",
+	"poll-edit-button": "Shrani stran",
+	"poll-js-loading": "Nalaganje ...",
+	"poll-next": "naprej",
+	"poll-time-minutes": "{{PLURAL:$1|ena minuta|dve minuti|$1 minute|$1 minut}}"
 }
