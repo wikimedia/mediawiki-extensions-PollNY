@@ -5,6 +5,8 @@
 		]
 	},
 	"poll-admin-panel": "Ադմին",
+	"poll-ago": "$1 առաջ",
 	"poll-cancel-button": "Չեղարկել",
-	"poll-submit-btn": "Ուղարկել"
+	"poll-submit-btn": "Ուղարկել",
+	"poll-time-ago": "$1 առաջ"
 }
