@@ -81,7 +81,7 @@
 	"poll-view-popular": "Suositut",
 	"poll-view-answered-times": "Vastattu {{PLURAL:$1|kerran|$1 kertaa}}",
 	"poll-view-all-by": "Katso kaikki käyttäjän $1 äänestykset",
-	"poll-voted-for": "Olet äänestänyt {{PLURAL:$1|yhteen äänestykseen|$1 äänestykseen}} kaikista äänestyksistä, joita on yhteensä <b>$2</b> kappaletta ja saanut <span class=\"profile-on\">$3 pistettä</span>",
+	"poll-voted-for": "Olet äänestänyt {{PLURAL:$1|yhteen äänestykseen|$1 äänestykseen}} kaikista äänestyksistä, joita on yhteensä '''$2''' kappaletta ja saanut <span class=\"profile-on\">{{PLURAL:$3|yhden pisteen|$3 pistettä}}</span>",
 	"poll-votes": "{{PLURAL:$1|yksi ääni|$1 ääntä}}",
 	"poll-woops": "Ups!",
 	"poll-would-have-earned": "Olisit ansainnut <span class=\"profile-on\">$1 pistettä</span> jos olisit [[Special:UserLogin/signup|rekisteröitynyt]]",
