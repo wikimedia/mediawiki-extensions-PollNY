@@ -3,7 +3,8 @@
 		"authors": [
 			"Gebu",
 			"Kghbln",
-			"Metalhead64"
+			"Metalhead64",
+			"Talex42"
 		]
 	},
 	"adminpoll": "Abstimmungen verwalten",
@@ -84,7 +85,7 @@
 	"poll-view-popular": "Beliebt",
 	"poll-view-answered-times": "{{PLURAL:$1|Einmal|$1 mal}} geantwortet",
 	"poll-view-all-by": "Alle Abstimmungen von $1 ansehen",
-	"poll-voted-for": "Du hast bei {{PLURAL:$1|einer Abstimmung|$1 Abstimmungen}} abgestimmt von insgesamt <b>$2</b> und hast <span class=\"profile-on\">$3 Punkte</span> erhalten",
+	"poll-voted-for": "Du hast bei {{PLURAL:$1|'''einer''' Abstimmung|'''$1''' Abstimmungen}} abgestimmt von insgesamt '''$2''' und hast <span class=\"profile-on\">$3 Punkte</span> erhalten.",
 	"poll-votes": "{{PLURAL:$1|eine Abstimmung|$1 Abstimmungen}}",
 	"poll-woops": "Hoppla!",
 	"poll-would-have-earned": "Du hättest <span class=\"profile-on\">$1 Punkte</span> verdient, wenn du dich [[Special:UserLogin/signup|registriert hättest]].",
