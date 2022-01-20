@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"BaRaN6161 TURK",
-			"MuratTheTurkish"
+			"MuratTheTurkish",
+			"SaldırganSincap"
 		]
 	},
 	"adminpoll": "Anketleri yönetin",
@@ -85,7 +86,7 @@
 	"poll-view-popular": "Popüler",
 	"poll-view-answered-times": "{{PLURAL:$1|Bir kez|$1 kez}} yanıtlandı",
 	"poll-view-all-by": "Tüm anketleri $1 görüntüle",
-	"poll-voted-for": "Toplam <b>$2</b> anketten $1 {{PLURAL:$1|anket|anket}} için oy verdiniz ve <span class=\"profile-on\">$3</span> aldınız.",
+	"poll-voted-for": "Toplam '''$2'''' anketten '''$1''' {{PLURAL:$1|anket}} için oy verdiniz ve <span class=\"profile-on\">$3</span> sonuç alındı.",
 	"poll-votes": "{{PLURAL:$1|bir oy|$1 oy}}",
 	"poll-woops": "Hoop!",
 	"poll-would-have-earned": "<span class=\"profile-on\">$1 puan</span> [[Special:UserLogin/signup|kaydolmuş]] kazanırdınız.",
