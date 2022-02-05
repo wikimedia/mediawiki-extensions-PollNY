@@ -135,7 +135,7 @@ class Poll {
 	 */
 	public function getPoll( $pageID ) {
 		$dbr = wfGetDB( DB_REPLICA );
-		$res = $dbr->select(
+		$row = $dbr->selectRow(
 			'poll_question',
 			[
 				'poll_text', 'poll_vote_count', 'poll_id', 'poll_status',
@@ -145,7 +145,6 @@ class Poll {
 			__METHOD__,
 			[ 'OFFSET' => 0, 'LIMIT' => 1 ]
 		);
-		$row = $dbr->fetchObject( $res );
 		$poll = [];
 		if ( $row ) {
 			$poll['question'] = $row->poll_text;

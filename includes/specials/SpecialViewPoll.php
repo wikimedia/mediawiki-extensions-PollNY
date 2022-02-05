@@ -123,13 +123,12 @@ class ViewPoll extends SpecialPage {
 			[ 'page' => [ 'INNER JOIN', 'poll_page_id = page_id' ] ]
 		);
 
-		$res_total = $dbr->select(
+		$row_total = $dbr->selectRow(
 			'poll_question',
 			'COUNT(*) AS total_polls',
 			( ( $user && $actor ) ? [ 'poll_actor' => $actor->getActorId() ] : [] ),
 			__METHOD__
 		);
-		$row_total = $dbr->fetchObject( $res_total );
 		$total = $row_total->total_polls;
 
 		// If there are absolutely no polls on the database, don't bother going
@@ -160,7 +159,7 @@ class ViewPoll extends SpecialPage {
 			$url = htmlspecialchars( $title->getFullURL() );
 			$safePollTitle = htmlspecialchars( $poll_title, ENT_QUOTES );
 
-			if ( ( $x < $dbr->numRows( $res ) ) && ( $x % $per_page != 0 ) ) {
+			if ( ( $x < $res->numRows() ) && ( $x % $per_page != 0 ) ) {
 				$cssClass = 'view-poll-row';
 			} else {
 				$cssClass = 'view-poll-row-bottom';

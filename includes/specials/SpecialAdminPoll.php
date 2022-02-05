@@ -225,7 +225,7 @@ class AdminPoll extends SpecialPage {
 		// but none of 'em matches the given criteria (status param in the URL)
 		// For example, there are no flagged polls or closed polls. This msg
 		// gets shown even then.
-		if ( !$dbr->numRows( $res ) ) {
+		if ( !$res->numRows() ) {
 			// @todo FIXME: should take 'status' URL param into account better, for
 			// "there are no _flagged_ polls" is way different from "there are no polls
 			// at all"
@@ -251,7 +251,7 @@ class AdminPoll extends SpecialPage {
 
 			$poll_choices = $p->getPollChoices( $row->poll_id );
 
-			if ( ( $x < $dbr->numRows( $res ) ) && ( $x % $per_page != 0 ) ) {
+			if ( ( $x < $res->numRows() ) && ( $x % $per_page != 0 ) ) {
 				$output .= "<div class=\"view-poll-row\" id=\"{$rowId}\">";
 			} else {
 				$output .= "<div class=\"view-poll-row-bottom\" id=\"{$rowId}\">";
