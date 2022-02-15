@@ -112,7 +112,7 @@ class PollNYHooks {
 			global $wgRequest, $wgOut, $wgHooks;
 
 			// We don't want caching here, it'll only cause problems...
-			$wgOut->enableClientCache( false );
+			$wgOut->disableClientCache();
 			$wgHooks['ParserLimitReportPrepare'][] = 'PollNYHooks::onParserLimitReportPrepare';
 
 			// Prevents editing of polls
@@ -192,8 +192,8 @@ class PollNYHooks {
 			$wgOut->addModuleStyles( 'ext.pollNY.css' );
 
 			// Disable caching; this is important so that we don't cause subtle
-			// bugs that are a bitch to fix.
-			$wgOut->enableClientCache( false );
+			// bugs that are difficult to fix.
+			$wgOut->disableClientCache();
 			$parser->getOutput()->updateCacheExpiry( 0 );
 
 			$poll_title = Title::newFromText( $poll_name, NS_POLL );
