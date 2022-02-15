@@ -11,7 +11,8 @@
 			"Wladek92",
 			"Wyz",
 			"Y-M D",
-			"McDutchie"
+			"McDutchie",
+			"Verdy p"
 		]
 	},
 	"adminpoll": "Administration des sondages",
@@ -69,7 +70,7 @@
 	"poll-image-label": "Ajouter une image",
 	"poll-instructions": "Posez une question de sondage, proposez un choix de réponses possibles, pressez le bouton \"{{int:poll-create-button}}\". N'est-ce pas facile!",
 	"poll-js-action-complete": "L’action a été effectuée.",
-	"poll-js-loading": "Chargement ...",
+	"poll-js-loading": "Chargement en cours...",
 	"poll-next": "suiv",
 	"poll-next-poll": "Sondage suivant",
 	"poll-no-more-message": "Vous avez voté pour tous les sondages!<br />Ne soyez pas désolé, [[Special:CreatePoll|créez le vôtre!]]!",
