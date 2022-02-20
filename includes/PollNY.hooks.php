@@ -112,7 +112,13 @@ class PollNYHooks {
 			global $wgRequest, $wgOut, $wgHooks;
 
 			// We don't want caching here, it'll only cause problems...
-			$wgOut->disableClientCache();
+			if ( method_exists( $wgOut, 'disableClientCache' ) ) {
+				// MW 1.38+
+				$wgOut->disableClientCache();
+			} else {
+				// Older MWs (1.35+)
+				$wgOut->enableClientCache( false );
+			}
 			$wgHooks['ParserLimitReportPrepare'][] = 'PollNYHooks::onParserLimitReportPrepare';
 
 			// Prevents editing of polls
@@ -193,7 +199,13 @@ class PollNYHooks {
 
 			// Disable caching; this is important so that we don't cause subtle
 			// bugs that are difficult to fix.
-			$wgOut->disableClientCache();
+			if ( method_exists( $wgOut, 'disableClientCache' ) ) {
+				// MW 1.38+
+				$wgOut->disableClientCache();
+			} else {
+				// Older MWs (1.35+)
+				$wgOut->enableClientCache( false );
+			}
 			$parser->getOutput()->updateCacheExpiry( 0 );
 
 			$poll_title = Title::newFromText( $poll_name, NS_POLL );
