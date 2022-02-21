@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
+			"Seipinne",
 			"Yupik"
 		]
 	},
-	"poll-next": "čuávuvâš"
+	"poll-next": "čuávuvâš",
+	"poll-time-days": "{{PLURAL:$1|ohtâ peivi|$1 peivid}}"
 }
