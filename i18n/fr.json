@@ -27,7 +27,7 @@
 	"poll-error-socialprofile": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:SocialProfile L’extension SocialProfile] n’est pas installée. Veuillez l’installer puis réessayer.",
 	"poll-error-socialprofile-title": "L’extension SocialProfile n’est pas installée.",
 	"poll-admin-nonadmin-note": "Parce que vous n’êtes pas un administrateur de sondage, vous ne voyez que les sondages que vous avez créés.",
-	"poll-admin-panel": "Admininistrer",
+	"poll-admin-panel": "Administration",
 	"poll-admin-status-nav": "Filtrer par état",
 	"poll-admin-title-all": "Adminstration des sondages - Voir tous les sondages",
 	"poll-admin-title-closed": "Adminstration des sondages - Voir les sondages clôturés",
