@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Shirayuki",
-			"Sujiniku"
+			"Sujiniku",
+			"Yamagata Yusuke"
 		]
 	},
 	"adminpoll": "投票所の管理",
@@ -72,7 +73,7 @@
 	"poll-view-popular": "人気順",
 	"poll-view-answered-times": "{{PLURAL:$1|$1 回}}回答",
 	"poll-view-all-by": "$1 によるすべての投票所を閲覧",
-	"poll-voted-for": "あなたは <b>$2</b> 件中 $1 {{PLURAL:$1|件の投票所}}で投票し、<span class=\"profile-on\">$3 点</span>を獲得しました。",
+	"poll-voted-for": "あなたは'''$2'''件中'''$1'''{{PLURAL:$1|件の投票所}}で投票し、<span class=\"profile-on\">$3 点</span>を獲得しました。",
 	"poll-votes": "{{PLURAL:$1|$1 票}}",
 	"poll-woops": "エラー",
 	"poll-would-have-earned": "[[Special:UserLogin/signup|利用者登録]]を行うと、投票で <span class=\"profile-on\">$1 点</span>を獲得できます。",
