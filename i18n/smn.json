@@ -6,5 +6,6 @@
 		]
 	},
 	"poll-next": "čuávuvâš",
-	"poll-time-days": "{{PLURAL:$1|ohtâ peivi|$1 peivid}}"
+	"poll-submit-btn": "Vuolgât",
+	"poll-time-days": "{{PLURAL:$1|ohtâ peivi|$1 peeivi|$1 peeivi|$1 peivid}}"
 }
