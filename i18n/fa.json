@@ -4,7 +4,8 @@
 			"Alirezaaa",
 			"Ebraminio",
 			"Jeeputer",
-			"Omidh"
+			"Omidh",
+			"Beginneruser"
 		]
 	},
 	"adminpoll": "مدیریت نظرسنجی‌ها",
@@ -75,7 +76,7 @@
 	"poll-take-button": "< بازگشت به نظرسنجی‌ها",
 	"poll-unavailable": "این نظرسنجی در دسترس نیست",
 	"poll-unflag-poll": "حذف پرچم نظرسنجی",
-	"poll-upload-new-image": "بارگذاری نگاره‌ای جدید",
+	"poll-upload-new-image": "بارگذاری تصویری جدید",
 	"poll-view-title": "نمایش نظرسنجی‌های $1",
 	"poll-view-order": "مرتب‌سازی",
 	"poll-view-newest": "جدیدترین",
