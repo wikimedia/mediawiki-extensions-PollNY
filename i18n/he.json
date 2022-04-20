@@ -1,9 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Guycn2"
+			"Guycn2",
+			"Ex-Diktator"
 		]
 	},
+	"poll-cancel-button": "ביטול",
+	"poll-submit-btn": "שליחה",
 	"action-pollny-vote": "להצביע בסקרים",
 	"right-pollny-vote": "הצבעה בסקרים",
 	"action-polladmin": "לנהל סקרים",
