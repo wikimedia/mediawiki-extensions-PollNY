@@ -153,10 +153,11 @@ class ApiPollNY extends ApiBase {
 	}
 
 	function updateStatus( $pollID, $status ) {
+		$user = $this->getUser();
 		if (
-			$status == 2 ||
-			$this->poll->doesUserOwnPoll( $this->getUser(), $pollID ) ||
-			$this->getUser()->isAllowed( 'polladmin' )
+			$status == 2 && !$user->getBlock() ||
+			$this->poll->doesUserOwnPoll( $user, $pollID ) ||
+			$user->isAllowed( 'polladmin' )
 		) {
 			$this->poll->updatePollStatus( $pollID, $status );
 			return 'Status successfully changed';

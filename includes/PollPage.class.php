@@ -160,6 +160,7 @@ class PollPage extends Article {
 		$output .= '</div>' . "\n";
 
 		$pollIsOpen = ( $poll_info['status'] == Poll::STATUS_OPEN );
+		$userIsBlocked = $user->getBlock();
 
 		if ( $pollIsOpen ) {
 			$toggle_flag_label = wfMessage( 'poll-flag-poll' )->escaped();
@@ -187,10 +188,10 @@ class PollPage extends Article {
 				wfMessage( 'poll-admin-panel' )->text()
 			);
 		}
-		if ( $pollIsOpen && ( $poll_info['actor'] == $user->getActorId() || $user->isAllowed( 'polladmin' ) ) ) {
+		if ( ( $pollIsOpen && ( $poll_info['actor'] == $user->getActorId() || $user->isAllowed( 'polladmin' ) ) ) && !$userIsBlocked ) {
 			$adminLinks[] = "<a class=\"poll-status-toggle-link\" href=\"javascript:void(0)\" data-status=\"{$toggle_status}\">{$toggle_label}</a>";
 		}
-		if ( $pollIsOpen || $user->isAllowed( 'polladmin' ) ) {
+		if ( ( $pollIsOpen || $user->isAllowed( 'polladmin' ) ) && !$userIsBlocked ) {
 			$adminLinks[] = "<a class=\"poll-status-toggle-link\" href=\"javascript:void(0)\" data-status=\"{$toggle_flag_status}\">{$toggle_flag_label}</a>";
 		}
 		if ( !empty( $adminLinks ) ) {
