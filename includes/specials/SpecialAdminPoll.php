@@ -210,8 +210,7 @@ class AdminPoll extends SpecialPage {
 			'poll_question',
 			[ 'COUNT(*) AS count' ],
 			$where,
-			__METHOD__,
-			$params
+			__METHOD__
 		);
 
 		$total = $s->count;
