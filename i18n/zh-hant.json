@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Cwlin0416",
+			"Jack Phoenix",
 			"Kly",
 			"LNDDYL",
 			"Liuxinyu970226",
@@ -88,7 +89,7 @@
 	"poll-view-popular": "最受歡迎",
 	"poll-view-answered-times": "回答了 {{PLURAL:$1|1 次|$1 次}}",
 	"poll-view-all-by": "檢視所有由 $1 做出的調查",
-	"poll-voted-for": "您已對總共 <b>$2</b> 個調查裡的 $1 {{PLURAL:$1|個調查|個調查}}投過票，並獲得到 <span class=\"profile-on\">$3 個點數</span>。",
+	"poll-voted-for": "您已對總共 '''$2''' 個調查裡的 $1 {{PLURAL:$1|個調查|個調查}}投過票，並獲得到 <span class=\"profile-on\">$3 個點數</span>。",
 	"poll-votes": "{{PLURAL:$1|$1 票}}",
 	"poll-woops": "糟糕！",
 	"poll-would-have-earned": "在您[[Special:UserLogin/signup|註冊]]後您會取得 <span class=\"profile-on\">$1 個點數</span>.",

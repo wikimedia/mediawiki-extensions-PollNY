@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Jack Phoenix",
 			"Meno25",
 			"Mr. Ibrahem",
 			"Sonic N800",
@@ -84,7 +85,7 @@
 	"poll-view-popular": "الشائع",
 	"poll-view-answered-times": "تمت الإجابة عليه {{PLURAL:$1|مرة واحدة|$1 مرة}}",
 	"poll-view-all-by": "عرض جميع اقتراعات $1",
-	"poll-voted-for": "لقد صوتت لصالح $1 {{PLURAL:$1|اقتراع}} من إجمالي <b>$2</b> اقتراع واستلمت <span class=\"profile-on\">$3 نقطة</span>.",
+	"poll-voted-for": "لقد صوتت لصالح $1 {{PLURAL:$1|اقتراع}} من إجمالي '''$2''' اقتراع واستلمت <span class=\"profile-on\">$3 نقطة</span>.",
 	"poll-votes": "{{PLURAL:$1|صوت واحد|$1 صوت}}",
 	"poll-woops": "عفوا!",
 	"poll-would-have-earned": "كنت قد حصلت على <span class=\"profile-on\">$1 نقطة</span> لو قمت [[Special:UserLogin/signup|بالتسجيل]].",

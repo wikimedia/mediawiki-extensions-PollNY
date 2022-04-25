@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Jack Phoenix",
 			"Jon Harald Søby"
 		]
 	},
@@ -84,7 +85,7 @@
 	"poll-view-popular": "Populære",
 	"poll-view-answered-times": "Besvart {{PLURAL:$1|én gang|$1 ganger}}",
 	"poll-view-all-by": "Vis alle avstemninger av $1",
-	"poll-voted-for": "Du har stemt i {{PLURAL:$1|$1}} av <b>$2</b> {{PLURAL:$2|avstemning|avstemninger}} og mottatt <span class=\"profile-on\">{{PLURAL:$3|$3 poeng}}</span>",
+	"poll-voted-for": "Du har stemt i {{PLURAL:$1|'''$1'''}} av '''$2''' {{PLURAL:$2|avstemning|avstemninger}} og mottatt <span class=\"profile-on\">{{PLURAL:$3|$3 poeng}}</span>",
 	"poll-votes": "{{PLURAL:$1|én stemme|$1 stemmer}}",
 	"poll-woops": "Oops!",
 	"poll-would-have-earned": "Du ville ha tjent <span class=\"profile-on\">{{PLURAL:$1|$1 poeng}}</span> hvis du hadde [[Special:UserLogin/signup|registrert deg]].",

@@ -4,12 +4,13 @@
 			"Aftab1995",
 			"Aftabuzzaman",
 			"Elias Ahmmad",
+			"Jack Phoenix",
 			"আফতাবুজ্জামান"
 		]
 	},
 	"poll-admin-closed": "বন্ধ",
 	"poll-admin-open": "খোলা",
-	"poll-error-socialprofile": "[https://www.mediawiki.org/wiki/Extension:SocialProfile SocialProfile এক্সটেনশন] ইনস্টল করা নেই। এই এক্সটেনশনটি ইনস্টল করে আবার চেষ্টা করুন।",
+	"poll-error-socialprofile": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:SocialProfile SocialProfile এক্সটেনশন] ইনস্টল করা নেই। এই এক্সটেনশনটি ইনস্টল করে আবার চেষ্টা করুন।",
 	"poll-error-socialprofile-title": "SocialProfile এক্সটেনশন ইনস্টল করা নেই।",
 	"poll-admin-panel": "প্রশাসক",
 	"poll-admin-viewall": "সব দেখুন",

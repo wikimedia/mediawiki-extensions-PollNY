@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Hamilton Abreu",
+			"Jack Phoenix",
 			"Jkb8",
 			"Luckas",
 			"Vitorvicentevalente"
@@ -16,7 +17,7 @@
 	"poll-admin-closed": "Fechadas",
 	"poll-admin-flagged": "Marcadas",
 	"poll-admin-open": "Abertas",
-	"poll-error-socialprofile": "A [https://www.mediawiki.org/wiki/Extension:SocialProfile extensão SocialProfile] não está instalada. Instale-a e tente novamente, por favor.",
+	"poll-error-socialprofile": "A [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:SocialProfile extensão SocialProfile] não está instalada. Instale-a e tente novamente, por favor.",
 	"poll-error-socialprofile-title": "A extensão SocialProfile não está instalada.",
 	"poll-admin-panel": "Administração",
 	"poll-admin-status-nav": "Filtrar pelo estado",
@@ -84,7 +85,7 @@
 	"poll-view-popular": "Popular",
 	"poll-view-answered-times": "Respondida {{PLURAL:$1|uma vez|$1 vezes}}",
 	"poll-view-all-by": "Ver todas as sondagens de $1",
-	"poll-voted-for": "Votou {{PLURAL:$1|numa sondagem|em $1 sondagens}} de um total de <b>$2</b> sondagens e recebeu <span class=\"profile-on\">$3 pontos</span>.",
+	"poll-voted-for": "Votou {{PLURAL:$1|'''numa''' sondagem|em '''$1''' sondagens}} de um total de '''$2''' sondagens e recebeu <span class=\"profile-on\">$3 pontos</span>.",
 	"poll-votes": "{{PLURAL:$1|um voto|$1 votos}}",
 	"poll-woops": "Erro!",
 	"poll-would-have-earned": "Teria ganho <span class=\"profile-on\">$1 pontos</span> se tivesse [[Special:UserLogin/signup|iniciado uma sessão]].",

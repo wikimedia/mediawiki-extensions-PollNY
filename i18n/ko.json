@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Codenstory",
+			"Jack Phoenix",
 			"Nuevo Paso",
 			"Priviet",
 			"Revi",
@@ -87,7 +88,7 @@
 	"poll-view-popular": "인기",
 	"poll-view-answered-times": "{{PLURAL:$1|한 번|$1번}} 답변",
 	"poll-view-all-by": "$1의 모든 설문 조사 보기",
-	"poll-voted-for": "<b>$2</b> 중 $1개의 {{PLURAL:$1|개의 설문 조사}}에 투표하고 <span class=\"profile-on\">$3 포인트</span>를 받았습니다.",
+	"poll-voted-for": "'''$2''' 중 '''$1'''개의 {{PLURAL:$1|개의 설문 조사}}에 투표하고 <span class=\"profile-on\">$3 포인트</span>를 받았습니다.",
 	"poll-votes": "{{PLURAL:$1|한 표|$1표}}",
 	"poll-woops": "이런!",
 	"poll-would-have-earned": "[[Special:UserLogin/signup|가입]]하시면 <span class=\"profile-on\">$1포인트</span>를 얻을 수 있습니다.",
