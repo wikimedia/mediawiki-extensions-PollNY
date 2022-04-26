@@ -4,7 +4,8 @@
 			"Hamilton Abreu",
 			"Jkb8",
 			"Luckas",
-			"Vitorvicentevalente"
+			"Vitorvicentevalente",
+			"Jack Phoenix"
 		]
 	},
 	"adminpoll": "Administrar sondagens",
@@ -16,7 +17,7 @@
 	"poll-admin-closed": "Fechadas",
 	"poll-admin-flagged": "Marcadas",
 	"poll-admin-open": "Abertas",
-	"poll-error-socialprofile": "A [https://www.mediawiki.org/wiki/Extension:SocialProfile extensão SocialProfile] não está instalada. Instale-a e tente novamente, por favor.",
+	"poll-error-socialprofile": "A [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:SocialProfile extensão SocialProfile] não está instalada. Instale-a e tente novamente, por favor.",
 	"poll-error-socialprofile-title": "A extensão SocialProfile não está instalada.",
 	"poll-admin-panel": "Administração",
 	"poll-admin-status-nav": "Filtrar pelo estado",
