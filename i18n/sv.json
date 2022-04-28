@@ -4,7 +4,8 @@
 			"Jenniesarina",
 			"Jopparn",
 			"McDutchie",
-			"WikiPhoenix"
+			"WikiPhoenix",
+			"Jack Phoenix"
 		]
 	},
 	"adminpoll": "Administrera enkäter",
@@ -82,7 +83,7 @@
 	"poll-view-popular": "Populär",
 	"poll-view-answered-times": "Svarade {{PLURAL:$1|en gång|$1 gånger}}",
 	"poll-view-all-by": "Visa alla enkäter av $1",
-	"poll-voted-for": "Du har svarat på $1 {{PLURAL:$1|enkät|enkäter}} av totalt <b>$2</b> enkäter och fick <span class=\"profile-on\"> $3 poäng</span>",
+	"poll-voted-for": "Du har svarat på '''$1''' {{PLURAL:$1|enkät|enkäter}} av totalt '''$2''' enkäter och fick <span class=\"profile-on\">$3 poäng</span>.",
 	"poll-votes": "{{PLURAL:$1|ett svar|$1 svar}}",
 	"poll-woops": "Hoppsan!",
 	"poll-would-have-earned": "Du skulle ha tjänat <span class=\"profile-on\">$1 poäng</span> om du hade varit [[Special:UserLogin/signup|inloggad]]",

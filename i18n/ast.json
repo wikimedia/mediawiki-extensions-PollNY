@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Xuacu"
+			"Xuacu",
+			"Jack Phoenix"
 		]
 	},
 	"adminpoll": "Alministrar encuestes",
@@ -13,7 +14,7 @@
 	"poll-admin-closed": "Zarraes",
 	"poll-admin-flagged": "Marcaes",
 	"poll-admin-open": "Abiertes",
-	"poll-error-socialprofile": "La [https://www.mediawiki.org/wiki/Extension:SocialProfile estensión SocialProfile] nun ta instalada. Instala esta estensión y tenta otra vuelta.",
+	"poll-error-socialprofile": "La [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:SocialProfile estensión SocialProfile] nun ta instalada. Instala esta estensión y tenta otra vuelta.",
 	"poll-error-socialprofile-title": "La estensión SocialProfile nun ta instalada.",
 	"poll-admin-panel": "Almin",
 	"poll-admin-status-nav": "Filtrar por estáu",
@@ -81,7 +82,7 @@
 	"poll-view-popular": "Popular",
 	"poll-view-answered-times": "Respondida {{PLURAL:$1|una vez|$1 veces}}",
 	"poll-view-all-by": "Ver toles encuestes de $1",
-	"poll-voted-for": "Votó yá en $1 {{PLURAL:$1|encuesta|encuestes}} d'un total de <b>$2</b> y recibió <span class=\"profile-on\">$3 puntos</span>.",
+	"poll-voted-for": "Votó yá en '''$1''' {{PLURAL:$1|encuesta|encuestes}} d'un total de '''$2''' y recibió <span class=\"profile-on\">$3 puntos</span>.",
 	"poll-votes": "{{PLURAL:$1|un votu|$1 votos}}",
 	"poll-woops": "¡Coime!",
 	"poll-would-have-earned": "Habría ganao <span class=\"profile-on\">$1 puntos</span> si hubiera [[Special:UserLogin/signup|aniciao sesión]].",

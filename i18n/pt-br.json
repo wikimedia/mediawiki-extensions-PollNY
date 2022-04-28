@@ -4,7 +4,8 @@
 			"Cainamarques",
 			"Eduardo Addad de Oliveira",
 			"Eduardoaddad",
-			"Fúlvio"
+			"Fúlvio",
+			"Jack Phoenix"
 		]
 	},
 	"adminpoll": "Administrar enquetes",
@@ -87,7 +88,7 @@
 	"poll-view-popular": "Populares",
 	"poll-view-answered-times": "Respondida {{PLURAL:$1|uma vez|$1 vezes}}",
 	"poll-view-all-by": "Ver todas as enquetes de $1",
-	"poll-voted-for": "Você votou em $1 {{PLURAL:$1|enquete|enquetes}} de um total de <b>$2</b> enquetes e ganhou <span class=\"profile-on\">$3 pontos</span>",
+	"poll-voted-for": "Você votou em '''$1''' {{PLURAL:$1|enquete|enquetes}} de um total de '''$2''' enquetes e ganhou <span class=\"profile-on\">$3 pontos</span>",
 	"poll-votes": "{{PLURAL:$1|um voto|$1 votos}}",
 	"poll-woops": "Ops!",
 	"poll-would-have-earned": "Você teria ganho <span class=\"profile-on\">$1 pontos</span> se você tivesse [[Special:UserLogin/signup|se inscrito nesta wiki]]",

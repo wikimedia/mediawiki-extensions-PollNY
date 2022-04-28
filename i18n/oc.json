@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Cedric31"
+			"Cedric31",
+			"Jack Phoenix"
 		]
 	},
 	"adminpoll": "Administracion dels sondatges",
@@ -79,7 +80,7 @@
 	"poll-view-popular": "Popular",
 	"poll-view-answered-times": "Respondut {{PLURAL:$1|un còp|$1 còps}}",
 	"poll-view-all-by": "Veire totes los sondatges prepausats per $1",
-	"poll-voted-for": "Avètz votat per $1 {{PLURAL:$1|sondatge|sondatges}} demest <b>$2</b> sondatges possibles e obtengut <span class=\"profile-on\">$3 punts</span>",
+	"poll-voted-for": "Avètz votat per '''$1''' {{PLURAL:$1|sondatge|sondatges}} demest '''$2''' sondatges possibles e obtengut <span class=\"profile-on\">$3 punts</span>",
 	"poll-votes": "{{PLURAL:$1|un vòte|$1 vòtes}}",
 	"poll-woops": "Ops !",
 	"poll-would-have-earned": "Avètz ganhat <span class=\"profile-on\">$1 punts</span> se sètz [[Special:UserLogin/signup|identificat]]",
