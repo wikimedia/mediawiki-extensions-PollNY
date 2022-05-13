@@ -82,7 +82,7 @@ class CreatePoll extends SpecialPage {
 
 		// Add CSS & JS
 		$out->addModuleStyles( 'ext.pollNY.css' );
-		$out->addModules( 'ext.pollNY' );
+		$out->addModules( [ 'ext.pollNY', 'ext.pollNY.file-selector' ] );
 
 		// If the request was POSTed, try creating the poll
 		if (
