@@ -123,10 +123,19 @@ class CreatePoll extends SpecialPage {
 				'[[' . $localizedCategoryNS . ":{{subst:CURRENTMONTHNAME}} {{subst:CURRENTDAY}}, {{subst:CURRENTYEAR}}]]\n\n__NOEDITSECTION__",
 				$poll_title
 			);
-			$page->doEditContent(
-				$content,
-				$this->msg( 'poll-edit-desc' )->inContentLanguage()->plain()
-			);
+			if ( method_exists( $page, 'doUserEditContent' ) ) {
+				// MW 1.36+
+				$page->doUserEditContent(
+					$content,
+					$user,
+					$this->msg( 'poll-edit-desc' )->inContentLanguage()->plain()
+				);
+			} else {
+				$page->doEditContent(
+					$content,
+					$this->msg( 'poll-edit-desc' )->inContentLanguage()->plain()
+				);
+			}
 
 			$newPageId = $page->getId();
 
