@@ -1,6 +1,6 @@
 {
 	"name": "PollNY",
-	"version": "3.6.0",
+	"version": "3.7.0",
 	"author": [
 		"Aaron Wright",
 		"David Pean",
@@ -101,6 +101,24 @@
 				"ext.socialprofile.LightBox",
 				"oojs-ui-core",
 				"oojs-ui-windows"
+			]
+		},
+		"ext.pollNY.file-selector": {
+			"scripts": "resources/js/file-selector.js",
+			"dependencies": [
+				"oojs-ui",
+				"oojs-ui.styles.icons-media",
+				"mediawiki.widgets",
+				"mediawiki.widgets.UserInputWidget",
+				"mediawiki.widgets.MediaSearch",
+				"mediawiki.api",
+				"mediawiki.user"
+			],
+			"messages": [
+				"cancel",
+				"poll-image-picker",
+				"poll-image-picker-launch-button",
+				"poll-image-picker-select"
 			]
 		},
 		"ext.pollNY.css": {

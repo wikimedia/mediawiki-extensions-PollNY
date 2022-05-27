@@ -62,7 +62,7 @@ class UpdatePoll extends UnlistedSpecialPage {
 
 		// Add CSS & JS
 		$out->addModuleStyles( 'ext.pollNY.css' );
-		$out->addModules( 'ext.pollNY' );
+		$out->addModules( [ 'ext.pollNY', 'ext.pollNY.file-selector' ] );
 
 		if (
 			$request->wasPosted() &&
