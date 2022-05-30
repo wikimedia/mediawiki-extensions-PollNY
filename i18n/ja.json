@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"MathXplore",
 			"Shirayuki",
 			"Sujiniku",
 			"Yamagata Yusuke"
@@ -49,6 +50,8 @@
 	"poll-finished": "<b>投票所はこれ以上ありません。<a href=\"$1\">自分の投票所を追加</a>してください。</b>または<a href=\"$2\">この投票所の投票結果</a>をご覧ください。</b>",
 	"poll-hash": "# は投票所の質問文に使用できない無効な文字です。",
 	"poll-image-label": "画像の追加",
+	"poll-image-picker-launch-button": "既存の画像を使う",
+	"poll-image-picker-select": "選択",
 	"poll-instructions": "投票所に掲載する質問文と、その回答の選択肢を記入して、「{{int:poll-create-button}}」をクリックしてください。簡単な手順です。",
 	"poll-js-action-complete": "操作が完了しました。",
 	"poll-js-loading": "読み込み中...",

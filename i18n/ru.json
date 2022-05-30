@@ -4,6 +4,7 @@
 			"Alex Great",
 			"Diman Russkov",
 			"Kaganer",
+			"Kareyac",
 			"Nk88",
 			"Okras",
 			"Pacha Tchernof"
@@ -61,6 +62,7 @@
 	"poll-flag-poll": "Пометка опроса",
 	"poll-hash": "# — недопустимый символ для вопроса.",
 	"poll-image-label": "Добавить изображение",
+	"poll-image-picker-select": "Выбрать",
 	"poll-instructions": "Задайте вопрос, напишите несколько вариантов ответов, нажмите кнопку «{{int:poll-create-button}}». Это так просто!",
 	"poll-js-action-complete": "Действие было выполнено.",
 	"poll-js-loading": "Загрузка…",
