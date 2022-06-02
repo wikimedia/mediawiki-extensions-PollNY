@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Beta16",
-			"Sakretsu"
+			"Sakretsu",
+			"Jack Phoenix"
 		]
 	},
 	"adminpoll": "Amministra sondaggi",
@@ -16,6 +17,7 @@
 	"poll-error-socialprofile-title": "L'estensione SocialProfile non è installata.",
 	"poll-admin-panel": "Amministrazione",
 	"poll-admin-status-nav": "Filtra per stato",
+	"poll-admin-viewall": "Mostra tutto",
 	"poll-ago": "$1 fa",
 	"poll-based-on-votes": "basato su {{PLURAL:$1|un voto|$1 voti}}",
 	"poll-cancel-button": "Annulla",
