@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Asma",
 			"Jack Phoenix",
 			"Meno25",
 			"Mr. Ibrahem",
@@ -60,6 +61,8 @@
 	"poll-flag-poll": "علم على الاقتراع",
 	"poll-hash": "# حرف غير صالح لسؤال الاقتراع.",
 	"poll-image-label": "أضف صورة",
+	"poll-image-picker-launch-button": "استخدم صورة موجودة",
+	"poll-image-picker-select": "اختر",
 	"poll-instructions": "اطرح سؤال اقتراع، اكتب بعض خيارات الإجابة، اضغط على الزر \"{{int:poll-create-button}}\"، إنه بهذه السهولة!",
 	"poll-js-action-complete": "اكتمل العمل.",
 	"poll-js-loading": "جارٍ التحميل...",
