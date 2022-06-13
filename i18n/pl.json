@@ -1,12 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Chrumps"
+			"Chrumps",
+			"Jack Phoenix"
 		]
 	},
 	"poll-error-socialprofile": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:SocialProfile Rozszerzenie SocialProfile] nie jest zainstalowane. Zainstaluj je i spróbuj ponownie.",
 	"poll-error-socialprofile-title": "Rozszerzenie SocialProfile nie jest zainstalowane.",
 	"poll-admin-panel": "Administrator",
+	"poll-admin-viewall": "Pokaż wszystko",
 	"poll-ago": "$1 temu",
 	"poll-cancel-button": "Anuluj",
 	"poll-edit-button": "Zapisz stronę",
