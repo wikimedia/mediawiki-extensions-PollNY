@@ -164,7 +164,12 @@ class PollNYHooks {
 	}
 
 	public static function followPollID( $pollTitle ) {
-		$pollPage = new WikiPage( $pollTitle );
+		if ( method_exists( MediaWikiServices::class, 'getWikiPageFactory' ) ) {
+			// MW 1.36+
+			$pollPage = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromTitle( $pollTitle );
+		} else {
+			$pollPage = new WikiPage( $pollTitle );
+		}
 
 		if ( $pollPage->isRedirect() ) {
 			$pollTitle = $pollPage->followRedirect();

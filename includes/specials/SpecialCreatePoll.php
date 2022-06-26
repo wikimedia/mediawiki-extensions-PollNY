@@ -113,7 +113,12 @@ class CreatePoll extends SpecialPage {
 
 			// Create poll wiki page
 			$localizedCategoryNS = $services->getContentLanguage()->getNsText( NS_CATEGORY );
-			$page = WikiPage::factory( $poll_title );
+			if ( method_exists( $services, 'getWikiPageFactory' ) ) {
+				// MW 1.36+
+				$page = $services->getWikiPageFactory()->newFromTitle( $poll_title );
+			} else {
+				$page = WikiPage::factory( $poll_title );
+			}
 			$content = ContentHandler::makeContent(
 				"<userpoll>\n$choices</userpoll>\n\n[[" .
 					$localizedCategoryNS . ':' .
@@ -131,6 +136,7 @@ class CreatePoll extends SpecialPage {
 					$this->msg( 'poll-edit-desc' )->inContentLanguage()->plain()
 				);
 			} else {
+				// @phan-suppress-next-line PhanUndeclaredMethod
 				$page->doEditContent(
 					$content,
 					$this->msg( 'poll-edit-desc' )->inContentLanguage()->plain()

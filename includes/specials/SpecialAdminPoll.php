@@ -1,4 +1,7 @@
 <?php
+
+use MediaWiki\MediaWikiServices;
+
 /**
  * A special page to administer existing polls (i.e. examine flagged ones,
  * delete them and so on).
@@ -452,7 +455,12 @@ class AdminPoll extends SpecialPage {
 				);
 
 				$pollTitle = Title::newFromId( $s->poll_page_id );
-				$wikipage = WikiPage::factory( $pollTitle );
+				if ( method_exists( MediaWikiServices::class, 'getWikiPageFactory' ) ) {
+					// MW 1.36+
+					$wikipage = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromTitle( $pollTitle );
+				} else {
+					$wikipage = WikiPage::factory( $pollTitle );
+				}
 				$wikipage->doDeleteArticleReal( 'delete poll', $user );
 			}
 		}
