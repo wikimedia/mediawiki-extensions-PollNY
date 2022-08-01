@@ -6,6 +6,7 @@
 			"Liuxinyu970226",
 			"Qiyue2001",
 			"SomeyaMako",
+			"Stang",
 			"Yfdyh000"
 		]
 	},
@@ -63,7 +64,7 @@
 	"poll-image-label": "添加图片",
 	"poll-instructions": "问一个投票问题，写一些答案选择，按下“{{int:poll-create-button}}”按钮。就是这么简单！",
 	"poll-js-action-complete": "行动已经完成。",
-	"poll-js-loading": "载入中...",
+	"poll-js-loading": "加载中...",
 	"poll-next": "下",
 	"poll-next-poll": "下一个调查",
 	"poll-no-more-message": "您已经对所有进行的投票都投出了票！<br />别伤心，[[Special:CreatePoll|麻溜的点此创建您自己的]]！",
