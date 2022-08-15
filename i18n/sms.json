@@ -4,11 +4,14 @@
 			"Yupik"
 		]
 	},
+	"poll-create-button": "Raaj da speâll!",
 	"poll-discuss": "Saǥstõõl",
 	"poll-edit-button": "Ruõkk seeid",
 	"poll-submit-btn": "Vuõlttâd",
 	"poll-upload-new-image": "Ruõkk ođđ kaart leʹbe snimldõõǥǥ",
 	"poll-view-newest": "Ođđsummuz",
+	"poll-votes": "{{PLURAL:$1|õhtt jiõnn|$1 jiõn|$1 jiõnnâd}}",
+	"poll-time-days": "{{PLURAL:$1|õhtt peiʹvv|$1 peeiʹv|$1 peiʹvved}}",
 	"poll-time-hours": "{{PLURAL:$1|õhtt čiâss|$1 čiâss|$1 čiâssâd}}",
 	"poll-time-minutes": "{{PLURAL:$1|õhtt minutt|$1 minuutt|$1 minuttâd}}",
 	"poll-time-seconds": "{{PLURAL:$1|õhtt sekuntt|$1 sekuunt|$1 sekunttâd}}"
