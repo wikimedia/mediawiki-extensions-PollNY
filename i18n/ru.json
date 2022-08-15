@@ -65,7 +65,7 @@
 	"poll-image-picker-select": "Выбрать",
 	"poll-instructions": "Задайте вопрос, напишите несколько вариантов ответов, нажмите кнопку «{{int:poll-create-button}}». Это так просто!",
 	"poll-js-action-complete": "Действие было выполнено.",
-	"poll-js-loading": "Загрузка…",
+	"poll-js-loading": "Загружается…",
 	"poll-next": "след.",
 	"poll-next-poll": "Следующий опрос",
 	"poll-no-more-message": "Вы проголосовали во всех опросах!<br />Не расстраивайтесь, [[Special:CreatePoll|создайте свой собственный]]!",
