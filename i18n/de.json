@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Brettchenweber",
 			"Gebu",
 			"Kghbln",
 			"Metalhead64",
@@ -59,6 +60,7 @@
 	"poll-flag-poll": "Abstimmung markieren",
 	"poll-hash": "# ist ein ungültiges Zeichen für die Abstimmungsfrage.",
 	"poll-image-label": "Ein Bild hinzufügen",
+	"poll-image-picker-launch-button": "Ein bereits vorhandenes Bild verwenden",
 	"poll-instructions": "Stelle eine Abstimmungsfrage, biete einige Antwortmöglichkeiten an und klicke auf „{{int:poll-create-button}}“. Es ist so einfach!",
 	"poll-js-action-complete": "Die Aktion wurde vervollständigt.",
 	"poll-js-loading": "Lade …",
