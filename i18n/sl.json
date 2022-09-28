@@ -5,9 +5,15 @@
 		]
 	},
 	"poll-admin-closed": "Zaprto",
+	"poll-ago": "pred $1",
 	"poll-cancel-button": "Prekliči",
 	"poll-edit-button": "Shrani stran",
 	"poll-js-loading": "Nalaganje ...",
 	"poll-next": "naprej",
-	"poll-time-minutes": "{{PLURAL:$1|ena minuta|dve minuti|$1 minute|$1 minut}}"
+	"poll-prev": "prej",
+	"poll-time-ago": "Pred $1",
+	"poll-time-days": "{{PLURAL:$1|enim dnevom|$1 dnevoma|$1 dnevi}}",
+	"poll-time-hours": "{{PLURAL:$1|ena ura|$1 uri|$1 ure|$1 ur}}",
+	"poll-time-minutes": "{{PLURAL:$1|ena minuta|dve minuti|$1 minute|$1 minut}}",
+	"poll-time-seconds": "{{PLURAL:$1|ena sekunda|$1 sekundi|$1 sekunde|$1 sekund}}"
 }
