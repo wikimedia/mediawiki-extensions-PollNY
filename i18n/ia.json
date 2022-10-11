@@ -107,5 +107,11 @@
 	"apihelp-pollny-param-choiceID": "Mesme cosa que cliccar sur le <choiceID>me option via le GUI; es usate solmente quando what=vote.",
 	"apihelp-pollny-param-pageName": "Titulo a verificar (es usate solmente quando what=titleExists); debe esser codificate como URL.",
 	"apihelp-pollny-param-pollID": "ID del sondage in curso de deletion/actualisation/votation.",
-	"apihelp-pollny-param-pageID": "ID del pagina (es usate solmente quando what=getPollResults)."
+	"apihelp-pollny-param-pageID": "ID del pagina (es usate solmente quando what=getPollResults).",
+	"apihelp-pollny-param-status": "Nove stato del sondage (quando what=updateStatus); le possibile valores es 0 (=clause), 1 e 2 (=marcate).",
+	"apihelp-pollny-example-1": "Dele le sondage no. 66",
+	"apihelp-pollny-example-2": "Obtene le resultatos del sondage no. 666",
+	"apihelp-pollny-example-3": "Obtene un sondage aleatori al qual le usator actual non ha ancora respondite",
+	"apihelp-pollny-example-5": "Mitte le stato del sondage no. 47 a 1 (=aperte);  le possibile valores del stato es 0 (=clause), 1 e 2 (=marcate)",
+	"apihelp-pollny-example-6": "Vota (responde) al sondage no. 33 con le 4e option"
 }
