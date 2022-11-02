@@ -1,12 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kareyac"
+			"Kareyac",
+			"Սերգեյ Սաֆարյան"
 		]
 	},
 	"poll-admin-panel": "Ադմին",
 	"poll-ago": "$1 առաջ",
 	"poll-cancel-button": "Չեղարկել",
+	"poll-js-loading": "Բեռնվում է...",
 	"poll-submit-btn": "Ուղարկել",
 	"poll-time-ago": "$1 առաջ"
 }
