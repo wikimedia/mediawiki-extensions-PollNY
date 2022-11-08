@@ -4,7 +4,9 @@
 			"Meno25",
 			"Mr. Ibrahem",
 			"Sonic N800",
-			"ديفيد"
+			"ديفيد",
+			"Asma",
+			"Jack Phoenix"
 		]
 	},
 	"adminpoll": "إدارة الاستطلاعات",
@@ -16,8 +18,9 @@
 	"poll-admin-closed": "مغلق",
 	"poll-admin-flagged": "معلم",
 	"poll-admin-open": "مفتوح",
-	"poll-error-socialprofile": "لم يتم تثبيت [https://www.mediawiki.org/wiki/Extension:SocialProfile تمديد SocialProfile]; الرجاء تثبيت هذا الملحق والمحاولة مرة أخرى.",
+	"poll-error-socialprofile": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension: ملحق SocialProfile SocialProfile] غير مثبت. الرجاء تثبيت هذا الامتداد وحاول مرة أخرى.",
 	"poll-error-socialprofile-title": "امتداد SocialProfile غير مثبت.",
+	"poll-admin-nonadmin-note": "نظرًا لأنك لست مسؤولاً عن الاستطلاع ، فأنت ترى فقط الاقتراعات التي قمت بإنشائها.",
 	"poll-admin-panel": "إداري",
 	"poll-admin-status-nav": "تصفية حسب الحالة",
 	"poll-admin-title-all": "إداري اقتراع - عرض جميع الاقتراعات",
@@ -73,9 +76,11 @@
 	"poll-previous-poll": "الاقتراع السابق",
 	"poll-question-label": "سؤال الاقتراع",
 	"poll-skip": "تخطٍّ >",
+	"poll-submit-btn": "إرسال",
 	"poll-submitted-by": "مقدم من",
 	"poll-take-button": "< العودة إلى الاقتراعات",
 	"poll-unavailable": "هذا الاقتراع غير متوفر.",
+	"poll-unflag-message": "هل أنت متأكد أنك تريد إزالة علامة هذا الاستطلاع؟ تعمل ميزة \"إلغاء الإشارة\" على إعادة الاستطلاع للتداول ، مما يسمح للمستخدمين بمشاهدته والتصويت عليه.",
 	"poll-unflag-poll": "ألغِ تعليم الاقتراع",
 	"poll-upload-new-image": "رفع صورة جديدة",
 	"poll-view-title": "عرض اقتراعات $1",
