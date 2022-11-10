@@ -5,7 +5,8 @@
 			"Gebu",
 			"Kghbln",
 			"Metalhead64",
-			"Talex42"
+			"Talex42",
+			"TMg"
 		]
 	},
 	"adminpoll": "Abstimmungen verwalten",
@@ -61,6 +62,7 @@
 	"poll-hash": "# ist ein ungültiges Zeichen für die Abstimmungsfrage.",
 	"poll-image-label": "Ein Bild hinzufügen",
 	"poll-image-picker-launch-button": "Ein bereits vorhandenes Bild verwenden",
+	"poll-image-picker-select": "Auswählen",
 	"poll-instructions": "Stelle eine Abstimmungsfrage, biete einige Antwortmöglichkeiten an und klicke auf „{{int:poll-create-button}}“. Es ist so einfach!",
 	"poll-js-action-complete": "Die Aktion wurde vervollständigt.",
 	"poll-js-loading": "Lade …",
