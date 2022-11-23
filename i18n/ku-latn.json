@@ -2,15 +2,16 @@
 	"@metadata": {
 		"authors": [
 			"George Animal",
-			"Ghybu"
+			"Ghybu",
+			"Balyozxane"
 		]
 	},
 	"poll-admin-open": "Veke",
 	"poll-admin-panel": "Rêveber",
 	"poll-cancel-button": "Betal bike",
-	"poll-edit-answers": "Bersivan biguherîne",
+	"poll-edit-answers": "Bersivan biguhêre",
 	"poll-edit-button": "Rûpelê tomar bike",
-	"poll-edit-image": "Wêneyî biguherînê",
+	"poll-edit-image": "Wêneyî biguhêre",
 	"poll-next": "pêşve",
 	"poll-time-ago": "berî $1",
 	"poll-time-days": "{{PLURAL:$1|rojek|$1 roj}}"
