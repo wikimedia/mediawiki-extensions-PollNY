@@ -9,6 +9,7 @@
 	"poll-ago": "pred $1",
 	"poll-cancel-button": "Prekliči",
 	"poll-edit-button": "Shrani stran",
+	"poll-image-picker-select": "Izberi",
 	"poll-js-loading": "Nalaganje ...",
 	"poll-next": "naprej",
 	"poll-prev": "prej",
