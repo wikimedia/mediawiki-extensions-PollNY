@@ -117,6 +117,7 @@ class PollNYHooks {
 				$wgOut->disableClientCache();
 			} else {
 				// Older MWs (1.35+)
+				// @phan-suppress-next-line PhanParamTooMany
 				$wgOut->enableClientCache( false );
 			}
 			$wgHooks['ParserLimitReportPrepare'][] = 'PollNYHooks::onParserLimitReportPrepare';
@@ -209,6 +210,7 @@ class PollNYHooks {
 				$wgOut->disableClientCache();
 			} else {
 				// Older MWs (1.35+)
+				// @phan-suppress-next-line PhanParamTooMany
 				$wgOut->enableClientCache( false );
 			}
 			$parser->getOutput()->updateCacheExpiry( 0 );
