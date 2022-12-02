@@ -31,7 +31,7 @@ class CreatePollTemplate extends QuickTemplate {
 
 			<h1><?php echo $parentClass->msg( 'poll-question-label' )->escaped() ?></h1>
 			<div class="create-poll-question">
-				<input type="text" id="poll_question" name="poll_question" class="createbox" style="width: 450px" value="<?php echo htmlspecialchars( $parentClass->getRequest()->getVal( 'wpDestName' ), ENT_QUOTES ) ?>" />
+				<input type="text" id="poll_question" name="poll_question" class="createbox" style="width: 450px" value="<?php echo htmlspecialchars( $parentClass->getRequest()->getVal( 'wpDestName', '' ), ENT_QUOTES ) ?>" />
 			</div>
 
 			<div class="create-poll-answers">
