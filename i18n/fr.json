@@ -86,7 +86,7 @@
 	"poll-submitted-by": "Proposé par",
 	"poll-take-button": "&lt; Retour aux sondages",
 	"poll-unavailable": "Ce sondage est indisponible",
-	"poll-unflag-message": "Êtes-vous sûr de vouloir enlever le marquage de ce sondage ? Enlever le marquage remet le sondage en circulation, permettant aux utilisateurs de le voir et de voter.",
+	"poll-unflag-message": "Voulez-vous vraiment retirer le marquage de ce sondage ? Retirer le marquage remet le sondage en circulation, permettant aux utilisateurs de le voir et de voter.",
 	"poll-unflag-poll": "Démarquez ce sondage",
 	"poll-upload-image-button": "Importer",
 	"poll-upload-new-image": "Importer une nouvelle image",
