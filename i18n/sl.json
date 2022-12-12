@@ -12,6 +12,7 @@
 	"poll-js-loading": "Nalaganje ...",
 	"poll-next": "naprej",
 	"poll-prev": "prej",
+	"poll-skip": "Preskoči >",
 	"poll-submitted-by": "Pripravil_a",
 	"poll-time-ago": "Pred $1",
 	"poll-time-days": "{{PLURAL:$1|enim dnevom|$1 dnevoma|$1 dnevi}}",
