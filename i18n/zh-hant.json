@@ -6,7 +6,8 @@
 			"Kly",
 			"LNDDYL",
 			"Liuxinyu970226",
-			"Winston Sung"
+			"Winston Sung",
+			"捍粵者"
 		]
 	},
 	"adminpoll": "管理調查",
@@ -57,7 +58,7 @@
 	"poll-embed": "內嵌到 wiki 頁面",
 	"poll-enterquestion": "您必須輸入問題。",
 	"poll-finished": "<b>已經沒有更多的調查。來添加屬於<a href=\"$1\">您自己的！</a></b>或是<a href=\"$2\">檢視此調查的結果</a>。",
-	"poll-flagged": "此調查已被標記",
+	"poll-flagged": "此調查已標記",
 	"poll-flagged-message": "您確定要標記此調查？",
 	"poll-flag-poll": "標記調查",
 	"poll-hash": "# 是對於調查問題而言為無效的字元。",
