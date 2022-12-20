@@ -6,7 +6,8 @@
 			"Kly",
 			"LNDDYL",
 			"Liuxinyu970226",
-			"Winston Sung"
+			"Winston Sung",
+			"捍粵者"
 		]
 	},
 	"adminpoll": "管理調查",
@@ -43,7 +44,7 @@
 	"poll-create-button": "建立並開始！",
 	"poll-create-threshold-reason": "很抱歉，在您做出$1前不能建立調查。",
 	"poll-create-threshold-title": "建立調查",
-	"poll-create-title": "建立一個調查",
+	"poll-create-title": "建立調查",
 	"poll-createdago": "於 $1 以前建立",
 	"poll-delete-message": "您確定要刪除此調查？",
 	"poll-delete-poll": "刪除調查",
@@ -57,7 +58,7 @@
 	"poll-embed": "內嵌到 wiki 頁面",
 	"poll-enterquestion": "您必須輸入問題。",
 	"poll-finished": "<b>已經沒有更多的調查。來添加屬於<a href=\"$1\">您自己的！</a></b>或是<a href=\"$2\">檢視此調查的結果</a>。",
-	"poll-flagged": "此調查已被標記",
+	"poll-flagged": "此調查已標記",
 	"poll-flagged-message": "您確定要標記此調查？",
 	"poll-flag-poll": "標記調查",
 	"poll-hash": "# 是對於調查問題而言為無效的字元。",
