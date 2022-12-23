@@ -5,6 +5,7 @@
 		]
 	},
 	"poll-admin-closed": "Zaprto",
+	"poll-admin-open": "Odpri",
 	"poll-admin-panel": "Administracija",
 	"poll-ago": "pred $1",
 	"poll-cancel-button": "Prekliči",
