@@ -118,9 +118,9 @@
 	"apihelp-pollny-param-pollID": "Identifiant du sondage en cours de suppression/mise à jour/participation",
 	"apihelp-pollny-param-pageID": "Identifiant de page (utilisé uniquement si what=getPollResults).",
 	"apihelp-pollny-param-status": "Nouveau statut du sondage (quand what=updateStatus); les valeurs possibles sont 0 (=fermé), 1 et 2 (=marqué).",
-	"apihelp-pollny-example-1": "Supprime le sondage n ° 66",
+	"apihelp-pollny-example-1": "Supprime le sondage nº 66",
 	"apihelp-pollny-example-2": "Obtient les résultats du sondage n ° 666",
 	"apihelp-pollny-example-3": "Obtient un sondage aléatoire auquel l'utilisateur actuel n'a pas encore répondu",
-	"apihelp-pollny-example-5": "Définit l'état du sondage n°47 à 1 (=ouvert); les valeurs d'état possibles sont 0 (=fermé), 1 et 2 (=marqués)",
-	"apihelp-pollny-example-6": "Voix (réponses) du sondage n°33 avec le 4e choix"
+	"apihelp-pollny-example-5": "Définit l'état du sondage nº 47 à 1 (= ouvert) ; les valeurs d’état possibles sont 0 (= fermé), 1 et 2 (= marqués)",
+	"apihelp-pollny-example-6": "Voix (réponses) du sondage nº 33 avec le 4<sup>e</sup> choix"
 }
