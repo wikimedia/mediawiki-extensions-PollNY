@@ -4,8 +4,11 @@
 			"Eleassar"
 		]
 	},
+	"viewpoll": "Ogled anket",
 	"poll-admin-closed": "Zaprto",
+	"poll-admin-open": "Odpri",
 	"poll-admin-panel": "Administracija",
+	"poll-admin-viewall": "Pokaži vse",
 	"poll-ago": "pred $1",
 	"poll-cancel-button": "Prekliči",
 	"poll-edit-button": "Shrani stran",
