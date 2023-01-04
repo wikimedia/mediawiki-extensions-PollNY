@@ -7,6 +7,7 @@
 	"viewpoll": "Ogled anket",
 	"poll-admin-closed": "Zaprto",
 	"poll-admin-open": "Odpri",
+	"poll-error-socialprofile-title": "Razširitev SocialProfile ni nameščena.",
 	"poll-admin-panel": "Administracija",
 	"poll-admin-viewall": "Pokaži vse",
 	"poll-ago": "pred $1",
