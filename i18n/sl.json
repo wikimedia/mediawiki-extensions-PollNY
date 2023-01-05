@@ -19,6 +19,7 @@
 	"poll-prev": "prej",
 	"poll-skip": "Preskoči >",
 	"poll-submitted-by": "Pripravil_a",
+	"poll-view-order": "Vrstni red",
 	"poll-time-ago": "Pred $1",
 	"poll-time-days": "{{PLURAL:$1|enim dnevom|$1 dnevoma|$1 dnevi}}",
 	"poll-time-hours": "{{PLURAL:$1|ena ura|$1 uri|$1 ure|$1 ur}}",
