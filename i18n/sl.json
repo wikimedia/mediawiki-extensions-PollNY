@@ -13,6 +13,7 @@
 	"poll-ago": "pred $1",
 	"poll-cancel-button": "Prekliči",
 	"poll-close-poll": "Zapri anketo",
+	"poll-createpoll-error-nomore": "Ni več anket!",
 	"poll-edit-button": "Shrani stran",
 	"poll-image-picker-select": "Izberi",
 	"poll-js-loading": "Nalaganje ...",
