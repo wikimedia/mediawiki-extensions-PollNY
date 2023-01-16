@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Patriot Kur"
+			"Patriot Kur",
+			"Patriot Kor"
 		]
 	},
-	"poll-cancel-button": "Ləğv karde"
+	"poll-cancel-button": "Ləğv karde",
+	"poll-submit-btn": "Təğdim"
 }
