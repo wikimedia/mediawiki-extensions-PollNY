@@ -3,6 +3,7 @@
 		"authors": [
 			"BaRaN6161 TURK",
 			"MuratTheTurkish",
+			"Rapsar",
 			"SaldırganSincap"
 		]
 	},
@@ -45,10 +46,10 @@
 	"poll-delete-message": "Bu anketi silmek istediğinizden emin misiniz?",
 	"poll-delete-poll": "Anketi sil",
 	"poll-discuss": "Tartış",
-	"poll-edit-answers": "Yanıtları düzenle",
+	"poll-edit-answers": "Yanıtları değiştir",
 	"poll-edit-button": "Sayfayı kaydet",
 	"poll-edit-desc": "yeni anket",
-	"poll-edit-image": "Resmi düzenle",
+	"poll-edit-image": "Görseli değiştir",
 	"poll-edit-invalid-access": "Geçersiz erişim",
 	"poll-edit-title": "Anket düzenleniyor - $1",
 	"poll-embed": "Viki sayfasına yerleştir",
