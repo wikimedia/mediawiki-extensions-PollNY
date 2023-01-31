@@ -27,6 +27,7 @@
 	"poll-submitted-by": "Pripravil_a",
 	"poll-upload-new-image": "Naloži novo sliko",
 	"poll-view-order": "Vrstni red",
+	"poll-votes": "{{PLURAL:$1|en glas|$1 glasova|$1 glasovi|$1 glasov}}",
 	"poll-woops": "Ups!",
 	"poll-time-ago": "Pred $1",
 	"poll-time-days": "{{PLURAL:$1|enim dnevom|$1 dnevoma|$1 dnevi}}",
