@@ -182,8 +182,8 @@ class Poll {
 		$lang = RequestContext::getMain()->getLanguage();
 		foreach ( $res as $row ) {
 			if ( $poll_vote_count ) {
-				$percent = str_replace( '.0', '', $lang->formatNum(
-					(int)$row->pc_vote_count / $poll_vote_count * 100, true ) );
+				$percent = str_replace( '.0', '', $lang->formatNumNoSeparators(
+					(int)$row->pc_vote_count / $poll_vote_count * 100 ) );
 			} else {
 				$percent = 0;
 			}
