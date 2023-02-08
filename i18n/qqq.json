@@ -7,7 +7,8 @@
 			"Robby",
 			"Shirayuki",
 			"Siebrand",
-			"Umherirrender"
+			"Umherirrender",
+			"Amire80"
 		]
 	},
 	"adminpoll": "{{doc-special|AdminPoll}}\nThe special page to administrate polls.",
@@ -16,9 +17,9 @@
 	"viewpoll": "{{doc-special|ViewPoll}}\nThe special page to view all available polls.",
 	"poll-desc": "{{desc|name=Poll NY|url=https://www.mediawiki.org/wiki/Extension:PollNY}}",
 	"poll-admin-no-polls": "Message displayed on [[Special:AdminPoll]] and [[Special:ViewPoll]] when no polls match the supplied criteria or when there are absolutely no polls at all in the database.",
-	"poll-admin-closed": "Link title; clicking on this link shows all closed polls.\n{{Identical|Closed}}",
-	"poll-admin-flagged": "Link title; clicking on this link shows all flagged polls.\n{{Identical|Flagged}}",
-	"poll-admin-open": "Link title; clicking on this link shows all open polls.\n{{Identical|Open}}",
+	"poll-admin-closed": "Plural adjective describing polls. Link title. Clicking on this link shows all closed polls.\n{{Identical|Closed}}",
+	"poll-admin-flagged": "Plural adjective describing polls. Link title. Clicking on this link shows all flagged polls.\n{{Identical|Flagged}}",
+	"poll-admin-open": "Plural adjective describing polls. Clicking on this link shows all open polls.\n{{Identical|Open}}",
 	"poll-error-socialprofile": "Error message shown when SocialProfle extension is not installed.",
 	"poll-error-socialprofile-title": "Title for <code>poll-error-socialprofile</code>.",
 	"poll-admin-nonadmin-note": "Informational message shown on Special:AdminPoll for users who lack the <code>polladmin</code> user right to let them know they only see the polls they've created (whereas users with the <code>polladmin</code> right are able to see everyone's polls and action on them on that page).",
