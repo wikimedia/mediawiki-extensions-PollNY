@@ -51,7 +51,7 @@
 	"poll-edit-image": "עריכת תמונה",
 	"poll-edit-invalid-access": "גישה בלתי־תקינה",
 	"poll-edit-title": "עריכת סקר – $1",
-	"poll-embed": "הטמעה בדף ויקי",
+	"poll-embed": "הטבעה בדף ויקי",
 	"poll-enterquestion": "יש להזין שאלה.",
 	"poll-finished": "<b>לא נשארו עוד סקרים. אפשר להוסיף אחד <a href=\"$1\">משלך!</a></b> או <a href=\"$2\">לצפות בתוצאות בסקר הזה</a>.",
 	"poll-flagged": "הסקר הזה סומן",
