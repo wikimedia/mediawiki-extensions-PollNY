@@ -5,5 +5,9 @@
 		]
 	},
 	"poll-admin-panel": "אַדמיניסטראַטאָר",
-	"poll-cancel-button": "אַנולירן"
+	"poll-cancel-button": "אַנולירן",
+	"poll-time-days": "{{PLURAL:$1|איין טאָג|$1 טעג}}",
+	"poll-time-hours": "{{PLURAL:$1|איין שעה|$1 שעהן}}",
+	"poll-time-minutes": "{{PLURAL:$1|איין מינוט|$1 מינוטן}}",
+	"poll-time-seconds": "{{PLURAL:$1|איין סעקונדע|$1 סעקונדעס}}"
 }
