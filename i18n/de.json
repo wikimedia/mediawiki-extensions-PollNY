@@ -3,7 +3,10 @@
 		"authors": [
 			"Kghbln",
 			"Metalhead64",
-			"Gebu"
+			"Gebu",
+			"Brettchenweber",
+			"TMg",
+			"Talex42"
 		]
 	},
 	"adminpoll": "Abstimmungen verwalten",
@@ -83,7 +86,7 @@
 	"poll-view-order": "Reihenfolge",
 	"poll-view-newest": "Neueste",
 	"poll-view-popular": "Beliebt",
-	"poll-view-answered-times": "{{PLURAL:$1|Einmal|$1 mal}} geantwortet",
+	"poll-view-answered-times": "{{PLURAL:$1|Einmal|$1-mal}} geantwortet",
 	"poll-view-all-by": "Alle Abstimmungen von $1 ansehen",
 	"poll-voted-for": "Du hast bei {{PLURAL:$1|einer Abstimmung|$1 Abstimmungen}} abgestimmt von insgesamt <b>$2</b> und hast <span class=\"profile-on\">$3 Punkte</span> erhalten",
 	"poll-votes": "{{PLURAL:$1|eine Abstimmung|$1 Abstimmungen}}",
