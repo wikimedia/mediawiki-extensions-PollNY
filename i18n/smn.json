@@ -9,5 +9,6 @@
 	"poll-edit-button": "Vuorkkii siijđo",
 	"poll-next": "čuávuvâš",
 	"poll-submit-btn": "Vuolgât",
+	"poll-view-order": "Oornig",
 	"poll-time-days": "{{PLURAL:$1|ohtâ peivi|$1 peeivi|$1 peeivi|$1 peivid}}"
 }
