@@ -102,7 +102,6 @@
 	"right-pollny-vote": "Vote in polls",
 	"action-polladmin": "administer polls",
 	"right-polladmin": "Administer polls",
-	"apihelp-pollny-description": "PollNY API - includes both user and admin functions.",
 	"apihelp-pollny-summary": "PollNY API - includes both user and admin functions.",
 	"apihelp-pollny-param-what": "What to do?",
 	"apihelp-pollny-param-choiceID": "Same as clicking the <choiceID>th choice via the GUI; only used when what=vote.",
