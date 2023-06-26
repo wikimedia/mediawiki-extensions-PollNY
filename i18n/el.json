@@ -91,7 +91,6 @@
 	"right-pollny-vote": "Ψηφίστε σε ψηφοφορίες",
 	"action-polladmin": "διαχείριση ψηφοφοριών",
 	"right-polladmin": "Διαχείριση ψηφοφοριών",
-	"apihelp-pollny-description": "PollNY API - περιέχει λειτουργίες χρήστη και διαχειριστή.",
 	"apihelp-pollny-summary": "PollNY API - περιέχει λειτουργίες χρήστη και διαχειριστή.",
 	"apihelp-pollny-param-what": "Τι να κάνω;",
 	"apihelp-pollny-example-1": "Διαγράφει την ψηφοφορία #66",

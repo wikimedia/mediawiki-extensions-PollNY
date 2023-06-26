@@ -97,7 +97,6 @@
 	"right-pollny-vote": "పోల్‌లలో వోటెయ్యడం",
 	"action-polladmin": "పోల్‌లను నిర్వహించే",
 	"right-polladmin": "పోల్‌లను నిర్వహించడం",
-	"apihelp-pollny-description": "PollNY API - వాడుకరి పనులు, నిర్వాహక పనులు రెండూ ఉంటాయి.",
 	"apihelp-pollny-summary": "PollNY API - వాడుకరి పనులు, నిర్వాహక పనులు రెండూ ఉంటాయి.",
 	"apihelp-pollny-param-what": "ఏం చెయ్యాలి?"
 }

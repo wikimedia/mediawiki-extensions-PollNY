@@ -105,7 +105,6 @@
 	"right-pollny-vote": "설문조사에 투표",
 	"action-polladmin": "설문조사 관리",
 	"right-polladmin": "설문 조사 관리",
-	"apihelp-pollny-description": "설문조사YN API- 사용자 및 관리자 권한 포함",
 	"apihelp-pollny-param-what": "어떻게 할까요?",
 	"apihelp-pollny-example-1": "설문조사 #66 삭제",
 	"apihelp-pollny-example-2": "설문조사 #666 결과 받아오기"

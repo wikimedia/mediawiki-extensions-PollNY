@@ -96,7 +96,6 @@
 	"right-pollny-vote": "Votar n'encuestes",
 	"action-polladmin": "alministrar encuestes",
 	"right-polladmin": "Alministrar encuestes",
-	"apihelp-pollny-description": "PollNY API - incluye les funciones d'usuariu y d'alministrador.",
 	"apihelp-pollny-summary": "PollNY API - incluye les funciones d'usuariu y d'alministrador.",
 	"apihelp-pollny-param-what": "¿Qué facer?",
 	"apihelp-pollny-param-choiceID": "Igual que facer click na <choiceID>ª opción na interfaz, sólo s'usa cuando what=vote.",

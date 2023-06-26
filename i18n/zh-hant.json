@@ -107,7 +107,6 @@
 	"right-pollny-vote": "對調查投票",
 	"action-polladmin": "管理調查",
 	"right-polladmin": "管理調查",
-	"apihelp-pollny-description": "PollNY API - 包含使用者和管理的功能。",
 	"apihelp-pollny-summary": "PollNY API - 包含使用者和管理的功能。",
 	"apihelp-pollny-param-what": "要做什麼？",
 	"apihelp-pollny-param-choiceID": "如同透過圖形介面來點擊第 <choiceID> 個選項，僅在 what=vote 時使用。",

@@ -101,7 +101,6 @@
 	"right-pollny-vote": "Гласајте на анкети",
 	"action-polladmin": "раководење со анкети",
 	"right-polladmin": "Раководење со анкети",
-	"apihelp-pollny-description": "Извршник „PollNY“ — опфаќа и кориснички и администраторски функции.",
 	"apihelp-pollny-summary": "Извршник „PollNY“ — опфаќа и кориснички и администраторски функции.",
 	"apihelp-pollny-param-what": "Што да се прави?",
 	"apihelp-pollny-param-choiceID": "Исто што и стискање на <choiceID>-тата можност преку корисничкиот посредник. Се користи само кога е what=vote.",

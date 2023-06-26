@@ -101,7 +101,6 @@
 	"right-pollny-vote": "Anketlerde oy verin",
 	"action-polladmin": "anketleri yönet",
 	"right-polladmin": "Anketleri yönet",
-	"apihelp-pollny-description": "PollNY API - hem kullanıcı hem de yönetici işlevlerini içerir.",
 	"apihelp-pollny-summary": "PollNY API - hem kullanıcı hem de yönetici işlevlerini içerir.",
 	"apihelp-pollny-param-what": "Ne yapalım?",
 	"apihelp-pollny-param-choiceID": "GUI üzerinden <choiceID> seçeneğine tıklamakla aynı; sadece what=vote olduğunda kullanılır.",

@@ -99,7 +99,6 @@
 	"right-pollny-vote": "Votar en enquisas",
 	"action-polladmin": "xestionar enquisas",
 	"right-polladmin": "Administrar as enquisas",
-	"apihelp-pollny-description": "PollNY API - inclúe funcións de usuario e de administrador",
 	"apihelp-pollny-param-what": "Que facer?",
 	"apihelp-pollny-param-choiceID": "O mesmo que premer a escolla <choiceID>th a través do IGU, só usado cando what=vote.",
 	"apihelp-pollny-param-pageName": "Título a revisar (só usado cando what=titleExists (que=títuloExiste)); debe ter a URL codificada.",

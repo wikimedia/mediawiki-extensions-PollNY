@@ -103,7 +103,6 @@
 	"right-pollny-vote": "הצבעה בסקרים",
 	"action-polladmin": "לנהל סקרים",
 	"right-polladmin": "ניהול סקרים",
-	"apihelp-pollny-description": "PollNY API - כולל גם פונקציות משתמש וגם פונקציות ניהול.",
 	"apihelp-pollny-summary": "PollNY API - כולל גם פונקציות משתמש וגם פונקציות ניהול.",
 	"apihelp-pollny-param-what": "מה לעשות?",
 	"apihelp-pollny-param-choiceID": "אותו דבר כמו לחיצה על בחירה מס' <choiceID> דרך הממשק הגרפי; משמש רק כאשר what=vote.",

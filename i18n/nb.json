@@ -99,7 +99,6 @@
 	"right-pollny-vote": "Stemme i avstemninger",
 	"action-polladmin": "administrere avstemninger",
 	"right-polladmin": "Administrere avstemninger",
-	"apihelp-pollny-description": "PollNY-API – inkluder både bruker- og administratorfunksjoner.",
 	"apihelp-pollny-summary": "PollNY-API – inkluderer både bruker- og administratorfunksjoner.",
 	"apihelp-pollny-param-what": "Hva skal gjøres?",
 	"apihelp-pollny-param-choiceID": "Det samme som å klokke på det <choiceID>. svarer i grensesnittet; brukes bare når what=vote.",

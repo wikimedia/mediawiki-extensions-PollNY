@@ -107,7 +107,6 @@
 	"right-pollny-vote": "Голосування в опитуваннях",
 	"action-polladmin": "адміністрування опитувань",
 	"right-polladmin": "Адміністрування опитувань",
-	"apihelp-pollny-description": "PollNY API — включає функції і користувача, й адміністратора.",
 	"apihelp-pollny-summary": "PollNY API — включає функції і користувача, й адміністратора.",
 	"apihelp-pollny-param-what": "Що робити?",
 	"apihelp-pollny-param-choiceID": "Теж саме, що й натискання на вибір <choiceID> через GUI; використовується лише при what=vote.",

@@ -102,7 +102,6 @@
 	"right-pollny-vote": "Balsuoti",
 	"action-polladmin": "administruoti apklausas",
 	"right-polladmin": "Administruoti apklausas",
-	"apihelp-pollny-description": "PollNY API – apima naudotojo ir administratoriaus funkcijas.",
 	"apihelp-pollny-summary": "PollNY API – apima naudotojo ir administratoriaus funkcijas.",
 	"apihelp-pollny-param-what": "Ką daryti?",
 	"apihelp-pollny-example-1": "Ištrina apklausą #66",

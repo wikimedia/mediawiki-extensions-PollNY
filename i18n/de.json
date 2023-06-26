@@ -103,7 +103,6 @@
 	"right-pollny-vote": "Bei Abstimmungen teilnehmen",
 	"action-polladmin": "Abstimmungen zu verwalten",
 	"right-polladmin": "Abstimmungen verwalten",
-	"apihelp-pollny-description": "PollNY-API – schließt sowohl Benutzer- als auch Administratorfunktionen ein.",
 	"apihelp-pollny-summary": "PollNY API – enthält sowohl Benutzer- als auch Administratorfunktionen.",
 	"apihelp-pollny-param-what": "Was ist zu tun?",
 	"apihelp-pollny-param-choiceID": "Dasselbe wie das Klicken auf die <choiceID>th Wahl über die GUI; wird nur verwendet, wenn what=vote.",

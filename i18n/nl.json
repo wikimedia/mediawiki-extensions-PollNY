@@ -97,7 +97,6 @@
 	"poll-time-seconds": "{{PLURAL:$1|1 seconde|$1 seconden}}",
 	"specialpages-group-poll": "Peilingen",
 	"right-polladmin": "Peilingen beheren",
-	"apihelp-pollny-description": "PollNY-API: omvat zowel gebruikers- als beheerdersfuncties.",
 	"apihelp-pollny-param-what": "Wat te doen?",
 	"apihelp-pollny-param-choiceID": "Hetzelfde als klikken op de <choiceID>ste keuze via de grafische interface; alleen gebruikt als what=vote.",
 	"apihelp-pollny-param-pageName": "Titel om op te controleren (alleen gebruikt wanneer what=titleExists); moet als URL gecodeerd zijn.",

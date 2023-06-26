@@ -105,7 +105,6 @@
 	"right-pollny-vote": "Votar em sondagens",
 	"action-polladmin": "administrar sondagens",
 	"right-polladmin": "Administrar sondagens",
-	"apihelp-pollny-description": "API PollNY - inclui funções de utilizador e de administrador.",
 	"apihelp-pollny-summary": "API PollNY - inclui funções de utilizador e de administrador.",
 	"apihelp-pollny-param-what": "O que fazer?",
 	"apihelp-pollny-param-choiceID": "O mesmo que clicar a escolha nº <choiceID> através do GUI; só usado quando what=vote.",
