@@ -4,5 +4,7 @@
 			"Bosogo"
 		]
 	},
-	"poll-cancel-button": "Жокко чыгаруу"
+	"poll-admin-closed": "Жабык",
+	"poll-cancel-button": "Жокко чыгаруу",
+	"poll-js-loading": "Жүктөлүүдө..."
 }
