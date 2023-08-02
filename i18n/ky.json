@@ -6,5 +6,6 @@
 	},
 	"poll-admin-closed": "Жабык",
 	"poll-cancel-button": "Жокко чыгаруу",
-	"poll-js-loading": "Жүктөлүүдө..."
+	"poll-js-loading": "Жүктөлүүдө...",
+	"poll-time-days": "{{PLURAL:$1|бир күн|$1 күн}}"
 }
