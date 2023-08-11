@@ -104,6 +104,8 @@
 	"right-polladmin": "Administruoti apklausas",
 	"apihelp-pollny-summary": "PollNY API – apima naudotojo ir administratoriaus funkcijas.",
 	"apihelp-pollny-param-what": "Ką daryti?",
+	"apihelp-pollny-param-pollID": "Apklausos, kuri trynima/atnmaujinama ar kurioje balsuojama, ID.",
+	"apihelp-pollny-param-pageID": "Puslapio ID (naudojama tik, kai what=getPollResults).",
 	"apihelp-pollny-example-1": "Ištrina apklausą #66",
 	"apihelp-pollny-example-2": "Gauna apklausos #666 rezultatus",
 	"apihelp-pollny-example-3": "Gauna atsitiktinę apklausą, į kurią dabartinis naudotojas dar neatsakė"
