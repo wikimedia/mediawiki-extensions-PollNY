@@ -117,6 +117,7 @@ class CreatePoll extends SpecialPage {
 				// MW 1.36+
 				$page = $services->getWikiPageFactory()->newFromTitle( $poll_title );
 			} else {
+				// @phan-suppress-next-line PhanUndeclaredStaticMethod
 				$page = WikiPage::factory( $poll_title );
 			}
 			$content = ContentHandler::makeContent(

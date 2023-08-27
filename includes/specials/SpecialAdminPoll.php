@@ -459,6 +459,7 @@ class AdminPoll extends SpecialPage {
 					// MW 1.36+
 					$wikipage = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromTitle( $pollTitle );
 				} else {
+					// @phan-suppress-next-line PhanUndeclaredStaticMethod
 					$wikipage = WikiPage::factory( $pollTitle );
 				}
 				$wikipage->doDeleteArticleReal( 'delete poll', $user );
