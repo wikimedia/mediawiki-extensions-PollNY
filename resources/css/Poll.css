@@ -340,14 +340,8 @@ div.submitted-by-image img {
 	margin: 15px 0px 0px 0px;
 }
 
-/* On Poll: pages, hide the no-JS "Skip" button for JS users, and for no-JS
- * users, hide the "Skip" link which requires JS
- */
-.client-js .poll-button-nojs {
-	display: none;
-}
-
-.client-nojs .poll-button-js {
+/* On Poll: pages, hide the "Skip" link which requires JS */
+.client-nojs .poll-button {
 	display: none;
 }
 
