@@ -7,7 +7,8 @@
 			"Qiyue2001",
 			"SomeyaMako",
 			"Stang",
-			"Yfdyh000"
+			"Yfdyh000",
+			"LittlePaw365"
 		]
 	},
 	"adminpoll": "管理调查",
@@ -65,15 +66,15 @@
 	"poll-instructions": "问一个投票问题，写一些答案选择，按下“{{int:poll-create-button}}”按钮。就是这么简单！",
 	"poll-js-action-complete": "行动已经完成。",
 	"poll-js-loading": "加载中...",
-	"poll-next": "下",
+	"poll-next": "下个",
 	"poll-next-poll": "下一个调查",
 	"poll-no-more-message": "您已经对所有进行的投票都投出了票！<br />别伤心，[[Special:CreatePoll|麻溜的点此创建您自己的]]！",
 	"poll-no-more-title": "没有更多的调查！",
 	"poll-open-message": "您确信要开启此次调查？",
 	"poll-open-poll": "开放调查",
 	"poll-pleasechoose": "请选择其他调查名称。",
-	"poll-prev": "前一个",
-	"poll-previous-poll": "前一个调查",
+	"poll-prev": "上个",
+	"poll-previous-poll": "上一个调查",
 	"poll-question-label": "调查的问题",
 	"poll-skip": "跳过 >",
 	"poll-submit-btn": "提交",
