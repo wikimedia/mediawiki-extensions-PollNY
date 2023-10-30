@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Xuacu",
-			"Jack Phoenix"
+			"Jack Phoenix",
+			"YoaR"
 		]
 	},
 	"adminpoll": "Alministrar encuestes",
@@ -26,7 +27,7 @@
 	"poll-ago": "hai $1",
 	"poll-atleast": "Hai que tener polo menos dos opciones de rempuesta.",
 	"poll-based-on-votes": "en base a {{PLURAL:$1|un votu|$1 votos}}",
-	"poll-cancel-button": "Encaboxar",
+	"poll-cancel-button": "Zarrar",
 	"poll-category": "Encuestes",
 	"poll-category-user": "Encuestes del usuariu $1",
 	"poll-choices-label": "Opciones de rempuesta",
