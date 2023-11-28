@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Patriot Kur",
-			"Patriot Kor"
+			"Patriot Kor",
+			"Гусейн"
 		]
 	},
+	"poll-admin-panel": "Mudir",
 	"poll-cancel-button": "Ləğv karde",
 	"poll-submit-btn": "Təğdim"
 }
