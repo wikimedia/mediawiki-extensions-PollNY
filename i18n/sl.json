@@ -51,7 +51,7 @@
 	"poll-edit-title": "Urejanje glasovanja – $1",
 	"poll-embed": "Vdelaj v viki stran",
 	"poll-enterquestion": "Vnesti morate vprašanje.",
-	"poll-finished": "<b>Ni več glasovanj. Dodajte svoje <a href=\"<span class=\"notranslate\" translate=\"no\">$1 \">lastno!</a></b> Ali <a href=\"<span class=\"notranslate\" translate=\"no\">$2 \">si oglejte rezultate tega glasovanja</a>.",
+	"poll-finished": "<b>Ni več glasovanj. Dodajte svoje <a href=\"$1\">lastno!</a></b> Ali <a href=\"$2\">si oglejte rezultate tega glasovanja</a>.",
 	"poll-flagged": "To glasovanje je bilo označeno",
 	"poll-flagged-message": "Ali res želite označiti to glasovanje?",
 	"poll-flag-poll": "Označi glasovanje",
