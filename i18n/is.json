@@ -1,9 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
+			"Stefán Örvar Sigmundsson",
 			"Sveinn í Felli"
 		]
 	},
 	"createpoll": "Búa til könnun",
-	"poll-create-title": "Búa til könnun"
+	"poll-admin-flagged": "Markað",
+	"poll-create-title": "Búa til könnun",
+	"poll-flagged": "Skoðanakönnunin hefur verið mörkuð",
+	"poll-flag-poll": "Marka skoðanakönnun"
 }
