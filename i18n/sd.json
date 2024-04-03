@@ -4,8 +4,11 @@
 			"Mehtab ahmed"
 		]
 	},
+	"poll-ago": "$1 اڳ",
 	"poll-cancel-button": "رد",
+	"poll-createdago": "$1 اڳ سرجيو ويو",
 	"poll-next": "اڳيون",
+	"poll-time-ago": "$1 اڳ",
 	"action-pollny-vote": "چونڊن ۾ ووٽ ڏيو",
 	"right-pollny-vote": "چونڊن ۾ ووٽ ڏيو"
 }
