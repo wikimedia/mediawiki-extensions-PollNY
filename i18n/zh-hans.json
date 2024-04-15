@@ -8,7 +8,8 @@
 			"SomeyaMako",
 			"Stang",
 			"Yfdyh000",
-			"LittlePaw365"
+			"LittlePaw365",
+			"Anterdc99"
 		]
 	},
 	"adminpoll": "管理调查",
@@ -22,6 +23,7 @@
 	"poll-admin-open": "开放",
 	"poll-error-socialprofile": "未安装[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:SocialProfile SocialProfile扩展]。请安装该扩展并重试。",
 	"poll-error-socialprofile-title": "未安装SocialProfile扩展。",
+	"poll-admin-nonadmin-note": "因为您不是调查管理员，您只能看到您创建的调查。",
 	"poll-admin-panel": "管理",
 	"poll-admin-status-nav": "按状态筛选",
 	"poll-admin-title-all": "调查管理-查看所有调查",
@@ -62,7 +64,10 @@
 	"poll-flagged-message": "确定要标记此调查吗?",
 	"poll-flag-poll": "标记调查",
 	"poll-hash": "# 是一个带有无效字符问题的投票。",
-	"poll-image-label": "添加图片",
+	"poll-image-label": "添加图像",
+	"poll-image-picker-launch-button": "使用现有图像",
+	"poll-image-picker": "图像选择器",
+	"poll-image-picker-select": "选择",
 	"poll-instructions": "问一个投票问题，写一些答案选择，按下“{{int:poll-create-button}}”按钮。就是这么简单！",
 	"poll-js-action-complete": "行动已经完成。",
 	"poll-js-loading": "加载中...",
@@ -81,6 +86,7 @@
 	"poll-submitted-by": "提交者",
 	"poll-take-button": "< 返回调查",
 	"poll-unavailable": "此调查不可用",
+	"poll-unflag-message": "您确定要取消标记此调查吗？取消标记会使调查重新进行，允许用户查看并投票。",
 	"poll-unflag-poll": "取消标记调查",
 	"poll-upload-new-image": "上传新图像",
 	"poll-view-title": "查看$1的调查",
