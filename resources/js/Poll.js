@@ -356,7 +356,9 @@ var PollNY = {
 		jQuery( '#poll_image' ).append(
 			jQuery( '<a>' )
 				.attr( 'href', '#' )
-				.on( 'click', function () { PollNY.resetUpload(); } )
+				.on( 'click', function () {
+					PollNY.resetUpload();
+				} )
 				.text( mw.msg( 'poll-upload-new-image' ) )
 				// Words of wisdom:
 				// <Vulpix> oh, yeah, I know what's happening. Since you're appending the element created with $('<a>'), it appends only it, not the wrapped one... You may need to add a .parent() at the end to get the <p> also...
