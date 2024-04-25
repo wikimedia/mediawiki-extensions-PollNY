@@ -194,7 +194,7 @@ class PollPage extends Article {
 		if ( ( $pollIsOpen || $user->isAllowed( 'polladmin' ) ) && !$userIsBlocked ) {
 			$adminLinks[] = "<a class=\"poll-status-toggle-link\" href=\"javascript:void(0)\" data-status=\"{$toggle_flag_status}\">{$toggle_flag_label}</a>";
 		}
-		if ( !empty( $adminLinks ) ) {
+		if ( $adminLinks ) {
 			$output .= $lang->pipeList( $adminLinks );
 		}
 		$output .= "\n" . '</div>' . "\n"; // .poll-links
@@ -214,7 +214,7 @@ class PollPage extends Article {
 					$width = $poll_image->getWidth();
 				}
 			}
-			if ( !empty( $poll_image_url ) ) {
+			if ( $poll_image_url ) {
 				$poll_image_tag = '<img width="' . $width . '" alt="" src="' . $poll_image_url . '"/>';
 			}
 			$output .= "<div class=\"poll-image\">{$poll_image_tag}</div>";

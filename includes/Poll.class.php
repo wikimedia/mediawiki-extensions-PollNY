@@ -290,7 +290,7 @@ class Poll {
 		}
 
 		$whereConds = [];
-		if ( !empty( $excludedIds ) ) {
+		if ( $excludedIds ) {
 			$whereConds[] = 'poll_id NOT IN (' . $dbr->makeList( $excludedIds ) . ')';
 		}
 		$whereConds['poll_status'] = self::STATUS_OPEN;
@@ -345,7 +345,7 @@ class Poll {
 		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
 		$key = $cache->makeKey( 'polls', 'order', $order, 'count', $count );
 		$data = $cache->get( $key );
-		if ( !empty( $data ) && is_array( $data ) ) {
+		if ( $data && is_array( $data ) ) {
 			wfDebug( "Got polls list ($count) ordered by {$order} from cache\n" );
 			$polls = $data;
 		} else {
@@ -373,7 +373,7 @@ class Poll {
 					'choices' => self::getPollChoices( $row->poll_id, $row->poll_vote_count )
 				];
 			}
-			if ( !empty( $polls ) ) {
+			if ( $polls ) {
 				$cache->set( $key, $polls, 60 * 10 );
 			}
 		}
