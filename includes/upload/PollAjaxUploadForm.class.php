@@ -48,8 +48,14 @@ class PollAjaxUploadForm extends UploadForm {
 
 	function displayForm( $submitResult ) {
 		parent::displayForm( $submitResult );
-		if ( method_exists( $this->getOutput(), 'allowClickjacking' ) ) {
-			$this->getOutput()->allowClickjacking();
+		$out = $this->getOutput();
+		if ( method_exists( $out, 'allowClickjacking' ) ) {
+			// Up to MW 1.41
+			// @phan-suppress-next-line PhanUndeclaredMethod
+			$out->allowClickjacking();
+		} else {
+			// MW 1.41+
+			$out->setPreventClickjacking( false );
 		}
 	}
 
