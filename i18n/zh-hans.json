@@ -46,7 +46,7 @@
 	"poll-create-button": "创建并开始！",
 	"poll-create-threshold-reason": "对不起，直到您至少拥有$1之前您不能创建调查。",
 	"poll-create-threshold-title": "创建调查",
-	"poll-create-title": "创建一个调查",
+	"poll-create-title": "创建投票",
 	"poll-createdago": "于$1前创建",
 	"poll-delete-message": "确定要删除该调查吗？",
 	"poll-delete-poll": "删除调查",
