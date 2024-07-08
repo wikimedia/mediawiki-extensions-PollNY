@@ -2,8 +2,10 @@
 	"@metadata": {
 		"authors": [
 			"Bada Kaji",
-			"बडा काजी"
+			"बडा काजी",
+			"पर्वत सुबेदी"
 		]
 	},
-	"poll-admin-panel": "प्रबन्धक"
+	"poll-admin-panel": "प्रबन्धक",
+	"poll-cancel-button": "रद्द गर्नुहोस्"
 }
