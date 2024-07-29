@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jack Phoenix"
+		]
+	},
+	"poll-admin-viewall": "Vaata kõiki",
+	"poll-cancel-button": "Loobu",
+	"poll-image-label": "Lisa pilt",
+	"poll-woops": "Ups!"
+}
