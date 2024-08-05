@@ -89,6 +89,33 @@ class PollNYHooks {
 	}
 
 	/**
+	 * Prevent editing Poll: pages via the API (api.php).
+	 *
+	 * @param ApiBase $module
+	 * @param User $user
+	 * @param IApiMessage|Message|string|array &$message
+	 * @return bool
+	 */
+	public static function onApiCheckCanExecute( $module, $user, &$message ) {
+		$moduleName = $module->getModuleName();
+
+		if ( $moduleName == 'edit' ) {
+			$params = $module->extractRequestParams();
+			$pageObj = $module->getTitleOrPageId( $params );
+			$titleObj = $pageObj->getTitle();
+
+			if ( $titleObj->inNamespace( NS_POLL ) ) {
+				$message = 'poll-error-no-api-edit';
+				return false;
+			}
+
+			return true;
+		}
+
+		return true;
+	}
+
+	/**
 	 * Rendering for the <userpoll> tag.
 	 *
 	 * @param Parser $parser

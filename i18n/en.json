@@ -102,6 +102,7 @@
 	"right-pollny-vote": "Vote in polls",
 	"action-polladmin": "administer polls",
 	"right-polladmin": "Administer polls",
+	"poll-error-no-api-edit": "The API cannot be used to edit Poll: pages currently. Please use <code>Special:UpdatePoll</code> or <code>Special:CreatePoll</code> as appropriate instead.",
 	"apihelp-pollny-summary": "PollNY API - includes both user and admin functions.",
 	"apihelp-pollny-param-what": "What to do?",
 	"apihelp-pollny-param-choiceID": "Same as clicking the <choiceID>th choice via the GUI; only used when what=vote.",

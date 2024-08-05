@@ -68,6 +68,7 @@
 		"ViewPoll": "includes/specials/SpecialViewPoll.php"
 	},
 	"Hooks": {
+		"ApiCheckCanExecute": "PollNYHooks::onApiCheckCanExecute",
 		"PageMoveComplete": "PollNYHooks::updatePollQuestion",
 		"ArticleDelete": "PollNYHooks::deletePollQuestion",
 		"ArticleFromTitle": "PollNYHooks::pollFromTitle",

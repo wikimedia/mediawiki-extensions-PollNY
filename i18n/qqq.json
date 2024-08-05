@@ -108,6 +108,7 @@
 	"right-pollny-vote": "{{Doc-right|pollny-vote}}",
 	"action-polladmin": "{{doc-action|polladmin}}",
 	"right-polladmin": "{{doc-right|polladmin}}",
+	"poll-error-no-api-edit": "Error message returned by the [[mw:API:Edit|edit API]] (<code>api.php?action=edit</code>) when attempting to edit a page in the <code>Poll:</code> namespace via it",
 	"apihelp-pollny-summary": "{{doc-apihelp-summary|pollny}}",
 	"apihelp-pollny-param-what": "{{doc-apihelp-param|pollny|what}}",
 	"apihelp-pollny-param-choiceID": "{{doc-apihelp-param|pollny|choiceID}}",
