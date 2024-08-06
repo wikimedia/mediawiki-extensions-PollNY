@@ -94,5 +94,6 @@
 	"poll-time-minutes": "{{PLURAL:$1|یک دقیقه|$1 دقیقه}}",
 	"poll-time-seconds": "{{PLURAL:$1|یک ثانیه|$1 ثانیه}}",
 	"specialpages-group-poll": "نظرسنجی‌ها",
-	"right-polladmin": "مدیریت نظرسنجی‌ها"
+	"right-polladmin": "مدیریت نظرسنجی‌ها",
+	"poll-error-no-api-edit": "در حال حاضر نمی‌توان از واسط برنامه‌نویسی کاربردی برای ویرایش صفحه‌های Poll: استفاده کرد. لطفاً به تناسب از <code>Special:UpdatePoll</code> یا <code>Special:CreatePoll</code> استفاده کنید."
 }
