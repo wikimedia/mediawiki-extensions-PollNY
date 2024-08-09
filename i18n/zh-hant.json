@@ -107,6 +107,7 @@
 	"right-pollny-vote": "對調查投票",
 	"action-polladmin": "管理調查",
 	"right-polladmin": "管理調查",
+	"poll-error-no-api-edit": "API 目前不能使用來編輯 Poll: 頁面。請依情形改用 <code>Special:UpdatePoll</code> 或 <code>Special:CreatePoll</code>。",
 	"apihelp-pollny-summary": "PollNY API - 包含使用者和管理的功能。",
 	"apihelp-pollny-param-what": "要做什麼？",
 	"apihelp-pollny-param-choiceID": "如同透過圖形介面來點擊第 <choiceID> 個選項，僅在 what=vote 時使用。",

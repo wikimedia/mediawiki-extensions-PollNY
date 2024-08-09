@@ -103,6 +103,7 @@
 	"right-pollny-vote": "הצבעה בסקרים",
 	"action-polladmin": "לנהל סקרים",
 	"right-polladmin": "ניהול סקרים",
+	"poll-error-no-api-edit": "לא ניתן להשתמש ב־API הזה כדי לערוך דפי Poll: כעת. נא להשתמש ב־<code>Special:UpdatePoll</code> או ב־<code>Special:CreatePoll</code> לפי מה שמתאים במקום זאת.",
 	"apihelp-pollny-summary": "PollNY API - כולל גם פונקציות משתמש וגם פונקציות ניהול.",
 	"apihelp-pollny-param-what": "מה לעשות?",
 	"apihelp-pollny-param-choiceID": "אותו דבר כמו לחיצה על בחירה מס' <choiceID> דרך הממשק הגרפי; משמש רק כאשר what=vote.",
