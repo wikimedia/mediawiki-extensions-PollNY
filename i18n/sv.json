@@ -17,6 +17,8 @@
 	"poll-admin-closed": "Stängd",
 	"poll-admin-flagged": "Flaggad",
 	"poll-admin-open": "Öppen",
+	"poll-error-socialprofile": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:SocialProfile Tillägget SocialProfile] har inte installerats. Installera tillägget och försök igen.",
+	"poll-error-socialprofile-title": "Tillägget SocialProfile har inte installerats.",
 	"poll-admin-panel": "Administratör",
 	"poll-admin-status-nav": "Filtrera efter status",
 	"poll-admin-title-all": "Enkätadministratör - Visa alla omröstningar",
