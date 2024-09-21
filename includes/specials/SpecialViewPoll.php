@@ -1,4 +1,7 @@
 <?php
+
+use MediaWiki\MediaWikiServices;
+
 /**
  * A special page to view all available polls.
  *
@@ -66,7 +69,7 @@ class ViewPoll extends SpecialPage {
 		<div class="view-poll-navigation">
 			<h2>' . $this->msg( 'poll-view-order' )->escaped() . '</h2>';
 
-		$dbr = wfGetDB( DB_REPLICA );
+		$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_REPLICA );
 		$where = [];
 
 		$user = $request->getVal( 'user' );

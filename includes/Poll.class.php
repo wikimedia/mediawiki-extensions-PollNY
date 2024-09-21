@@ -32,7 +32,7 @@ class Poll {
 	 * @return int inserted value of an auto-increment row (poll ID)
 	 */
 	public function addPollQuestion( $question, $image, $pageID, User $user ) {
-		$dbw = wfGetDB( DB_PRIMARY );
+		$dbw = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_PRIMARY );
 		$dbw->insert(
 			'poll_question',
 			[
@@ -56,7 +56,7 @@ class Poll {
 	 * @param int $choiceOrder a value between 1 and 10
 	 */
 	public function addPollChoice( $pollID, $choiceText, $choiceOrder ) {
-		$dbw = wfGetDB( DB_PRIMARY );
+		$dbw = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_PRIMARY );
 		$dbw->insert(
 			'poll_choice',
 			[
@@ -77,7 +77,7 @@ class Poll {
 	 * @param User $user relevant user
 	 */
 	public function addPollVote( $pollID, $choiceID, User $user ) {
-		$dbw = wfGetDB( DB_PRIMARY );
+		$dbw = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_PRIMARY );
 		$dbw->insert(
 			'poll_user_vote',
 			[
@@ -103,7 +103,7 @@ class Poll {
 	 * @param int $choiceID answer choice ID number between 1 and 10
 	 */
 	public function incChoiceVoteCount( $choiceID ) {
-		$dbw = wfGetDB( DB_PRIMARY );
+		$dbw = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_PRIMARY );
 		$dbw->update(
 			'poll_choice',
 			[ 'pc_vote_count=pc_vote_count+1' ],
@@ -118,7 +118,7 @@ class Poll {
 	 * @param int $pollID poll ID number
 	 */
 	public function incPollVoteCount( $pollID ) {
-		$dbw = wfGetDB( DB_PRIMARY );
+		$dbw = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_PRIMARY );
 		$dbw->update(
 			'poll_question',
 			[ 'poll_vote_count=poll_vote_count+1' ],
@@ -134,7 +134,7 @@ class Poll {
 	 * @return array Poll information, such as question, choices, status, etc.
 	 */
 	public function getPoll( $pageID ) {
-		$dbr = wfGetDB( DB_REPLICA );
+		$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_REPLICA );
 		$row = $dbr->selectRow(
 			'poll_question',
 			[
@@ -168,7 +168,7 @@ class Poll {
 	 * 					amount of votes and percent of total votes)
 	 */
 	public static function getPollChoices( $poll_id, $poll_vote_count = 0 ) {
-		$dbr = wfGetDB( DB_REPLICA );
+		$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_REPLICA );
 
 		$res = $dbr->select(
 			'poll_choice',
@@ -208,7 +208,7 @@ class Poll {
 	 * @return bool True if user has voted, otherwise false
 	 */
 	public function userVoted( $user, $poll_id ) {
-		$dbr = wfGetDB( DB_REPLICA );
+		$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_REPLICA );
 		$actorId = $user->getActorId();
 		$s = $dbr->selectRow(
 			'poll_user_vote',
@@ -230,7 +230,7 @@ class Poll {
 	 * @return bool True if the user owns the poll, else false
 	 */
 	public function doesUserOwnPoll( $user, $pollId ) {
-		$dbr = wfGetDB( DB_REPLICA );
+		$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_REPLICA );
 		$s = $dbr->selectRow(
 			'poll_question',
 			[ 'poll_id' ],
@@ -272,7 +272,7 @@ class Poll {
 	 * @return int Random poll ID number
 	 */
 	public function getRandomPollID( $user ) {
-		$dbr = wfGetDB( DB_PRIMARY );
+		$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_PRIMARY );
 		$poll_page_id = 0;
 		// Note that this is directly embedded as-is into the SQL query below,
 		// so be *very* careful when touching this variable!
@@ -321,7 +321,7 @@ class Poll {
 	 * @param int $status 0 (close), 1 (open) or 2 (flag)
 	 */
 	public function updatePollStatus( $pollId, $status ) {
-		$dbw = wfGetDB( DB_PRIMARY );
+		$dbw = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_PRIMARY );
 		$dbw->update(
 			'poll_question',
 			[ 'poll_status' => $status ],
@@ -350,7 +350,7 @@ class Poll {
 			$polls = $data;
 		} else {
 			wfDebug( "Got polls list ($count) ordered by {$order} from db\n" );
-			$dbr = wfGetDB( DB_REPLICA );
+			$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_REPLICA );
 			$params = [];
 			$params['LIMIT'] = $count;
 			$params['ORDER BY'] = "{$order} DESC";

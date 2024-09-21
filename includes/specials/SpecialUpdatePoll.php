@@ -74,11 +74,10 @@ class UpdatePoll extends UnlistedSpecialPage {
 			$p = new Poll();
 			$poll_info = $p->getPoll( $request->getInt( 'id' ) );
 
+			$dbw = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_PRIMARY );
 			// Add Choices
 			for ( $x = 1; $x <= 10; $x++ ) {
 				if ( $request->getVal( "poll_answer_{$x}" ) ) {
-					$dbw = wfGetDB( DB_PRIMARY );
-
 					$dbw->update(
 						'poll_choice',
 						[ 'pc_text' => $request->getVal( "poll_answer_{$x}" ) ],
@@ -93,8 +92,6 @@ class UpdatePoll extends UnlistedSpecialPage {
 
 			// Update image
 			if ( $request->getVal( 'poll_image_name' ) ) {
-				$dbw = wfGetDB( DB_PRIMARY );
-
 				$dbw->update(
 					'poll_question',
 					[ 'poll_image' => $request->getVal( 'poll_image_name' ) ],

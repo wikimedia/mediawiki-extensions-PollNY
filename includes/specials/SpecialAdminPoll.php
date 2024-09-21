@@ -192,7 +192,7 @@ class AdminPoll extends SpecialPage {
 			$where['poll_actor'] = $user->getActorId();
 		}
 
-		$dbr = wfGetDB( DB_PRIMARY );
+		$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_PRIMARY );
 		$res = $dbr->select(
 			[ 'poll_question', 'page' ],
 			[
@@ -427,7 +427,7 @@ class AdminPoll extends SpecialPage {
 		$retVal = false;
 
 		if ( $pollID > 0 ) {
-			$dbw = wfGetDB( DB_PRIMARY );
+			$dbw = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_PRIMARY );
 			$s = $dbw->selectRow(
 				'poll_question',
 				[ 'poll_page_id' ],
