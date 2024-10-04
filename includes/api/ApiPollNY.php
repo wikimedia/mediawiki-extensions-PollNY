@@ -155,7 +155,7 @@ class ApiPollNY extends ApiBase {
 	function updateStatus( $pollID, $status ) {
 		$user = $this->getUser();
 		if (
-			$status == 2 && !$user->getBlock() ||
+			( $status == 2 && !$user->getBlock() ) ||
 			$this->poll->doesUserOwnPoll( $user, $pollID ) ||
 			$user->isAllowed( 'polladmin' )
 		) {

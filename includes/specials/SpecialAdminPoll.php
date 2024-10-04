@@ -63,8 +63,8 @@ class AdminPoll extends SpecialPage {
 		$newStatus = $request->getInt( 'new_status' );
 
 		if (
-			in_array( $action, [ 'delete', 'open', 'close', 'unflag' ] ) &&
-			( $p->doesUserOwnPoll( $user, $pollId ) || $user->isAllowed( 'polladmin' ) ) ||
+			( in_array( $action, [ 'delete', 'open', 'close', 'unflag' ] ) &&
+				( $p->doesUserOwnPoll( $user, $pollId ) || $user->isAllowed( 'polladmin' ) ) ) ||
 			$action === 'flag'
 		) {
 			$output .= $this->showConfirmationForm( $action, $pollId );
