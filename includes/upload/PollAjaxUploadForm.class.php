@@ -10,7 +10,7 @@ class PollAjaxUploadForm extends UploadForm {
 
 	protected $mSourceIds;
 
-	public function __construct( array $options = [], IContextSource $context = null ) {
+	public function __construct( array $options = [], ?IContextSource $context = null ) {
 		if ( $context instanceof IContextSource ) {
 			$this->setContext( $context );
 		}
