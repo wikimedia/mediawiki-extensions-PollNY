@@ -106,6 +106,7 @@
 	"right-pollny-vote": "In peilingen stemmen",
 	"action-polladmin": "peilingen te beheren",
 	"right-polladmin": "Peilingen beheren",
+	"poll-error-no-api-edit": "De API kan vooralsnog niet worden gebruikt om “Poll:”-pagina’s te bewerken. Gebruik in plaats daarvan <code>Special:UpdatePoll</code> of <code>Special:CreatePoll</code>.",
 	"apihelp-pollny-summary": "PollNY-API: omvat zowel gebruikers- als beheerdersfuncties.",
 	"apihelp-pollny-param-what": "Wat te doen?",
 	"apihelp-pollny-param-choiceID": "Hetzelfde als klikken op de <choiceID>ste keuze via de grafische interface; alleen gebruikt als what=vote.",
