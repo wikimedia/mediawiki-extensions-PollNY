@@ -106,6 +106,7 @@
 	"right-pollny-vote": "التصويت في الاقتراعات",
 	"action-polladmin": "إدارة الاقتراعات",
 	"right-polladmin": "إدارة الاقتراعات",
+	"poll-error-no-api-edit": "لا يمكن استخدام واجهة برمجة التطبيقات لتحرير صفحات الاستطلاع حاليًا. يُرجى استخدام <code>Special:UpdatePoll</code> أو <code>Special:CreatePoll</code> حسب الاقتضاء.",
 	"apihelp-pollny-summary": "PollNY API: يتضمن كلا من وظائف المستخدم والإداري.",
 	"apihelp-pollny-param-what": "ماذا أفعل؟",
 	"apihelp-pollny-param-choiceID": "مثل النقر على الخيار <choiceID>من خلال GUI، تُستخدَم فقط عندما what=vote.",
