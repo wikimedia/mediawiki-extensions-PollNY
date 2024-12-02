@@ -3,7 +3,8 @@
 		"authors": [
 			"Les Meloures",
 			"Robby",
-			"Soued031"
+			"Soued031",
+			"Volvox"
 		]
 	},
 	"createpoll": "eng Ëmfro uleeën",
@@ -37,7 +38,7 @@
 	"poll-create-threshold-title": "Ëmfro uleeën",
 	"poll-create-title": "Eng Ëmfro uleeën",
 	"poll-createdago": "Viru(n) $1 ugeluecht",
-	"poll-delete-message": "Sidd Dir sécher datt Dir dës Ëmfro läsche wëllt?",
+	"poll-delete-message": "Sidd Dir sécher, datt Dir dës Ëmfro läsche wëllt?",
 	"poll-delete-poll": "Ëmfro läschen",
 	"poll-discuss": "Diskutéieren",
 	"poll-edit-answers": "Entwäerten änneren",
@@ -48,7 +49,7 @@
 	"poll-embed": "Op Wikisäit abauen",
 	"poll-enterquestion": "Dir musst eng Fro aginn.",
 	"poll-flagged": "Dës Ëmfro gouf markéiert",
-	"poll-flagged-message": "Sidd Dir sécher datt Dir dës Ëmfro markéiere wëllt?",
+	"poll-flagged-message": "Sidd Dir sécher, datt Dir dës Ëmfro markéiere wëllt?",
 	"poll-flag-poll": "Ëmfro markéieren",
 	"poll-image-label": "E Bild derbäisetzen",
 	"poll-image-picker-launch-button": "E Bild benotzen dat e scho gëtt",
