@@ -3,12 +3,14 @@
 		"authors": [
 			"Les Meloures",
 			"Robby",
-			"Soued031"
+			"Soued031",
+			"Volvox"
 		]
 	},
 	"createpoll": "eng Ëmfro uleeën",
 	"randompoll": "Zoufälleg Ëmfro",
 	"viewpoll": "Ëmfroe weisen",
+	"poll-admin-no-polls": "Et gëtt keng Ëmfroen. [[Special:CreatePoll|Leet eng Ëmfro un!]]",
 	"poll-admin-closed": "Zougemaach",
 	"poll-admin-flagged": "Markéiert",
 	"poll-admin-open": "Opmaachen",
@@ -37,7 +39,7 @@
 	"poll-create-threshold-title": "Ëmfro uleeën",
 	"poll-create-title": "Eng Ëmfro uleeën",
 	"poll-createdago": "Viru(n) $1 ugeluecht",
-	"poll-delete-message": "Sidd Dir sécher datt Dir dës Ëmfro läsche wëllt?",
+	"poll-delete-message": "Sidd Dir sécher, datt Dir dës Ëmfro läsche wëllt?",
 	"poll-delete-poll": "Ëmfro läschen",
 	"poll-discuss": "Diskutéieren",
 	"poll-edit-answers": "Entwäerten änneren",
@@ -48,7 +50,7 @@
 	"poll-embed": "Op Wikisäit abauen",
 	"poll-enterquestion": "Dir musst eng Fro aginn.",
 	"poll-flagged": "Dës Ëmfro gouf markéiert",
-	"poll-flagged-message": "Sidd Dir sécher datt Dir dës Ëmfro markéiere wëllt?",
+	"poll-flagged-message": "Sidd Dir sécher, datt Dir dës Ëmfro markéiere wëllt?",
 	"poll-flag-poll": "Ëmfro markéieren",
 	"poll-image-label": "E Bild derbäisetzen",
 	"poll-image-picker-launch-button": "E Bild benotzen dat e scho gëtt",
@@ -59,6 +61,7 @@
 	"poll-next-poll": "Nächst Ëmfro",
 	"poll-no-more-title": "Keng Ëmfroe méi!",
 	"poll-open-message": "Sidd Dir sécher datt Dir dës Ëmfro opmaache wëllt?",
+	"poll-open-poll": "Ëmfro opmaachen",
 	"poll-pleasechoose": "Sicht wgl. en aneren Numm fir d'Ëmfro.",
 	"poll-prev": "vireg",
 	"poll-previous-poll": "Vireg Ëmfro",
