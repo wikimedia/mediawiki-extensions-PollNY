@@ -45,14 +45,7 @@ var PollNY = {
 
 		window.LightBox.show( objLink );
 
-		if ( !PollNY.detectMacXFF() && window.isFlashSupported() ) {
-			window.LightBox.setText(
-				'<embed src="' + mw.config.get( 'wgExtensionAssetsPath' ) + '/SocialProfile/images/ajax-loading.swf" quality="high" wmode="transparent" bgcolor="#ffffff"' +
-				'pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"' +
-				'type="application/x-shockwave-flash" width="100" height="100">' +
-				'</embed>'
-			);
-		} else if ( !window.isFlashSupported() ) {
+		if ( !PollNY.detectMacXFF() ) {
 			window.LightBox.setText(
 				'<img src="' + mw.config.get( 'wgExtensionAssetsPath' ) + '/SocialProfile/images/ajax-loader-white.gif" alt="" />'
 			);
