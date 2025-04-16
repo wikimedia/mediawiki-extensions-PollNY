@@ -99,8 +99,8 @@ class PollAjaxUploadForm extends UploadForm {
 			return true;
 		} else {
 			// textError method is gone and I can't find it anywhere...
-			alert( '" . str_replace( [ "\r\n", "\r", "\n" ], ' ', wfMessage( 'emptyfile' )->plain() ) . "' );
-			//window.parent.PollNY.textError( '" . str_replace( "\n", ' ', wfMessage( 'emptyfile' )->plain() ) . "' );
+			alert( '" . str_replace( [ "\r\n", "\r", "\n" ], ' ', wfMessage( 'emptyfile' )->escaped() ) . "' );
+			//window.parent.PollNY.textError( '" . str_replace( "\n", ' ', wfMessage( 'emptyfile' )->escaped() ) . "' );
 			return false;
 		}
 	}
