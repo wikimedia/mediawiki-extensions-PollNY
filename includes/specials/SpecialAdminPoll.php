@@ -1,6 +1,9 @@
 <?php
 
+use MediaWiki\Html\Html;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\SpecialPage\SpecialPage;
+use MediaWiki\Title\Title;
 
 /**
  * A special page to administer existing polls (i.e. examine flagged ones,
@@ -192,7 +195,9 @@ class AdminPoll extends SpecialPage {
 			$where['poll_actor'] = $user->getActorId();
 		}
 
-		$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_PRIMARY );
+		$services = MediaWikiServices::getInstance();
+		$userFactory = $services->getUserFactory();
+		$dbr = $services->getDBLoadBalancer()->getConnection( DB_PRIMARY );
 		$res = $dbr->select(
 			[ 'poll_question', 'page' ],
 			[
@@ -236,7 +241,7 @@ class AdminPoll extends SpecialPage {
 
 		$linkRenderer = $this->getLinkRenderer();
 		foreach ( $res as $row ) {
-			$creatorUser = User::newFromActorId( $row->poll_actor );
+			$creatorUser = $userFactory->newFromActorId( $row->poll_actor );
 			$creatorUserPage = $linkRenderer->makeKnownLink(
 				$creatorUser->getUserPage(),
 				$creatorUser->getName()
@@ -427,7 +432,8 @@ class AdminPoll extends SpecialPage {
 		$retVal = false;
 
 		if ( $pollID > 0 ) {
-			$dbw = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_PRIMARY );
+			$services = MediaWikiServices::getInstance();
+			$dbw = $services->getDBLoadBalancer()->getConnection( DB_PRIMARY );
 			$s = $dbw->selectRow(
 				'poll_question',
 				[ 'poll_page_id' ],
@@ -455,13 +461,7 @@ class AdminPoll extends SpecialPage {
 				);
 
 				$pollTitle = Title::newFromId( $s->poll_page_id );
-				if ( method_exists( MediaWikiServices::class, 'getWikiPageFactory' ) ) {
-					// MW 1.36+
-					$wikipage = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromTitle( $pollTitle );
-				} else {
-					// @phan-suppress-next-line PhanUndeclaredStaticMethod
-					$wikipage = WikiPage::factory( $pollTitle );
-				}
+				$wikipage = $services->getWikiPageFactory()->newFromTitle( $pollTitle );
 				$wikipage->doDeleteArticleReal( 'delete poll', $user );
 			}
 		}

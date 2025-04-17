@@ -5,6 +5,10 @@
  * @file
  * @ingroup Extensions
  */
+
+use MediaWiki\SpecialPage\SpecialPage;
+use MediaWiki\Title\Title;
+
 class RandomPoll extends SpecialPage {
 
 	public function __construct() {

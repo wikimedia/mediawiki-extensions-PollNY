@@ -1,6 +1,9 @@
 <?php
 
+use MediaWiki\Html\Html;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\SpecialPage\SpecialPage;
+use MediaWiki\Title\Title;
 
 class PollPage extends Article {
 
@@ -63,7 +66,10 @@ class PollPage extends Article {
 
 		// Get total polls count so we can tell the user how many they have
 		// voted for out of total
-		$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_PRIMARY );
+		$services = MediaWikiServices::getInstance();
+		$userFactory = $services->getUserFactory();
+
+		$dbr = $services->getDBLoadBalancer()->getConnection( DB_PRIMARY );
 		$total_polls = 0;
 		$s = $dbr->selectRow(
 			'poll_question',
@@ -87,7 +93,7 @@ class PollPage extends Article {
 		$imgPath = $wgExtensionAssetsPath . '/SocialProfile/images';
 
 		// Set up submitter data
-		$creatorUser = User::newFromActorId( $poll_info['actor'] );
+		$creatorUser = $userFactory->newFromActorId( $poll_info['actor'] );
 		$creatorUserName = $creatorUser->getName();
 		$creatorUserId = $creatorUser->getId();
 		$user_title = $creatorUser->getUserPage();
@@ -183,7 +189,7 @@ class PollPage extends Article {
 		$adminLinks = [];
 		// Poll administrators can access the poll admin panel
 		if ( $user->isAllowed( 'polladmin' ) ) {
-			$adminLinks[] = MediaWikiServices::getInstance()->getLinkRenderer()->makeLink(
+			$adminLinks[] = $services->getLinkRenderer()->makeLink(
 				SpecialPage::getTitleFor( 'AdminPoll' ),
 				wfMessage( 'poll-admin-panel' )->text()
 			);
@@ -204,7 +210,7 @@ class PollPage extends Article {
 
 		if ( $poll_info['image'] ) {
 			$poll_image_width = 150;
-			$poll_image = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $poll_info['image'] );
+			$poll_image = $services->getRepoGroup()->findFile( $poll_info['image'] );
 			$poll_image_tag = $poll_image_url = $width = '';
 			if ( is_object( $poll_image ) ) {
 				$poll_image_url = $poll_image->createThumb( $poll_image_width );

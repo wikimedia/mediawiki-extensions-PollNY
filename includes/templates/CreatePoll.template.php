@@ -9,6 +9,8 @@
  * @ingroup Templates
  */
 
+use MediaWiki\SpecialPage\SpecialPage;
+
 class CreatePollTemplate extends QuickTemplate {
 
 	function execute() {

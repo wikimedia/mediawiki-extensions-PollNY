@@ -17,7 +17,7 @@
  * @see http://bugzilla.shoutwiki.com/show_bug.cgi?id=22
  * @property PollUpload $mUpload
  */
-class SpecialPollAjaxUpload extends SpecialUpload {
+class SpecialPollAjaxUpload extends MediaWiki\Specials\SpecialUpload {
 
 	public function __construct() {
 		parent::__construct();
@@ -85,14 +85,7 @@ class SpecialPollAjaxUpload extends SpecialUpload {
 
 		// Allow framing so that after uploading an image, we can actually show
 		// it to the user :)
-		if ( method_exists( $out, 'allowClickjacking' ) ) {
-			// Up to MW 1.41
-			// @phan-suppress-next-line PhanUndeclaredMethod
-			$out->allowClickjacking();
-		} else {
-			// MW 1.41+
-			$out->setPreventClickjacking( false );
-		}
+		$out->setPreventClickjacking( false );
 
 		# Check that uploading is enabled
 		if ( !UploadBase::isEnabled() ) {

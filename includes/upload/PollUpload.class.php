@@ -6,7 +6,8 @@
 class PollUpload extends UploadFromFile {
 	/**
 	 * Create a form of UploadBase depending on wpSourceType and initializes it
-	 * @param WebRequest &$request
+	 *
+	 * @param MediaWiki\Request\WebRequest &$request
 	 * @param string|null $type
 	 * @return self
 	 */
@@ -28,7 +29,7 @@ class PollUpload extends UploadFromFile {
 		$this->initialize( $desiredDestName, $upload );
 	}
 
-	public function doStashFile( ?User $user = null ) {
+	public function doStashFile( ?MediaWiki\User\User $user = null ) {
 		return parent::doStashFile( $user );
 	}
 }

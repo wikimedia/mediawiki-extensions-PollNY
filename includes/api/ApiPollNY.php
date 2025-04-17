@@ -6,7 +6,10 @@
  * @ingroup API
  * @see https://www.mediawiki.org/wiki/API:Extensions#ApiSampleApiExtension.php
  */
-class ApiPollNY extends ApiBase {
+
+use Wikimedia\ParamValidator\ParamValidator;
+
+class ApiPollNY extends MediaWiki\Api\ApiBase {
 
 	/**
 	 * @var Poll Instance of the Poll class, set in execute() below
@@ -203,20 +206,20 @@ class ApiPollNY extends ApiBase {
 	public function getAllowedParams() {
 		return [
 			'what' => [
-				ApiBase::PARAM_TYPE => 'string',
-				ApiBase::PARAM_REQUIRED => true
+				ParamValidator::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_REQUIRED => true
 			],
 			'choiceID' => [
-				ApiBase::PARAM_TYPE => 'integer',
+				ParamValidator::PARAM_TYPE => 'integer',
 			],
 			'pollID' => [
-				ApiBase::PARAM_TYPE => 'integer',
+				ParamValidator::PARAM_TYPE => 'integer',
 			],
 			'pageID' => [
-				ApiBase::PARAM_TYPE => 'integer',
+				ParamValidator::PARAM_TYPE => 'integer',
 			],
 			'status' => [
-				ApiBase::PARAM_TYPE => 'integer',
+				ParamValidator::PARAM_TYPE => 'integer',
 			]
 		];
 	}

@@ -7,7 +7,12 @@
  * @ingroup Extensions
  */
 
+use MediaWiki\Api\ApiBase;
+use MediaWiki\Html\Html;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\SpecialPage\SpecialPage;
+use MediaWiki\Title\Title;
+use Wikimedia\ParamValidator\ParamValidator;
 
 class PollNYHooks {
 
@@ -48,12 +53,13 @@ class PollNYHooks {
 	 * database tables will be updated accordingly & memcached will be purged.
 	 *
 	 * @param WikiPage &$article instance of WikiPage class
-	 * @param User &$user Unused
+	 * @param MediaWiki\User\User &$user Unused
 	 * @param string $reason deletion reason (unused)
 	 */
 	public static function deletePollQuestion( &$article, &$user, $reason ) {
 		if ( $article->getTitle()->getNamespace() == NS_POLL ) {
-			$dbw = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_PRIMARY );
+			$services = MediaWikiServices::getInstance();
+			$dbw = $services->getDBLoadBalancer()->getConnection( DB_PRIMARY );
 
 			$s = $dbw->selectRow(
 				'poll_question',
@@ -63,8 +69,8 @@ class PollNYHooks {
 			);
 			if ( $s !== false ) {
 				// Clear profile cache for user id that created poll
-				$userId = User::newFromActorId( $s->poll_actor )->getId();
-				$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
+				$userId = $services->getUserFactory()->newFromActorId( $s->poll_actor )->getId();
+				$cache = $services->getMainWANObjectCache();
 				$key = $cache->makeKey( 'user', 'profile', 'polls', $userId );
 				$cache->delete( $key );
 
@@ -91,8 +97,8 @@ class PollNYHooks {
 	/**
 	 * Prevent editing Poll: pages via the API (api.php).
 	 *
-	 * @param ApiBase $module
-	 * @param User $user
+	 * @param MediaWiki\Api\ApiBase $module
+	 * @param MediaWiki\User\User $user
 	 * @param IApiMessage|Message|string|array &$message
 	 * @return bool
 	 */
@@ -118,7 +124,7 @@ class PollNYHooks {
 	/**
 	 * Rendering for the <userpoll> tag.
 	 *
-	 * @param Parser $parser
+	 * @param MediaWiki\Parser\Parser $parser
 	 */
 	public static function registerUserPollHook( Parser $parser ) {
 		$parser->setHook( 'userpoll', [ 'PollNYHooks', 'renderPollNY' ] );
@@ -131,23 +137,15 @@ class PollNYHooks {
 	/**
 	 * Handles the viewing of pages in the poll namespace.
 	 *
-	 * @param Title &$title
+	 * @param MediaWiki\Title\Title &$title
 	 * @param Article &$article
 	 */
 	public static function pollFromTitle( &$title, &$article ) {
 		if ( $title->getNamespace() == NS_POLL ) {
-			global $wgRequest, $wgOut, $wgHooks;
+			global $wgRequest, $wgOut;
 
 			// We don't want caching here, it'll only cause problems...
-			if ( method_exists( $wgOut, 'disableClientCache' ) ) {
-				// MW 1.38+
-				$wgOut->disableClientCache();
-			} else {
-				// Older MWs (1.35+)
-				// @phan-suppress-next-line PhanParamTooMany
-				$wgOut->enableClientCache( false );
-			}
-			$wgHooks['ParserLimitReportPrepare'][] = 'PollNYHooks::onParserLimitReportPrepare';
+			$wgOut->disableClientCache();
 
 			// Prevents editing of polls
 			if ( $wgRequest->getVal( 'action' ) == 'edit' ) {
@@ -175,29 +173,26 @@ class PollNYHooks {
 	/**
 	 * Mark page as uncacheable
 	 *
-	 * @param Parser $parser
-	 * @param ParserOutput $output
+	 * @param MediaWiki\Parser\Parser $parser
+	 * @param MediaWiki\Parser\ParserOutput $output
 	 */
 	public static function onParserLimitReportPrepare( $parser, $output ) {
-		$parser->getOutput()->updateCacheExpiry( 0 );
+		if ( $parser->getTitle()->inNamespace( NS_POLL ) ) {
+			$parser->getOutput()->updateCacheExpiry( 0 );
+		}
 	}
 
 	/**
 	 * Set up the <pollembed> tag for embedding polls on wiki pages.
 	 *
-	 * @param Parser $parser
+	 * @param MediaWiki\Parser\Parser $parser
 	 */
 	public static function registerPollEmbedHook( Parser $parser ) {
 		$parser->setHook( 'pollembed', [ 'PollNYHooks', 'renderEmbedPoll' ] );
 	}
 
 	public static function followPollID( $pollTitle ) {
-		if ( method_exists( MediaWikiServices::class, 'getWikiPageFactory' ) ) {
-			// MW 1.36+
-			$pollPage = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromTitle( $pollTitle );
-		} else {
-			$pollPage = new WikiPage( $pollTitle );
-		}
+		$pollPage = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromTitle( $pollTitle );
 
 		if ( $pollPage->isRedirect() ) {
 			$pollTitle = $pollPage->followRedirect();
@@ -212,7 +207,7 @@ class PollNYHooks {
 	 *
 	 * @param string $input user input
 	 * @param array $args arguments supplied to the pollembed tag
-	 * @param Parser $parser
+	 * @param MediaWiki\Parser\Parser $parser
 	 * @return string HTML or nothing
 	 */
 	public static function renderEmbedPoll( $input, $args, $parser ) {
@@ -220,26 +215,15 @@ class PollNYHooks {
 		if ( $poll_name ) {
 			global $wgOut, $wgExtensionAssetsPath, $wgPollDisplay;
 
-			if ( method_exists( $parser, 'getUserIdentity' ) ) {
-				// MW 1.36+
-				$user = MediaWikiServices::getInstance()->getUserFactory()->newFromUserIdentity( $parser->getUserIdentity() );
-			} else {
-				// @phan-suppress-next-line PhanUndeclaredMethod
-				$user = $parser->getUser();
-			}
+			$services = MediaWikiServices::getInstance();
+			$user = $services->getUserFactory()->newFromUserIdentity( $parser->getUserIdentity() );
+
 			// Load CSS
 			$wgOut->addModuleStyles( 'ext.pollNY.css' );
 
 			// Disable caching; this is important so that we don't cause subtle
 			// bugs that are difficult to fix.
-			if ( method_exists( $wgOut, 'disableClientCache' ) ) {
-				// MW 1.38+
-				$wgOut->disableClientCache();
-			} else {
-				// Older MWs (1.35+)
-				// @phan-suppress-next-line PhanParamTooMany
-				$wgOut->enableClientCache( false );
-			}
+			$wgOut->disableClientCache();
 			$parser->getOutput()->updateCacheExpiry( 0 );
 
 			$poll_title = Title::newFromText( $poll_name, NS_POLL );
@@ -256,7 +240,7 @@ class PollNYHooks {
 				'</div>' . "\n";
 				if ( $poll_info['image'] ) {
 					$poll_image_width = 100;
-					$poll_image = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $poll_info['image'] );
+					$poll_image = $services->getRepoGroup()->findFile( $poll_info['image'] );
 					$width = $poll_image_url = '';
 					if ( is_object( $poll_image ) ) {
 						$poll_image_url = $poll_image->createThumb( $poll_image_width );
@@ -374,7 +358,7 @@ class PollNYHooks {
 	 * maintenance/update.php and perform other necessary upgrades for users
 	 * upgrading from an older version of the extension.
 	 *
-	 * @param DatabaseUpdater $updater
+	 * @param MediaWiki\Installer\DatabaseUpdater $updater
 	 */
 	public static function onLoadExtensionSchemaUpdates( $updater ) {
 		$sqlDirectory = __DIR__ . '/../sql/';
@@ -416,14 +400,9 @@ class PollNYHooks {
 			$db->fieldExists( 'poll_question', 'poll_user_name', __METHOD__ )
 		) {
 			// 3) populate the columns with correct values
-			// PITFALL WARNING! Do NOT change this to $updater->runMaintenance,
-			// THEY ARE NOT THE SAME THING and this MUST be using addExtensionUpdate
-			// instead for the code to work as desired!
-			// HT Skizzerz
 			$updater->addExtensionUpdate( [
 				'runMaintenance',
-				'MigrateOldPollNYUserColumnsToActor',
-				'../maintenance/migrateOldPollNYUserColumnsToActor.php'
+				'MigrateOldPollNYUserColumnsToActor'
 			] );
 
 			// 4) drop old columns + indexes
@@ -444,7 +423,7 @@ class PollNYHooks {
 	 * whereas ours is more of a...tri-state boolean, if you will. (ApiPollNY supports
 	 * 5 different actions of which 3 require a token and 2 don't.)
 	 *
-	 * @param ApiBase &$apiModule ApiBase subclass (we only care about ApiPollNY)
+	 * @param MediaWiki\Api\ApiBase &$apiModule ApiBase subclass (we only care about ApiPollNY)
 	 * @param array &$params URL parameters recognized by the API module
 	 * @param int $flags
 	 */
@@ -452,9 +431,9 @@ class PollNYHooks {
 		if ( get_class( $apiModule ) === 'ApiPollNY' ) {
 			if ( $apiModule->shouldRequireToken ) {
 				$params['token'] = [
-					ApiBase::PARAM_TYPE => 'string',
-					ApiBase::PARAM_REQUIRED => true,
-					ApiBase::PARAM_SENSITIVE => true,
+					ParamValidator::PARAM_TYPE => 'string',
+					ParamValidator::PARAM_REQUIRED => true,
+					ParamValidator::PARAM_SENSITIVE => true,
 					ApiBase::PARAM_HELP_MSG => [
 						'api-help-param-token',
 						'csrf',

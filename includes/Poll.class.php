@@ -1,6 +1,8 @@
 <?php
 
+use MediaWiki\Context\RequestContext;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\Title;
 
 /**
  * Poll class
@@ -28,7 +30,7 @@ class Poll {
 	 * @param string $question poll question
 	 * @param string $image name of the poll image, if any
 	 * @param int $pageID page ID, as returned by Article::getID()
-	 * @param User $user relevant user
+	 * @param MediaWiki\User\User $user relevant user
 	 * @return int inserted value of an auto-increment row (poll ID)
 	 */
 	public function addPollQuestion( $question, $image, $pageID, User $user ) {
@@ -74,7 +76,7 @@ class Poll {
 	 *
 	 * @param int $pollID ID number of the poll
 	 * @param int $choiceID number of the choice
-	 * @param User $user relevant user
+	 * @param MediaWiki\User\User $user relevant user
 	 */
 	public function addPollVote( $pollID, $choiceID, User $user ) {
 		$dbw = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_PRIMARY );
@@ -203,7 +205,7 @@ class Poll {
 	/**
 	 * Checks if the user has voted already to the poll with ID = $poll_id.
 	 *
-	 * @param User $user User (object) to check
+	 * @param MediaWiki\User\User $user User (object) to check
 	 * @param int $poll_id Poll ID number
 	 * @return bool True if user has voted, otherwise false
 	 */
@@ -225,7 +227,7 @@ class Poll {
 	/**
 	 * Checks if the specified user "owns" the specified poll.
 	 *
-	 * @param User $user User object to check
+	 * @param MediaWiki\User\User $user User object to check
 	 * @param int $pollId Poll ID number
 	 * @return bool True if the user owns the poll, else false
 	 */
@@ -250,7 +252,7 @@ class Poll {
 	 * Gets the URL of a randomly chosen poll (well, actually just the
 	 * namespace and page title).
 	 *
-	 * @param User $user
+	 * @param MediaWiki\User\User $user
 	 * @return string Poll namespace name and poll page name or 'error'
 	 */
 	public function getRandomPollURL( $user ) {
@@ -268,7 +270,7 @@ class Poll {
 	 * The poll ID will be the ID of a poll to which the user hasn't answered
 	 * yet.
 	 *
-	 * @param User $user User (object) for whom to get a random poll
+	 * @param MediaWiki\User\User $user User (object) for whom to get a random poll
 	 * @return int Random poll ID number
 	 */
 	public function getRandomPollID( $user ) {
@@ -341,19 +343,25 @@ class Poll {
 	 */
 	public static function getPollList( $count = 3, $order = 'poll_id' ) {
 		$polls = [];
+
 		// Try cache
-		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
+		$services = MediaWikiServices::getInstance();
+		$cache = $services->getMainWANObjectCache();
 		$key = $cache->makeKey( 'polls', 'order', $order, 'count', $count );
 		$data = $cache->get( $key );
+
 		if ( $data && is_array( $data ) ) {
 			wfDebug( "Got polls list ($count) ordered by {$order} from cache\n" );
 			$polls = $data;
 		} else {
 			wfDebug( "Got polls list ($count) ordered by {$order} from db\n" );
-			$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_REPLICA );
+
+			$dbr = $services->getDBLoadBalancer()->getConnection( DB_REPLICA );
+
 			$params = [];
 			$params['LIMIT'] = $count;
 			$params['ORDER BY'] = "{$order} DESC";
+
 			$res = $dbr->select(
 				[ 'poll_question', 'page' ],
 				[
@@ -365,6 +373,7 @@ class Poll {
 				$params,
 				[ 'page' => [ 'INNER JOIN', 'page_id = poll_page_id' ] ]
 			);
+
 			foreach ( $res as $row ) {
 				$polls[] = [
 					'title' => $row->page_title,
@@ -373,6 +382,7 @@ class Poll {
 					'choices' => self::getPollChoices( $row->poll_id, $row->poll_vote_count )
 				];
 			}
+
 			if ( $polls ) {
 				$cache->set( $key, $polls, 60 * 10 );
 			}

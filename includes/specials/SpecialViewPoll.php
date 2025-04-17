@@ -1,6 +1,8 @@
 <?php
 
 use MediaWiki\MediaWikiServices;
+use MediaWiki\SpecialPage\SpecialPage;
+use MediaWiki\Title\Title;
 
 /**
  * A special page to view all available polls.
@@ -69,14 +71,16 @@ class ViewPoll extends SpecialPage {
 		<div class="view-poll-navigation">
 			<h2>' . $this->msg( 'poll-view-order' )->escaped() . '</h2>';
 
-		$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_REPLICA );
+		$services = MediaWikiServices::getInstance();
+		$userFactory = $services->getUserFactory();
+		$dbr = $services->getDBLoadBalancer()->getConnection( DB_REPLICA );
 		$where = [];
 
 		$user = $request->getVal( 'user' );
 		$userLink = [];
 		$actor = null;
 		if ( $user ) {
-			$actor = User::newFromName( $user );
+			$actor = $userFactory->newFromName( $user );
 			if ( $actor ) {
 				$where['poll_actor'] = $actor->getActorId();
 			}
@@ -148,7 +152,7 @@ class ViewPoll extends SpecialPage {
 		$x = ( ( $page - 1 ) * $per_page ) + 1;
 
 		foreach ( $res as $row ) {
-			$creatorUser = User::newFromActorId( $row->poll_actor );
+			$creatorUser = $userFactory->newFromActorId( $row->poll_actor );
 			$creatorUserPage = $linkRenderer->makeKnownLink(
 				$creatorUser->getUserPage(),
 				$creatorUser->getName()

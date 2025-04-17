@@ -1,6 +1,8 @@
 <?php
 
 use MediaWiki\MediaWikiServices;
+use MediaWiki\SpecialPage\SpecialPage;
+use MediaWiki\Title\Title;
 
 /**
  * A special page for creating new polls.
@@ -113,13 +115,8 @@ class CreatePoll extends SpecialPage {
 
 			// Create poll wiki page
 			$localizedCategoryNS = $services->getContentLanguage()->getNsText( NS_CATEGORY );
-			if ( method_exists( $services, 'getWikiPageFactory' ) ) {
-				// MW 1.36+
-				$page = $services->getWikiPageFactory()->newFromTitle( $poll_title );
-			} else {
-				// @phan-suppress-next-line PhanUndeclaredStaticMethod
-				$page = WikiPage::factory( $poll_title );
-			}
+			$page = $services->getWikiPageFactory()->newFromTitle( $poll_title );
+
 			$content = ContentHandler::makeContent(
 				"<userpoll>\n$choices</userpoll>\n\n[[" .
 					$localizedCategoryNS . ':' .
@@ -129,20 +126,12 @@ class CreatePoll extends SpecialPage {
 				'[[' . $localizedCategoryNS . ":{{subst:CURRENTMONTHNAME}} {{subst:CURRENTDAY}}, {{subst:CURRENTYEAR}}]]\n\n__NOEDITSECTION__",
 				$poll_title
 			);
-			if ( method_exists( $page, 'doUserEditContent' ) ) {
-				// MW 1.36+
-				$page->doUserEditContent(
-					$content,
-					$user,
-					$this->msg( 'poll-edit-desc' )->inContentLanguage()->plain()
-				);
-			} else {
-				// @phan-suppress-next-line PhanUndeclaredMethod
-				$page->doEditContent(
-					$content,
-					$this->msg( 'poll-edit-desc' )->inContentLanguage()->plain()
-				);
-			}
+
+			$page->doUserEditContent(
+				$content,
+				$user,
+				$this->msg( 'poll-edit-desc' )->inContentLanguage()->plain()
+			);
 
 			$newPageId = $page->getId();
 
