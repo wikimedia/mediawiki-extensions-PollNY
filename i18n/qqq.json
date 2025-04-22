@@ -8,7 +8,8 @@
 			"Robby",
 			"Shirayuki",
 			"Siebrand",
-			"Umherirrender"
+			"Umherirrender",
+			"Toliño"
 		]
 	},
 	"adminpoll": "{{doc-special|AdminPoll}}\nThe special page to administrate polls.",
@@ -98,7 +99,7 @@
 	"poll-votes": "Amount of votes, displayed next to or below the bar indicating vote percentages (when displaying a poll on a wiki page via the <code><nowiki><pollembed></nowiki></code> tag.\n\nParameters:\n* $1 - number of votes\n{{Identical|Vote}}",
 	"poll-woops": "Used as page title for the error message page.",
 	"poll-would-have-earned": "Message shown to anonymous users after they've voted in a poll, prompting them to join the wiki.\n\n<nowiki>{{PLURAL}}</nowiki> can be used as this message supports full wikitext parsing.\n\nParameters:\n* $1 - the total amount of points the registered user can receive from voting in polls (0, 5, 10, 15, ...)\n\nRegistered users are shown the following message instead:\n* {{msg-mw|Poll-voted-for}}",
-	"poll-time-ago": "Parameters:\n* $1 - the duration (e.g. \"{{int:Poll-time-minutes|1}} {{int:Poll-time-seconds|42}} \"), uses the following messages:\n** {{msg-mw|Poll-time-days}}\n** {{msg-mw|Poll-time-hours}}\n** {{msg-mw|Poll-time-minutes}}\n** {{msg-mw|Poll-time-seconds}}\n{{related|Poll-time}}\n{{Identical|Ago}}",
+	"poll-time-ago": "Parameters:\n* $1 - the duration (e.g. \"{{int:Poll-time-minutes|1}} {{int:Poll-time-seconds|42}}\"), uses the following messages:\n** {{msg-mw|Poll-time-days}}\n** {{msg-mw|Poll-time-hours}}\n** {{msg-mw|Poll-time-minutes}}\n** {{msg-mw|Poll-time-seconds}}\n{{related|Poll-time}}\n{{Identical|Ago}}",
 	"poll-time-days": "Used as <code>$1</code> in the following messages:\n* {{msg-mw|Poll-ago}}\n* {{msg-mw|Poll-time-ago}}\nParameters:\n* $1 - number of days\n{{Related|Poll-time}}\n{{Identical|Day}}",
 	"poll-time-hours": "Used as <code>$1</code> in the following messages:\n* {{msg-mw|Poll-ago}}\n* {{msg-mw|Poll-time-ago}}\nParameters:\n* $1 - number of hours\n{{Related|Poll-time}}\n{{Identical|Hour}}",
 	"poll-time-minutes": "Used as <code>$1</code> in the following messages:\n* {{msg-mw|Poll-ago}}\n* {{msg-mw|Poll-time-ago}}\nParameters:\n* $1 - number of minutes\n{{Related|Poll-time}}\n{{Identical|Minute}}",
