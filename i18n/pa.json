@@ -4,6 +4,7 @@
 			"Cabal"
 		]
 	},
+	"poll-cancel-button": "ਰੱਦ ਕਰੋ",
 	"poll-view-popular": "ਮਸ਼ਹੂਰ",
 	"poll-votes": "{{PLURAL:$1| ਇੱਕ ਵੋਟ |$1 ਵੋਟਾਂ}}"
 }
