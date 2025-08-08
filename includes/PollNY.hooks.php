@@ -95,6 +95,105 @@ class PollNYHooks {
 	}
 
 	/**
+	 * Complements the above function - handles the undeletion of Poll: pages.
+	 *
+	 * @param MediaWiki\Page\ProperPageIdentity $page
+	 * @param MediaWiki\Permissions\Authority $restorer
+	 * @param string $reason Undeletion reason supplied by the person undeleting the page
+	 * @param MediaWiki\Revision\RevisionRecord $restoredRev
+	 * @param ManualLogEntry $logEntry
+	 * @param int $restoredRevisionCount Number of revisions restored during the undeletion
+	 * @param bool $created Whether or not the restoration caused the page to be created (i.e. it didn't exist before)
+	 * @param array $restoredPageIds Array of undeleted page IDs
+	 */
+	public static function onPageUndeleteComplete(
+		MediaWiki\Page\ProperPageIdentity $page,
+		MediaWiki\Permissions\Authority $restorer,
+		string $reason,
+		MediaWiki\Revision\RevisionRecord $restoredRev,
+		ManualLogEntry $logEntry,
+		int $restoredRevisionCount,
+		bool $created,
+		array $restoredPageIds
+	) {
+		$services = MediaWikiServices::getInstance();
+		$title = $services->getTitleFactory()->castFromPageIdentity( $page );
+		if ( !( $title->inNamespace( NS_POLL ) && $created ) ) {
+			return;
+		}
+
+		$lookupService = $services->getRevisionLookup();
+		$currentRevision = $lookupService->getRevisionByTitle( $title );
+		if ( !$currentRevision ) {
+			// ?!?
+			return;
+		}
+
+		$currentContent = $currentRevision->getContent( MediaWiki\Revision\SlotRecord::MAIN );
+		if ( !$currentContent ) {
+			return;
+		}
+
+		'@phan-var Content $currentContent';
+		$oldText = $currentContent->getText();
+
+		// Parse choices and image name (if any) from the wikitext
+		$choices = [];
+		$optionsText = preg_match( '/\<userpoll\>(.*)\<\/userpoll\>/is', $oldText, $matches );
+		if ( isset( $matches[1] ) ) {
+			$matches[1] = trim( $matches[1] );
+			$choices = explode( "\n", $matches[1] );
+		}
+
+		if ( $choices === [] ) {
+			throw new MWException(
+				'Got empty poll choices in ' . __METHOD__ .
+				' though that should never happen!'
+			);
+		}
+
+		$imageName = '';
+		$localizedFileNS = $services->getContentLanguage()->getNsText( NS_FILE );
+		$imageRegex = preg_match( '/^\[\[' . $localizedFileNS . '\:(.*)\]\]$/im', $oldText, $imageMatches );
+		if ( isset( $imageMatches[1] ) ) {
+			$imageName = $imageMatches[1];
+		}
+
+		$dbw = $services->getDBLoadBalancer()->getConnection( DB_PRIMARY );
+
+		$actor = RequestContext::getMain()->getUser();
+		$firstRev = $lookupService->getFirstRevision( $title );
+		$firstTS = null;
+		if ( $firstRev !== null ) {
+			$firstTS = $firstRev->getTimestamp();
+			$actor = $firstRev->getUser();
+			if ( $actor !== null ) {
+				// WTF is the difference between "findActorId" and "acquireActorId"? That's some real nice method naming there...
+				$actorId = $services->getActorNormalization()->acquireActorId( $actor, $dbw );
+				$actor = $services->getUserFactory()->newFromActorId( $actorId );
+			}
+		}
+
+		$p = new Poll();
+
+		$poll_id = $p->addPollQuestion(
+			$title->getText(),
+			$imageName,
+			$restoredPageIds[0], // @todo CHECKME!
+			$actor,
+			$firstTS
+		);
+
+		// Add choices
+		for ( $x = 0; $x <= count( $choices ); $x++ ) {
+			// I'm too fucking sick of this "undefined offset" bullshit; how about you undefine THIS, PHP!
+			if ( isset( $choices[$x] ) && $choices[$x] ) {
+				$p->addPollChoice( $poll_id, $choices[$x], $x );
+			}
+		}
+	}
+
+	/**
 	 * Prevent editing Poll: pages via the API (api.php).
 	 *
 	 * @param MediaWiki\Api\ApiBase $module

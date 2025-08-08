@@ -71,6 +71,7 @@
 		"ApiCheckCanExecute": "PollNYHooks::onApiCheckCanExecute",
 		"PageMoveComplete": "PollNYHooks::updatePollQuestion",
 		"ArticleDelete": "PollNYHooks::deletePollQuestion",
+		"PageUndeleteComplete": "PollNYHooks::onPageUndeleteComplete",
 		"ArticleFromTitle": "PollNYHooks::pollFromTitle",
 		"ParserFirstCallInit": [
 			"PollNYHooks::registerUserPollHook",

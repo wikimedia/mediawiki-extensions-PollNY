@@ -31,9 +31,13 @@ class Poll {
 	 * @param string $image name of the poll image, if any
 	 * @param int $pageID page ID, as returned by Article::getID()
 	 * @param MediaWiki\User\User $user relevant user
+	 * @param int|null $timestamp Timestamp to use (when restoring a previously deleted poll); null (default) means "now"
 	 * @return int inserted value of an auto-increment row (poll ID)
 	 */
-	public function addPollQuestion( $question, $image, $pageID, User $user ) {
+	public function addPollQuestion( $question, $image, $pageID, User $user, $timestamp = null ) {
+		if ( $timestamp === null ) {
+			$timestamp = date( 'Y-m-d H:i:s' );
+		}
 		$dbw = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_PRIMARY );
 		$dbw->insert(
 			'poll_question',
@@ -42,7 +46,7 @@ class Poll {
 				'poll_actor' => $user->getActorId(),
 				'poll_text' => strip_tags( $question ),
 				'poll_image' => $image,
-				'poll_date' => $dbw->timestamp( date( 'Y-m-d H:i:s' ) ),
+				'poll_date' => $dbw->timestamp( $timestamp ),
 				'poll_random' => wfRandom()
 			],
 			__METHOD__

@@ -1,6 +1,7 @@
 <?php
 
 use MediaWiki\Html\Html;
+use MediaWiki\Linker\Linker;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\SpecialPage\UnlistedSpecialPage;
@@ -78,7 +79,13 @@ class UpdatePoll extends UnlistedSpecialPage {
 			$p = new Poll();
 			$poll_info = $p->getPoll( $request->getInt( 'id' ) );
 
-			$dbw = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_PRIMARY );
+			$choices = '';
+			$choicesWereChanged = false;
+			$imageWasChanged = false;
+
+			$services = MediaWikiServices::getInstance();
+			$dbw = $services->getDBLoadBalancer()->getConnection( DB_PRIMARY );
+
 			// Add Choices
 			for ( $x = 1; $x <= 10; $x++ ) {
 				if ( $request->getVal( "poll_answer_{$x}" ) ) {
@@ -91,6 +98,10 @@ class UpdatePoll extends UnlistedSpecialPage {
 						],
 						__METHOD__
 					);
+
+					$choices .= $request->getVal( "answer_{$x}" ) . "\n";
+
+					$choicesWereChanged = true;
 				}
 			}
 
@@ -102,6 +113,8 @@ class UpdatePoll extends UnlistedSpecialPage {
 					[ 'poll_id' => intval( $poll_info['id'] ) ],
 					__METHOD__
 				);
+
+				$imageWasChanged = true;
 			}
 
 			$prev_qs = '';
@@ -109,6 +122,60 @@ class UpdatePoll extends UnlistedSpecialPage {
 			if ( $request->getInt( 'prev_poll_id' ) ) {
 				$prev_qs = 'prev_id=' . $request->getInt( 'prev_poll_id' );
 			}
+
+			// Update poll wiki page
+			$localizedCategoryNS = $services->getContentLanguage()->getNsText( NS_CATEGORY );
+			$localizedFileNS = $services->getContentLanguage()->getNsText( NS_FILE );
+			$page = $services->getWikiPageFactory()->newFromTitle( $poll_page );
+
+			// Get the current page content so we can perform some (regex) replacement magic on it eventually...
+			$lookupService = $services->getRevisionLookup();
+			$currentRevision = $lookupService->getRevisionByTitle( $poll_page );
+			if ( !$currentRevision ) {
+				// ?!?
+				return;
+			}
+
+			$currentContent = $currentRevision->getContent( MediaWiki\Revision\SlotRecord::MAIN );
+			if ( !$currentContent ) {
+				return;
+			}
+
+			'@phan-var Content $currentContent';
+			$oldText = $currentContent->getText();
+
+			if ( $choicesWereChanged ) {
+				$oldText = preg_replace(
+					'/<userpoll>(.*)<userpoll>/',
+					"<userpoll>\n$choices</userpoll>",
+					$oldText
+				);
+			}
+
+			if ( $imageWasChanged ) {
+				$newImageName = $request->getVal( 'poll_image_name' );
+				// If there was *no* image at all...
+				if ( !preg_match( '/\[\[' . $localizedFileNS . '\:/', $oldText ) ) {
+					// ...just inject it into the wikitext, nice 'n' simple!
+					$oldText = str_replace(
+						"</userpoll>\n\n",
+						'</userpoll>' . "\n\n[[" . $localizedFileNS . ':' . $newImageName . "|150px]]\n\n",
+						$oldText
+					);
+				} else {
+					// But if there already _was_ an image, we gotta resort to regex voodoo :-/
+					$oldText = preg_replace(
+						"/\<\/userpoll\>\n\n\[\[" . $localizedFileNS . '\:(.*)\|/',
+						'</userpoll>' . "\n\n[[" . $localizedFileNS . ':' . $newImageName . '|',
+						$oldText
+					);
+				}
+			}
+
+			$content = ContentHandler::makeContent( $oldText, $poll_page );
+			$summary = $request->getText( 'wpSummary', '' );
+
+			$page->doUserEditContent( $content, $user, $summary );
 
 			// Redirect to new Poll Page
 			$out->redirect( $poll_page->getFullURL( $prev_qs ) );
@@ -220,8 +287,16 @@ class UpdatePoll extends UnlistedSpecialPage {
 
 		</div>
 		<div class="visualClear"></div>
-		<div class="update-poll-warning">' . $this->msg( $copywarnMsg, $copywarnMsgParams )->parse() . '</div>
-		<div class="update-poll-buttons">' .
+		<div class="update-poll-warning">' . $this->msg( $copywarnMsg, $copywarnMsgParams )->parse() . '</div>';
+
+		// The edit summary field
+		$form .= $this->msg( 'summary' )->escaped() . '<br />' . Html::input( 'wpSummary', '', 'text', [
+			'title' => Linker::titleAttrib( 'summary' ),
+			'accessKey' => Linker::accesskey( 'summary' ),
+			'size' => 60
+		] );
+
+		$form .= '<div class="update-poll-buttons">' .
 			Html::hidden( 'wpEditToken', $user->getEditToken() ) .
 				"<input type=\"submit\" class=\"site-button\" value=\"" . $this->msg( 'poll-edit-button' )->escaped() . "\" size=\"20\" onclick=\"document.form1.submit()\" />
 			<input type=\"button\" class=\"site-button\" value=\"" . $this->msg( 'poll-cancel-button' )->escaped() . "\" size=\"20\" onclick=\"window.location='" . $poll_page->getFullURL( $prev_qs ) . "'\" />

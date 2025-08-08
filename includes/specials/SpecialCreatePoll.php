@@ -115,10 +115,18 @@ class CreatePoll extends SpecialPage {
 
 			// Create poll wiki page
 			$localizedCategoryNS = $services->getContentLanguage()->getNsText( NS_CATEGORY );
+			$localizedFileNS = $services->getContentLanguage()->getNsText( NS_FILE );
 			$page = $services->getWikiPageFactory()->newFromTitle( $poll_title );
 
 			$content = ContentHandler::makeContent(
-				"<userpoll>\n$choices</userpoll>\n\n[[" .
+				"<userpoll>\n$choices</userpoll>" .
+				// If we have an image, include a reference to it in the wikitext so that
+				// 1) the undeletion hook handler can properly "restore" the image when restoring a
+				// previously deleted poll that had an image, and that
+				// 2) the Poll: page will show up on the file's File: page under "File usage"
+				// Cap the image size at 150px since that's what PollPage etc. use
+				( $request->getVal( 'poll_image_name' ) !== '' ? "\n\n[[" . $localizedFileNS . ':' . $request->getVal( 'poll_image_name' ) . '|150px]]' : '' ) .
+				"\n\n[[" .
 					$localizedCategoryNS . ':' .
 					$this->msg( 'poll-category' )->inContentLanguage()->plain() . "]]\n" .
 				'[[' . $localizedCategoryNS . ':' .
