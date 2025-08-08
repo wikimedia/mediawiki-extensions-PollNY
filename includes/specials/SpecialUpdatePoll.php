@@ -146,7 +146,7 @@ class UpdatePoll extends UnlistedSpecialPage {
 
 			if ( $choicesWereChanged ) {
 				$oldText = preg_replace(
-					'/<userpoll>(.*)<userpoll>/',
+					'/<userpoll>(.*)<\/userpoll>/',
 					"<userpoll>\n$choices</userpoll>",
 					$oldText
 				);
