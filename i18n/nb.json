@@ -102,6 +102,7 @@
 	"right-pollny-vote": "Stemme i avstemninger",
 	"action-polladmin": "administrere avstemninger",
 	"right-polladmin": "Administrere avstemninger",
+	"poll-error-no-api-edit": "API-et kan ikke brukes for å redigere Poll-sider for tiden. Bruk <code>Special:UpdatePoll</code> eller <code>Special:CreatePoll</code> i stedet.",
 	"apihelp-pollny-summary": "PollNY-API – inkluderer både bruker- og administratorfunksjoner.",
 	"apihelp-pollny-param-what": "Hva skal gjøres?",
 	"apihelp-pollny-param-choiceID": "Det samme som å klokke på det <choiceID>. svarer i grensesnittet; brukes bare når what=vote.",
