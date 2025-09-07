@@ -98,6 +98,7 @@
 			],
 			"dependencies": [
 				"mediawiki.api",
+				"mediawiki.jqueryMsg",
 				"mediawiki.util",
 				"ext.socialprofile.LightBox",
 				"oojs-ui-core",
