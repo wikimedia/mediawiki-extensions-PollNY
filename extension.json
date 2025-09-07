@@ -97,6 +97,7 @@
 			],
 			"dependencies": [
 				"mediawiki.api",
+				"mediawiki.jqueryMsg",
 				"mediawiki.util",
 				"ext.socialprofile.flash",
 				"ext.socialprofile.LightBox",

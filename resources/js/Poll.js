@@ -57,7 +57,7 @@ var PollNY = {
 				'<img src="' + mw.config.get( 'wgExtensionAssetsPath' ) + '/SocialProfile/images/ajax-loader-white.gif" alt="" />'
 			);
 		} else {
-			window.LightBox.setText( mw.msg( 'poll-js-loading' ) );
+			window.LightBox.setText( mw.message( 'poll-js-loading' ).escaped() );
 		}
 	},
 
@@ -139,11 +139,11 @@ var PollNY = {
 				} else {
 					// We have run out of polls to show
 					// Show a lightbox prompting the user to create more polls
-					window.LightBox.setText( mw.msg(
+					window.LightBox.setText( mw.message(
 						'poll-finished',
 						mw.util.getUrl( mw.config.get( 'wgFormattedNamespaces' )[ -1 ] + ':' + 'CreatePoll' ),
 						window.location
-					) );
+					).parse() );
 				}
 			}
 		} );
@@ -280,7 +280,7 @@ var PollNY = {
 					pollID: id,
 					status: status
 				} ).done( function () {
-					jQuery( '#poll-' + id + '-controls' ).html( mw.msg( 'poll-js-action-complete' ) );
+					jQuery( '#poll-' + id + '-controls' ).text( mw.msg( 'poll-js-action-complete' ) );
 				} );
 			}
 		} );
@@ -302,7 +302,7 @@ var PollNY = {
 					what: 'delete',
 					pollID: id
 				} ).done( function () {
-					jQuery( '#poll-' + id + '-controls' ).html( mw.msg( 'poll-js-action-complete' ) );
+					jQuery( '#poll-' + id + '-controls' ).text( mw.msg( 'poll-js-action-complete' ) );
 				} );
 			}
 		} );
