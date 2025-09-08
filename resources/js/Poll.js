@@ -10,16 +10,6 @@
 var PollNY = {
 	voted: 0,
 
-	/**
-	 * @return Boolean: true if the browser is Firefox under Mac
-	 */
-	detectMacXFF: function () {
-		var userAgent = navigator.userAgent.toLowerCase();
-		if ( userAgent.indexOf( 'mac' ) != -1 && userAgent.indexOf( 'firefox' ) != -1 ) {
-			return true;
-		}
-	},
-
 	show: function () {
 		var loadingElement = document.getElementById( 'loading-poll' ),
 			displayElement = document.getElementById( 'poll-display' );
@@ -34,8 +24,7 @@ var PollNY = {
 	},
 
 	/**
-	 * Show the "Loading..." text in the lightbox; Firefox on Mac gets only
-	 * that whereas all other User-Agents get the pretty animation.
+	 * Show a loading animation in the lightbox
 	 */
 	loadingLightBox: function () {
 		// pop up the lightbox
@@ -45,13 +34,9 @@ var PollNY = {
 
 		window.LightBox.show( objLink );
 
-		if ( !PollNY.detectMacXFF() ) {
-			window.LightBox.setText(
-				'<img src="' + mw.config.get( 'wgExtensionAssetsPath' ) + '/SocialProfile/images/ajax-loader-white.gif" alt="" />'
-			);
-		} else {
-			window.LightBox.setText( mw.message( 'poll-js-loading' ).escaped() );
-		}
+		window.LightBox.setText(
+			'<img src="' + mw.config.get( 'wgExtensionAssetsPath' ) + '/SocialProfile/images/ajax-loader-white.gif" alt="" />'
+		);
 	},
 
 	/**
