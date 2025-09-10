@@ -134,7 +134,7 @@ class PollNYHooks {
 			return;
 		}
 
-		'@phan-var Content $currentContent';
+		'@phan-var TextContent $currentContent';
 		$oldText = $currentContent->getText();
 
 		// Parse choices and image name (if any) from the wikitext

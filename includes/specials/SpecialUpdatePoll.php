@@ -141,7 +141,7 @@ class UpdatePoll extends UnlistedSpecialPage {
 				return;
 			}
 
-			'@phan-var Content $currentContent';
+			'@phan-var TextContent $currentContent';
 			$oldText = $currentContent->getText();
 
 			if ( $choicesWereChanged ) {
