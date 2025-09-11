@@ -60,7 +60,7 @@
 	"poll-edit-title": "正在编辑调查-$1",
 	"poll-embed": "在wiki页面上嵌入",
 	"poll-enterquestion": "您必须输入一个问题。",
-	"poll-finished": "<b>没有更多的调查。创建你<a href=\"$1\">自己的！</a></b>或<a href=\"$2\">查看此调查的结果</a>。",
+	"poll-finished": "<b>没有更多的调查。添加您[$1 自己的！]</b>或[$2 查看此调查的结果]。",
 	"poll-flagged": "此调查已标记",
 	"poll-flagged-message": "确定要标记此调查吗?",
 	"poll-flag-poll": "标记调查",
