@@ -1,8 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
-			"McDutchie",
-			"Amire80"
+			"McDutchie"
 		]
 	},
 	"adminpoll": "Administrar sondages",
@@ -52,7 +51,7 @@
 	"poll-edit-title": "Modification del sondage $1",
 	"poll-embed": "Incorporar in pagina wiki",
 	"poll-enterquestion": "Tu debe scriber un question.",
-	"poll-finished": "<b>Il non ha altere sondages. Adde un <a href=\"$1\">proprie!</a></b> O <a href=\"$2\">vide le resultatos de iste sondage</a>.",
+	"poll-finished": "<b>Il non ha altere sondages. [$1 Adde un  proprie!]</b> O [$2 vide le resultatos de iste sondage].",
 	"poll-flagged": "Iste sondage ha essite marcate",
 	"poll-flagged-message": "Es tu secur de voler marcar iste sondage?",
 	"poll-flag-poll": "Marcar sondage",
