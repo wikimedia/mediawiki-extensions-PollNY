@@ -56,7 +56,7 @@
 	"poll-edit-title": "Peiling bewerken - $1",
 	"poll-embed": "Invoegen op een wikipagina",
 	"poll-enterquestion": "U moet een vraag invoeren.",
-	"poll-finished": "<b>Er zijn geen peilingen meer over. Maak uw <a href=\"$1\">eigen peiling</a></b> of <a href=\"$2\">bekijk resultaten van deze peiling</a>.",
+	"poll-finished": "<b>Er zijn geen peilingen meer over. Maak uw <a href=\"$1\">eigen peiling</a>!</b> Of <a href=\"$2\">bekijk de resultaten van deze peiling</a>.",
 	"poll-flagged": "Deze peiling is gemarkeerd",
 	"poll-flagged-message": "Weet u zeker dat u deze peiling wilt markeren?",
 	"poll-flag-poll": "Peiling markeren",

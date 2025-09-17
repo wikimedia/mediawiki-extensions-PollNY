@@ -56,7 +56,7 @@
 	"poll-edit-title": "Abstimmung bearbeiten – $1",
 	"poll-embed": "In Wikiseite einbinden",
 	"poll-enterquestion": "Du musst eine Frage eingeben",
-	"poll-finished": "<b>Es gibt keine Abstimmungen mehr. Erstelle deine <a href=\"$1\">eigene</a></b> oder <a href=\"$2\">sieh dir die Ergebnisse dieser Abstimmung an</a>.",
+	"poll-finished": "<b>Es gibt keine Abstimmungen mehr. Erstelle deine [$1 eigene!]</b> oder [$2 sieh dir die Ergebnisse dieser Abstimmung an].",
 	"poll-flagged": "Diese Abstimmung wurde markiert",
 	"poll-flagged-message": "Willst du diese Abstimmung wirklich markieren?",
 	"poll-flag-poll": "Abstimmung markieren",
