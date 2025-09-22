@@ -55,7 +55,7 @@
 	"poll-edit-title": "Editando a enquisa \"$1\"",
 	"poll-embed": "Incorporar nunha páxina",
 	"poll-enterquestion": "Cómpre inserir unha pregunta.",
-	"poll-finished": "<b>Non hai máis enquisas. Engade <a href=\"$1\">a túa!</a></b> Ou <a href=\"$2\">consulta os resultados desta enquisa</a>.",
+	"poll-finished": "<b>Non hai máis enquisas. Engade [$1 a túa!]</b> Ou [$2 consulta os resultados desta enquisa].",
 	"poll-flagged": "A enquisa está marcada",
 	"poll-flagged-message": "Queres marcar esta enquisa?",
 	"poll-flag-poll": "Marcar a enquisa",

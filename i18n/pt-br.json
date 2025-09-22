@@ -55,7 +55,7 @@
 	"poll-edit-title": "Editando enquete - $1",
 	"poll-embed": "Incorporar à página wiki",
 	"poll-enterquestion": "Você deve digitar uma pergunta",
-	"poll-finished": "<b>Não há mais enquetes disponíveis. Adicione a sua <a href=\"$1\">própria enquete!</a></b> ou <a href=\"$2\">Veja os resultados desta enquete</a>",
+	"poll-finished": "<b>Não há mais enquetes disponíveis. Adicione a sua [$1 própria enquete!]</b> ou [$2 Veja os resultados desta enquete]",
 	"poll-flagged": "Esta enquete foi marcada",
 	"poll-flagged-message": "Tem certeza de que deseja marcar esta enquete?",
 	"poll-flag-poll": "Marcar enquete",

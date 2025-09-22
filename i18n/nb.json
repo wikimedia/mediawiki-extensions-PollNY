@@ -52,7 +52,7 @@
 	"poll-edit-title": "Redigerer avstemning – $1",
 	"poll-embed": "Bygg inn i wikiside",
 	"poll-enterquestion": "Du må skrive inn et spørsmål.",
-	"poll-finished": "<b>Det er ingen avstemninger igjen. Legg til <a href=\"$1\">din egen</a>!</b> Eller <a href=\"$2\">vis resultatene av denne avstemningen</a>.",
+	"poll-finished": "<b>Det er ingen avstemninger igjen. Legg til [$1 din egen]!</b> Eller [$2 vis resultatene av denne avstemningen].",
 	"poll-flagged": "Denne avstemningen har blitt flagget",
 	"poll-flagged-message": "Er du sikker på at du vil flagge denne avstemningen?",
 	"poll-flag-poll": "Flagg avstemning",

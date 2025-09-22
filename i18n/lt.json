@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Jack Phoenix",
 			"Nokeoo",
 			"Zygimantus"
 		]
@@ -52,7 +53,7 @@
 	"poll-edit-title": "Apklausos redagavimas – $1",
 	"poll-embed": "Įterpti į viki puslapį",
 	"poll-enterquestion": "Turite įvesti klausimą.",
-	"poll-finished": "<b>Daugiau apklausų nėra. Pridėkite <a href=\"$1\">savo!</a></b> arba <a href=\"$2\">peržiūrėkite šios apklausos rezultatus</a>.",
+	"poll-finished": "<b>Daugiau apklausų nėra. Pridėkite [$1 savo!]</b> arba [$2 peržiūrėkite šios apklausos rezultatus].",
 	"poll-flagged": "Ši apklausa buvo pažymėta",
 	"poll-flagged-message": "Ar tikrai norite pažymėti šią apklausą?",
 	"poll-flag-poll": "Pažymėti apklausą",
