@@ -49,7 +49,7 @@
 	"poll-edit-title": "Edicion del sondatge - $1",
 	"poll-embed": "Inclusion sus una pagina wiki",
 	"poll-enterquestion": "Vos cal picar una question.",
-	"poll-finished": "<b>I a pas mai de sondatge. Creatz vòstre <a href=\"$1\">pròpri sondatge</a></b> o <a href=\"$2\">visualizatz lo resultat del sondatge en cors</a>",
+	"poll-finished": "<b>I a pas mai de sondatge. Creatz vòstre [$1 pròpri sondatge]</b> o [$2 visualizatz lo resultat del sondatge en cors]",
 	"poll-flagged": "Aqueste sondatge es estat marcat",
 	"poll-flagged-message": "Sètz segur que volètz marcar aqueste sondatge ?",
 	"poll-flag-poll": "Marcar lo sondatge",
