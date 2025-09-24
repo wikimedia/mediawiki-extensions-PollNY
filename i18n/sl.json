@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Eleassar"
+			"Eleassar",
+			"Jack Phoenix"
 		]
 	},
 	"adminpoll": "Upravljanje glasovanj",
@@ -51,7 +52,7 @@
 	"poll-edit-title": "Urejanje glasovanja – $1",
 	"poll-embed": "Vdelaj v viki stran",
 	"poll-enterquestion": "Vnesti morate vprašanje.",
-	"poll-finished": "<b>Ni več glasovanj. Dodajte svoje <a href=\"$1\">lastno!</a></b> Ali <a href=\"$2\">si oglejte rezultate tega glasovanja</a>.",
+	"poll-finished": "<b>Ni več glasovanj. Dodajte svoje [$1 lastno!]</b> Ali [$2 si oglejte rezultate tega glasovanja].",
 	"poll-flagged": "To glasovanje je bilo označeno",
 	"poll-flagged-message": "Ali res želite označiti to glasovanje?",
 	"poll-flag-poll": "Označi glasovanje",

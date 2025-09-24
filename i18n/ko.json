@@ -56,7 +56,7 @@
 	"poll-edit-title": "설문 조사 편집 - $1",
 	"poll-embed": "위키 문서에 포함",
 	"poll-enterquestion": "질문을 입력해야 합니다.",
-	"poll-finished": "<b>남은 설문 조사가 더 없습니다. <a href=\"$1\">자신이 설문 조사를</a> 추가하세요!</b> 또는 <a href=\"$2\">이 설문 조사의 결과를 보세요</a>.",
+	"poll-finished": "<b>남은 설문 조사가 더 없습니다. [$1 자신이 설문 조사를] 추가하세요!</b> 또는 [$2 이 설문 조사의 결과를 보세요].",
 	"poll-flagged": "이 설문 조사는 플래그되었습니다",
 	"poll-flagged-message": "이 설문 조사를 플래그하겠습니까?",
 	"poll-flag-poll": "설문 조사 플래그",

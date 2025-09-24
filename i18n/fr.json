@@ -13,7 +13,8 @@
 			"Verdy p",
 			"Wladek92",
 			"Wyz",
-			"Y-M D"
+			"Y-M D",
+			"Jack Phoenix"
 		]
 	},
 	"adminpoll": "Administration des sondages",
@@ -63,7 +64,7 @@
 	"poll-edit-title": "Modification du sondage — $1",
 	"poll-embed": "Inclusion sur une page wiki",
 	"poll-enterquestion": "Vous devez saisir une question.",
-	"poll-finished": "<b>Il ne reste plus aucun sondage. Créez <a href=\"$1\">le vôtre !</a></b> Ou bien <a href=\"$2\">visualisez les résultats de ce sondage</a>.",
+	"poll-finished": "<b>Il ne reste plus aucun sondage. Créez [$1 le vôtre !]</b> Ou bien [$2 visualisez les résultats de ce sondage].",
 	"poll-flagged": "Ce sondage a été marqué",
 	"poll-flagged-message": "Souhaitez-vous vraiment marquer ce sondage ?",
 	"poll-flag-poll": "Marquer le sondage",

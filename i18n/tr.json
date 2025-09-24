@@ -4,7 +4,8 @@
 			"BaRaN6161 TURK",
 			"MuratTheTurkish",
 			"Rapsar",
-			"SaldırganSincap"
+			"SaldırganSincap",
+			"Jack Phoenix"
 		]
 	},
 	"adminpoll": "Anketleri yönetin",
@@ -54,7 +55,7 @@
 	"poll-edit-title": "Anket düzenleniyor - $1",
 	"poll-embed": "Viki sayfasına yerleştir",
 	"poll-enterquestion": "Bir soru girmelisiniz.",
-	"poll-finished": "<b>Başka anket kalmadı. <a href=\"$1\">Kendinize</a></b> ekleyin! Veya <a href=\"$2\">bu anketin sonuçlarını görüntüleyin</a>.",
+	"poll-finished": "<b>Başka anket kalmadı. [$1 Kendinize]</b> ekleyin! Veya [$2 bu anketin sonuçlarını görüntüleyin].",
 	"poll-flagged": "Bu anket işaretlendi",
 	"poll-flagged-message": "Are you sure you want to flag this poll?",
 	"poll-flag-poll": "Anket işareti",
