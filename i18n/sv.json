@@ -54,7 +54,7 @@
 	"poll-edit-title": "Redigerar enkät - $1",
 	"poll-embed": "Inbäddad på en wikisida",
 	"poll-enterquestion": "Du måste skriva in en fråga",
-	"poll-finished": "<b>Det finns inga fler omröstningar kvar. Lägg till din <a href=\"$1\">egna!</a></b> </b> eller <a href=\"$2\">Visa resultaten av denna undersökning</a>",
+	"poll-finished": "<b>Det finns inga fler omröstningar kvar. Lägg till din [$1 egna!]</b> </b> eller [$2 Visa resultaten av denna undersökning]",
 	"poll-flagged": "Denna enkät har flaggats",
 	"poll-flagged-message": "Är du säker du vill flagga denna enkät?",
 	"poll-flag-poll": "Flagga enkät",

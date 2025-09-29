@@ -50,7 +50,7 @@
 	"poll-edit-title": "Muokataan äänestystä - $1",
 	"poll-embed": "Upota wiki-sivulle",
 	"poll-enterquestion": "Sinun tulee antaa kysymys",
-	"poll-finished": "<b>Äänestyksiä ei ole enempää jäljellä. Lisää <a href=\"$1\">omasi</a></b> tai <a href=\"$2\">katso tämän äänestyksen tulokset</a>",
+	"poll-finished": "<b>Äänestyksiä ei ole enempää jäljellä. Lisää [$1 omasi]</b> tai [$2 katso tämän äänestyksen tulokset]",
 	"poll-flagged": "Tämä äänestys on merkitty",
 	"poll-flagged-message": "Oletko varma, että haluat merkitä tämän äänestyksen?",
 	"poll-flag-poll": "Merkitse äänestys",

@@ -52,7 +52,7 @@
 	"poll-edit-title": "Editando la encuesta - $1",
 	"poll-embed": "Inxertar nuna páxina wiki",
 	"poll-enterquestion": "Tien d'escribir una entruga.",
-	"poll-finished": "<b>Nun queden más encuestes. ¡Amiesta <a href=\"$1\">una propia!</a></b> O <a href=\"$2\">visita los resultaos d'esta encuesta</a>.",
+	"poll-finished": "<b>Nun queden más encuestes. ¡Amiesta [$1 una propia!]</b> O [$2 visita los resultaos d'esta encuesta].",
 	"poll-flagged": "Marcóse esta encuesta",
 	"poll-flagged-message": "¿Ta seguru de que quier marcar esta encuesta?",
 	"poll-flag-poll": "Marcar la encuesta",

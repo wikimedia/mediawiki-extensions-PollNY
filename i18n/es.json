@@ -59,7 +59,7 @@
 	"poll-edit-title": "Edición de la encuesta «$1»",
 	"poll-embed": "Incrustar en página wiki",
 	"poll-enterquestion": "Debes escribrir una pregunta.",
-	"poll-finished": "<b>No quedan encuestas. ¡Añade la tuya <a href=\"$1\">propia</a>ǃ</b> O <a href=\"$2\">mira los resultados de esta otra</a>.",
+	"poll-finished": "<b>No quedan encuestas. ¡Añade la tuya [$1 propia]ǃ</b> O [$2 mira los resultados de esta otra].",
 	"poll-flagged": "Se ha marcado la encuesta",
 	"poll-flagged-message": "¿Estás seguro de que quieres marcar esta encuesta?",
 	"poll-flag-poll": "Marcar encuesta",
