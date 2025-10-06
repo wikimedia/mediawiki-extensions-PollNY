@@ -83,7 +83,7 @@
 	"poll-skip": "跳過>",
 	"poll-submit-btn": "提交",
 	"poll-submitted-by": "提交由",
-	"poll-take-button": "<返回調查",
+	"poll-take-button": "←返回調查",
 	"poll-unavailable": "此調查不可用",
 	"poll-unflag-message": "您確定要取消標記此調查？取消標記會讓調查恢復運行，允許使用者對此檢視與投票。",
 	"poll-unflag-poll": "取消標記調查",

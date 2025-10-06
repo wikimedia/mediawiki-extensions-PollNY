@@ -85,7 +85,7 @@
 	"poll-skip": "跳过 >",
 	"poll-submit-btn": "提交",
 	"poll-submitted-by": "提交者",
-	"poll-take-button": "< 返回调查",
+	"poll-take-button": "← 返回调查",
 	"poll-unavailable": "此调查不可用",
 	"poll-unflag-message": "您确定要取消标记此调查吗？取消标记会使调查重新进行，允许用户查看并投票。",
 	"poll-unflag-poll": "取消标记调查",
