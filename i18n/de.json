@@ -106,6 +106,7 @@
 	"right-pollny-vote": "Bei Abstimmungen teilnehmen",
 	"action-polladmin": "Abstimmungen zu verwalten",
 	"right-polladmin": "Abstimmungen verwalten",
+	"poll-error-no-api-edit": "Die API kann derzeit nicht zum Bearbeiten von Umfrageseiten verwendet werden. Verwende stattdessen <code>Special:UpdatePoll</code> oder <code>Special:CreatePoll</code>.",
 	"apihelp-pollny-summary": "PollNY API – enthält sowohl Benutzer- als auch Administratorfunktionen.",
 	"apihelp-pollny-param-what": "Was ist zu tun?",
 	"apihelp-pollny-param-choiceID": "Dasselbe wie das Klicken auf die <choiceID>th Wahl über die GUI; wird nur verwendet, wenn what=vote.",
