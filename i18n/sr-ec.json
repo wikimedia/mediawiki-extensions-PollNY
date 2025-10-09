@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Kizule",
+			"Milicevic01",
 			"Obsuser",
 			"Zoranzoki21"
 		]
@@ -29,7 +30,7 @@
 	"poll-prev": "претходно",
 	"poll-previous-poll": "Претходна анкета",
 	"poll-question-label": "Питање анкете",
-	"poll-skip": "Прескочи >",
+	"poll-skip": "Прескочи →",
 	"poll-upload-new-image": "Отпреми нову слику",
 	"poll-view-order": "Редослед",
 	"poll-view-newest": "Најновије",
