@@ -25,6 +25,7 @@ class UpdatePoll extends UnlistedSpecialPage {
 	public function execute( $par ) {
 		$out = $this->getOutput();
 		$request = $this->getRequest();
+		$session = $request->getSession();
 		$user = $this->getUser();
 
 		// https://phabricator.wikimedia.org/T155405
@@ -72,9 +73,9 @@ class UpdatePoll extends UnlistedSpecialPage {
 		if (
 			$request->wasPosted() &&
 			$user->matchEditToken( $request->getVal( 'wpEditToken' ) ) &&
-			$_SESSION['alreadysubmitted'] == false
+			$session->get( 'alreadysubmitted' ) == false
 		) {
-			$_SESSION['alreadysubmitted'] = true;
+			$session->set( 'alreadysubmitted', true );
 
 			$p = new Poll();
 			$poll_info = $p->getPoll( $request->getInt( 'id' ) );
@@ -180,7 +181,7 @@ class UpdatePoll extends UnlistedSpecialPage {
 			// Redirect to new Poll Page
 			$out->redirect( $poll_page->getFullURL( $prev_qs ) );
 		} else {
-			$_SESSION['alreadysubmitted'] = false;
+			$session->set( 'alreadysubmitted', false );
 			$out->addHTML( $this->displayForm() );
 		}
 	}

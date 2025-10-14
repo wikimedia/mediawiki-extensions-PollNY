@@ -28,6 +28,7 @@ class CreatePoll extends SpecialPage {
 	public function execute( $par ) {
 		$out = $this->getOutput();
 		$request = $this->getRequest();
+		$session = $request->getSession();
 		$user = $this->getUser();
 
 		// https://phabricator.wikimedia.org/T155405
@@ -90,9 +91,9 @@ class CreatePoll extends SpecialPage {
 		if (
 			$request->wasPosted() &&
 			$user->matchEditToken( $request->getVal( 'wpEditToken' ) ) &&
-			$_SESSION['alreadysubmitted'] == false
+			$session->get( 'alreadysubmitted' ) == false
 		) {
-			$_SESSION['alreadysubmitted'] = true;
+			$session->set( 'alreadysubmitted', true );
 
 			// Add poll
 			$poll_title = Title::makeTitleSafe( NS_POLL, $request->getVal( 'poll_question' ) );
@@ -170,10 +171,13 @@ class CreatePoll extends SpecialPage {
 			// Redirect to new poll page
 			$out->redirect( $poll_title->getFullURL() );
 		} else {
-			$_SESSION['alreadysubmitted'] = false;
+			$session->set( 'alreadysubmitted', false );
+
 			$template = new CreatePollTemplate;
+
 			// Expose _this_ class to the GUI template
 			$template->set( 'parentClass', $this );
+
 			// And output the template!
 			$out->addTemplate( $template );
 		}
