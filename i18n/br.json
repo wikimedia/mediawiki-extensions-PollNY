@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Fohanno",
+			"Huñvreüs",
 			"Y-M D"
 		]
 	},
@@ -55,7 +56,7 @@
 	"poll-prev": "kent",
 	"poll-previous-poll": "Sontadegoù a-raok",
 	"poll-question-label": "Goulenn ar sontadeg",
-	"poll-skip": "Tremen >",
+	"poll-skip": "Tremen →",
 	"poll-submitted-by": "Kinniget gant",
 	"poll-take-button": "← Distreiñ d'ar sontadegoù",
 	"poll-upload-new-image": "Enporzhiañ ur skeudenn nevez",
