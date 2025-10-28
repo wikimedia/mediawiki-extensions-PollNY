@@ -3,7 +3,8 @@
 		"authors": [
 			"Amire80",
 			"Ex-Diktator",
-			"Guycn2"
+			"Guycn2",
+			"SaldırganSincap"
 		]
 	},
 	"adminpoll": "ניהול סקרים",
@@ -53,7 +54,7 @@
 	"poll-edit-title": "עריכת סקר – $1",
 	"poll-embed": "הטבעה בדף ויקי",
 	"poll-enterquestion": "יש להזין שאלה.",
-	"poll-finished": "<b>לא נשארו עוד סקרים. אפשר להוסיף [$1 אחד משלך]! או [$2 לצפות בתוצאות בסקר הזה].",
+	"poll-finished": "<b>לא נשארו עוד סקרים. אפשר להוסיף [$1 אחד משלך]!</b> או [$2 לצפות בתוצאות בסקר הזה].",
 	"poll-flagged": "הסקר הזה סומן",
 	"poll-flagged-message": "האם ברצונך באמת לסמן את הסקר הזה?",
 	"poll-flag-poll": "לסמן סקר",
