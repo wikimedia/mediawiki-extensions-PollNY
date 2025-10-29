@@ -6,7 +6,8 @@
 			"Sujiniku",
 			"Yamagata Yusuke",
 			"Jack Phoenix",
-			"Omotecho"
+			"Omotecho",
+			"SaldırganSincap"
 		]
 	},
 	"adminpoll": "投票所の管理",
@@ -49,7 +50,7 @@
 	"poll-edit-title": "投票所の編集 - $1",
 	"poll-embed": "ウィキページへの埋め込み",
 	"poll-enterquestion": "質問文を入力してください。",
-	"poll-finished": "<b>投票所はこれ以上ありません。[$1 自分の投票所を追加]してください。</b>または[$2 この投票所の投票結果]をご覧ください。</b>",
+	"poll-finished": "<b>投票所はこれ以上ありません。[$1 自分の投票所を追加]してください。</b>または[$2 この投票所の投票結果]をご覧ください。",
 	"poll-hash": "# は投票所の質問文に使用できない無効な文字です。",
 	"poll-image-label": "画像の追加",
 	"poll-image-picker-launch-button": "既存の画像を使う",
