@@ -107,7 +107,7 @@ class ViewPoll extends SpecialPage {
 
 		$output .= '</div>';
 
-		if ( isset( $user ) ) {
+		if ( $user !== null ) {
 			$out->setPageTitle( $this->msg( 'poll-view-title', $user )->parse() );
 		} else {
 			$out->setPageTitle( $this->msg( 'viewpoll' )->text() );
