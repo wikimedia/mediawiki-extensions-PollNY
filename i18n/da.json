@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jack Phoenix"
+		]
+	},
+	"poll-admin-viewall": "Vis alle",
+	"poll-edit-button": "Gem side",
+	"poll-image-label": "Tilføj et billede",
+	"poll-image-picker-select": "Vælg",
+	"poll-skip": "Spring over →"
+}
