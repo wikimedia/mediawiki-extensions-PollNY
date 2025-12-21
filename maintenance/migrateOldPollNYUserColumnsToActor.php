@@ -34,7 +34,7 @@ class MigrateOldPollNYUserColumnsToActor extends LoggedUpdateMaintenance {
 	 *
 	 * @return string
 	 */
-	protected function updateSkippedMessage() {
+	public function updateSkippedMessage() {
 		return 'poll_question and poll_user_vote have already been migrated to use the actor columns.';
 	}
 
