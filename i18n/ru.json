@@ -9,7 +9,8 @@
 			"Nk88",
 			"Okras",
 			"Pacha Tchernof",
-			"Pavel200071"
+			"Pavel200071",
+			"Vonavy"
 		]
 	},
 	"adminpoll": "Администрирование опросов",
@@ -78,7 +79,7 @@
 	"poll-prev": "пред.",
 	"poll-previous-poll": "Предыдущий опрос",
 	"poll-question-label": "Вопрос",
-	"poll-skip": "Пропустить >",
+	"poll-skip": "Пропустить →",
 	"poll-submit-btn": "Отправить",
 	"poll-submitted-by": "Добавлен участником",
 	"poll-take-button": "← Обратно в опросы",
