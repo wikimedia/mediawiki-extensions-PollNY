@@ -4,7 +4,8 @@
 			"Ahmed-Najib-Biabani-Ibrahimkhel",
 			"Amjad Khan",
 			"Baloch Khan",
-			"Af420"
+			"Af420",
+			"شاه زمان پټان"
 		]
 	},
 	"poll-admin-open": "پرانيستل",
@@ -12,7 +13,7 @@
 	"poll-cancel-button": "ناگارل",
 	"poll-time-ago": "$1 مخکې",
 	"poll-time-days": "{{PLURAL:$1|يوه ورځ|$1 ورځې}}",
-	"poll-time-hours": "{{PLURAL:$1|يو ساعت|$1 ساعته}}",
+	"poll-time-hours": "{{PLURAL:$1|يو گړۍ|$1 گړۍ}}",
 	"poll-time-minutes": "{{PLURAL:$1|يوه دقيقه|$1 دقیقي}}",
 	"poll-time-seconds": "{{PLURAL:$1|يوه ثانيه|$1 ثانيې}}"
 }
