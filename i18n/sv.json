@@ -6,7 +6,8 @@
 			"Jopparn",
 			"McDutchie",
 			"SaldırganSincap",
-			"WikiPhoenix"
+			"WikiPhoenix",
+			"Stefan2255"
 		]
 	},
 	"adminpoll": "Administrera enkäter",
@@ -20,6 +21,7 @@
 	"poll-admin-open": "Öppen",
 	"poll-error-socialprofile": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:SocialProfile Tillägget SocialProfile] har inte installerats. Installera tillägget och försök igen.",
 	"poll-error-socialprofile-title": "Tillägget SocialProfile har inte installerats.",
+	"poll-admin-nonadmin-note": "Eftersom du inte är en omröstningsadministratör ser du bara de omröstningar du har skapat.",
 	"poll-admin-panel": "Administratör",
 	"poll-admin-status-nav": "Filtrera efter status",
 	"poll-admin-title-all": "Enkätadministratör - Visa alla omröstningar",
@@ -61,6 +63,7 @@
 	"poll-flag-poll": "Flagga enkät",
 	"poll-hash": "# är ett ogiltigt tecken för enkätfrågan.",
 	"poll-image-label": "Lägg till en bild",
+	"poll-image-picker-launch-button": "Använd en befintlig bild",
 	"poll-image-picker": "Bildväljare",
 	"poll-image-picker-select": "Välj",
 	"poll-instructions": "Ställ en enkätfråga, skriva ned några svarsalternativ, tryck på \"{{int:poll-create-button}}\"-knappen. Så enkelt är det!",
@@ -81,6 +84,7 @@
 	"poll-submitted-by": "Inskickad av",
 	"poll-take-button": "← Tillbaka till enkäter",
 	"poll-unavailable": "Denna enkät är inte tillgänglig",
+	"poll-unflag-message": "Är du säker på att du vill ta bort flaggan för den här omröstningen? Om du tar bort flaggan återställs omröstningen till cirkulationen, så att användarna kan se den och rösta på den.",
 	"poll-unflag-poll": "Avflagga enkät",
 	"poll-upload-new-image": "Ladda upp ny bild",
 	"poll-view-title": "Visa $1s enkäter",
@@ -99,6 +103,21 @@
 	"poll-time-minutes": "{{PLURAL:$1|en minut|$1 minuter}}",
 	"poll-time-seconds": "{{PLURAL:$1|en sekund|$1 sekunder}}",
 	"specialpages-group-poll": "Enkäter",
+	"action-pollny-vote": "rösta i omröstningar",
+	"right-pollny-vote": "Rösta i omröstningar",
+	"action-polladmin": "Administrera enkäter",
 	"right-polladmin": "Administrera enkäter",
-	"apihelp-pollny-param-what": "Vad göra?"
+	"poll-error-no-api-edit": "API:et kan för närvarande inte användas för att redigera Poll:-sidor. Använd <code>Special:UpdatePoll</code> eller <code>Special:CreatePoll</code> istället.",
+	"apihelp-pollny-summary": "PollNY API - inkluderar både användar- och administratörsfunktioner.",
+	"apihelp-pollny-param-what": "Vad göra?",
+	"apihelp-pollny-param-choiceID": "Samma som att klicka på alternativnummer #choiceID via det grafiska användargränssnittet; används endast när <var>what=vote</var>.",
+	"apihelp-pollny-param-pageName": "Titel att kontrollera (används endast när what=titleExists); ska vara URL-kodad.",
+	"apihelp-pollny-param-pollID": "Omröstnings-ID för den omröstning som raderas/uppdateras/röstar på.",
+	"apihelp-pollny-param-pageID": "Sid-ID (används endast när what=getPollResults).",
+	"apihelp-pollny-param-status": "Ny status för omröstningen (när what=updateStatus); möjliga värden är 0 (=stängd), 1 och 2 (=flaggad).",
+	"apihelp-pollny-example-1": "Tar bort omröstningen #66",
+	"apihelp-pollny-example-2": "Får resultatet av omröstning #666",
+	"apihelp-pollny-example-3": "Hämtar en slumpmässig omröstning som den aktuella användaren inte har svarat på ännu",
+	"apihelp-pollny-example-5": "Sätter statusen för omröstning #47 till 1 (=öppen); möjliga statusvärden är 0 (=stängd), 1 och 2 (=flaggad)",
+	"apihelp-pollny-example-6": "Röster (svarar) på omröstning #33 med det fjärde alternativet"
 }
