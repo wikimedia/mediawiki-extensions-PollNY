@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Artsiom91",
-			"Kareyac"
+			"Kareyac",
+			"Ucukor"
 		]
 	},
 	"poll-admin-panel": "Адміністратар",
+	"poll-cancel-button": "Скасаваць",
 	"poll-discuss": "Абмеркаваць"
 }
