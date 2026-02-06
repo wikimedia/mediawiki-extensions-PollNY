@@ -4,6 +4,7 @@
 			"Amire80",
 			"Ex-Diktator",
 			"Guycn2",
+			"Neriah",
 			"SaldırganSincap"
 		]
 	},
@@ -76,10 +77,10 @@
 	"poll-prev": "הקודם",
 	"poll-previous-poll": "הסקר הקודם",
 	"poll-question-label": "שאלת סקר",
-	"poll-skip": "לדלג >",
+	"poll-skip": "לדלג ←",
 	"poll-submit-btn": "שליחה",
 	"poll-submitted-by": "נשלח על־ידי",
-	"poll-take-button": "← חזרה לסקרים",
+	"poll-take-button": "→ חזרה לסקרים",
 	"poll-unavailable": "הסקר הזה אינו זמין",
 	"poll-unflag-message": "האם ברצונך באמת לבטל את סימון הסקר הזה? ביטול הסימון מחזיר את הסקר לתפוצה, ומאפשר למשתמשים לצפות בו ולהצביע בו.",
 	"poll-unflag-poll": "ביטול סימון הסקר",
