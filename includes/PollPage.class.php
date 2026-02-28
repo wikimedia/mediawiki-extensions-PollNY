@@ -310,7 +310,6 @@ class PollPage extends Article {
 						'class' => 'image-choice-' . $x,
 						'style' => 'width:' . $bar_width . 'px;height:11px;'
 					] );
-					// @phan-suppress-next-line PhanTypeMismatchArgumentInternal
 					$safeChoice = htmlspecialchars( $choice['choice'], ENT_QUOTES );
 					$output .= "<div class=\"previous-poll-choice\">
 								<div class=\"previous-poll-choice-left\">{$safeChoice} ({$percent}%)</div>";
@@ -362,7 +361,6 @@ class PollPage extends Article {
 					}
 					$bar_img = "<img src=\"{$imgPath}/vote-bar-{$x}.gif\" class=\"image-choice-{$x}\" style=\"width:{$bar_width}px;height:12px;\"/>";
 
-					// @phan-suppress-next-line PhanTypeMismatchArgumentInternal
 					$safeChoice = htmlspecialchars( $choice['choice'], ENT_QUOTES );
 					$output .= "<div class=\"poll-choice\">
 					<div class=\"poll-choice-left\">{$safeChoice} ({$percent}%)</div>";

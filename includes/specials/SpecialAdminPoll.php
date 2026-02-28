@@ -166,7 +166,7 @@ class AdminPoll extends SpecialPage {
 
 		$params = [];
 		$params['ORDER BY'] = 'poll_date DESC';
-		// @phan-suppress-next-line PhanSuspiciousValueComparison
+		// @phan-suppress-next-line PhanRedundantValueComparison
 		if ( $limit > 0 ) {
 			$params['LIMIT'] = $limit;
 		}
