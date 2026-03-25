@@ -8,6 +8,7 @@
  */
 
 use MediaWiki\Api\ApiBase;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\Html;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\SpecialPage\SpecialPage;
@@ -238,32 +239,32 @@ class PollNYHooks {
 	 *
 	 * @param MediaWiki\Title\Title &$title
 	 * @param Article &$article
+	 * @param IContextSource $context
 	 */
-	public static function pollFromTitle( &$title, &$article ) {
+	public static function pollFromTitle( &$title, &$article, $context ) {
 		if ( $title->getNamespace() == NS_POLL ) {
-			global $wgRequest, $wgOut;
-
+			$out = $context->getOutput();
 			// We don't want caching here, it'll only cause problems...
-			$wgOut->disableClientCache();
+			$out->disableClientCache();
 
 			// Prevents editing of polls
-			if ( $wgRequest->getVal( 'action' ) == 'edit' ) {
+			if ( $context->getRequest()->getVal( 'action' ) == 'edit' ) {
 				if ( $title->getArticleID() == 0 ) {
 					$create = SpecialPage::getTitleFor( 'CreatePoll' );
-					$wgOut->redirect(
+					$out->redirect(
 						$create->getFullURL( 'wpDestName=' . $title->getText() )
 					);
 				} else {
 					$update = SpecialPage::getTitleFor( 'UpdatePoll' );
-					$wgOut->redirect(
+					$out->redirect(
 						$update->getFullURL( 'id=' . $title->getArticleID() )
 					);
 				}
 			}
 
 			// Add required JS & CSS
-			$wgOut->addModules( 'ext.pollNY' );
-			$wgOut->addModuleStyles( 'ext.pollNY.css' );
+			$out->addModules( 'ext.pollNY' );
+			$out->addModuleStyles( 'ext.pollNY.css' );
 
 			$article = new PollPage( $title );
 		}
