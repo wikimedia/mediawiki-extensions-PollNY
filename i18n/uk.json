@@ -108,6 +108,7 @@
 	"right-pollny-vote": "Голосування в опитуваннях",
 	"action-polladmin": "адміністрування опитувань",
 	"right-polladmin": "Адміністрування опитувань",
+	"poll-error-no-api-edit": "API наразі не можна використовувати для редагування сторінок \"Poll\". Будь ласка, використовуйте замість цього <code>Special:UpdatePoll</code> або <code>Special:CreatePoll</code>.",
 	"apihelp-pollny-summary": "PollNY API — включає функції і користувача, й адміністратора.",
 	"apihelp-pollny-param-what": "Що робити?",
 	"apihelp-pollny-param-choiceID": "Теж саме, що й натискання на вибір <choiceID> через GUI; використовується лише при what=vote.",
