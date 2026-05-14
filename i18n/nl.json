@@ -60,7 +60,7 @@
 	"poll-flagged": "Deze peiling is gemarkeerd",
 	"poll-flagged-message": "Weet u zeker dat u deze peiling wilt markeren?",
 	"poll-flag-poll": "Peiling markeren",
-	"poll-hash": "\"#\" is een ongeldig teken voor de vraag.",
+	"poll-hash": "\"#\" is een foutief teken voor de vraag.",
 	"poll-image-label": "Afbeelding toevoegen",
 	"poll-image-picker-launch-button": "Een bestaande afbeelding gebruiken",
 	"poll-image-picker": "Afbeeldingskiezer",
