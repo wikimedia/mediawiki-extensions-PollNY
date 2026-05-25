@@ -7,6 +7,7 @@
 			"SaldırganSincap",
 			"Shirayuki",
 			"Sujiniku",
+			"Tensama0415",
 			"Yamagata Yusuke"
 		]
 	},
@@ -68,7 +69,7 @@
 	"poll-prev": "前",
 	"poll-previous-poll": "前の投票所",
 	"poll-question-label": "投票所の質問文",
-	"poll-skip": "スキップ >",
+	"poll-skip": "スキップ →",
 	"poll-submitted-by": "投稿者",
 	"poll-take-button": "← 投票所に戻る",
 	"poll-unavailable": "この投票所は利用できません",
