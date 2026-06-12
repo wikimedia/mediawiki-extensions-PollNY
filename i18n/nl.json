@@ -52,7 +52,7 @@
 	"poll-edit-button": "Pagina opslaan",
 	"poll-edit-desc": "nieuwe peiling",
 	"poll-edit-image": "Afbeelding bewerken",
-	"poll-edit-invalid-access": "Ongeldige toegang",
+	"poll-edit-invalid-access": "Toegang geweigerd",
 	"poll-edit-title": "Peiling bewerken - $1",
 	"poll-embed": "Invoegen op een wikipagina",
 	"poll-enterquestion": "U moet een vraag invoeren.",
