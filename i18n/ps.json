@@ -14,6 +14,6 @@
 	"poll-time-ago": "$1 مخکې",
 	"poll-time-days": "{{PLURAL:$1|يوه ورځ|$1 ورځې}}",
 	"poll-time-hours": "{{PLURAL:$1|يو گړۍ|$1 گړۍ}}",
-	"poll-time-minutes": "{{PLURAL:$1|يوه دقيقه|$1 دقیقي}}",
+	"poll-time-minutes": "{{PLURAL:$1|يوه دقيقه|$1 دقیقې}}",
 	"poll-time-seconds": "{{PLURAL:$1|يوه ثانيه|$1 ثانيې}}"
 }
