@@ -110,7 +110,7 @@
 	"action-polladmin": "설문 조사 관리",
 	"right-polladmin": "설문 조사 관리",
 	"poll-error-no-api-edit": "현재 API를 통해 Poll: 문서를 편집하는 것은 불가능합니다. 대신 필요에 따라 <code>Special:UpdatePoll</code> 또는 <code>Special:CreatePoll</code>을 사용해 주세요.",
-	"apihelp-pollny-summary": "설문조사YN API - 사용자 및 관리자 권한 포함",
+	"apihelp-pollny-summary": "PollNY API - 사용자 및 관리자 권한 포함",
 	"apihelp-pollny-param-what": "어떻게 할까요?",
 	"apihelp-pollny-param-choiceID": "GUI를 통해 선택 번호 #choiceID를 클릭하는 것과 동일합니다. <var>what=vote</var> 인 경우에만 사용됩니다.",
 	"apihelp-pollny-param-pageName": "확인할 제목 (what=titleExists인 경우에만 사용됨) 입니다. URL 인코딩되어야 합니다.",
