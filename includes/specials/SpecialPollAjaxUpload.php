@@ -247,7 +247,7 @@ class SpecialPollAjaxUpload extends MediaWiki\Specials\SpecialUpload {
 
 		// Check warnings if necessary
 		if ( !$this->mIgnoreWarning ) {
-			$warnings = $this->mUpload->checkWarnings();
+			$warnings = $this->mUpload->checkWarnings( $this->getAuthority() );
 			if ( $this->showUploadWarning( $warnings ) ) {
 				return;
 			}
