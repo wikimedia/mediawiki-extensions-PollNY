@@ -16,7 +16,7 @@
 	"poll-admin-no-polls": "هېڅ اندغوښتنه نشته. [[Special:CreatePoll|يوه اندغوښتنه جوړه کړئ!]]",
 	"poll-admin-closed": "تړل شوی",
 	"poll-admin-flagged": "رپی داره شوی",
-	"poll-admin-open": "پرانيستل",
+	"poll-admin-open": "پرانېستل",
 	"poll-error-socialprofile": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:SocialProfile ټولنيزپېژنيال شاتاړی] لگېدلی نه دی. مهرباني وکړئ دا شاتاړی ولگوئ او بيا هڅه وکړئ.",
 	"poll-error-socialprofile-title": "ټولنيز‌پېژنيال شاتاړی نه دی لگېدلی.",
 	"poll-admin-nonadmin-note": "دا چې تاسو د اندغوښتنې پازوال نه ياست؛ نو تاسو يوازې هغه اندغوښتنې وينئ چې تاسو جوړې کړې دي.",
