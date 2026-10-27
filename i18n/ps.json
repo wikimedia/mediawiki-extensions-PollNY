@@ -65,6 +65,7 @@
 	"poll-image-picker-launch-button": "يو شته انځور وکاروئ",
 	"poll-image-picker": "انځور غوره‌کوونکی",
 	"poll-image-picker-select": "ټاکل",
+	"poll-instructions": "د اندغوښتنې پوښتنه وکړئ، د ځواب ځينې ټاکنې وليکئ، د  \"{{int:poll-create-button}}\" کېکاږئ. دا ډېره اسانه ده!",
 	"poll-js-action-complete": "چاره بشپړه شوه.",
 	"poll-js-loading": "بارېږي...",
 	"poll-next": "راتلونکی",
