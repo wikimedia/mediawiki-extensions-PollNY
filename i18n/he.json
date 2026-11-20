@@ -5,7 +5,8 @@
 			"Ex-Diktator",
 			"Guycn2",
 			"Neriah",
-			"SaldırganSincap"
+			"SaldırganSincap",
+			"A100Star"
 		]
 	},
 	"adminpoll": "ניהול סקרים",
@@ -108,7 +109,7 @@
 	"poll-error-no-api-edit": "לא ניתן להשתמש ב־API הזה כדי לערוך דפי Poll: כעת. נא להשתמש ב־<code>Special:UpdatePoll</code> או ב־<code>Special:CreatePoll</code> לפי מה שמתאים במקום זאת.",
 	"apihelp-pollny-summary": "PollNY API - כולל גם פונקציות משתמש וגם פונקציות ניהול.",
 	"apihelp-pollny-param-what": "מה לעשות?",
-	"apihelp-pollny-param-choiceID": "אותו דבר כמו לחיצה על בחירה מס' <choiceID> דרך הממשק הגרפי; משמש רק כאשר what=vote.",
+	"apihelp-pollny-param-choiceID": "זהה ללחיצה על אפשרות הבחירה מספר #choiceID דרך הממשק הגרפי; משמש רק כאשר <var>what=vote</var>.",
 	"apihelp-pollny-param-pageName": "כותרת לבדוק (בשימוש רק כאשר what=titleExists); צריך להיות URL-encoded.",
 	"apihelp-pollny-param-pollID": "מזהה הסקר של הסקר שנמחק/מעודכן/מצביעים עבורו.",
 	"apihelp-pollny-param-pageID": "מזהה דף (בשימוש רק כאשר what=getPollResults).",
